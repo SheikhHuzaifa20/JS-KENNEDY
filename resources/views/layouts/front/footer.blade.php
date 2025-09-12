@@ -23,22 +23,22 @@
                     <h5>Quick Links</h5>
                     <ul>
                         <li>
-                            <a href="#">Home</a>
+                            <a href="{{route("home")}}">Home</a>
                         </li>
                         <li>
-                            <a href="#">Release Schedule</a>
+                            <a href="{{route("release_schedule")}}">Release Schedule</a>
                         </li>
                         <li>
-                            <a href="#">Books</a>
+                            <a href="{{route("books")}}">Books</a>
                         </li>
                         <li>
-                            <a href="#">Bonus Scenes</a>
+                            <a href="{{route("bonus_scenes")}}">Bonus Scenes</a>
                         </li>
                         <li>
-                            <a href="#">Blog</a>
+                            <a href="{{route("blog")}}">Blog</a>
                         </li>
                         <li>
-                            <a href="#">Contact</a>
+                            <a href="{{route("contact")}}">Contact</a>
                         </li>
                     </ul>
                 </div>

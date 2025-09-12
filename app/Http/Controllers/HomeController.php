@@ -62,7 +62,7 @@ class HomeController extends Controller
         // dd($products);
 
         $product2 = DB::table('products')->get();
-        return view('welcome', compact('products' , 'product2'));
+        return view('welcome', compact('products', 'product2'));
     }
 
     public function release_schedule()
@@ -78,7 +78,15 @@ class HomeController extends Controller
 
     public function books()
     {
-        return view('books');
+        $book1 = DB::table('products')->where('id', 10)->first();
+        $book2 = DB::table('products')->where('id', 11)->first();
+        $book3 = DB::table('products')->where('id', 11)->first();
+        $book4 = DB::table('products')->where('id', 11)->first();
+        $book5 = DB::table('products')->where('id', 11)->first();
+        $book6 = DB::table('products')->where('id', 11)->first();
+        // dd($book1);
+
+        return view('books', compact('book1', 'book2', 'book3', 'book4', 'book5', 'book6'));
     }
 
     public function bonus_scenes()
@@ -89,5 +97,20 @@ class HomeController extends Controller
     public function blog()
     {
         return view('blog');
+    }
+
+    public function inquiry(Request $request)
+    {
+        $request->validate([
+            'fname' => 'required|string',
+            'lname'  => 'required|string',
+            'email'      => 'required|email',
+            'phone'      => 'required|string',
+            'notes'    => 'required|string',
+        ]);
+
+        Inquiry::create($request->all());
+
+        return back()->with('success', 'Your inquiry has been submitted successfully!');
     }
 }
