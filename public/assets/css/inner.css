@@ -1,0 +1,357 @@
+/* blog pg css start */
+.inner-banners {
+    height: 600px;
+}
+
+.inner-banner-heading h1 {
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--white-color);
+    font-size: 60px;
+}
+
+.inner-blog-article {
+    margin: auto;
+    width: 50%;
+    padding: 12px 10px;
+    background: linear-gradient(45deg, #688622, #0c0f04);
+    border-radius: 10px;
+    margin-bottom: 80px;
+    box-shadow: 8px -9px 0px 0px #c7c5c0;
+}
+
+.inner-blog-article h2 {
+    margin: 0;
+    color: var(--bs-white);
+    font-size: 45px;
+}
+
+/* blog pg css end */
+
+/* contact pg css start */
+
+.contact-form-banner {
+    padding: 50px 0;
+}
+
+.contact-form {
+    padding: 40px 40px;
+    background: linear-gradient(303deg, #688622, #0c0f04);
+    border-radius: 20px;
+    margin: auto;
+    width: 80%;
+}
+
+.contact-form p {
+    color: var(--white-color);
+    margin-bottom: 20px;
+}
+
+.contact-form .form-control {
+    border-radius: 30px;
+    margin-bottom: 20px;
+    padding: 16px 15px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.contact-form textarea#textarea {
+    border-radius: 15px;
+}
+
+button.btn.btn-form-btn {
+    background: var(--black-color);
+    color: var(--white-color);
+    width: 100%;
+    border-radius: 30px;
+    padding: 15px 0;
+    margin-top: 10px;
+    font-weight: 500;
+    font-size: 18px;
+    box-shadow: 2px -2px 0px 0px #fff;
+}
+
+/* contact pg css end */
+
+/* bonus-scenes pg css start */
+
+.bonus-scenes {
+    background: linear-gradient(2deg, #688622, #000);
+    padding-top: 50px;
+    padding-bottom: 100px;
+    margin-bottom: 30px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.beta-version {
+    text-align: center;
+}
+
+.beta-version h2 {
+    color: var(--white-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.beta-version p {
+    color: var(--grey-color);
+    font-weight: 400;
+    margin: auto;
+    width: 89%;
+    font-size: 15px;
+}
+
+.bonus-scene-version {
+    display: flex;
+    align-items: center;
+    gap: 95px;
+    justify-content: space-between;
+    margin: auto;
+    width: 80%;
+    position: relative;
+    z-index: 0;
+}
+
+.santa-version {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.snata-btn {
+    background: linear-gradient(73deg, #799c28, #0c0f04);
+    padding: 10px 40px;
+    border-radius: 50px;
+    border: none;
+    color: var(--white-color);
+    font-weight: 500;
+    box-shadow: 2px -2px 0px 0px #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 60%;
+}
+
+.snata-btn img {
+    width: 12%;
+    margin-left: 20px;
+}
+
+.santa-version p {
+    text-align: start;
+    font-size: 14px;
+    color: var(--white-color);
+    font-weight: 300;
+    width: 75%;
+    margin: auto;
+    margin-top: 16px;
+}
+
+.bonus-scene-version:before {
+    position: absolute;
+    z-index: 0;
+    content: "";
+    left: 39%;
+    right: 0;
+    top: 70%;
+    transform: rotate(90deg);
+    border-top: 10px dotted var(--grey-color);
+    height: 10%;
+    width: 20%;
+}
+
+/* bonus-scenes pg css end */
+
+/* release-schedule pg css start */
+
+.release-shedule-banner {
+    height: unset;
+    padding: 100px 0;
+}
+
+.release-shedule-banner:before {
+    display: none;
+}
+
+.release-shedule-banner .banner-content h2 {
+    color: var(--black-color);
+    font-size: 45px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.release-shedule-banner .banner-content p {
+    color: var(--black-color)p;
+    font-weight: 400;
+    font-size: 16px;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+.release-shedule-banner .banner-content h5 {
+    color: var(--black-color);
+    font-weight: 600;
+    font-size: 22px;
+    margin-top: 8px;
+}
+
+
+
+.release-shedule-banner .back-circle {
+    right: 80px;
+    top: 50px;
+}
+
+.relence-schedule-list .bonus-scene-version {
+    align-items: start;
+    width: 90%;
+}
+
+.relence-schedule-list {
+    border-radius: 50px;
+    background: var(--gridient);
+}
+
+.relence-schedule-list .bonus-scene-version:before {
+    transform: rotate(0deg);
+    top: 22%;
+    width: 100%;
+    left: 0;
+}
+
+.relence-schedule-list .bonus-scene-version .santa-version {
+    width: 30%;
+}
+
+.relence-schedule-list .bonus-scene-version .santa-version .snata-btn {
+    width: 100%;
+    font-size: 13px;
+    justify-content: space-evenly;
+    padding: 10px 20px;
+}
+
+.relence-schedule-list .bonus-scene-version {
+    gap: 45px;
+}
+
+.relence-schedule-list .bonus-scene-version .santa-version .snata-btn img {
+    width: 10%;
+}
+
+.relence-schedule-list .bonus-scene-version .santa-version p {
+    width: 100%;
+    font-size: 12px;
+}
+
+/* release-schedule pg css end */
+
+/* books pg css start */
+
+
+.books-pg-inner .client-img-banner img {
+    border: none;
+}
+
+.books-pg-inner .author-about {
+    text-align: start;
+}
+
+.books-pg-inner .author-about h2 {
+    font-size: 2.5em;
+}
+
+.books-pg-inner .author-about h5 {
+    color: var(--black-color);
+    font-weight: 600;
+    font-family: 'Montserrat';
+}
+
+.books-pg-inner .author-about p {
+    margin-top: 20px;
+}
+
+.books-pg-inner .author-about ul {
+    margin: 20px 0;
+}
+
+.books-pg-inner .author-about ul li p {
+    color: var(--black-color);
+    font-weight: 700;
+    margin-top: 0;
+}
+
+
+.book-links-snata a {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    width: 50%;
+    padding: 12px 40px;
+    font-size: 15px;
+}
+
+.book-links-snata {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.books-back-dark {
+    background: var(--gridient);
+    border-radius: 50px;
+}
+
+.books-back-dark .author-about h2 {
+    color: var(--white-color);
+}
+
+.books-back-dark .author-about h5 {
+    color: var(--white-color);
+}
+
+.books-back-dark .author-about p {
+    color: var(--white-color);
+}
+
+.books-back-dark .author-about ul li p {
+    color: var(--white-color);
+}
+
+.redemption-freedom {
+    padding: 30px 0;
+}
+
+.redemption-quest {
+    text-align: center;
+}
+
+.redemption-quest h2 {
+    font-size: 35px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--black-color);
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.redemption-quest h4 {
+    color: var(--black-color);
+    font-size: 28px;
+    text-transform: uppercase;
+    line-height: 45px;
+    font-weight: 600;
+}
+
+.book-footer-banner {
+    margin-top: 30px;
+}
+
+.book-footer-banner img {
+    width: 100%;
+}
+
+/* books pg css end */

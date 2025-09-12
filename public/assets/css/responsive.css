@@ -1,0 +1,75 @@
+@media (max-width:1440px) {
+    .banner-content h2 {
+        font-size: 18px;
+    }
+
+    .banner-content h1 {
+        font-size: 50px;
+    }
+
+    .back-circle {
+        right: -140px;
+    }
+
+    .back-circle img {}
+
+    .author-about h2 {
+        font-size: 2.5em;
+    }
+
+    .author-about p {
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .mybooks p {
+        width: 70%;
+    }
+
+    .back-cricle img {
+        width: 90% !important;
+    }
+
+    .client-book-img img {
+        width: 80% !important;
+    }
+
+    .back-cricle a.btn.btn-black {
+        width: 55% !important;
+    }
+
+    .client-banner h2 {
+        font-size: 60px;
+    }
+
+    .client-para {
+        padding: 20px;
+    }
+
+    .client-para p {
+        line-height: 30px;
+        font-size: 18px;
+    }
+
+    .client-profile-img img {
+        width: 40% !important;
+    }
+
+    .blog-content h4 {
+        font-size: 20px;
+    }
+
+    .blog-content p {
+        font-size: 15px;
+    }
+
+    .release-shedule-banner .back-circle img {
+        width: 60%;
+    }
+
+    .release-shedule-banner .back-circle {
+        right: 90px;
+        text-align: end;
+        top: 100px;
+    }
+}

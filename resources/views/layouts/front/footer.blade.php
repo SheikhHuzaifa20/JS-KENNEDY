@@ -1,0 +1,66 @@
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="footer-logo">
+                    <img src="{{asset("assets/images/footer-logo.png")}}" class="img-fluid" alt="">
+                    <ul>
+                        <li>
+                            <a href="#" target="_blank">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="quick-link">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Release Schedule</a>
+                        </li>
+                        <li>
+                            <a href="#">Books</a>
+                        </li>
+                        <li>
+                            <a href="#">Bonus Scenes</a>
+                        </li>
+                        <li>
+                            <a href="#">Blog</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="quick-link">
+                    <h5>Newsletter</h5>
+                    <form>
+                        <div class="row">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Email">
+                                <button type="submit" class="btn btn-black">
+                                    Send
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="copy-right">
+    <p>Copyright © 2025, JS Kennedy. All rights reserved.</p>
+</div>

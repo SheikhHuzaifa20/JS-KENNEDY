@@ -1,0 +1,869 @@
+/* insurance-services pg css start */
+
+.inner-banner {
+  background-image: url(../images/vision.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 310px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+}
+
+.health-plan {
+  padding: 50px 0;
+}
+
+.enrollment {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.feature-plan h2 {
+  font-size: 35px;
+  font-weight: 900;
+  color: var(--black-color);
+  margin-bottom: 30px;
+}
+.feature-plan p {
+  font-size: 12px;
+  color: var(--silver-color);
+  font-weight: 500;
+  width: 97%;
+  margin: 0;
+  line-height: 20px;
+}
+.main-qa {
+  margin-bottom: 40px;
+}
+.main-qa ul li {
+  display: flex;
+  align-items: start;
+  gap: 30px;
+  color: var(--blue-color);
+  font-weight: 600;
+  padding-bottom: 30px;
+}
+
+.main-qa ul li p span {
+  color: var(--blue-color);
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.main-qa ul li p {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--black-color);
+  margin: 0;
+  line-height: unset;
+}
+.main-qa p {
+  margin-top: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--black-color);
+  line-height: 24px;
+}
+.main-qa p span {
+  color: var(--blue-color);
+  font-weight: 600;
+  font-size: 13px;
+}
+.main-qa p a {
+  color: var(--blue-color);
+  font-weight: 600;
+  font-size: 13px;
+}
+.inner-faq-sec {
+  background: #f0f1f3;
+  padding: 50px 0;
+}
+.inner-faq .card {
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #8b8c8c;
+  background: transparent;
+}
+
+.inner-faq .card .card-body {
+  background: var(--white-color);
+  border: none;
+  margin: 0;
+  border-radius: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.inner-faq .card-header {
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+.inner-faq .card .btn-link {
+  position: relative;
+  z-index: 0;
+  text-decoration: none;
+  color: var(--black-color);
+  font-weight: 500;
+  padding: 14px 10px;
+  border-top-left-radius: 10px;
+  background: var(--white-color);
+  border-top-right-radius: 10px;
+  transition: all ease 0.5s;
+}
+
+.inner-faq .card .btn-link span {
+  position: absolute;
+  z-index: 0;
+  right: 10px;
+  font-size: 13px;
+  top: 18px;
+}
+
+.inner-faq .collapse {
+  transition: all ease 0.5s;
+}
+.inner-faq .card .btn-link.collapsed {
+  background: transparent;
+  transition: all ease 0.5s;
+}
+.inner-faq .card .btn-link.collapsed .plus-collaps {
+  opacity: 1;
+}
+
+.inner-faq .card .btn-link .plus-collaps {
+  opacity: 0;
+}
+
+/* insurance-services pg css end */
+
+/* learning pg css start */
+
+.zag-faq .feature-plan {
+  margin-top: 100px;
+}
+.feature-plan h3 {
+  color: var(--blue-color);
+  font-weight: 500;
+  font-size: 20px;
+}
+
+/* learning pg css end */
+
+/* blogs pg css start */
+
+.blogs-banner {
+  background-image: url(../images/blogs.png);
+}
+
+.blogs-pg {
+  padding: 100px 0;
+}
+
+.play-btn {
+  margin-bottom: 80px;
+  margin-top: 30px;
+}
+
+.play-btn h5 {
+  margin-top: 20px;
+  color: #28292b;
+  font-weight: 600;
+  font-size: 22px;
+}
+.blog-img {
+  margin-bottom: 100px;
+}
+.side-blog {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.side-num p {
+  color: var(--silver-color);
+  font-weight: 500;
+}
+.healthcare {
+  margin-left: 30px;
+}
+
+.healthcare h6 {
+  color: var(--black-color);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 15px;
+  margin-bottom: 20px;
+  font-family: "Poppins";
+}
+.healthcare h2 {
+  margin-left: 40px;
+  color: var(--black-color);
+  font-weight: 600;
+  position: relative;
+  z-index: 0;
+  font-family: "Poppins";
+}
+
+.healthcare h2:before {
+  position: absolute;
+  z-index: 0;
+  content: "";
+  left: -40px;
+  top: 18px;
+  width: 30px;
+  height: 1px;
+  background: var(--silver-color);
+}
+.healthcare p {
+  color: var(--silver-color);
+  font-weight: 400;
+  margin-top: 22px;
+  font-size: 15px;
+  font-family: Lato;
+}
+.right-arrow {
+  text-align: end;
+  padding-top: 80px;
+}
+
+.right-arrow a i {
+  color: #28292b;
+  font-size: 20px;
+}
+.side-menu {
+  text-align: center;
+}
+
+.side-menu img {
+  margin: auto;
+  width: 75%;
+}
+
+.discription-profile {
+  background: #131315;
+  padding-top: 35px;
+  margin-top: -20px;
+  padding-bottom: 20px;
+}
+.discription-profile h5 {
+  color: var(--white-color);
+  font-weight: 300;
+  text-transform: uppercase;
+  font-family: "Lato";
+}
+
+.discription-profile a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--white-color);
+  font-family: "Lato";
+  font-weight: 300;
+}
+.featured-post {
+  margin-top: 80px;
+}
+
+.st-h {
+  padding: 0px 20px;
+  border-left: 7px solid black;
+}
+
+.st-h h2 {
+  font-size: 17px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #28292b;
+  font-family: "Lato";
+}
+.featured-post ul {
+  padding: 25px 0;
+}
+
+.featured-post ul li {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 0;
+}
+.featured-post ul li:before {
+  position: absolute;
+  z-index: 0;
+  content: "";
+  border-bottom: 1px solid var(--silver-color);
+  width: 60%;
+  bottom: 0;
+  right: 0;
+}
+
+.featured-post ul li figure {
+  position: relative;
+  z-index: 0;
+}
+
+.featured-post ul li figure span {
+  position: absolute;
+  z-index: 0;
+  top: -10px;
+  left: 10px;
+  font-size: 30px;
+  text-shadow: 0px 2px 5px white;
+}
+
+.featured-post ul li p {
+  color: #28292b;
+  font-weight: 400;
+}
+.cover-img img {
+  margin-bottom: 50px;
+}
+
+.Category-file {
+  margin-top: 30px;
+}
+
+.Category-file img {
+  margin: 0;
+}
+
+.health-insure {
+  background: var(--white-color);
+  border-bottom: 2px solid var(--black-color);
+  margin: auto;
+  width: 75%;
+  position: relative;
+  z-index: 100;
+  margin-top: -20px;
+  padding: 10px 12px;
+}
+
+.health-insure h6 {
+  color: var(--black-color);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+/* blogs pg css end */
+
+/* contact pg css start */
+
+.contact-banner {
+  background-image: url(../images/contact.png);
+}
+
+.contact-info {
+  padding: 100px 80px;
+  text-align: center;
+}
+
+.find-us h4 {
+  color: #3d434f;
+  font-size: 35px;
+  font-weight: 600;
+  font-family: "Lato";
+  margin-bottom: 20px;
+}
+.find-us p {
+  color: #63676f;
+  font-size: 15px;
+  width: 100%;
+  margin: 0;
+}
+.find-us p span {
+  color: #3d434f;
+  font-size: 17px;
+  font-weight: 500;
+  margin-right: 6px;
+}
+
+.find-us p a {
+  color: #808690;
+  font-size: 16px;
+  font-weight: 400;
+}
+.icon-flex p {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+  justify-content: center;
+}
+
+.icon-flex p a i {
+  font-size: 25px;
+  color: #aaabad;
+}
+.border-bot {
+  position: relative;
+  z-index: 0;
+}
+
+.border-bot:before {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  right: 20px;
+  bottom: 0;
+  /* background: var(--blue); */
+  width: 70%;
+  height: 10px;
+  border-radius: 20px;
+}
+.forn-info {
+  padding-bottom: 150px;
+}
+.contact-form h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.forn-info form .form-group {
+  background: var(--white-color);
+  border-radius: 10px;
+  box-shadow: 0 10px 12px 8px #f5f5f6;
+  padding: 2px 15px;
+  margin-bottom: 30px;
+}
+.forn-info form .form-group label {
+  color: var(--silver-color);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.forn-info form .form-group input {
+  border: none;
+}
+.forn-info form .form-group input:focus {
+  box-shadow: unset;
+}
+.forn-info form .form-group .form-control {
+  border: none;
+}
+
+.forn-info form .form-group .form-control:focus {
+  box-shadow: unset;
+}
+.mssg-group {
+  margin-top: 40px;
+}
+.mssg-group .btn-custom {
+  width: 100%;
+  padding: 15px 25px;
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: 400;
+  background: #52c2ec;
+  color: white;
+}
+/* contact pg css end */
+
+/* vision pg css start */
+
+.health-banner {
+  background-image: url(../images/portrait-satisfied-smiling-medical-worker-woman-doctor-showing-okay-ok-zero-no-problem-gesture-ex.jpg);
+  /* position: relative; */
+  /* z-index: 0; */
+  background-position: top;
+}
+
+.vision-pg {
+  padding-top: 50px;
+  /* padding-bottom: 100px; */
+}
+
+.main-collaps ul {
+  background: #f5f7f9;
+  display: block;
+  border-radius: 10px;
+}
+
+.main-collaps ul li a {
+  padding: 30px 22px;
+  color: var(--black-color);
+  font-weight: 400;
+  font-size: 15px;
+}
+.main-collaps ul li a.active {
+  background: #32c1ea !important;
+  color: white !important;
+}
+@font-face {
+  font-family: Baguet-Script-Regular;
+  src: url(../fonts/Baguet-Script-Regular.otf);
+}
+.tabs-coverage h2 {
+  font-family: Baguet-Script-Regular;
+  color: #2b325b;
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.tabs-coverage p {
+  font-size: 14px;
+  color: #555555;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+.talk-insurance {
+  background-image: url(../images/vision-1.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-align: center;
+  height: 300px;
+  margin-top: 60px;
+}
+.talk-insurance img {
+  margin: auto;
+  width: 38%;
+  margin-top: 40px;
+}
+
+.talk-insurance h4 {
+  color: var(--white-color);
+  font-size: 18px;
+  margin-top: 16px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.talk-insurance h3 a {
+  font-size: 24px;
+  color: var(--white-color);
+}
+
+.talk-insurance h3 span {
+  font-size: 14px;
+  color: var(--white-color);
+}
+.financial-assistance {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px 1px #00000040;
+  padding: 10px;
+  height: 150px;
+}
+
+.financial-name {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.financial-discription {
+  width: 60%;
+}
+
+.financial-name img {
+  width: 10%;
+}
+
+.financial-name h4 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--black-color);
+}
+
+.financial-discription p {
+  font-size: 14px;
+  font-weight: 600;
+  width: 100%;
+  color: #525252;
+}
+.llc-assistance {
+  box-shadow: unset;
+  height: unset;
+}
+
+.llc-assistance .financial-name {
+  width: 10%;
+}
+
+.llc-assistance .financial-discription {
+  width: 80%;
+}
+
+.llc-assistance .financial-name img {
+  width: 70%;
+}
+
+.llc-assistance .financial-discription p {
+  width: 100%;
+  font-size: 16px;
+}
+.amerities-img {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.amerities-img img {
+  width: 25%;
+  margin-bottom: 80px;
+}
+.tabs-coverage p span {
+  color: #117cbe;
+  font-size: 14px;
+  font-weight: 600;
+}
+.aetna-img {
+  margin: 20px 0 100px 0px;
+}
+
+.aetna-img img {
+  width: 14%;
+}
+.include-health h2 {
+  font-size: 27px;
+}
+
+.include-health ul li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.include-health ul li p {
+  margin: 0;
+}
+
+.include-health ul li span i {
+  width: 30px;
+  height: 30px;
+  background: #117cbe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 60%;
+  color: white;
+}
+.plan-insurance {
+  margin-bottom: 50px;
+}
+/* vision pg css end */
+
+/* dental insurance pg css start */
+
+.dental-banner {
+  background-image: url(../images/dental.png);
+  background-size: cover;
+  position: relative;
+  z-index: 0;
+}
+
+.dental_flex {
+  margin-top: 40px;
+}
+.dental_flex img {
+  width: 15%;
+}
+
+/* dental insurance pg css end */
+
+/* affordable-care-act-(ACA) pg css start */
+
+.aca-pg .blue {
+  font-size: 22px;
+}
+.eligible-ages {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  background: #f3f5fa;
+  height: 60px;
+}
+
+.eligible-ages h4 {
+  margin: 0;
+  color: #555555;
+  font-weight: 500 !important;
+  font-size: 18px;
+}
+
+.eligible-ages h4 span {
+  color: var(--blue-color);
+  font-weight: 600;
+}
+
+/* affordable-care-act-(ACA) pg css end */
+
+.dental-banner:before {
+    position: absolute;
+    z-index: 0;
+    content: '';
+    background: linear-gradient(45deg, white ,transparent , transparent);
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+
+
+.vision-banner:before {
+  position: absolute;
+  z-index: 0;
+  content: '';
+  background: linear-gradient(45deg, white ,transparent , transparent);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+
+.individual-family label{
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  color: #aaaaaa;
+
+}
+.aetna-img.health-insurances-img{
+  margin: 50px 0;
+}
+.aetna-img.health-insurances-img img{
+  filter: none;
+}
+
+.inner-banner.aca-banner {
+  background-image: url(../images/aca-banner-img.jpeg);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 310px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+}
+.inner-banner.aca-banner:before {
+  position: absolute;
+  z-index: 0;
+  content: '';
+  background: linear-gradient(45deg, white, transparent, transparent);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*  */
+
+.card-body p {
+  padding-bottom: 10px;
+}
+
+.card-body ul li {
+  padding: 7px 0px;
+}
+
+.card-body ul li strong {
+  color: #2b325b;
+}
+
+.main-bigbash-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+    text-align: center;
+}
+
+.main-calender-div {
+    text-decoration: none;
+    margin: 30px 0px 50px 0px;
+    position: relative;
+    z-index: 0;
+}
+
+.main-calender-div:before {
+  position: absolute;
+  z-index: 1;
+  content: '';
+  background-color: #117cbe;
+  top: -32px;
+  left: 20px;
+  height: 22px;
+  width: 12px;
+  border-radius: 20px;
+}
+
+.main-calender-div:after {
+  position: absolute;
+  z-index: 1;
+  content: '';
+  background-color: #117cbe;
+  top: -32px;
+  right: 20px;
+  height: 22px;
+  width: 12px;
+  border-radius: 20px;
+}
+
+span.color-blue-div:before {
+  position: absolute;
+  z-index: 0;
+  content: '';
+  left: 0;
+  top: -21px;
+  background-color: #2b325b;
+  height: 20px;
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+
+span.color-blue-div:after {
+  position: absolute;
+  z-index: 0;
+  content: '';
+  left: 0;
+  bottom: -20px;
+  background-color: #2b325b;
+  height: 20px;
+  width: 100%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.sub-calender-div {
+  position: relative;
+  z-index: 0;
+  width: 110px;
+  background: white;
+  padding: 15px 0px;
+  box-shadow: 0px 0px 30px gray;
+}
+
+.sub-calender-div span {
+  color: black;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+/*  */
