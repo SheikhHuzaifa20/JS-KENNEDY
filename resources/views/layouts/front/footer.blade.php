@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-5">
                 <div class="footer-logo">
-                    <img src="{{asset("assets/images/footer-logo.png")}}" class="img-fluid" alt="">
+                    <img src="{{asset("asset/images/footer-logo.png")}}" class="img-fluid" alt="">
                     <ul>
                         <li>
                             <a href="#" target="_blank">

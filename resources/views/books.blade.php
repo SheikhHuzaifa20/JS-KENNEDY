@@ -43,7 +43,7 @@
                         {!! $book1->description !!}
                         <div class="book-links-snata">
                             <a href="{{$sections[0]->value}}" class="btn snata-btn"> Buy From Amazon
-                                <img src="{{ asset('assets/images/amazon.png') }}" class="img-fluid" alt=""></a>
+                                <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                         {!! $book2->description !!}
                         <div class="book-links-snata">
                             <a href="{{$sections[0]->value}}" class="btn snata-btn"> Buy From Amazon
-                                <img src="{{ asset('assets/images/amazon.png') }}" class="img-fluid" alt=""></a>
+                                <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt=""></a>
                             <a href="#" class="btn snata-btn">Audiobook</a>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                         {!! $book3->description !!}
                         <div class="book-links-snata">
                             <a href="{{$sections[0]->value}}" class="btn snata-btn"> Buy From Amazon
-                                <img src="{{ asset('assets/images/amazon.png') }}" class="img-fluid" alt=""></a>
+                                <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt=""></a>
                             <a href="#" class="btn snata-btn">Audiobook</a>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                         {!! $book4->description !!}
                         <div class="book-links-snata">
                             <a href="{{$sections[0]->value}}" class="btn snata-btn"> Buy From Amazon
-                                <img src="{{ asset('assets/images/amazon.png') }}" class="img-fluid" alt=""></a>
+                                <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt=""></a>
                             <a href="#" class="btn snata-btn">Audiobook</a>
                         </div>
                     </div>
@@ -141,7 +141,7 @@
                         {!! $book5->description !!}
                         <div class="book-links-snata">
                             <a href="{{$sections[0]->value}}" class="btn snata-btn"> Buy From Amazon
-                                <img src="{{ asset('assets/images/amazon.png') }}" class="img-fluid" alt=""></a>
+                                <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt=""></a>
                             <a href="#" class="btn snata-btn">Audiobook</a>
                         </div>
                     </div>
@@ -162,7 +162,7 @@
                         {!! $book6->description !!}
                         <div class="book-links-snata">
                             <a href="{{$sections[0]->value}}" class="btn snata-btn"> Buy From Amazon
-                                <img src="{{ asset('assets/images/amazon.png') }}" class="img-fluid" alt=""></a>
+                                <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt=""></a>
                             <a href="#" class="btn snata-btn">Audiobook</a>
                         </div>
                     </div>

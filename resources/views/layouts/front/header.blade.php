@@ -11,7 +11,7 @@
                                         <input type="email" name="" placeholder="Email" class="form-control" id="">
                                         <button class="btn btn-black email-btn">
                                             Subscribe
-                                            <img src="{{asset("assets/images/send.png")}}" class="img-fluid" alt="">
+                                            <img src="{{asset("asset/images/send.png")}}" class="img-fluid" alt="">
                                         </button>
                                     </div>
                                 </div>
@@ -28,7 +28,7 @@
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg">
                         <a class="navbar-brand" href="#">
-                            <img src="{{asset("assets/images/logo.png")}}" class="img-fluid" alt="">
+                            <img src="{{asset("asset/images/logo.png")}}" class="img-fluid" alt="">
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -59,7 +59,7 @@
                             <form class="d-flex side-top">
                                 <a href="https://www.amazon.com/stores/JS-Kennedy/author/B095VMYZK1?ref=ap_rdr&isDramIntegrated=true&shoppingPortalEnabled=true" class="btn btn-black" href="#">
                                     Buy From Amazon
-                                    <img src="{{asset("assets/images/amazon.png")}}" class="img-fluid" alt="">
+                                    <img src="{{asset("asset/images/amazon.png")}}" class="img-fluid" alt="">
                                 </a>
                             </form>
                         </div>

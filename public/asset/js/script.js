@@ -76,9 +76,9 @@ $('.reviews-carousel').owlCarousel({
 })
 
 const images = [
-    "assets/images/banner-back-1.png",
-    "assets/images/banner-back-2.png",
-    "assets/images/banner-back-3.png",
+    "asset/images/banner-back-1.png",
+    "asset/images/banner-back-2.png",
+    "asset/images/banner-back-3.png",
 ];
 
 const banner = document.getElementById("banner");
