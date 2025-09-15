@@ -20,7 +20,8 @@ use App\Page;
 use Image;
 use App\Mail\NewsletterConfirmation;
 use Illuminate\Support\Facades\Mail;
-
+use App\Mail\InquiryReceived;
+use App\Mail\ThankYouMail;
 
 class HomeController extends Controller
 {
@@ -109,7 +110,18 @@ class HomeController extends Controller
             'notes' => 'required|string',
         ]);
 
-        Inquiry::create($request->all());
+        // Save data into DB
+        $inquiry = Inquiry::create($request->all());
+
+        // Send email to Admin
+        // Send email to Admin
+        Mail::to('info@jskennedy.com')->send(new InquiryReceived($inquiry));
+
+        // Sleep for 10 seconds (avoid Mailtrap free plan rate limit)
+        sleep(10);
+
+        // Send Thank You email to User
+        Mail::to($inquiry->email)->send(new ThankYouMail($inquiry));
 
         return back()->with('success', 'Your inquiry has been submitted successfully!');
     }
