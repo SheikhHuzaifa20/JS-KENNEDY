@@ -49,7 +49,7 @@
                     <form>
                         <div class="row">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Email">
+                                <input type="email" class="form-control" placeholder="Email">
                                 <button type="submit" class="btn btn-black">
                                     Send
                                 </button>

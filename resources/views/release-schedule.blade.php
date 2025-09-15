@@ -53,11 +53,9 @@
                                                         <div class="atropos-scale">
                                                             <div class="atropos-rotate">
                                                                 <div class="atropos-inner">
-                                                                    <a href="JavaScript:;" id="show"
-                                                                        class="main-text-1">
+                                                                    <a href="JavaScript:;" id="show" class="main-text-1">
                                                                         <img src="{{ asset($product->image) }}"
-                                                                            class="img-fluid" alt=""
-                                                                            data-atropos-offset="2">
+                                                                            class="img-fluid" alt="" data-atropos-offset="2">
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -88,8 +86,7 @@
                                                             <div class="atropos-inner">
                                                                 <a href="JavaScript:;" id="show" class="main-text-1">
                                                                     <img src="{{ asset('asset/images/book-js66.png') }}"
-                                                                        class="img-fluid" alt=""
-                                                                        data-atropos-offset="2">
+                                                                        class="img-fluid" alt="" data-atropos-offset="2">
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -119,8 +116,7 @@
                                                             <div class="atropos-inner">
                                                                 <a href="JavaScript:;" id="show" class="main-text-1">
                                                                     <img src="{{ asset('asset/images/book-js44.png') }}"
-                                                                        class="img-fluid" alt=""
-                                                                        data-atropos-offset="2">
+                                                                        class="img-fluid" alt="" data-atropos-offset="2">
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -150,8 +146,7 @@
                                                             <div class="atropos-inner">
                                                                 <a href="JavaScript:;" id="show" class="main-text-1">
                                                                     <img src="{{ asset('asset/images/book-js33.png') }}"
-                                                                        class="img-fluid" alt=""
-                                                                        data-atropos-offset="2">
+                                                                        class="img-fluid" alt="" data-atropos-offset="2">
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -181,8 +176,7 @@
                                                             <div class="atropos-inner">
                                                                 <a href="JavaScript:;" id="show" class="main-text-1">
                                                                     <img src="{{ asset('asset/images/book-js22.png') }}"
-                                                                        class="img-fluid" alt=""
-                                                                        data-atropos-offset="2">
+                                                                        class="img-fluid" alt="" data-atropos-offset="2">
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -210,11 +204,9 @@
                                                     <div class="atropos-scale">
                                                         <div class="atropos-rotate">
                                                             <div class="atropos-inner">
-                                                                <a href="JavaScript:;" id="show"
-                                                                    class="main-text-1">
+                                                                <a href="JavaScript:;" id="show" class="main-text-1">
                                                                     <img src="{{ asset('asset/images/book-js11.png') }}"
-                                                                        class="img-fluid" alt=""
-                                                                        data-atropos-offset="2">
+                                                                        class="img-fluid" alt="" data-atropos-offset="2">
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -247,37 +239,31 @@
                     <div class="bonus-scene-version">
                         <div class="santa-version">
                             <a href="#" class="btn snata-btn">Catch and Release <img
-                                    src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid"
-                                    alt=""></a>
+                                    src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid" alt=""></a>
                             <p>Prequel novella from Curtis’s point of view</p>
                         </div>
                         <div class="santa-version">
                             <a href="#" class="btn snata-btn">Green Gryphon <img
-                                    src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid"
-                                    alt=""></a>
+                                    src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid" alt=""></a>
                         </div>
                         <div class="santa-version">
                             <a href="#" class="btn snata-btn">Green Mage <img
-                                    src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid"
-                                    alt=""></a>
+                                    src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid" alt=""></a>
                         </div>
                     </div>
                     <div class="bonus-scene-version">
                         <div class="santa-version">
                             <a href="#" class="btn snata-btn">Green Shadow <img
-                                    src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid"
-                                    alt=""></a>
+                                    src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid" alt=""></a>
                             <p>Switches POV between Mackenzie and Lucan</p>
                         </div>
                         <div class="santa-version">
                             <a href="#" class="btn snata-btn">Green Vampire <img
-                                    src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid"
-                                    alt=""></a>
+                                    src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid" alt=""></a>
                         </div>
                         <div class="santa-version">
                             <a href="#" class="btn snata-btn">Green Dragon - April 28th, 2025 <img
-                                    src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid"
-                                    alt=""></a>
+                                    src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid" alt=""></a>
                         </div>
                     </div>
                 </div>

@@ -27,17 +27,17 @@ class TestimonialController extends Controller
 
     public function index(Request $request)
     {
-        $model = str_slug('testimonial','-');
-        if(auth()->user()->permissions()->where('name','=','view-'.$model)->first()!= null) {
+        $model = str_slug('testimonial', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'view-' . $model)->first() != null) {
             $keyword = $request->get('search');
             $perPage = 25;
 
             if (!empty($keyword)) {
                 $testimonial = Testimonial::where('name', 'LIKE', "%$keyword%")
-                ->orWhere('verified', 'LIKE', "%$keyword%")
-                ->orWhere('comments', 'LIKE', "%$keyword%")
-                ->orWhere('image', 'LIKE', "%$keyword%")
-                ->paginate($perPage);
+                    ->orWhere('verified', 'LIKE', "%$keyword%")
+                    ->orWhere('comments', 'LIKE', "%$keyword%")
+                    ->orWhere('image', 'LIKE', "%$keyword%")
+                    ->paginate($perPage);
             } else {
                 $testimonial = Testimonial::paginate($perPage);
             }
@@ -55,8 +55,8 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        $model = str_slug('testimonial','-');
-        if(auth()->user()->permissions()->where('name','=','add-'.$model)->first()!= null) {
+        $model = str_slug('testimonial', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'add-' . $model)->first() != null) {
             return view('admin.testimonial.create');
         }
         return response(view('403'), 403);
@@ -72,30 +72,30 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        $model = str_slug('testimonial','-');
-        if(auth()->user()->permissions()->where('name','=','add-'.$model)->first()!= null) {
+        $model = str_slug('testimonial', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'add-' . $model)->first() != null) {
             $this->validate($request, [
-			'name' => 'required',
-			'comments' => 'required',
-			'image' => 'required'
-		]);
+                'name' => 'required',
+                'comments' => 'required',
+                'image' => 'required'
+            ]);
             $requestData = $request->all();
 
-        if ($request->hasFile('image')) {
+            if ($request->hasFile('image')) {
 
-            $image_path = public_path($testimonial->image); 
+                $image_path = public_path($testimonial->image);
 
-            $file = $request->file('image');
-            $fileNameExt = $request->file('image')->getClientOriginalName();
-            $fileNameForm = str_replace(' ', '_', $fileNameExt);
-            $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
-            $fileExt = $request->file('image')->getClientOriginalExtension();
-            $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
-            $pathToStore = public_path('uploads/testimonials/');
-            Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
+                $file = $request->file('image');
+                $fileNameExt = $request->file('image')->getClientOriginalName();
+                $fileNameForm = str_replace(' ', '_', $fileNameExt);
+                $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
+                $fileExt = $request->file('image')->getClientOriginalExtension();
+                $fileNameToStore = $fileName . '_' . time() . '.' . $fileExt;
+                $pathToStore = public_path('uploads/testimonials/');
+                Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR . $fileNameToStore);
 
-             $requestData['image'] = 'uploads/testimonials/'.$fileNameToStore;               
-        }
+                $requestData['image'] = 'uploads/testimonials/' . $fileNameToStore;
+            }
 
             Testimonial::create($requestData);
             return redirect('admin/testimonial')->with('flash_message', 'Testimonial added!');
@@ -112,8 +112,8 @@ class TestimonialController extends Controller
      */
     public function show($id)
     {
-        $model = str_slug('testimonial','-');
-        if(auth()->user()->permissions()->where('name','=','view-'.$model)->first()!= null) {
+        $model = str_slug('testimonial', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'view-' . $model)->first() != null) {
             $testimonial = Testimonial::findOrFail($id);
             return view('admin.testimonial.show', compact('testimonial'));
         }
@@ -129,8 +129,8 @@ class TestimonialController extends Controller
      */
     public function edit($id)
     {
-        $model = str_slug('testimonial','-');
-        if(auth()->user()->permissions()->where('name','=','edit-'.$model)->first()!= null) {
+        $model = str_slug('testimonial', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'edit-' . $model)->first() != null) {
             $testimonial = Testimonial::findOrFail($id);
             return view('admin.testimonial.edit', compact('testimonial'));
         }
@@ -147,41 +147,41 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $model = str_slug('testimonial','-');
-        if(auth()->user()->permissions()->where('name','=','edit-'.$model)->first()!= null) {
+        $model = str_slug('testimonial', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'edit-' . $model)->first() != null) {
             $this->validate($request, [
-			'name' => 'required',
-			'comments' => 'required',
-		]);
+                'name' => 'required',
+                'comments' => 'required',
+            ]);
             $requestData = $request->all();
-            
 
-        if ($request->hasFile('image')) {
-            
-            $testimonial = testimonial::where('id', $id)->first();
-            $image_path = public_path($testimonial->image); 
-            
-            if(File::exists($image_path)) {
-                File::delete($image_path);
+
+            if ($request->hasFile('image')) {
+
+                $testimonial = testimonial::where('id', $id)->first();
+                $image_path = public_path($testimonial->image);
+
+                if (File::exists($image_path)) {
+                    File::delete($image_path);
+                }
+
+                $file = $request->file('image');
+                $fileNameExt = $request->file('image')->getClientOriginalName();
+                $fileNameForm = str_replace(' ', '_', $fileNameExt);
+                $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
+                $fileExt = $request->file('image')->getClientOriginalExtension();
+                $fileNameToStore = $fileName . '_' . time() . '.' . $fileExt;
+                $pathToStore = public_path('uploads/testimonials/');
+                Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR . $fileNameToStore);
+
+                $requestData['image'] = 'uploads/testimonials/' . $fileNameToStore;
             }
-
-            $file = $request->file('image');
-            $fileNameExt = $request->file('image')->getClientOriginalName();
-            $fileNameForm = str_replace(' ', '_', $fileNameExt);
-            $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
-            $fileExt = $request->file('image')->getClientOriginalExtension();
-            $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
-            $pathToStore = public_path('uploads/testimonials/');
-            Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
-
-             $requestData['image'] = 'uploads/testimonials/'.$fileNameToStore;               
-        }
 
 
             $testimonial = Testimonial::findOrFail($id);
-             $testimonial->update($requestData);
+            $testimonial->update($requestData);
 
-             return redirect('admin/testimonial')->with('flash_message', 'Testimonial updated!');
+            return redirect('admin/testimonial')->with('flash_message', 'Testimonial updated!');
         }
         return response(view('403'), 403);
 
@@ -196,8 +196,8 @@ class TestimonialController extends Controller
      */
     public function destroy($id)
     {
-        $model = str_slug('testimonial','-');
-        if(auth()->user()->permissions()->where('name','=','delete-'.$model)->first()!= null) {
+        $model = str_slug('testimonial', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'delete-' . $model)->first() != null) {
             Testimonial::destroy($id);
 
             return redirect('admin/testimonial')->with('flash_message', 'Testimonial deleted!');

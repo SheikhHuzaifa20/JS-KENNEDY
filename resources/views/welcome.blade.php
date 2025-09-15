@@ -40,11 +40,9 @@
                                                         <div class="atropos-scale">
                                                             <div class="atropos-rotate">
                                                                 <div class="atropos-inner">
-                                                                    <a href="JavaScript:;" id="show"
-                                                                        class="main-text-1">
+                                                                    <a href="JavaScript:;" id="show" class="main-text-1">
                                                                         <img src="{{ asset($product->image) }}"
-                                                                            class="img-fluid" alt=""
-                                                                            data-atropos-offset="2">
+                                                                            class="img-fluid" alt="" data-atropos-offset="2">
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -81,7 +79,8 @@
                                             <div class="banner-btn">
                                                 <a class="btn btn-black">
                                                     Buy From Amazon
-                                                    <img src="{{asset("asset/images/amazon.png")}}" class="img-fluid" alt="">
+                                                    <img src="{{asset(" asset/images/amazon.png")}}" class="img-fluid"
+                                                        alt="">
                                                 </a>
                                             </div>
                                         </div>
@@ -94,8 +93,8 @@
                                                         <div class="atropos-rotate">
                                                             <div class="atropos-inner">
                                                                 <a href="JavaScript:;" id="show" class="main-text-1">
-                                                                    <img src="{{asset("asset/images/book-js66.png")}}" class="img-fluid"
-                                                                        alt="" data-atropos-offset="2">
+                                                                    <img src="{{asset(" asset/images/book-js66.png")}}"
+                                                                        class="img-fluid" alt="" data-atropos-offset="2">
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -131,7 +130,8 @@
                                             <div class="banner-btn">
                                                 <a class="btn btn-black">
                                                     Buy From Amazon
-                                                    <img src="{{asset("asset/images/amazon.png")}}" class="img-fluid" alt="">
+                                                    <img src="{{asset(" asset/images/amazon.png")}}" class="img-fluid"
+                                                        alt="">
                                                 </a>
                                             </div>
                                         </div>
@@ -144,8 +144,8 @@
                                                         <div class="atropos-rotate">
                                                             <div class="atropos-inner">
                                                                 <a href="JavaScript:;" id="show" class="main-text-1">
-                                                                    <img src="{{asset("asset/images/book-js44.png")}}" class="img-fluid"
-                                                                        alt="" data-atropos-offset="2">
+                                                                    <img src="{{asset(" asset/images/book-js44.png")}}"
+                                                                        class="img-fluid" alt="" data-atropos-offset="2">
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -181,7 +181,8 @@
                                             <div class="banner-btn">
                                                 <a class="btn btn-black">
                                                     Buy From Amazon
-                                                    <img src="{{asset("asset/images/amazon.png")}}" class="img-fluid" alt="">
+                                                    <img src="{{asset(" asset/images/amazon.png")}}" class="img-fluid"
+                                                        alt="">
                                                 </a>
                                             </div>
                                         </div>
@@ -193,10 +194,9 @@
                                                     <div class="atropos-scale">
                                                         <div class="atropos-rotate">
                                                             <div class="atropos-inner">
-                                                                <a href="JavaScript:;" id="show"
-                                                                    class="main-text-1">
-                                                                    <img src="{{asset("asset/images/book-js33.png")}}" class="img-fluid"
-                                                                        alt="" data-atropos-offset="2">
+                                                                <a href="JavaScript:;" id="show" class="main-text-1">
+                                                                    <img src="{{asset(" asset/images/book-js33.png")}}"
+                                                                        class="img-fluid" alt="" data-atropos-offset="2">
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -232,7 +232,8 @@
                                             <div class="banner-btn">
                                                 <a class="btn btn-black">
                                                     Buy From Amazon
-                                                    <img src="{{asset("asset/images/amazon.png")}}" class="img-fluid" alt="">
+                                                    <img src="{{asset(" asset/images/amazon.png")}}" class="img-fluid"
+                                                        alt="">
                                                 </a>
                                             </div>
                                         </div>
@@ -244,10 +245,9 @@
                                                     <div class="atropos-scale">
                                                         <div class="atropos-rotate">
                                                             <div class="atropos-inner">
-                                                                <a href="JavaScript:;" id="show"
-                                                                    class="main-text-1">
-                                                                    <img src="{{asset("asset/images/book-js22.png")}}" class="img-fluid"
-                                                                        alt="" data-atropos-offset="2">
+                                                                <a href="JavaScript:;" id="show" class="main-text-1">
+                                                                    <img src="{{asset(" asset/images/book-js22.png")}}"
+                                                                        class="img-fluid" alt="" data-atropos-offset="2">
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -283,7 +283,8 @@
                                             <div class="banner-btn">
                                                 <a class="btn btn-black">
                                                     Buy From Amazon
-                                                    <img src="{{asset("asset/images/amazon.png")}}" class="img-fluid" alt="">
+                                                    <img src="{{asset(" asset/images/amazon.png")}}" class="img-fluid"
+                                                        alt="">
                                                 </a>
                                             </div>
                                         </div>
@@ -295,10 +296,9 @@
                                                     <div class="atropos-scale">
                                                         <div class="atropos-rotate">
                                                             <div class="atropos-inner">
-                                                                <a href="JavaScript:;" id="show"
-                                                                    class="main-text-1">
-                                                                    <img src="{{asset("asset/images/book-js11.png")}}" class="img-fluid"
-                                                                        alt="" data-atropos-offset="2">
+                                                                <a href="JavaScript:;" id="show" class="main-text-1">
+                                                                    <img src="{{asset(" asset/images/book-js11.png")}}"
+                                                                        class="img-fluid" alt="" data-atropos-offset="2">
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -403,12 +403,10 @@
                                                 alt="{{ $product->product_title }}">
                                         </div>
                                         <div class="back-cricle">
-                                            <img src="{{ asset('asset/images/book1.png') }}" class="img-fluid"
-                                                alt="">
+                                            <img src="{{ asset('asset/images/book1.png') }}" class="img-fluid" alt="">
                                             <a href="{{ $sections[13]->value }}" class="btn btn-black">
                                                 Buy From Amazon
-                                                <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid"
-                                                    alt="">
+                                                <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
                                             </a>
                                         </div>
                                     </div>
@@ -417,15 +415,13 @@
                             {{-- <div class="item">
                                 <div class="main-books-circle">
                                     <div class="client-book-img">
-                                        <img src="{{ asset('asset/images/book-js22.png') }}" class="img-fluid"
-                                            alt="">
+                                        <img src="{{ asset('asset/images/book-js22.png') }}" class="img-fluid" alt="">
                                     </div>
                                     <div class="back-cricle">
                                         <img src="{{ asset('asset/images/book2.png') }}" class="img-fluid" alt="">
                                         <a href="{{ $sections[13]->value }}" class="btn btn-black">
                                             Buy From Amazon
-                                            <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid"
-                                                alt="">
+                                            <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
                                         </a>
                                     </div>
                                 </div>
@@ -433,16 +429,13 @@
                             <div class="item">
                                 <div class="main-books-circle">
                                     <div class="client-book-img">
-                                        <img src="{{ asset('asset/images/book-js33.png') }}" class="img-fluid"
-                                            alt="">
+                                        <img src="{{ asset('asset/images/book-js33.png') }}" class="img-fluid" alt="">
                                     </div>
                                     <div class="back-cricle">
-                                        <img src="{{ asset('asset/images/book3.png') }}" class="img-fluid"
-                                            alt="">
+                                        <img src="{{ asset('asset/images/book3.png') }}" class="img-fluid" alt="">
                                         <a href="{{ $sections[13]->value }}" class="btn btn-black">
                                             Buy From Amazon
-                                            <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid"
-                                                alt="">
+                                            <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
                                         </a>
                                     </div>
                                 </div>
@@ -450,16 +443,13 @@
                             <div class="item">
                                 <div class="main-books-circle">
                                     <div class="client-book-img">
-                                        <img src="{{ asset('asset/images/book-js44.png') }}" class="img-fluid"
-                                            alt="">
+                                        <img src="{{ asset('asset/images/book-js44.png') }}" class="img-fluid" alt="">
                                     </div>
                                     <div class="back-cricle">
-                                        <img src="{{ asset('asset/images/book4.png') }}" class="img-fluid"
-                                            alt="">
+                                        <img src="{{ asset('asset/images/book4.png') }}" class="img-fluid" alt="">
                                         <a href="{{ $sections[13]->value }}" class="btn btn-black">
                                             Buy From Amazon
-                                            <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid"
-                                                alt="">
+                                            <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
                                         </a>
                                     </div>
                                 </div>
@@ -467,16 +457,13 @@
                             <div class="item">
                                 <div class="main-books-circle">
                                     <div class="client-book-img">
-                                        <img src="{{ asset('asset/images/book-js55.png') }}" class="img-fluid"
-                                            alt="">
+                                        <img src="{{ asset('asset/images/book-js55.png') }}" class="img-fluid" alt="">
                                     </div>
                                     <div class="back-cricle">
-                                        <img src="{{ asset('asset/images/book5.png') }}" class="img-fluid"
-                                            alt="">
+                                        <img src="{{ asset('asset/images/book5.png') }}" class="img-fluid" alt="">
                                         <a href="{{ $sections[13]->value }}" class="btn btn-black">
                                             Buy From Amazon
-                                            <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid"
-                                                alt="">
+                                            <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
                                         </a>
                                     </div>
                                 </div>
@@ -484,16 +471,13 @@
                             <div class="item">
                                 <div class="main-books-circle">
                                     <div class="client-book-img">
-                                        <img src="{{ asset('asset/images/book-js66.png') }}" class="img-fluid"
-                                            alt="">
+                                        <img src="{{ asset('asset/images/book-js66.png') }}" class="img-fluid" alt="">
                                     </div>
                                     <div class="back-cricle">
-                                        <img src="{{ asset('asset/images/book6.png') }}" class="img-fluid"
-                                            alt="">
+                                        <img src="{{ asset('asset/images/book6.png') }}" class="img-fluid" alt="">
                                         <a href="{{ $sections[13]->value }}" class="btn btn-black">
                                             Buy From Amazon
-                                            <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid"
-                                                alt="">
+                                            <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
                                         </a>
                                     </div>
                                 </div>
@@ -534,8 +518,7 @@
                                         </div>
                                     </div>
                                     <div class="client-profile-img">
-                                        <img src="{{ asset('asset/images/client-img2.png') }}" class="img-fluid"
-                                            alt="">
+                                        <img src="{{ asset('asset/images/client-img2.png') }}" class="img-fluid" alt="">
                                         <h5>
                                             Emily R
                                             <span class="d-block">Reader</span>
@@ -546,8 +529,7 @@
                             <div class="item">
                                 <div class="client-testimonial">
                                     <div class="client-para">
-                                        <img src="{{ asset('asset/images/qoute.png') }}" class="img-fluid"
-                                            alt="">
+                                        <img src="{{ asset('asset/images/qoute.png') }}" class="img-fluid" alt="">
                                         <p>Finally, a fantasy series with a strong female lead who doesn’t lose herself
                                             when romance appears. Kennedy’s world-building is rich and immersive, and
                                             the characters feel so real. Every book left me eager for the next. Highly
@@ -561,8 +543,7 @@
                                         </div>
                                     </div>
                                     <div class="client-profile-img">
-                                        <img src="{{ asset('asset/images/client-img1.png') }}" class="img-fluid"
-                                            alt="">
+                                        <img src="{{ asset('asset/images/client-img1.png') }}" class="img-fluid" alt="">
                                         <h5>
                                             David K.
                                             <span class="d-block">Reader</span>
@@ -573,8 +554,7 @@
                             <div class="item">
                                 <div class="client-testimonial">
                                     <div class="client-para">
-                                        <img src="{{ asset('asset/images/qoute.png') }}" class="img-fluid"
-                                            alt="">
+                                        <img src="{{ asset('asset/images/qoute.png') }}" class="img-fluid" alt="">
                                         <p>JS Kennedy’s storytelling is addictive. Mackenzie Green is the kind of
                                             heroine you root for—fierce, flawed, and unforgettable. I stayed up all
                                             night finishing the first book and immediately bought the next. This series
@@ -588,8 +568,7 @@
                                         </div>
                                     </div>
                                     <div class="client-profile-img">
-                                        <img src="{{ asset('asset/images/client-img3.png') }}" class="img-fluid"
-                                            alt="">
+                                        <img src="{{ asset('asset/images/client-img3.png') }}" class="img-fluid" alt="">
                                         <h5>
                                             Samantha L.
                                             <span class="d-block">Reader</span>

@@ -103,10 +103,10 @@ class HomeController extends Controller
     {
         $request->validate([
             'fname' => 'required|string',
-            'lname'  => 'required|string',
-            'email'      => 'required|email',
-            'phone'      => 'required|string',
-            'notes'    => 'required|string',
+            'lname' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required|string',
+            'notes' => 'required|string',
         ]);
 
         Inquiry::create($request->all());

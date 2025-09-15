@@ -145,7 +145,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('status/pending/{id}', 'Admin\\ProductController@updatestatusPending')->name('status.pending');
     Route::get('status/failed/{id}', 'Admin\\ProductController@updatestatusFailed')->name('status.failed');
     Route::get('admin/order/delete/{id}', 'Admin\\ProductController@deleteOrder')
-    ->name('order.delete');
+        ->name('order.delete');
     Route::post('course/move', 'Admin\\CourseController@move')->name('course.move');
 
 });
