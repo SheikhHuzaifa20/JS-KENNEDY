@@ -63,7 +63,9 @@ class HomeController extends Controller
         // dd($products);
 
         $product2 = DB::table('products')->get();
-        return view('welcome', compact('products', 'product2'));
+        $blogs = DB::table('blogs')->get();
+
+        return view('welcome', compact('products', 'product2', 'blogs'));
     }
 
     public function release_schedule()
@@ -97,7 +99,8 @@ class HomeController extends Controller
 
     public function blog()
     {
-        return view('blog');
+        $blogs = DB::table('blogs')->get();
+        return view('blog', compact('blogs'));
     }
 
     public function inquiry(Request $request)

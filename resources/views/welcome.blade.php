@@ -40,9 +40,11 @@
                                                         <div class="atropos-scale">
                                                             <div class="atropos-rotate">
                                                                 <div class="atropos-inner">
-                                                                    <a href="JavaScript:;" id="show" class="main-text-1">
+                                                                    <a href="JavaScript:;" id="show"
+                                                                        class="main-text-1">
                                                                         <img src="{{ asset($product->image) }}"
-                                                                            class="img-fluid" alt="" data-atropos-offset="2">
+                                                                            class="img-fluid" alt=""
+                                                                            data-atropos-offset="2">
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -403,10 +405,12 @@
                                                 alt="{{ $product->product_title }}">
                                         </div>
                                         <div class="back-cricle">
-                                            <img src="{{ asset('asset/images/book1.png') }}" class="img-fluid" alt="">
+                                            <img src="{{ asset('asset/images/book1.png') }}" class="img-fluid"
+                                                alt="">
                                             <a href="{{ $sections[13]->value }}" class="btn btn-black">
                                                 Buy From Amazon
-                                                <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
+                                                <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid"
+                                                    alt="">
                                             </a>
                                         </div>
                                     </div>
@@ -518,7 +522,8 @@
                                         </div>
                                     </div>
                                     <div class="client-profile-img">
-                                        <img src="{{ asset('asset/images/client-img2.png') }}" class="img-fluid" alt="">
+                                        <img src="{{ asset('asset/images/client-img2.png') }}" class="img-fluid"
+                                            alt="">
                                         <h5>
                                             Emily R
                                             <span class="d-block">Reader</span>
@@ -529,7 +534,8 @@
                             <div class="item">
                                 <div class="client-testimonial">
                                     <div class="client-para">
-                                        <img src="{{ asset('asset/images/qoute.png') }}" class="img-fluid" alt="">
+                                        <img src="{{ asset('asset/images/qoute.png') }}" class="img-fluid"
+                                            alt="">
                                         <p>Finally, a fantasy series with a strong female lead who doesn’t lose herself
                                             when romance appears. Kennedy’s world-building is rich and immersive, and
                                             the characters feel so real. Every book left me eager for the next. Highly
@@ -543,7 +549,8 @@
                                         </div>
                                     </div>
                                     <div class="client-profile-img">
-                                        <img src="{{ asset('asset/images/client-img1.png') }}" class="img-fluid" alt="">
+                                        <img src="{{ asset('asset/images/client-img1.png') }}" class="img-fluid"
+                                            alt="">
                                         <h5>
                                             David K.
                                             <span class="d-block">Reader</span>
@@ -554,7 +561,8 @@
                             <div class="item">
                                 <div class="client-testimonial">
                                     <div class="client-para">
-                                        <img src="{{ asset('asset/images/qoute.png') }}" class="img-fluid" alt="">
+                                        <img src="{{ asset('asset/images/qoute.png') }}" class="img-fluid"
+                                            alt="">
                                         <p>JS Kennedy’s storytelling is addictive. Mackenzie Green is the kind of
                                             heroine you root for—fierce, flawed, and unforgettable. I stayed up all
                                             night finishing the first book and immediately bought the next. This series
@@ -568,7 +576,8 @@
                                         </div>
                                     </div>
                                     <div class="client-profile-img">
-                                        <img src="{{ asset('asset/images/client-img3.png') }}" class="img-fluid" alt="">
+                                        <img src="{{ asset('asset/images/client-img3.png') }}" class="img-fluid"
+                                            alt="">
                                         <h5>
                                             Samantha L.
                                             <span class="d-block">Reader</span>
@@ -590,37 +599,38 @@
                         <h2>{{ $sections[15]->value }}</h2>
                     </div>
                 </div>
-                @php
-                    $blog = \Illuminate\Support\Facades\DB::table('section')->where('page_id', 36)->get();
-                @endphp
-                <div class="col-lg-4">
-                    <div class="blog-article-build">
-                        <a href="#">
-                            <div class="blog-img">
-                                <img src="{{ $blog[0]->value }}" class="img-fluid" alt="">
-                            </div>
-                        </a>
-                        <div class="blog-content">
-                            <div class="blog-review">
-                                <span>
-                                    <i class="fa-regular fa-folder-open"></i>
-                                    Blog
-                                </span>
-                                <h6>
-                                    15
-                                    <span class="d-block">
-                                        Aug
-                                    </span>
-                                </h6>
-                            </div>
-                            {!! $blog[3]->value !!}
-                            <a class="btn btn-black">
-                                Read More
+
+                @foreach ($blogs as $blog)
+                    <div class="col-lg-4">
+                        <div class="blog-article-build">
+                            <a href="#">
+                                <div class="blog-img">
+                                    <img src="{{ $blog->image }}" class="img-fluid" alt="">
+                                </div>
                             </a>
+                            <div class="blog-content">
+                                <div class="blog-review">
+                                    <span>
+                                        <i class="fa-regular fa-folder-open"></i>
+                                        {{ $blog->name }}
+                                    </span>
+                                    <h6>
+                                        15
+                                        <span class="d-block">
+                                            Aug
+                                        </span>
+                                    </h6>
+                                </div>
+                                <h4>{!! $blog->short_detail !!}</h4>
+                                <p>{!! $blog->detail !!}</p>
+                                <a class="btn btn-black">
+                                    Read More
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
+                @endforeach
+                {{-- <div class="col-lg-4">
                     <div class="blog-article-build">
                         <a href="#">
                             <div class="blog-img">
@@ -673,7 +683,7 @@
                             </a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-lg-12">
                     <div class="text-center">
                         <a href="#" class="btn green-btn">

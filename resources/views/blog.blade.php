@@ -35,18 +35,19 @@
                     {!!$page->content!!}
                 </div>
             </div>
+            @foreach($blogs as $blog)
             <div class="col-lg-4">
                 <div class="blog-article-build">
                     <a href="#">
                         <div class="blog-img">
-                            <img src="{{ $sections[0]->value }}" class="img-fluid" alt="">
+                            <img src="{{ $blog->image }}" class="img-fluid" alt="">
                         </div>
                     </a>
                     <div class="blog-content">
                         <div class="blog-review">
                             <span>
                                 <i class="fa-regular fa-folder-open"></i>
-                                Blog
+                                {{$blog->name}}
                             </span>
                             <h6>
                                 15
@@ -55,14 +56,16 @@
                                 </span>
                             </h6>
                         </div>
-                        {!! $sections[3]->value !!}
+                                <h4>{!!$blog->short_detail!!}</h4>
+                                <p>{!!$blog->detail!!}</p>
                         <a class="btn btn-black">
                             Read More
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            @endforeach
+            {{-- <div class="col-lg-4">
                 <div class="blog-article-build">
                     <a href="#">
                         <div class="blog-img">
@@ -115,7 +118,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>
