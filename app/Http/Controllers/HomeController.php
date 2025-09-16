@@ -22,6 +22,7 @@ use App\Mail\NewsletterConfirmation;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\InquiryReceived;
 use App\Mail\ThankYouMail;
+use App\Mail\NewsletterSubscribed;
 
 class HomeController extends Controller
 {
@@ -121,11 +122,40 @@ class HomeController extends Controller
         Mail::to('info@jskennedy.com')->send(new InquiryReceived($inquiry));
 
         // Sleep for 10 seconds (avoid Mailtrap free plan rate limit)
-        sleep(10);
+        sleep(3);
 
         // Send Thank You email to User
         Mail::to($inquiry->email)->send(new ThankYouMail($inquiry));
 
         return back()->with('success', 'Your inquiry has been submitted successfully!');
+    }
+
+
+    public function newsletterSubmit(Request $request)
+    {
+        $request->validate([
+            'newsletter_email' => 'required|email'
+        ]);
+
+        $is_email = newsletter::where('newsletter_email', $request->newsletter_email)->count();
+
+        if ($is_email == 0) {
+            $inquiry = new newsletter;
+            $inquiry->newsletter_email = $request->newsletter_email;
+            $inquiry->save();
+
+            // Send confirmation email
+            Mail::to($request->newsletter_email)->send(new NewsletterConfirmation($request->newsletter_email));
+
+            return response()->json([
+                'message' => 'Thank you for subscribing. A confirmation email has been sent!',
+                'status' => true
+            ]);
+        } else {
+            return response()->json([
+                'message' => 'Email already exists',
+                'status' => false
+            ]);
+        }
     }
 }

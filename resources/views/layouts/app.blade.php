@@ -3,13 +3,13 @@
 
 <head>
     <?php
-$favicon = DB::table('imagetable')->where('table_name', 'favicon')->first();
+    $favicon = DB::table('imagetable')->where('table_name', 'favicon')->first();
     ?>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" sizes="16x16"
-        href="{{asset(!empty($favicon->img_path) ? $favicon->img_path : '')}}">
+        href="{{ asset(!empty($favicon->img_path) ? $favicon->img_path : '') }}">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -52,20 +52,22 @@ $favicon = DB::table('imagetable')->where('table_name', 'favicon')->first();
 
 
 <!-- Optional JavaScript; choose one of the two! -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
     integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- atropos js -->
 <script src="https://cdn.jsdelivr.net/npm/atropos@1.0.2/atropos.min.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
         document.querySelectorAll('.my-atropos').forEach(el => {
             Atropos({
                 el: el,
@@ -76,6 +78,42 @@ $favicon = DB::table('imagetable')->where('table_name', 'favicon')->first();
     });
 </script>
 <script src="{{ asset('asset/js/script.js') }}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#newForm').on('submit', function(e) {
+            e.preventDefault();
+            $('#newsresult').html('');
+
+            let email = $('#newemail').val();
+
+            $.ajax({
+                url: "{{ route('newsletterSubmit') }}", // ✅ Route helper use karo
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    newsletter_email: email
+                },
+                success: function(response) {
+                    if (response.status) {
+                        $('#newsresult').html("<div class='alert alert-success'>" + response
+                            .message + "</div>");
+                    } else {
+                        $('#newsresult').html("<div class='alert alert-danger'>" + response
+                            .message + "</div>");
+                    }
+                },
+                error: function(xhr) {
+                    console.error(xhr.responseText);
+                    $('#newsresult').html(
+                        "<div class='alert alert-danger'>Something went wrong</div>");
+                }
+            });
+        });
+    });
+</script>
+
+
 </body>
 
 </html>

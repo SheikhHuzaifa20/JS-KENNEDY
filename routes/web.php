@@ -280,3 +280,4 @@ Route::get('/books', 'HomeController@books')->name('books');
 Route::get('/bonus-scenes', 'HomeController@bonus_scenes')->name('bonus_scenes');
 Route::get('/blog', 'HomeController@blog')->name('blog');
 Route::post('/inquiry', 'HomeController@inquiry')->name('inquiry.store');
+Route::post('newsletter-submit', 'HomeController@newsletterSubmit')->name('newsletterSubmit');
