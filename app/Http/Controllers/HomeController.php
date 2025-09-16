@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\InquiryReceived;
 use App\Mail\ThankYouMail;
 use App\Mail\NewsletterSubscribed;
+use App\Mail\NewsletterSubscribedAdmin;
 
 class HomeController extends Controller
 {
@@ -144,8 +145,12 @@ class HomeController extends Controller
             $inquiry->newsletter_email = $request->newsletter_email;
             $inquiry->save();
 
-            // Send confirmation email
+            
+            Mail::to('info@jskennedy.com')->send(new NewsletterSubscribedAdmin($request->newsletter_email));
+            sleep(10);
             Mail::to($request->newsletter_email)->send(new NewsletterConfirmation($request->newsletter_email));
+            
+            
 
             return response()->json([
                 'message' => 'Thank you for subscribing. A confirmation email has been sent!',

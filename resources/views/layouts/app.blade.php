@@ -88,7 +88,7 @@
             let email = $('#newemail').val();
 
             $.ajax({
-                url: "{{ route('newsletterSubmit') }}", // ✅ Route helper use karo
+                url: "{{ route('newsletterSubmit') }}",
                 type: "POST",
                 data: {
                     _token: "{{ csrf_token() }}",
@@ -96,22 +96,41 @@
                 },
                 success: function(response) {
                     if (response.status) {
-                        $('#newsresult').html("<div class='alert alert-success'>" + response
-                            .message + "</div>");
+                        // ✅ Input ko empty karo
+                        $('#newemail').val('');
+
+                        // ✅ Alert box show karo (top pe notification)
+                        $('body').prepend(
+                            "<div id='topAlert' class='alert alert-success text-center' style='position:fixed;top:0;width:100%;z-index:9999;'>" +
+                            response.message +
+                            "</div>"
+                        );
+
+                        // 3 second baad alert auto hide
+                        setTimeout(function() {
+                            $('#topAlert').fadeOut('slow', function() {
+                                $(this).remove();
+                            });
+                        }, 3000);
+
                     } else {
-                        $('#newsresult').html("<div class='alert alert-danger'>" + response
-                            .message + "</div>");
+                        $('#newsresult').html(
+                            "<div class='alert alert-danger'>" + response.message +
+                            "</div>"
+                        );
                     }
                 },
                 error: function(xhr) {
                     console.error(xhr.responseText);
                     $('#newsresult').html(
-                        "<div class='alert alert-danger'>Something went wrong</div>");
+                        "<div class='alert alert-danger'>Something went wrong</div>"
+                    );
                 }
             });
         });
     });
 </script>
+
 
 
 </body>
