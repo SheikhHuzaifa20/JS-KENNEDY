@@ -624,7 +624,7 @@
                                 </div>
                                 <h4>{!! $blog->short_detail !!}</h4>
                                 <p>{!! $blog->detail !!}</p>
-                                <a class="btn btn-black">
+                                <a href="{{ route('blogdetail', $blog->id) }}" target="_blank" class="btn btn-black">
                                     Read More
                                 </a>
                             </div>
