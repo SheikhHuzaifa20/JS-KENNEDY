@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="{{ asset('asset/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/inner.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/responsive.css') }}">
-    <title>JS KENNEDY'S</title>
+    <title>{{ config('app.name') }}</title>
 
     @yield('css')
 
