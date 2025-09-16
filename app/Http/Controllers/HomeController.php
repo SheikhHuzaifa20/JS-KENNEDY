@@ -17,6 +17,7 @@ use App\Http\Traits\HelperTrait;
 use Auth;
 use App\Profile;
 use App\Page;
+use App\Blog;
 use Image;
 use App\Mail\NewsletterConfirmation;
 use Illuminate\Support\Facades\Mail;
@@ -67,9 +68,9 @@ class HomeController extends Controller
         $product2 = DB::table('products')->get();
         $blogs = DB::table('blogs')->get();
         $testimonials = DB::table('testimonials')->get();
-                                        // dd($testimonials);
+        // dd($testimonials);
 
-        return view('welcome', compact('products', 'product2', 'blogs' , 'testimonials'));
+        return view('welcome', compact('products', 'product2', 'blogs', 'testimonials'));
     }
 
     public function release_schedule()
@@ -105,6 +106,13 @@ class HomeController extends Controller
     {
         $blogs = DB::table('blogs')->get();
         return view('blog', compact('blogs'));
+    }
+
+    public function blogdetail($id)
+    {
+        $blog = blog::findOrFail($id);
+
+        return view('blog_detail', compact('blog'));
     }
 
     public function inquiry(Request $request)
@@ -147,12 +155,12 @@ class HomeController extends Controller
             $inquiry->newsletter_email = $request->newsletter_email;
             $inquiry->save();
 
-            
+
             Mail::to('info@jskennedy.com')->send(new NewsletterSubscribedAdmin($request->newsletter_email));
             sleep(10);
             Mail::to($request->newsletter_email)->send(new NewsletterConfirmation($request->newsletter_email));
-            
-            
+
+
 
             return response()->json([
                 'message' => 'Thank you for subscribing. A confirmation email has been sent!',

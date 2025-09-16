@@ -78,6 +78,7 @@ class BlogController extends Controller
 			'name' => 'required',
 			'short_detail' => 'required',
 			'detail' => 'required',
+			'inner_detail' => 'required',
 			'image' => 'required'
 		]);
 
@@ -88,6 +89,7 @@ class BlogController extends Controller
                 $blog->name = $request->input('name');   
                 $blog->short_detail = $request->input('short_detail');     
                 $blog->detail = $request->input('detail');
+                $blog->inner_detail = $request->input('inner_detail');
                 $file = $request->file('image');
                 
                 //make sure yo have image folder inside your public
@@ -156,6 +158,7 @@ class BlogController extends Controller
 			'name' => 'required',
 			'short_detail' => 'required',
 			'detail' => 'required',
+			'inner_detail' => 'required',
 		]);
             $requestData = $request->all();
             
