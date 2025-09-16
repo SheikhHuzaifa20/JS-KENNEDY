@@ -87,10 +87,10 @@ class HomeController extends Controller
     {
         $book1 = DB::table('products')->where('id', 10)->first();
         $book2 = DB::table('products')->where('id', 11)->first();
-        $book3 = DB::table('products')->where('id', 11)->first();
-        $book4 = DB::table('products')->where('id', 11)->first();
-        $book5 = DB::table('products')->where('id', 11)->first();
-        $book6 = DB::table('products')->where('id', 11)->first();
+        $book3 = DB::table('products')->where('id', 12)->first();
+        $book4 = DB::table('products')->where('id', 13)->first();
+        $book5 = DB::table('products')->where('id', 14)->first();
+        $book6 = DB::table('products')->where('id', 15)->first();
         // dd($book1);
 
         return view('books', compact('book1', 'book2', 'book3', 'book4', 'book5', 'book6'));
