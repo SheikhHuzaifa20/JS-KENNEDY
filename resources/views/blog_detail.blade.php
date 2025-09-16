@@ -44,7 +44,7 @@
 @section('content')
 
 
-    <section class="hm-banner inner-banners" id="banner">
+    <section class="hm-banner inner-banners" id="blogdetail">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12">
@@ -77,4 +77,23 @@
 @endsection
 
 @section('js')
+<script>
+    
+const images = [
+    "../asset/images/banner-back-1.png",
+    "../asset/images/banner-back-2.png",
+    "../asset/images/banner-back-3.png",
+];
+
+const blogdetail = document.getElementById("blogdetail");
+let i = 0;
+
+
+blogdetail.style.backgroundImage = `url(${images[i]})`;
+
+setInterval(() => {
+    i = (i + 1) % images.length;
+    blogdetail.style.backgroundImage = `url(${images[i]})`;
+}, 6000); 
+</script>
 @endsection
