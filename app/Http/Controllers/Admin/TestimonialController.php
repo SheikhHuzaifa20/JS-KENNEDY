@@ -45,7 +45,6 @@ class TestimonialController extends Controller
             return view('admin.testimonial.index', compact('testimonial'));
         }
         return response(view('403'), 403);
-
     }
 
     /**
@@ -60,7 +59,6 @@ class TestimonialController extends Controller
             return view('admin.testimonial.create');
         }
         return response(view('403'), 403);
-
     }
 
     /**
@@ -77,31 +75,33 @@ class TestimonialController extends Controller
             $this->validate($request, [
                 'name' => 'required',
                 'comments' => 'required',
-                'image' => 'required'
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
+
             $requestData = $request->all();
 
             if ($request->hasFile('image')) {
-
-                $image_path = public_path($testimonial->image);
-
                 $file = $request->file('image');
-                $fileNameExt = $request->file('image')->getClientOriginalName();
+                $fileNameExt = $file->getClientOriginalName();
                 $fileNameForm = str_replace(' ', '_', $fileNameExt);
                 $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
-                $fileExt = $request->file('image')->getClientOriginalExtension();
+                $fileExt = $file->getClientOriginalExtension();
                 $fileNameToStore = $fileName . '_' . time() . '.' . $fileExt;
+
+                // Save file to uploads/testimonials
                 $pathToStore = public_path('uploads/testimonials/');
-                Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR . $fileNameToStore);
+                $file->move($pathToStore, $fileNameToStore);
 
                 $requestData['image'] = 'uploads/testimonials/' . $fileNameToStore;
             }
 
             Testimonial::create($requestData);
+
             return redirect('admin/testimonial')->with('flash_message', 'Testimonial added!');
         }
         return response(view('403'), 403);
     }
+
 
     /**
      * Display the specified resource.
@@ -152,39 +152,38 @@ class TestimonialController extends Controller
             $this->validate($request, [
                 'name' => 'required',
                 'comments' => 'required',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
+
+            $testimonial = Testimonial::findOrFail($id);
             $requestData = $request->all();
 
-
             if ($request->hasFile('image')) {
-
-                $testimonial = testimonial::where('id', $id)->first();
+                // Delete old image
                 $image_path = public_path($testimonial->image);
-
-                if (File::exists($image_path)) {
+                if ($testimonial->image && File::exists($image_path)) {
                     File::delete($image_path);
                 }
 
+                // Upload new image
                 $file = $request->file('image');
-                $fileNameExt = $request->file('image')->getClientOriginalName();
+                $fileNameExt = $file->getClientOriginalName();
                 $fileNameForm = str_replace(' ', '_', $fileNameExt);
                 $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
-                $fileExt = $request->file('image')->getClientOriginalExtension();
+                $fileExt = $file->getClientOriginalExtension();
                 $fileNameToStore = $fileName . '_' . time() . '.' . $fileExt;
+
                 $pathToStore = public_path('uploads/testimonials/');
-                Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR . $fileNameToStore);
+                $file->move($pathToStore, $fileNameToStore);
 
                 $requestData['image'] = 'uploads/testimonials/' . $fileNameToStore;
             }
 
-
-            $testimonial = Testimonial::findOrFail($id);
             $testimonial->update($requestData);
 
             return redirect('admin/testimonial')->with('flash_message', 'Testimonial updated!');
         }
         return response(view('403'), 403);
-
     }
 
     /**
@@ -203,6 +202,5 @@ class TestimonialController extends Controller
             return redirect('admin/testimonial')->with('flash_message', 'Testimonial deleted!');
         }
         return response(view('403'), 403);
-
     }
 }

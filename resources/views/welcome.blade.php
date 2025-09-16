@@ -505,33 +505,34 @@
                 <div class="col-lg-12">
                     <div class="reviews-show">
                         <div class="reviews-carousel owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="client-testimonial">
-                                    <div class="client-para">
-                                        <img src="{{ asset('asset/images/qoute.png') }}" class="img-fluid" alt="">
-                                        <p>The Mackenzie Green series hooked me from page one. JS Kennedy blends
-                                            adventure, suspense, and emotional depth perfectly. The relationships feel
-                                            authentic, the pacing is spot-on, and Mackenzie is a heroine who stays true
-                                            to herself no matter what.</p>
-                                        <div class="review-star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
+                            @foreach ($testimonials as $testimonial)
+                                <div class="item">
+                                    <div class="client-testimonial">
+                                        <div class="client-para">
+                                            <img src="{{ asset('asset/images/qoute.png') }}" class="img-fluid"
+                                                alt="">
+                                            <p>{!! $testimonial->comments !!}</p>
+                                            <div class="review-star">
+                                                @for ($i = 1; $i <= 5; $i++)
+                                                    @if ($i <= $testimonial->stars)
+                                                        <i class="fa-solid fa-star text-warning"></i> {{-- filled star --}}
+                                                    @else
+                                                        <i class="fa-regular fa-star text-muted"></i> {{-- empty star --}}
+                                                    @endif
+                                                @endfor
+                                            </div>
+                                        </div>
+                                        <div class="client-profile-img">
+                                            <img src="{{ $testimonial->image }}" class="img-fluid" alt="">
+                                            <h5>
+                                                {{ $testimonial->name }}
+                                                <span class="d-block">{{ $testimonial->designation }}</span>
+                                            </h5>
                                         </div>
                                     </div>
-                                    <div class="client-profile-img">
-                                        <img src="{{ asset('asset/images/client-img2.png') }}" class="img-fluid"
-                                            alt="">
-                                        <h5>
-                                            Emily R
-                                            <span class="d-block">Reader</span>
-                                        </h5>
-                                    </div>
                                 </div>
-                            </div>
-                            <div class="item">
+                            @endforeach
+                            {{-- <div class="item">
                                 <div class="client-testimonial">
                                     <div class="client-para">
                                         <img src="{{ asset('asset/images/qoute.png') }}" class="img-fluid"
@@ -584,7 +585,7 @@
                                         </h5>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

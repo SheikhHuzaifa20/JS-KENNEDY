@@ -66,8 +66,10 @@ class HomeController extends Controller
 
         $product2 = DB::table('products')->get();
         $blogs = DB::table('blogs')->get();
+        $testimonials = DB::table('testimonials')->get();
+                                        // dd($testimonials);
 
-        return view('welcome', compact('products', 'product2', 'blogs'));
+        return view('welcome', compact('products', 'product2', 'blogs' , 'testimonials'));
     }
 
     public function release_schedule()
