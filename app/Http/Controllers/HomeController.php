@@ -17,10 +17,14 @@ use App\Http\Traits\HelperTrait;
 use Auth;
 use App\Profile;
 use App\Page;
+use App\Blog;
 use Image;
 use App\Mail\NewsletterConfirmation;
 use Illuminate\Support\Facades\Mail;
-
+use App\Mail\InquiryReceived;
+use App\Mail\ThankYouMail;
+use App\Mail\NewsletterSubscribed;
+use App\Mail\NewsletterSubscribedAdmin;
 
 class HomeController extends Controller
 {
@@ -62,7 +66,11 @@ class HomeController extends Controller
         // dd($products);
 
         $product2 = DB::table('products')->get();
-        return view('welcome', compact('products', 'product2'));
+        $blogs = DB::table('blogs')->get();
+        $testimonials = DB::table('testimonials')->get();
+        // dd($testimonials);
+
+        return view('welcome', compact('products', 'product2', 'blogs', 'testimonials'));
     }
 
     public function release_schedule()
@@ -80,10 +88,10 @@ class HomeController extends Controller
     {
         $book1 = DB::table('products')->where('id', 10)->first();
         $book2 = DB::table('products')->where('id', 11)->first();
-        $book3 = DB::table('products')->where('id', 11)->first();
-        $book4 = DB::table('products')->where('id', 11)->first();
-        $book5 = DB::table('products')->where('id', 11)->first();
-        $book6 = DB::table('products')->where('id', 11)->first();
+        $book3 = DB::table('products')->where('id', 12)->first();
+        $book4 = DB::table('products')->where('id', 13)->first();
+        $book5 = DB::table('products')->where('id', 14)->first();
+        $book6 = DB::table('products')->where('id', 15)->first();
         // dd($book1);
 
         return view('books', compact('book1', 'book2', 'book3', 'book4', 'book5', 'book6'));
@@ -96,21 +104,73 @@ class HomeController extends Controller
 
     public function blog()
     {
-        return view('blog');
+        $blogs = DB::table('blogs')->get();
+        return view('blog', compact('blogs'));
+    }
+
+    public function blogdetail($id)
+    {
+        $blog = blog::findOrFail($id);
+
+        return view('blog_detail', compact('blog'));
     }
 
     public function inquiry(Request $request)
     {
         $request->validate([
             'fname' => 'required|string',
-            'lname'  => 'required|string',
-            'email'      => 'required|email',
-            'phone'      => 'required|string',
-            'notes'    => 'required|string',
+            'lname' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required|string',
+            'notes' => 'required|string',
         ]);
 
-        Inquiry::create($request->all());
+        // Save data into DB
+        $inquiry = Inquiry::create($request->all());
+
+        // Send email to Admin
+        // Send email to Admin
+        Mail::to('info@jskennedy.com')->send(new InquiryReceived($inquiry));
+
+        // Sleep for 10 seconds (avoid Mailtrap free plan rate limit)
+        sleep(3);
+
+        // Send Thank You email to User
+        Mail::to($inquiry->email)->send(new ThankYouMail($inquiry));
 
         return back()->with('success', 'Your inquiry has been submitted successfully!');
+    }
+
+
+    public function newsletterSubmit(Request $request)
+    {
+        $request->validate([
+            'newsletter_email' => 'required|email'
+        ]);
+
+        $is_email = newsletter::where('newsletter_email', $request->newsletter_email)->count();
+
+        if ($is_email == 0) {
+            $inquiry = new newsletter;
+            $inquiry->newsletter_email = $request->newsletter_email;
+            $inquiry->save();
+
+
+            Mail::to('info@jskennedy.com')->send(new NewsletterSubscribedAdmin($request->newsletter_email));
+            sleep(10);
+            Mail::to($request->newsletter_email)->send(new NewsletterConfirmation($request->newsletter_email));
+
+
+
+            return response()->json([
+                'message' => 'Thank you for subscribing. A confirmation email has been sent!',
+                'status' => true
+            ]);
+        } else {
+            return response()->json([
+                'message' => 'Email already exists',
+                'status' => false
+            ]);
+        }
     }
 }

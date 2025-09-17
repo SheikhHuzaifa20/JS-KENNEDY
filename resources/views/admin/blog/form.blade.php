@@ -20,6 +20,12 @@
         </div>
         <div class="col-md-12">
             <div class="form-group">
+                {!! Form::label('inner_detail', 'Inner Detail') !!}
+                {!! Form::textarea('inner_detail', null, ('required' == 'required') ? ['class' => 'form-control', 'id' => 'summary-ckeditor2', 'required' => 'required'] : ['class' => 'form-control']) !!}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
                 {!! Form::label('image', 'Image') !!}
                 <input class="form-control dropify" name="image" type="file" id="image" {{ ($blog->image != '') ? "data-default-file = /$blog->image" : ''}} {{ ($blog->image == '') ? "required" : ''}} value="{{$blog->image}}">
             </div>

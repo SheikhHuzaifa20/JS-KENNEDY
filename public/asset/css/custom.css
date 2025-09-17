@@ -41,6 +41,11 @@ p {
     box-shadow: 3px -3px 0px 0px rgba(164.89999999999998, 164.89999999999998, 164.89999999999998, 0.95);
 }
 
+.btn-black:hover {
+    color: var(--white-color);
+    background: #2D5C2A;
+}
+
 .btn-black img {
     width: 10% !important;
 }
@@ -117,7 +122,7 @@ a.navbar-brand img {
 }
 
 ul.navbar-nav li a {
-    color: var(--black-color);
+    color: var(--black-color) !important;
     font-weight: 500;
 }
 
@@ -289,6 +294,10 @@ ul.navbar-nav li a {
 
 
 /* my-books css start */
+
+.my-books {
+    padding-bottom: 30px;
+}
 
 .mybooks {
     background-image: url(../images/animate-banner.png);
@@ -524,9 +533,15 @@ section.blogs {
     border-radius: 60px 60px 60px 60px;
     padding: 20px 50px 20px 50px;
     background: var(--gridient);
-    color: var(--white-color);
+    color: var(--white-color) !important;
     font-weight: 700;
     margin-top: 20px;
+}
+
+.green-btn:hover {
+    border: 1px solid var(--black-color);
+    background: transparent !important;
+    color: var(--black-color) !important;
 }
 
 /* client-review css end */

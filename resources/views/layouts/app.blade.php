@@ -2,9 +2,14 @@
 <html lang="en">
 
 <head>
+    <?php
+    $favicon = DB::table('imagetable')->where('table_name', 'favicon')->first();
+    ?>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="{{ asset(!empty($favicon->img_path) ? $favicon->img_path : '') }}">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -29,7 +34,7 @@
     <link rel="stylesheet" href="{{ asset('asset/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/inner.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/responsive.css') }}">
-    <title>JS KENNEDY'S</title>
+    <title>{{ config('app.name') }}</title>
 
     @yield('css')
 
@@ -47,6 +52,8 @@
 
 
 <!-- Optional JavaScript; choose one of the two! -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -71,6 +78,61 @@
     });
 </script>
 <script src="{{ asset('asset/js/script.js') }}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#newForm').on('submit', function(e) {
+            e.preventDefault();
+            $('#newsresult').html('');
+
+            let email = $('#newemail').val();
+
+            $.ajax({
+                url: "{{ route('newsletterSubmit') }}",
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    newsletter_email: email
+                },
+                success: function(response) {
+                    if (response.status) {
+                        // ✅ Input ko empty karo
+                        $('#newemail').val('');
+
+                        // ✅ Alert box show karo (top pe notification)
+                        $('body').prepend(
+                            "<div id='topAlert' class='alert alert-success text-center' style='position:fixed;top:0;width:100%;z-index:9999;'>" +
+                            response.message +
+                            "</div>"
+                        );
+
+                        // 3 second baad alert auto hide
+                        setTimeout(function() {
+                            $('#topAlert').fadeOut('slow', function() {
+                                $(this).remove();
+                            });
+                        }, 3000);
+
+                    } else {
+                        $('#newsresult').html(
+                            "<div class='alert alert-danger'>" + response.message +
+                            "</div>"
+                        );
+                    }
+                },
+                error: function(xhr) {
+                    console.error(xhr.responseText);
+                    $('#newsresult').html(
+                        "<div class='alert alert-danger'>Something went wrong</div>"
+                    );
+                }
+            });
+        });
+    });
+</script>
+
+
+
 </body>
 
 </html>

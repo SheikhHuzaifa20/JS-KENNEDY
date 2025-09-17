@@ -11,8 +11,6 @@
         right: -140px;
     }
 
-    .back-circle img {}
-
     .author-about h2 {
         font-size: 2.5em;
     }
@@ -71,5 +69,9 @@
         right: 90px;
         text-align: end;
         top: 100px;
+    }
+
+    .blog-detail .card h3 {
+        font-size: 20px;
     }
 }

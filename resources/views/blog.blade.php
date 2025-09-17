@@ -13,112 +13,61 @@
 
 
 
-<section class="hm-banner inner-banners" id="banner">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-12">
-                <div class="main-book-sldier">
-                    <div class="inner-banner-heading">
-                        <h1>{{$page->name}}</h1>
+    <section class="hm-banner inner-banners" id="banner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="main-book-sldier">
+                        <div class="inner-banner-heading">
+                            <h1>{{ $page->name }}</h1>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="blogs">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="blog-article inner-blog-article">
-                    {!!$page->content!!}
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="blog-article-build">
-                    <a href="#">
-                        <div class="blog-img">
-                            <img src="{{ $sections[0]->value }}" class="img-fluid" alt="">
-                        </div>
-                    </a>
-                    <div class="blog-content">
-                        <div class="blog-review">
-                            <span>
-                                <i class="fa-regular fa-folder-open"></i>
-                                Blog
-                            </span>
-                            <h6>
-                                15
-                                <span class="d-block">
-                                    Aug
-                                </span>
-                            </h6>
-                        </div>
-                        {!! $sections[3]->value !!}
-                        <a class="btn btn-black">
-                            Read More
-                        </a>
+    <section class="blogs">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="blog-article inner-blog-article">
+                        {!! $page->content !!}
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="blog-article-build">
-                    <a href="#">
-                        <div class="blog-img">
-                            <img src="{{ $sections[1]->value }}" class="img-fluid" alt="">
+                @foreach ($blogs as $blog)
+                    <div class="col-lg-4">
+                        <div class="blog-article-build">
+                            <a href="#">
+                                <div class="blog-img">
+                                    <img src="{{ $blog->image }}" class="img-fluid" alt="">
+                                </div>
+                            </a>
+                            <div class="blog-content">
+                                <div class="blog-review">
+                                    <span>
+                                        <i class="fa-regular fa-folder-open"></i>
+                                        {{ $blog->name }}
+                                    </span>
+                                    <h6>
+                                        15
+                                        <span class="d-block">
+                                            Aug
+                                        </span>
+                                    </h6>
+                                </div>
+                                <h4>{!! $blog->short_detail !!}</h4>
+                                <p>{!! $blog->detail !!}</p>
+                                <a href="{{ route('blogdetail', $blog->id) }}" target="_blank" class="btn btn-black">
+                                    Read More
+                                </a>
+                            </div>
                         </div>
-                    </a>
-                    <div class="blog-content">
-                        <div class="blog-review">
-                            <span>
-                                <i class="fa-regular fa-folder-open"></i>
-                                Blog
-                            </span>
-                            <h6>
-                                15
-                                <span class="d-block">
-                                    Aug
-                                </span>
-                            </h6>
-                        </div>
-                        {!! $sections[4]->value !!}
-                        <a class="btn btn-black">
-                            Read More
-                        </a>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="blog-article-build">
-                    <a href="#">
-                        <div class="blog-img">
-                            <img src="{{ $sections[2]->value }}" class="img-fluid" alt="">
-                        </div>
-                    </a>
-                    <div class="blog-content">
-                        <div class="blog-review">
-                            <span>
-                                <i class="fa-regular fa-folder-open"></i>
-                                Blog
-                            </span>
-                            <h6>
-                                15
-                                <span class="d-block">
-                                    Aug
-                                </span>
-                            </h6>
-                        </div>
-                        {!! $sections[5]->value !!}
-                        <a class="btn btn-black">
-                            Read More
-                        </a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
 

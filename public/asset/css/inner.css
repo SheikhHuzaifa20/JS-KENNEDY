@@ -9,6 +9,12 @@
     color: var(--white-color);
     font-size: 60px;
 }
+.inner-banner-heading h4 {
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--white-color);
+    font-size: 60px;
+}
 
 .inner-blog-article {
     margin: auto;
@@ -27,6 +33,47 @@
 }
 
 /* blog pg css end */
+
+
+/* blog detail pg css start */
+
+.blog-detail {
+    padding: 100px 0;
+}
+
+.blog-detail .card {
+    margin: 20px auto;
+}
+
+.blog-detail .card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 0 15px 1px rgb(0 0 0 / 66%);
+    padding: 20px;
+}
+
+.blog-detail .card img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.blog-detail .card p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #000;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.blog-detail .card p:last-child {
+    margin-bottom: 0;
+}
+
+
+
+/* blog detail pg css end */
 
 /* contact pg css start */
 
@@ -69,6 +116,11 @@ button.btn.btn-form-btn {
     font-weight: 500;
     font-size: 18px;
     box-shadow: 2px -2px 0px 0px #fff;
+}
+
+button.btn.btn-form-btn:hover {
+    background: transparent;
+    box-shadow: 0px 0px 10px 1px #fff;
 }
 
 /* contact pg css end */
@@ -125,7 +177,7 @@ button.btn.btn-form-btn {
     padding: 10px 40px;
     border-radius: 50px;
     border: none;
-    color: var(--white-color);
+    color: var(--white-color) !important;
     font-weight: 500;
     box-shadow: 2px -2px 0px 0px #fff;
     display: flex;
@@ -133,6 +185,12 @@ button.btn.btn-form-btn {
     justify-content: center;
     margin: auto;
     width: 60%;
+    transition: all ease 0.5s;
+}
+
+.snata-btn:hover {
+    background: linear-gradient(73deg, #0c0f04, #799c28);
+    transition: all ease 0.5s;
 }
 
 .snata-btn img {

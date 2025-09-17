@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-5">
                 <div class="footer-logo">
-                    <img src="{{asset("asset/images/footer-logo.png")}}" class="img-fluid" alt="">
+                    <img src="{{ asset('asset/images/footer-logo.png') }}" class="img-fluid" alt="">
                     <ul>
                         <li>
                             <a href="#" target="_blank">
@@ -23,22 +23,22 @@
                     <h5>Quick Links</h5>
                     <ul>
                         <li>
-                            <a href="{{route("home")}}">Home</a>
+                            <a href="{{ route('home') }}">Home</a>
                         </li>
                         <li>
-                            <a href="{{route("release_schedule")}}">Release Schedule</a>
+                            <a href="{{ route('release_schedule') }}">Release Schedule</a>
                         </li>
                         <li>
-                            <a href="{{route("books")}}">Books</a>
+                            <a href="{{ route('books') }}">Books</a>
                         </li>
                         <li>
-                            <a href="{{route("bonus_scenes")}}">Bonus Scenes</a>
+                            <a href="{{ route('bonus_scenes') }}">Bonus Scenes</a>
                         </li>
                         <li>
-                            <a href="{{route("blog")}}">Blog</a>
+                            <a href="{{ route('blog') }}">Blog</a>
                         </li>
                         <li>
-                            <a href="{{route("contact")}}">Contact</a>
+                            <a href="{{ route('contact') }}">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -46,16 +46,17 @@
             <div class="col-lg-4">
                 <div class="quick-link">
                     <h5>Newsletter</h5>
-                    <form>
-                        <div class="row">
+                    <div class="row">
+                        <form method="POST" id="newForm">
+                            @csrf
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Email">
+                                <input type="email" class="form-control" placeholder="Email">
                                 <button type="submit" class="btn btn-black">
                                     Send
                                 </button>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
