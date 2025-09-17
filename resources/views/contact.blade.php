@@ -29,7 +29,7 @@
                     <div class="contact-form">
                         {!! $page->content !!}
                         <form action="{{ route('inquiry.store') }}" method="POST">
-                            @csrf <!-- CSRF token add karna zaroori hai -->
+                            @csrf
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
@@ -45,19 +45,18 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <input type="email" name="email" placeholder="Email" class="form-control"
-                                            required>
+                                        <input type="email" name="email" placeholder="Email" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <input type="text" name="phone" placeholder="Phone" class="form-control"
-                                            required>
+                                        <input type="text" name="phone" placeholder="Phone" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <textarea name="notes" rows="6" id="textarea" class="form-control" placeholder="Message" required></textarea>
+                                        <textarea name="notes" rows="6" id="textarea" class="form-control"
+                                            placeholder="Message" required></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">

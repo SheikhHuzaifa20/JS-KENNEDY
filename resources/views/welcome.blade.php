@@ -40,11 +40,9 @@
                                                         <div class="atropos-scale">
                                                             <div class="atropos-rotate">
                                                                 <div class="atropos-inner">
-                                                                    <a href="JavaScript:;" id="show"
-                                                                        class="main-text-1">
+                                                                    <a href="JavaScript:;" id="show" class="main-text-1">
                                                                         <img src="{{ asset($product->image) }}"
-                                                                            class="img-fluid" alt=""
-                                                                            data-atropos-offset="2">
+                                                                            class="img-fluid" alt="" data-atropos-offset="2">
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -56,261 +54,6 @@
                                     </div>
                                 </div>
                             @endforeach
-                            {{-- <div class="item">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-6">
-                                        <div class="banner-content">
-                                            <h1 class="typingheading">
-                                                WELCOME TO
-                                                <span class="d-block">
-                                                    JS KENNEDY'S
-                                                </span>
-                                                WEBSITE
-                                            </h1>
-                                            <h2>
-                                                MEET JS KENNEDY - CRAFTING WORLDS WHERE
-                                                <span class="d-block">STRENGTH ENDURES</span>
-                                            </h2>
-                                            <p>
-                                                JS Kennedy, the creative force behind the Mackenzie Green series, blends
-                                                vivid imagination with a passion for strong, authentic characters.
-                                                Drawing on a lifelong love of storytelling and her work as a Canadian
-                                                Coast Guard Rescue Specialist, she creates engaging worlds where
-                                                resilience, courage, and heart drive every adventure.
-                                            </p>
-                                            <div class="banner-btn">
-                                                <a class="btn btn-black">
-                                                    Buy From Amazon
-                                                    <img src="{{asset(" asset/images/amazon.png")}}" class="img-fluid"
-                                                        alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="banner-books">
-                                            <div class="books-wanhu">
-                                                <div class="atropos my-atropos">
-                                                    <div class="atropos-scale">
-                                                        <div class="atropos-rotate">
-                                                            <div class="atropos-inner">
-                                                                <a href="JavaScript:;" id="show" class="main-text-1">
-                                                                    <img src="{{asset(" asset/images/book-js66.png")}}"
-                                                                        class="img-fluid" alt="" data-atropos-offset="2">
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-6">
-                                        <div class="banner-content">
-                                            <h1 class="typingheading">
-                                                WELCOME TO
-                                                <span class="d-block">
-                                                    JS KENNEDY'S
-                                                </span>
-                                                WEBSITE
-                                            </h1>
-                                            <h2>
-                                                MEET JS KENNEDY - CRAFTING WORLDS WHERE
-                                                <span class="d-block">STRENGTH ENDURES</span>
-                                            </h2>
-                                            <p>
-                                                JS Kennedy, the creative force behind the Mackenzie Green series, blends
-                                                vivid imagination with a passion for strong, authentic characters.
-                                                Drawing on a lifelong love of storytelling and her work as a Canadian
-                                                Coast Guard Rescue Specialist, she creates engaging worlds where
-                                                resilience, courage, and heart drive every adventure.
-                                            </p>
-                                            <div class="banner-btn">
-                                                <a class="btn btn-black">
-                                                    Buy From Amazon
-                                                    <img src="{{asset(" asset/images/amazon.png")}}" class="img-fluid"
-                                                        alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="banner-books">
-                                            <div class="books-wanhu">
-                                                <div class="atropos my-atropos">
-                                                    <div class="atropos-scale">
-                                                        <div class="atropos-rotate">
-                                                            <div class="atropos-inner">
-                                                                <a href="JavaScript:;" id="show" class="main-text-1">
-                                                                    <img src="{{asset(" asset/images/book-js44.png")}}"
-                                                                        class="img-fluid" alt="" data-atropos-offset="2">
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-6">
-                                        <div class="banner-content">
-                                            <h1 class="typingheading">
-                                                WELCOME TO
-                                                <span class="d-block">
-                                                    JS KENNEDY'S
-                                                </span>
-                                                WEBSITE
-                                            </h1>
-                                            <h2>
-                                                MEET JS KENNEDY - CRAFTING WORLDS WHERE
-                                                <span class="d-block">STRENGTH ENDURES</span>
-                                            </h2>
-                                            <p>
-                                                JS Kennedy, the creative force behind the Mackenzie Green series, blends
-                                                vivid imagination with a passion for strong, authentic characters.
-                                                Drawing on a lifelong love of storytelling and her work as a Canadian
-                                                Coast Guard Rescue Specialist, she creates engaging worlds where
-                                                resilience, courage, and heart drive every adventure.
-                                            </p>
-                                            <div class="banner-btn">
-                                                <a class="btn btn-black">
-                                                    Buy From Amazon
-                                                    <img src="{{asset(" asset/images/amazon.png")}}" class="img-fluid"
-                                                        alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="banner-books">
-                                            <div class="books-wanhu">
-                                                <div class="atropos my-atropos">
-                                                    <div class="atropos-scale">
-                                                        <div class="atropos-rotate">
-                                                            <div class="atropos-inner">
-                                                                <a href="JavaScript:;" id="show" class="main-text-1">
-                                                                    <img src="{{asset(" asset/images/book-js33.png")}}"
-                                                                        class="img-fluid" alt="" data-atropos-offset="2">
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-6">
-                                        <div class="banner-content">
-                                            <h1 class="typingheading">
-                                                WELCOME TO
-                                                <span class="d-block">
-                                                    JS KENNEDY'S
-                                                </span>
-                                                WEBSITE
-                                            </h1>
-                                            <h2>
-                                                MEET JS KENNEDY - CRAFTING WORLDS WHERE
-                                                <span class="d-block">STRENGTH ENDURES</span>
-                                            </h2>
-                                            <p>
-                                                JS Kennedy, the creative force behind the Mackenzie Green series, blends
-                                                vivid imagination with a passion for strong, authentic characters.
-                                                Drawing on a lifelong love of storytelling and her work as a Canadian
-                                                Coast Guard Rescue Specialist, she creates engaging worlds where
-                                                resilience, courage, and heart drive every adventure.
-                                            </p>
-                                            <div class="banner-btn">
-                                                <a class="btn btn-black">
-                                                    Buy From Amazon
-                                                    <img src="{{asset(" asset/images/amazon.png")}}" class="img-fluid"
-                                                        alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="banner-books">
-                                            <div class="books-wanhu">
-                                                <div class="atropos my-atropos">
-                                                    <div class="atropos-scale">
-                                                        <div class="atropos-rotate">
-                                                            <div class="atropos-inner">
-                                                                <a href="JavaScript:;" id="show" class="main-text-1">
-                                                                    <img src="{{asset(" asset/images/book-js22.png")}}"
-                                                                        class="img-fluid" alt="" data-atropos-offset="2">
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-6">
-                                        <div class="banner-content">
-                                            <h1 class="typingheading">
-                                                WELCOME TO
-                                                <span class="d-block">
-                                                    JS KENNEDY'S
-                                                </span>
-                                                WEBSITE
-                                            </h1>
-                                            <h2>
-                                                MEET JS KENNEDY - CRAFTING WORLDS WHERE
-                                                <span class="d-block">STRENGTH ENDURES</span>
-                                            </h2>
-                                            <p>
-                                                JS Kennedy, the creative force behind the Mackenzie Green series, blends
-                                                vivid imagination with a passion for strong, authentic characters.
-                                                Drawing on a lifelong love of storytelling and her work as a Canadian
-                                                Coast Guard Rescue Specialist, she creates engaging worlds where
-                                                resilience, courage, and heart drive every adventure.
-                                            </p>
-                                            <div class="banner-btn">
-                                                <a class="btn btn-black">
-                                                    Buy From Amazon
-                                                    <img src="{{asset(" asset/images/amazon.png")}}" class="img-fluid"
-                                                        alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="banner-books">
-                                            <div class="books-wanhu">
-                                                <div class="atropos my-atropos">
-                                                    <div class="atropos-scale">
-                                                        <div class="atropos-rotate">
-                                                            <div class="atropos-inner">
-                                                                <a href="JavaScript:;" id="show" class="main-text-1">
-                                                                    <img src="{{asset(" asset/images/book-js11.png")}}"
-                                                                        class="img-fluid" alt="" data-atropos-offset="2">
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -340,27 +83,6 @@
                                     </div>
                                 </div>
                             @endforeach
-
-                            {{-- <div class="item">
-                                <div class="book-listing">
-                                    <img src="{{ asset('asset/images/book-js333.png') }}" alt="">
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="book-listing">
-                                    <img src="{{ asset('asset/images/book-js555.png') }}" alt="">
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="book-listing">
-                                    <img src="{{ asset('asset/images/book-js444.png') }}" alt="">
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="book-listing">
-                                    <img src="{{ asset('asset/images/book-js666.png') }}" alt="">
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -405,87 +127,15 @@
                                                 alt="{{ $product->product_title }}">
                                         </div>
                                         <div class="back-cricle">
-                                            <img src="{{ asset('asset/images/book1.png') }}" class="img-fluid"
-                                                alt="">
+                                            <img src="{{ asset('asset/images/book1.png') }}" class="img-fluid" alt="">
                                             <a href="{{ $sections[13]->value }}" class="btn btn-black">
                                                 Buy From Amazon
-                                                <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid"
-                                                    alt="">
+                                                <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
-                            {{-- <div class="item">
-                                <div class="main-books-circle">
-                                    <div class="client-book-img">
-                                        <img src="{{ asset('asset/images/book-js22.png') }}" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="back-cricle">
-                                        <img src="{{ asset('asset/images/book2.png') }}" class="img-fluid" alt="">
-                                        <a href="{{ $sections[13]->value }}" class="btn btn-black">
-                                            Buy From Amazon
-                                            <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="main-books-circle">
-                                    <div class="client-book-img">
-                                        <img src="{{ asset('asset/images/book-js33.png') }}" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="back-cricle">
-                                        <img src="{{ asset('asset/images/book3.png') }}" class="img-fluid" alt="">
-                                        <a href="{{ $sections[13]->value }}" class="btn btn-black">
-                                            Buy From Amazon
-                                            <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="main-books-circle">
-                                    <div class="client-book-img">
-                                        <img src="{{ asset('asset/images/book-js44.png') }}" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="back-cricle">
-                                        <img src="{{ asset('asset/images/book4.png') }}" class="img-fluid" alt="">
-                                        <a href="{{ $sections[13]->value }}" class="btn btn-black">
-                                            Buy From Amazon
-                                            <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="main-books-circle">
-                                    <div class="client-book-img">
-                                        <img src="{{ asset('asset/images/book-js55.png') }}" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="back-cricle">
-                                        <img src="{{ asset('asset/images/book5.png') }}" class="img-fluid" alt="">
-                                        <a href="{{ $sections[13]->value }}" class="btn btn-black">
-                                            Buy From Amazon
-                                            <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="main-books-circle">
-                                    <div class="client-book-img">
-                                        <img src="{{ asset('asset/images/book-js66.png') }}" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="back-cricle">
-                                        <img src="{{ asset('asset/images/book6.png') }}" class="img-fluid" alt="">
-                                        <a href="{{ $sections[13]->value }}" class="btn btn-black">
-                                            Buy From Amazon
-                                            <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -509,8 +159,7 @@
                                 <div class="item">
                                     <div class="client-testimonial">
                                         <div class="client-para">
-                                            <img src="{{ asset('asset/images/qoute.png') }}" class="img-fluid"
-                                                alt="">
+                                            <img src="{{ asset('asset/images/qoute.png') }}" class="img-fluid" alt="">
                                             <p>{!! $testimonial->comments !!}</p>
                                             <div class="review-star">
                                                 @for ($i = 1; $i <= 5; $i++)
@@ -532,60 +181,6 @@
                                     </div>
                                 </div>
                             @endforeach
-                            {{-- <div class="item">
-                                <div class="client-testimonial">
-                                    <div class="client-para">
-                                        <img src="{{ asset('asset/images/qoute.png') }}" class="img-fluid"
-                                            alt="">
-                                        <p>Finally, a fantasy series with a strong female lead who doesn’t lose herself
-                                            when romance appears. Kennedy’s world-building is rich and immersive, and
-                                            the characters feel so real. Every book left me eager for the next. Highly
-                                            recommend to anyone who loves magic, danger, and loyalty.</p>
-                                        <div class="review-star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="client-profile-img">
-                                        <img src="{{ asset('asset/images/client-img1.png') }}" class="img-fluid"
-                                            alt="">
-                                        <h5>
-                                            David K.
-                                            <span class="d-block">Reader</span>
-                                        </h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="client-testimonial">
-                                    <div class="client-para">
-                                        <img src="{{ asset('asset/images/qoute.png') }}" class="img-fluid"
-                                            alt="">
-                                        <p>JS Kennedy’s storytelling is addictive. Mackenzie Green is the kind of
-                                            heroine you root for—fierce, flawed, and unforgettable. I stayed up all
-                                            night finishing the first book and immediately bought the next. This series
-                                            has everything: action, heart, and a world you want to live in.</p>
-                                        <div class="review-star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="client-profile-img">
-                                        <img src="{{ asset('asset/images/client-img3.png') }}" class="img-fluid"
-                                            alt="">
-                                        <h5>
-                                            Samantha L.
-                                            <span class="d-block">Reader</span>
-                                        </h5>
-                                    </div>
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -622,8 +217,8 @@
                                         </span>
                                     </h6>
                                 </div>
-                                <h4>{!! $blog->short_detail !!}</h4>
-                                <p>{!! $blog->detail !!}</p>
+                                {!! $blog->short_detail !!}
+                                {!! $blog->detail !!}
                                 <a href="{{ route('blogdetail', $blog->id) }}" target="_blank" class="btn btn-black">
                                     Read More
                                 </a>
@@ -631,60 +226,6 @@
                         </div>
                     </div>
                 @endforeach
-                {{-- <div class="col-lg-4">
-                    <div class="blog-article-build">
-                        <a href="#">
-                            <div class="blog-img">
-                                <img src="{{ $blog[1]->value }}" class="img-fluid" alt="">
-                            </div>
-                        </a>
-                        <div class="blog-content">
-                            <div class="blog-review">
-                                <span>
-                                    <i class="fa-regular fa-folder-open"></i>
-                                    Blog
-                                </span>
-                                <h6>
-                                    15
-                                    <span class="d-block">
-                                        Aug
-                                    </span>
-                                </h6>
-                            </div>
-                            {!! $blog[4]->value !!}
-                            <a class="btn btn-black">
-                                Read More
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="blog-article-build">
-                        <a href="#">
-                            <div class="blog-img">
-                                <img src="{{ $blog[2]->value }}" class="img-fluid" alt="">
-                            </div>
-                        </a>
-                        <div class="blog-content">
-                            <div class="blog-review">
-                                <span>
-                                    <i class="fa-regular fa-folder-open"></i>
-                                    Blog
-                                </span>
-                                <h6>
-                                    15
-                                    <span class="d-block">
-                                        Aug
-                                    </span>
-                                </h6>
-                            </div>
-                            {!! $blog[5]->value !!}
-                            <a class="btn btn-black">
-                                Read More
-                            </a>
-                        </div>
-                    </div>
-                </div> --}}
                 <div class="col-lg-12">
                     <div class="text-center">
                         <a href="#" class="btn green-btn">
