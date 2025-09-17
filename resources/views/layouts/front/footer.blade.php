@@ -6,12 +6,12 @@
                     <img src="{{ asset('asset/images/footer-logo.png') }}" class="img-fluid" alt="">
                     <ul>
                         <li>
-                            <a href="{{$facebook->flag_value}}" target="_blank">
+                            <a href="{{ $facebook->flag_value }}" target="_blank">
                                 <i class="fa-brands fa-facebook"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="{{$instagram->flag_value}}" target="_blank">
+                            <a href="{{ $instagram->flag_value }}" target="_blank">
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
                         </li>
@@ -47,10 +47,10 @@
                 <div class="quick-link">
                     <h5>Newsletter</h5>
                     <div class="row">
-                        <form method="POST" id="newForm">
+                        <form action="{{ route('newsletterSubmit') }}" method="POST" id="newsletterFormFooter">
                             @csrf
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Email">
+                                <input type="email" name="newsletter_email" class="form-control" placeholder="Email">
                                 <button type="submit" class="btn btn-black">
                                     Send
                                 </button>

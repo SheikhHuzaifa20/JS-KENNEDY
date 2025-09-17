@@ -7,6 +7,8 @@
     ?>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" sizes="16x16"
         href="{{ asset(!empty($favicon->img_path) ? $favicon->img_path : '') }}">
@@ -81,11 +83,11 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#newForm').on('submit', function(e) {
+        $('form[id^="newsletterForm"]').on('submit', function(e) {
             e.preventDefault();
-            $('#newsresult').html('');
 
-            let email = $('#newemail').val();
+            let form = $(this); // jis form ko submit kiya gaya
+            let email = form.find('input[name="newsletter_email"]').val(); // us form ka input lo
 
             $.ajax({
                 url: "{{ route('newsletterSubmit') }}",
@@ -96,35 +98,32 @@
                 },
                 success: function(response) {
                     if (response.status) {
-                        // ✅ Input ko empty karo
-                        $('#newemail').val('');
+                        form.find('input[name="newsletter_email"]').val(""); // input reset
 
-                        // ✅ Alert box show karo (top pe notification)
-                        $('body').prepend(
-                            "<div id='topAlert' class='alert alert-success text-center' style='position:fixed;top:0;width:100%;z-index:9999;'>" +
-                            response.message +
-                            "</div>"
-                        );
-
-                        // 3 second baad alert auto hide
-                        setTimeout(function() {
-                            $('#topAlert').fadeOut('slow', function() {
-                                $(this).remove();
-                            });
-                        }, 3000);
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Subscribed!',
+                            text: response.message,
+                            showConfirmButton: false,
+                            timer: 1000
+                        });
 
                     } else {
-                        $('#newsresult').html(
-                            "<div class='alert alert-danger'>" + response.message +
-                            "</div>"
-                        );
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: response.message,
+                            showConfirmButton: true
+                        });
                     }
                 },
                 error: function(xhr) {
-                    console.error(xhr.responseText);
-                    $('#newsresult').html(
-                        "<div class='alert alert-danger'>Something went wrong</div>"
-                    );
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Server Error',
+                        text: "Something went wrong. Please try again.",
+                        showConfirmButton: true
+                    });
                 }
             });
         });

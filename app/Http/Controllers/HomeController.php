@@ -127,21 +127,55 @@ class HomeController extends Controller
             'notes' => 'required|string',
         ]);
 
-        // Save data into DB
         $inquiry = Inquiry::create($request->all());
 
-        // Send email to Admin
-        // Send email to Admin
-        Mail::to('info@jskennedy.com')->send(new InquiryReceived($inquiry));
+        try {
+            Mail::to('mikehuckabee42@gmail.com')->send(new InquiryReceived($inquiry));
+            sleep(3);
+            Mail::to($inquiry->email)->send(new ThankYouMail($inquiry));
 
-        // Sleep for 10 seconds (avoid Mailtrap free plan rate limit)
-        sleep(3);
-
-        // Send Thank You email to User
-        Mail::to($inquiry->email)->send(new ThankYouMail($inquiry));
-
-        return back()->with('success', 'Your inquiry has been submitted successfully!');
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Your inquiry has been submitted successfully!'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Something went wrong: ' . $e->getMessage()
+            ], 500);
+        }
     }
+
+
+
+    // public function inquiry(Request $request)
+    // {
+    //     try {
+    //         $request->validate([
+    //             'fname' => 'required|string',
+    //             'lname' => 'required|string',
+    //             'email' => 'required|email',
+    //             'phone' => 'required|string',
+    //             'notes' => 'required|string',
+    //         ]);
+
+    //         $inquiry = Inquiry::create($request->all());
+
+    //         Mail::to('mikehuckabee42@gmail.com')->send(new InquiryReceived($inquiry));
+    //         sleep(3);
+    //         Mail::to($inquiry->email)->send(new ThankYouMail($inquiry));
+
+    //         return response()->json([
+    //             'status' => 'success',
+    //             'message' => 'Your inquiry has been submitted successfully!'
+    //         ]);
+    //     } catch (\Exception $e) {
+    //         return response()->json([
+    //             'status' => 'error',
+    //             'message' => 'Something went wrong: ' . $e->getMessage()
+    //         ]);
+    //     }
+    // }
 
 
     public function newsletterSubmit(Request $request)
@@ -158,7 +192,7 @@ class HomeController extends Controller
             $inquiry->save();
 
 
-            Mail::to('info@jskennedy.com')->send(new NewsletterSubscribedAdmin($request->newsletter_email));
+            Mail::to('mikehuckabee42@gmail.com')->send(new NewsletterSubscribedAdmin($request->newsletter_email));
             sleep(10);
             Mail::to($request->newsletter_email)->send(new NewsletterConfirmation($request->newsletter_email));
 

@@ -6,7 +6,7 @@
                     <div class="top-email">
                         <div class="row">
                             <div class="col-12">
-                                <form method="POST" id="newForm">
+                                <form method="POST" id="newsletterFormHeader">
                                     @csrf
                                     <div class="form-group">
                                         <input type="email" name="newsletter_email" id="newemail" placeholder="Email"
