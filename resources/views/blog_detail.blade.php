@@ -80,7 +80,7 @@
                     style="width:150px; height:150px; border-radius:12px; object-fit:cover; margin:0 auto;">
 
                 <!-- Title -->
-                <h3 class="mt-3" style="font-weight:bold; text-transform:uppercase;">About the Author</h3>
+                <h3 class="mt-3" style="font-weight:bold; text-transform:uppercase;">{{ $sections[8]->value }}</h3>
 
                 <!-- Description -->
                 <p class="mt-2" style="max-width:500px; margin:0 auto; font-size:15px; line-height:1.6;">
