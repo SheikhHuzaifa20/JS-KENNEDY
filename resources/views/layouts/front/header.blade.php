@@ -63,7 +63,7 @@
                                 </li>
                             </ul>
                             <form class="d-flex side-top">
-                                <a href="https://www.amazon.com/stores/JS-Kennedy/author/B095VMYZK1?ref=ap_rdr&isDramIntegrated=true&shoppingPortalEnabled=true"
+                                <a href="{{$product->link}}"
                                     class="btn btn-black" href="#">
                                     Buy From Amazon
                                     <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
