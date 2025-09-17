@@ -105,6 +105,16 @@
         </div>
         <div class="col-md-12">
             <div class="form-group">
+                {!! Form::label('link', 'Link') !!}
+                {!! Form::text(
+                    'link',
+                    null,
+                    'required' == 'required' ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control'],
+                ) !!}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
                 <div class="row">
                     <div class="col-10">
                         {!! Form::label('colors', 'Colors') !!}

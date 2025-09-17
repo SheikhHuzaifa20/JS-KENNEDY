@@ -241,12 +241,14 @@ class ProductController extends Controller
                 'product_title' => 'required',
                 'description'   => 'required',
                 'price'         => 'required',
+                'link'         => 'required',
             ]);
 
             $product = Product::findOrFail($id);
 
             $product->product_title = $request->input('product_title');
             $product->price         = $request->input('price');
+            $product->link         = $request->input('link');
             $product->description   = $request->input('description');
             $product->category      = $request->input('category');
 

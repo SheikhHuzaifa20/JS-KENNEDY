@@ -24,7 +24,7 @@
                                             <div class="banner-content">
                                                 {!! $page->content !!}
                                                 <div class="banner-btn">
-                                                    <a href="https://www.amazon.com/stores/author/B095VMYZK1/allbooks?ingress=0&visitId=c70e2a7b-bf23-4070-a2f7-4b8cce80ccb2&ref_=ap_rdr"
+                                                    <a href="{{$product->link}}"
                                                         class="btn btn-black">
                                                         Buy From Amazon
                                                         <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid"
@@ -128,7 +128,7 @@
                                         </div>
                                         <div class="back-cricle">
                                             <img src="{{ asset('asset/images/book1.png') }}" class="img-fluid" alt="">
-                                            <a href="{{ $sections[13]->value }}" class="btn btn-black">
+                                            <a href="{{$product->link}}" class="btn btn-black">
                                                 Buy From Amazon
                                                 <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
                                             </a>

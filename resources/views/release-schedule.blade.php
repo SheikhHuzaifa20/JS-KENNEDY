@@ -87,31 +87,31 @@
                     </div>
                     <div class="bonus-scene-version">
                         <div class="santa-version">
-                            <a href="#" class="btn snata-btn">Catch and Release <img
+                            <a href="{{ route('books') }}" class="btn snata-btn">Catch and Release <img
                                     src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid" alt=""></a>
                             <p>Prequel novella from Curtis’s point of view</p>
                         </div>
                         <div class="santa-version">
-                            <a href="#" class="btn snata-btn">Green Gryphon <img
+                            <a href="{{ route('books') }}" class="btn snata-btn">Green Gryphon <img
                                     src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid" alt=""></a>
                         </div>
                         <div class="santa-version">
-                            <a href="#" class="btn snata-btn">Green Mage <img
+                            <a href="{{ route('books') }}" class="btn snata-btn">Green Mage <img
                                     src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid" alt=""></a>
                         </div>
                     </div>
                     <div class="bonus-scene-version">
                         <div class="santa-version">
-                            <a href="#" class="btn snata-btn">Green Shadow <img
+                            <a href="{{ route('books') }}" class="btn snata-btn">Green Shadow <img
                                     src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid" alt=""></a>
                             <p>Switches POV between Mackenzie and Lucan</p>
                         </div>
                         <div class="santa-version">
-                            <a href="#" class="btn snata-btn">Green Vampire <img
+                            <a href="{{ route('books') }}" class="btn snata-btn">Green Vampire <img
                                     src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid" alt=""></a>
                         </div>
                         <div class="santa-version">
-                            <a href="#" class="btn snata-btn">Green Dragon - April 28th, 2025 <img
+                            <a href="{{ route('books') }}" class="btn snata-btn">Green Dragon - April 28th, 2025 <img
                                     src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid" alt=""></a>
                         </div>
                     </div>
