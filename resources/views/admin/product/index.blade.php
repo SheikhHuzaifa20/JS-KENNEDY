@@ -9,19 +9,19 @@
 @section('content')
 <div class="content-header row">
     <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
-        <h3 class="content-header-title mb-0 d-inline-block">Product</h3>
+        <h3 class="content-header-title mb-0 d-inline-block">Book</h3>
         <div class="row breadcrumbs-top d-inline-block">
             <div class="breadcrumb-wrapper col-12">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item active">Home</li>
-                    <li class="breadcrumb-item active">Product</li>
+                    <li class="breadcrumb-item active">Book</li>
                 </ol>
             </div>
         </div>
     </div>
     <div class="content-header-right col-md-6 col-12">
         <div class="btn-group float-md-right">
-            <a class="btn btn-info mb-1" href="{{ url('admin/product/create') }}">Add Product</a>
+            <a class="btn btn-info mb-1" href="{{ url('admin/product/create') }}">Add Book</a>
         </div>
     </div>
 </div>
@@ -31,7 +31,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Product Info</h4>
+                    <h4 class="card-title">Book Info</h4>
                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
                         <ul class="list-inline mb-0">
@@ -49,10 +49,10 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Product Title</th>
-                                        <th>Product Price</th>
-                                        <th>Product Category</th>
-                                        <th>Product Image</th>
+                                        <th>Book Title</th>
+                                        <th>Book Price</th>
+                                        <th>Book Category</th>
+                                        <th>Book Image</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -83,10 +83,10 @@
                                 <tfoot>
                                     <tr>
                                         <th>#</th>
-                                        <th>Product Title</th>
-                                        <th>Product Price</th>
-                                        <th>Product Category</th>
-                                        <th>Product Image</th>
+                                        <th>Books Title</th>
+                                        <th>Books Price</th>
+                                        <th>Books Category</th>
+                                        <th>Books Image</th>
                                         <th>Actions</th>
                                     </tr>
                                 </tfoot>

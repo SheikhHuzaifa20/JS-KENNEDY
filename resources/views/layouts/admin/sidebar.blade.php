@@ -25,12 +25,12 @@
                             <span data-i18n="Sales">Logo Management</span>
                         </a>
                     </li>
-                    <li
+                    {{-- <li
                         class="{{ (request()->routeIs('admin.banner.index') || request()->routeIs('admin.banner.create') || request()->routeIs('admin.banner.edit')) ? 'active' : '' }}">
                         <a class="menu-item" href="{{url('admin/banner')}}"><i></i>
                             <span data-i18n="Sales">Banner Management</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="{{ (request()->routeIs('admin.config.setting')) ? 'active' : '' }}">
                         <a class="menu-item" href="{{url('admin/config/setting')}}"><i></i>
                             <span data-i18n="Sales">Config</span>
@@ -70,18 +70,18 @@
                 <a href="javascript:;"><i class="la la-shopping-cart"></i><span class="menu-title"
                         data-i18n="Dashboard">Ecommerce</span></a>
                 <ul class="menu-content">
-                    <li
+                    {{-- <li
                         class="{{ (request()->is('admin/attributes') || request()->is('admin/attributes/*')) ? 'active' : '' }}">
                         <a class="menu-item" href="{{url('admin/attributes')}}"><i></i>
                             <span data-i18n="eCommerce">Attributes</span>
                         </a>
-                    </li>
-                    <li
+                    </li> --}}
+                    {{-- <li
                         class="{{ (request()->is('admin/attributes-value') || request()->is('admin/attributes-value/*')) ? 'active' : '' }}">
                         <a class="menu-item" href="{{url('admin/attributes-value')}}"><i></i>
                             <span data-i18n="eCommerce">Attributes Values</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li
                         class="{{ (request()->is('admin/category') || request()->is('admin/category/*')) ? 'active' : '' }}">
                         <a class="menu-item" href="{{url('admin/category')}}"><i></i>
@@ -91,15 +91,15 @@
                     <li
                         class="{{ (request()->is('admin/product') || request()->is('admin/product/*')) ? 'active' : '' }}">
                         <a class="menu-item" href="{{url('admin/product')}}"><i></i>
-                            <span data-i18n="eCommerce">Products</span>
+                            <span data-i18n="eCommerce">Books</span>
                         </a>
                     </li>
-                    <li
+                    {{-- <li
                         class="{{ (request()->is('admin/order/list') || request()->is('admin/order/list/*')) ? 'active' : '' }}">
                         <a class="menu-item" href="{{url('admin/order/list')}}"><i></i>
                             <span data-i18n="eCommerce">Orders</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
             <li class="nav-item">

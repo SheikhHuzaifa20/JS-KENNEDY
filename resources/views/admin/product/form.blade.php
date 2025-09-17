@@ -47,7 +47,7 @@
 
         <div class="col-md-12">
             <div class="form-group">
-                {!! Form::label('product_title', 'Product Title') !!}
+                {!! Form::label('product_title', 'Book Title') !!}
                 {!! Form::text(
                     'product_title',
                     null,
@@ -113,7 +113,7 @@
                 ) !!}
             </div>
         </div>
-        <div class="col-md-12">
+        {{-- <div class="col-md-12">
             <div class="form-group">
                 <div class="row">
                     <div class="col-10">
@@ -143,7 +143,7 @@
                     @endforeach
                 </div>
             </div>
-        </div>
+        </div> --}}
         {{-- <div class="col-md-12">
             <h4 class="card-title" id="repeat-form">Add Variation</h4>
         </div>

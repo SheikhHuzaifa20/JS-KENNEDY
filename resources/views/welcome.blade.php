@@ -228,7 +228,7 @@
                 @endforeach
                 <div class="col-lg-12">
                     <div class="text-center">
-                        <a href="#" class="btn green-btn">
+                        <a href="{{ route('books') }}" class="btn green-btn">
                             View More
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>

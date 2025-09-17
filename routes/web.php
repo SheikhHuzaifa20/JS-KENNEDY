@@ -136,7 +136,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('course', 'Admin\\CourseController');
     Route::get('course/{id}/delete', ['as' => 'course.delete', 'uses' => 'Admin\\CourseController@destroy']);
     Route::get('course/get/index', 'Admin\CourseController@getIndex')->name('course.getIndex');
-    Route::get('/order/list', 'Admin\ProductController@orderList')->name('orderList');
+    // Route::get('/order/list', 'Admin\ProductController@orderList')->name('orderList');
     // Route::get('order/list', ['as' => 'order.list', 'uses' => 'Admin\\CourseController@orderList']);
     // Route::get('order/detail/{id}', ['as' => 'order.list.detail', 'uses' => 'Admin\\CourseController@orderListDetail']);
 
@@ -263,11 +263,11 @@ route::get('status/cancelled/{id}', 'admin\\productcontroller@updatestatuscancel
 Route::resource('admin/blog', 'Admin\\BlogController');
 Route::resource('admin/category', 'Admin\\CategoryController');
 
-Route::resource('admin/banner', 'Admin\\BannerController', ['names' => 'admin.banner']);
+// Route::resource('admin/banner', 'Admin\\BannerController', ['names' => 'admin.banner']);
 Route::get('admin/banner/{id}/delete', ['as' => 'banner.delete', 'uses' => 'Admin\\BannerController@destroy']);
 Route::resource('admin/category', 'Admin\\CategoryController');
-Route::resource('admin/attributes', 'Admin\\AttributesController');
-Route::resource('admin/attributes-value', 'Admin\\AttributesValueController');
+// Route::resource('admin/attributes', 'Admin\\AttributesController');
+// Route::resource('admin/attributes-value', 'Admin\\AttributesValueController');
 Route::post('admin/get-attributes', 'Admin\\AttributesValueController@getdata')->name('get-attributes');
 Route::post('admin/pro-img-id-delet', 'Admin\\AttributesValueController@img_delete')->name('pro-img-id-delet');
 Route::post('admin/delete-product-variant', 'Admin\\AttributesValueController@deleteProVariant')->name('delete.product.variant');

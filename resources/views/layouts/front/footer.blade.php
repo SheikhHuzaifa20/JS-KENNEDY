@@ -6,12 +6,12 @@
                     <img src="{{ asset('asset/images/footer-logo.png') }}" class="img-fluid" alt="">
                     <ul>
                         <li>
-                            <a href="#" target="_blank">
+                            <a href="{{$facebook->flag_value}}" target="_blank">
                                 <i class="fa-brands fa-facebook"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="#" target="_blank">
+                            <a href="{{$instagram->flag_value}}" target="_blank">
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
                         </li>
