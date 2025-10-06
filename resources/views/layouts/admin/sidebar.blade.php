@@ -82,12 +82,12 @@
                             <span data-i18n="eCommerce">Attributes Values</span>
                         </a>
                     </li> --}}
-                    <li
+                    <!-- <li
                         class="{{ request()->is('admin/category') || request()->is('admin/category/*') ? 'active' : '' }}">
                         <a class="menu-item" href="{{ url('admin/category') }}"><i></i>
                             <span data-i18n="eCommerce">Categories</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li
                         class="{{ request()->is('admin/book') || request()->is('admin/book/*') ? 'active' : '' }}">
                         <a class="menu-item" href="{{ url('admin/book') }}"><i></i>

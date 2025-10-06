@@ -80,7 +80,7 @@
                             @foreach ($products as $product)
                                 <div class="item">
                                     <div class="book-listing">
-                                        <img src="{{ asset($product->image) }}" alt="{{ $product->product_title }}">
+                                        <img src="{{ asset($product->additional_image) }}" alt="{{ $product->product_title }}">
                                     </div>
                                 </div>
                             @endforeach

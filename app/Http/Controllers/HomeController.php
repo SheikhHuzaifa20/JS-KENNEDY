@@ -59,9 +59,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = DB::table('product_imagess')
-            ->where('id', '!=', 16)   // id 12 ko exclude kar diya
-            ->limit(5)                // sirf 5 products laiye
+
+        $products = DB::table('products')
+            ->leftJoin('product_imagess', 'products.id', '=', 'product_imagess.product_id')
+            ->select('products.*', 'product_imagess.image as additional_image')
             ->get();
         // dd($products);
 

@@ -1,7 +1,7 @@
 <div class="form-body">
     <div class="row">
         <div class="col-md-12">
-            <div class="form-group">
+            <!-- <div class="form-group">
                 {!! Form::Label('category', 'Select Category:') !!}
                 <select name="category" class="form-control" id="category">
                     <option value="" disabled> Select Category </option>
@@ -12,7 +12,9 @@
                     @endforeach
 
                 </select>
-            </div>
+            </div> -->
+            <input type="hidden" name="category" value="book">
+
         </div>
 
         {{-- <div class="col-md-12" id="subcategory_sec">
@@ -67,7 +69,7 @@
         </div>
         <div class="col-md-12">
             <div class="form-group">
-                {!! Form::label('description', 'Description') !!}
+                {!! Form::label('description', 'Book Description') !!}
                 {!! Form::textarea(
                     'description',
                     null,
@@ -99,7 +101,7 @@
         </div>
         <div class="col-md-12">
             <div class="form-group">
-                {!! Form::label('additional_image', 'Gallary Image') !!}
+                {!! Form::label('additional_image', 'Series Images') !!}
                 <div class="gallery Images">
                     @foreach ($product_images as $product_image)
                         <div class="image-single">
