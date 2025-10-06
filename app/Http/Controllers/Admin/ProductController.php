@@ -61,7 +61,7 @@ class ProductController extends Controller
                 $product = Product::paginate($perPage);
             }
 
-            return view('admin.product.index', compact('product'));
+            return view('admin.book.index', compact('product'));
         }
         return response(view('403'), 403);
     }
@@ -84,7 +84,7 @@ class ProductController extends Controller
             $items = Category::pluck('name', 'id');
             // dd($items);
 
-            return view('admin.product.create', compact('items', 'att', 'attval'));
+            return view('admin.book.create', compact('items', 'att', 'attval'));
         }
         return response(view('403'), 403);
     }
@@ -174,7 +174,7 @@ class ProductController extends Controller
 
 
 
-            return redirect('admin/product')->with('message', 'Product added!');
+            return redirect('admin/book')->with('message', 'Product added!');
         }
         return response(view('403'), 403);
     }
@@ -191,7 +191,7 @@ class ProductController extends Controller
         $model = str_slug('product', '-');
         if (auth()->user()->permissions()->where('name', '=', 'view-' . $model)->first() != null) {
             $product = Product::findOrFail($id);
-            return view('admin.product.show', compact('product'));
+            return view('admin.book.show', compact('product'));
         }
         return response(view('403'), 403);
     }
@@ -222,7 +222,7 @@ class ProductController extends Controller
 
 
 
-            return view('admin.product.edit', compact('product', 'items', 'product_images', 'att'));
+            return view('admin.book.edit', compact('product', 'items', 'product_images', 'att'));
         }
         return response(view('403'), 403);
     }
@@ -288,7 +288,7 @@ class ProductController extends Controller
                 }
             }
 
-            return redirect('admin/product')->with('message', 'Product updated!');
+            return redirect('admin/book')->with('message', 'Product updated!');
         }
 
         return response(view('403'), 403);
@@ -308,7 +308,7 @@ class ProductController extends Controller
         if (auth()->user()->permissions()->where('name', '=', 'delete-' . $model)->first() != null) {
             Product::destroy($id);
 
-            return redirect('admin/product')->with('flash_message', 'Product deleted!');
+            return redirect('admin/book')->with('flash_message', 'Product deleted!');
         }
         return response(view('403'), 403);
     }

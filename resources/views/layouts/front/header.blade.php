@@ -13,13 +13,13 @@
                                             class="form-control" required>
                                         <button type="submit" class="btn btn-black email-btn">
                                             Subscribe
-                                            <img src="{{ asset('asset/images/send.png') }}" class="img-fluid"
-                                                alt="">
+                                            <img src="{{ asset('asset/images/send.png') }}" class="img-fluid" alt="">
                                         </button>
                                     </div>
                                 </form>
-
-                                {{-- <div id="newsresult" style="margin-top:10px;"></div> --}}
+                                <div class="formLoader" style="display:none; text-align:center; margin-top:10px;">
+                                    <img src="{{ asset('asset/images/loader.gif') }}" class="img-fluid" alt="">
+                                </div>
 
                             </div>
                         </div>
@@ -63,8 +63,7 @@
                                 </li>
                             </ul>
                             <form class="d-flex side-top">
-                                <a href="{{$product->link}}"
-                                    class="btn btn-black" href="#">
+                                <a href="{{$product->link}}" class="btn btn-black" href="#">
                                     Buy From Amazon
                                     <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
                                 </a>

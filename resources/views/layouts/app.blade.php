@@ -3,7 +3,7 @@
 
 <head>
     <?php
-    $favicon = DB::table('imagetable')->where('table_name', 'favicon')->first();
+$favicon = DB::table('imagetable')->where('table_name', 'favicon')->first();
     ?>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -62,14 +62,14 @@
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-</script>
+    </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
     integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- atropos js -->
 <script src="https://cdn.jsdelivr.net/npm/atropos@1.0.2/atropos.min.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll('.my-atropos').forEach(el => {
             Atropos({
                 el: el,
@@ -82,32 +82,48 @@
 <script src="{{ asset('asset/js/script.js') }}"></script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('form[id^="newsletterForm"]').on('submit', function(e) {
+    $(document).ready(function () {
+
+
+        $('form[id^="newsletterForm"]').on('submit', function (e) {
             e.preventDefault();
 
-            let form = $(this); // jis form ko submit kiya gaya
-            let email = form.find('input[name="newsletter_email"]').val(); // us form ka input lo
+            let form = $(this);
+            let email = form.find('input[name="newsletter_email"]').val().trim();
+            let loader = form.next('.formLoader');
+            let submitBtn = form.find('button[type="submit"]');
+
+
+            if (!email) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Email Required',
+                    text: 'Please enter your email before subscribing.',
+                    showConfirmButton: true
+                });
+                return;
+            }
+
+            loader.show();
+            submitBtn.prop('disabled', true);
 
             $.ajax({
                 url: "{{ route('newsletterSubmit') }}",
-                type: "POST",
+                method: "POST",
                 data: {
                     _token: "{{ csrf_token() }}",
                     newsletter_email: email
                 },
-                success: function(response) {
+                success: function (response) {
                     if (response.status) {
-                        form.find('input[name="newsletter_email"]').val(""); // input reset
-
+                        form.find('input[name="newsletter_email"]').val('');
                         Swal.fire({
                             icon: 'success',
                             title: 'Subscribed!',
                             text: response.message,
-                            showConfirmButton: false,
-                            timer: 1000
+                            timer: 1500,
+                            showConfirmButton: false
                         });
-
                     } else {
                         Swal.fire({
                             icon: 'error',
@@ -117,18 +133,24 @@
                         });
                     }
                 },
-                error: function(xhr) {
+                error: function () {
                     Swal.fire({
                         icon: 'error',
                         title: 'Server Error',
-                        text: "Something went wrong. Please try again.",
+                        text: 'Something went wrong. Please try again.',
                         showConfirmButton: true
                     });
+                },
+                complete: function () {
+                    loader.hide();
+                    submitBtn.prop('disabled', false);
                 }
             });
         });
+
     });
 </script>
+
 
 
 

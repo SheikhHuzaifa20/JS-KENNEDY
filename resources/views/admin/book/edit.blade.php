@@ -10,15 +10,15 @@
             <div class="breadcrumb-wrapper col-12">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item active">Home</li>
-                    <li class="breadcrumb-item active">Product</li>
-                    <li class="breadcrumb-item active">Edit Product</li>
+                    <li class="breadcrumb-item active">Book</li>
+                    <li class="breadcrumb-item active">Edit Book</li>
                 </ol>
             </div>
         </div>
     </div>
     <div class="content-header-right col-md-6 col-12">
         <div class="btn-group float-md-right">
-            <a class="btn btn-info mb-1" href="{{ url('/admin/product') }}">Back</a>
+            <a class="btn btn-info mb-1" href="{{ url('/admin/book') }}">Back</a>
         </div>
     </div>
 </div>
@@ -45,11 +45,11 @@
                             {!! Form::model($product, [
                                 'method' => 'PATCH',
                                 'enctype' => 'multipart/form-data',
-                                'url' => ['/admin/product', $product->id],
+                                'url' => ['/admin/book', $product->id],
                                 'files' => true
                             ]) !!}
 
-                            @include ('admin.product.form', ['submitButtonText' => 'Update'])
+                            @include ('admin.book.form', ['submitButtonText' => 'Update'])
 
                             {!! Form::close() !!}
                         </div>

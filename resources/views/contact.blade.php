@@ -45,19 +45,18 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <input type="email" name="email" placeholder="Email" class="form-control"
-                                            required>
+                                        <input type="email" name="email" placeholder="Email" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <input type="text" name="phone" placeholder="Phone" class="form-control"
-                                            required>
+                                        <input type="text" name="phone" placeholder="Phone" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <textarea name="notes" rows="6" id="textarea" class="form-control" placeholder="Message" required></textarea>
+                                        <textarea name="notes" rows="6" id="textarea" class="form-control"
+                                            placeholder="Message" required></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -67,6 +66,9 @@
                                 </div>
                             </div>
                         </form>
+                        <div id="formLoader" style="display:none; text-align:center; margin-top:10px;">
+                            <img src="{{ asset('asset/images/loader.gif') }}" class="img-fluid" alt="">
+                        </div>
                         <div id="responseMessage" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
 
                     </div>
@@ -81,25 +83,32 @@
 
 @section('js')
     <script>
-        document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+        document.getElementById('inquiryForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
             let form = this;
             let formData = new FormData(form);
 
+            let loader = $('#formLoader');
+            let submitBtn = $(form).find('button[type="submit"]');
+
+            loader.show();
+            submitBtn.prop('disabled', true);
+
+
             fetch(form.action, {
-                    method: "POST",
-                    body: formData,
-                    headers: {
-                        "X-Requested-With": "XMLHttpRequest"
-                    }
-                })
+                method: "POST",
+                body: formData,
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest"
+                }
+            })
                 .then(async res => {
                     let data;
                     try {
-                        data = await res.json(); // JSON parse karo
+                        data = await res.json();
                     } catch {
-                        throw new Error("Backend ne JSON ke bajaye HTML bheja hai");
+                        throw new Error("JSON Error");
                     }
                     return data;
                 })
@@ -107,8 +116,8 @@
                     if (data.status === "success") {
                         Swal.fire({
                             icon: 'success',
-                            title: 'Success!', // 👈 fixed text (ya data.title agar bhejna ho to)
-                            text: data.message, // 👈 backend ka message show hoga
+                            title: 'Success!',
+                            text: data.message,
                             showConfirmButton: false,
                             timer: 1000
                         });
@@ -127,6 +136,9 @@
                         title: 'Server Error',
                         text: err.message
                     });
+                }).finally(() => {
+                    loader.hide();
+                    submitBtn.prop('disabled', false);
                 });
         });
     </script>

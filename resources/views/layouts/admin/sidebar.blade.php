@@ -89,8 +89,8 @@
                         </a>
                     </li>
                     <li
-                        class="{{ request()->is('admin/product') || request()->is('admin/product/*') ? 'active' : '' }}">
-                        <a class="menu-item" href="{{ url('admin/product') }}"><i></i>
+                        class="{{ request()->is('admin/book') || request()->is('admin/book/*') ? 'active' : '' }}">
+                        <a class="menu-item" href="{{ url('admin/book') }}"><i></i>
                             <span data-i18n="eCommerce">Books</span>
                         </a>
                     </li>
