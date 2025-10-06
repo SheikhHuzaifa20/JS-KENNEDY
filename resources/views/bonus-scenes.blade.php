@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="beta-version">
-                        <h2>{{ $sections[0]->value }}<span class="d-block">Version</span></h2>
+                        <h2>{!! $sections[0]->value !!}</h2>
                         {!! $page->content !!}
                     </div>
                     <div class="bonus-scene-version">

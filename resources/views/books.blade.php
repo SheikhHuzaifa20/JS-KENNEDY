@@ -181,10 +181,10 @@
             <div class="row">
                 <div class="col-lg-12 p-0">
                     <div class="redemption-quest">
-                        {!! $sections[1]->value !!}
+                        {!! $page->content !!}
                     </div>
                     <div class="book-footer-banner">
-                        <img src="{{$sections[2]->value}}" class="img-fluid"
+                        <img src="{{$page->image}}" class="img-fluid"
                             alt="">
                     </div>
                 </div>

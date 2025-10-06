@@ -12,6 +12,8 @@
                 {!! Form::text('name', null, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
             </div>
         </div>
+        @if($page->id == '33')
+        @else
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('content', 'Content') !!}
@@ -24,6 +26,7 @@
                 <input class="form-control dropify" name="image" type="file" id="image" {{ ($page->image != '') ? "data-default-file = " . asset($page->image) : ''}} {{ ($page->image == '') ? "required" : ''}} value="{{asset($page->image)}}">
             </div>
         </div>
+        @endif
         @foreach($page->sections as $section)
         <div class="col-md-12">
             <div class="form-group">

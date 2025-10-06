@@ -34,7 +34,6 @@
                 <div class="col-lg-12">
                     <div class="main-book-sldier">
                         <div class="banner-sliders owl-carousel owl-theme">
-                            @foreach ($products as $product)
                                 <div class="item">
                                     <div class="row align-items-center">
                                         <div class="col-lg-7">
@@ -42,7 +41,7 @@
                                                 <h2>
                                                     {{ $page->name }}
                                                 </h2>
-                                                {!! $sections[0]->value !!}
+                                                {!! $page->content !!}
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
@@ -53,7 +52,7 @@
                                                             <div class="atropos-rotate">
                                                                 <div class="atropos-inner">
                                                                     <a href="JavaScript:;" id="show" class="main-text-1">
-                                                                        <img src="{{ asset($product->image) }}"
+                                                                        <img src="{{ $page->image }}"
                                                                             class="img-fluid" alt="" data-atropos-offset="2">
                                                                     </a>
                                                                 </div>
@@ -65,7 +64,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
                         </div>
                     </div>
                 </div>

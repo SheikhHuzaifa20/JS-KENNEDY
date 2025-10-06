@@ -69,8 +69,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="book-series">
-                        <h2>{{ $sections[6]->value }}</h2>
-                        <p>{{ $sections[7]->value }}</p>
+                        {{-- @dd($sections) --}}
+                        <h2>{{ $sections[0]->value }}</h2>
+                        <p>{{ $sections[1]->value }}</p>
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -95,13 +96,13 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="client-img-banner">
-                        <img src="{{ $sections[10]->value }}" class="img-fluid" alt="">
+                        <img src="{{ $sections[4]->value }}" class="img-fluid" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="author-about">
-                        <h2>{{ $sections[8]->value }}</h2>
-                        {!! $sections[9]->value !!}
+                        <h2>{{ $sections[2]->value }}</h2>
+                        {!! $sections[3]->value !!}
                     </div>
                 </div>
             </div>
@@ -112,8 +113,8 @@
             <div class="row">
                 <div class="col-lg-12 p-0">
                     <div class="mybooks">
-                        <h2>{{ $sections[11]->value }}</h2>
-                        {!! $sections[12]->value !!}
+                        <h2>{{ $sections[5]->value }}</h2>
+                        {!! $sections[6]->value !!}
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -148,7 +149,7 @@
                 <div class="col-lg-12">
                     <div class="client-banner">
                         <h2>
-                            {{ $sections[14]->value }}
+                            {{ $sections[7]->value }}
                         </h2>
                     </div>
                 </div>
@@ -192,7 +193,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="blog-article">
-                        <h2>{{ $sections[15]->value }}</h2>
+                        <h2>{{ $sections[8]->value }}</h2>
                     </div>
                 </div>
 
