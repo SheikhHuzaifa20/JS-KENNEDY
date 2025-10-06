@@ -49,6 +49,12 @@ $favicon = DB::table('imagetable')->where('table_name', 'favicon')->first();
     @stack('after-css')
 
 </head>
+<style>
+.main-menu.menu-dark .navigation li a img {
+            width: 22px;
+            margin-right: 10px;
+        }
+</style>
 
 
 <body class="vertical-layout vertical-menu-modern 2-columns   fixed-navbar" data-open="click"

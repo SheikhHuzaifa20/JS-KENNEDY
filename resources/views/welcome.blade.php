@@ -22,7 +22,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-lg-6">
                                             <div class="banner-content">
-                                                {!! $page->content !!}
+                                                {!! $product->banner_content !!}
                                                 <div class="banner-btn">
                                                     <a href="{{$product->link}}"
                                                         class="btn btn-black">
