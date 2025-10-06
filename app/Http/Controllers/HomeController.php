@@ -77,8 +77,7 @@ class HomeController extends Controller
 
     public function release_schedule()
     {
-        $products = DB::table('products')->get();
-        return view('release-schedule', compact('products'));
+        return view('release-schedule');
     }
 
     public function contact()
