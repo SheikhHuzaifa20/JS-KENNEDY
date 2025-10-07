@@ -263,7 +263,7 @@ route::get('status/cancelled/{id}', 'admin\\productcontroller@updatestatuscancel
 Route::resource('admin/blog', 'Admin\\BlogController');
 Route::resource('admin/category', 'Admin\\CategoryController');
 
-// Route::resource('admin/banner', 'Admin\\BannerController', ['names' => 'admin.banner']);
+Route::resource('admin/banner', 'Admin\\BannerController', ['names' => 'admin.banner']);
 Route::get('admin/banner/{id}/delete', ['as' => 'banner.delete', 'uses' => 'Admin\\BannerController@destroy']);
 Route::resource('admin/category', 'Admin\\CategoryController');
 // Route::resource('admin/attributes', 'Admin\\AttributesController');

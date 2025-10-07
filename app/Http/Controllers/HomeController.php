@@ -59,6 +59,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $banner = DB::table('banners')->get();
         $product2 = DB::table('products')->get();
         $blogs = DB::table('blogs')->get();
         $testimonials = DB::table('testimonials')->get();
@@ -66,7 +67,7 @@ class HomeController extends Controller
         $instagram = DB::table('m_flag')->where('id', 3)->first();
         // dd($testimonials);
 
-        return view('welcome', compact('product2', 'blogs', 'testimonials', 'facebook', 'instagram'));
+        return view('welcome', compact('banners', 'product2', 'blogs', 'testimonials', 'facebook', 'instagram'));
     }
 
     public function release_schedule()

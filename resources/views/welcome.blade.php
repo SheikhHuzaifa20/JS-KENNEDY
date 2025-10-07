@@ -17,14 +17,14 @@
                 <div class="col-lg-12">
                     <div class="main-book-sldier">
                         <div class="banner-sliders owl-carousel owl-theme">
-                            @foreach ($product2 as $product)
+                            @foreach ($banners as $banners)
                                 <div class="item">
                                     <div class="row align-items-center">
                                         <div class="col-lg-6">
                                             <div class="banner-content">
-                                                {!! $product->banner_content !!}
+                                                {!! $banners->description !!}
                                                 <div class="banner-btn">
-                                                    <a href="{{$product->link}}"
+                                                    <a href="{{$banners->link}}"
                                                         class="btn btn-black">
                                                         Buy From Amazon
                                                         <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid"
@@ -41,7 +41,7 @@
                                                             <div class="atropos-rotate">
                                                                 <div class="atropos-inner">
                                                                     <a href="JavaScript:;" id="show" class="main-text-1">
-                                                                        <img src="{{ asset($product->image) }}"
+                                                                        <img src="{{ $banners->image }}"
                                                                             class="img-fluid" alt="" data-atropos-offset="2">
                                                                     </a>
                                                                 </div>
