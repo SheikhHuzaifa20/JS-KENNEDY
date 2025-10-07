@@ -93,18 +93,6 @@
         </div>
         <div class="col-md-12">
             <div class="form-group">
-                {!! Form::label('description', 'Description') !!}
-                {!! Form::textarea(
-                    'description',
-                    null,
-                    'required' == 'required'
-                        ? ['class' => 'form-control', 'id' => 'summary-ckeditor', 'required' => 'required']
-                        : ['class' => 'form-control'],
-                ) !!}
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="form-group">
                 {!! Form::label('image', 'Image') !!}
                 <input class="form-control dropify" name="image" type="file" id="image"
                     {{ $product->image != '' ? "data-default-file = /$product->image" : '' }}
