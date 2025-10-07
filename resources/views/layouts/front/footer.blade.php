@@ -1,7 +1,7 @@
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-lg-5">
+            <div class="col-lg-3">
                 <div class="footer-logo">
                     <img src="{{ asset('asset/images/footer-logo.png') }}" class="img-fluid" alt="">
                     <ul>
@@ -59,6 +59,14 @@
                         <div class="formLoader" style="display:none; text-align:center; margin-top:10px;">
                             <img src="{{ asset('asset/images/loader.gif') }}" class="img-fluid" alt="">
                         </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="quick-link">
+                    <div class="dmca-footer">
+                        <img src="{{ asset('asset/images/dmca.webp') }}" class="img-fluid" alt="">
                     </div>
                 </div>
             </div>
