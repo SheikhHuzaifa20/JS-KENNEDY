@@ -469,6 +469,10 @@ section.blogs {
     margin-bottom: 50px;
 }
 
+.banner-content h5 {
+    color: white;
+}
+
 .blog-article-build {
     background: var(--black-color);
     padding: 20px;
@@ -629,6 +633,7 @@ footer {
 .formLoader img {
     width: 50px;
 }
+
 #formLoader img {
     width: 50px;
 }
