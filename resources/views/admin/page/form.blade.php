@@ -14,45 +14,54 @@
         </div>
         @if($page->id == '33')
         @else
-        <div class="col-md-12">
-            <div class="form-group">
-                {!! Form::label('content', 'Content') !!}
-                {!! Form::textarea('content', null, ('required' == 'required') ? ['class' => 'form-control', 'id' => 'summary-ckeditor', 'required' => 'required'] : ['class' => 'form-control']) !!}
+            <div class="col-md-12">
+                <div class="form-group">
+                    {!! Form::label('content', 'Content') !!}
+                    {!! Form::textarea('content', null, ('required' == 'required') ? ['class' => 'form-control', 'id' => 'summary-ckeditor', 'required' => 'required'] : ['class' => 'form-control']) !!}
+                </div>
             </div>
-        </div>
-        <div class="col-md-12">
-            <div class="form-group">
-                {!! Form::label('image', 'Image') !!}
-                <input class="form-control dropify" name="image" type="file" id="image" {{ ($page->image != '') ? "data-default-file = " . asset($page->image) : ''}} {{ ($page->image == '') ? "required" : ''}} value="{{asset($page->image)}}">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @php
+                        $skippages = ['bonus scenes', 'blog', 'contact'];
+                    @endphp
+                    @if (!in_array(strtolower($page->page_name ?? ''), $skippages))
+                        {!! Form::label('image', 'Image') !!}
+                        <input class="form-control dropify" name="image" type="file" id="image" {{ ($page->image != '') ? "data-default-file = " . asset($page->image) : ''}} {{ ($page->image == '') ? "required" : ''}}
+                            value="{{asset($page->image)}}">
+                    @endif
+                </div>
             </div>
-        </div>
         @endif
         @foreach($page->sections as $section)
-        <div class="col-md-12">
-            <div class="form-group">
-                <label>{{$section->label}}</label>
-                @if($section->type == 'image')
-                <input type="file" name="{{$section->slug}}" class="dropify" data-default-file="{{ asset($section->value) }}">
-                @elseif($section->type == 'textarea')
-                <textarea name="{{$section->slug}}" id="costom-summary-ckeditor-{{$section->id}}">{{$section->value}}</textarea>
-                @push('js')
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>{{$section->label}}</label>
+                    @if($section->type == 'image')
+                        <input type="file" name="{{$section->slug}}" class="dropify"
+                            data-default-file="{{ asset($section->value) }}">
+                    @elseif($section->type == 'textarea')
+                        <textarea name="{{$section->slug}}"
+                            id="costom-summary-ckeditor-{{$section->id}}">{{$section->value}}</textarea>
+                        @push('js')
 
-                <script>
-                    if($('#costom-summary-ckeditor-{{$section->id}}').length != 0){
-                        CKEDITOR.replace( 'costom-summary-ckeditor-{{$section->id}}' );
-                    }
-                </script>
+                            <script>
+                                if ($('#costom-summary-ckeditor-{{$section->id}}').length != 0) {
+                                    CKEDITOR.replace('costom-summary-ckeditor-{{$section->id}}');
+                                }
+                            </script>
 
-                @endpush
-                @elseif($section->type == 'video')
-                <img alt="" class="img-responsive" id="banner1" 
-                src="{{ asset($section->value) }}" style=" width: 30%; "> 
-                <input type="file" name="{{$section->slug}}" class="dropify" {{ ($section->value != '') ? "data-default-file = /$section->value" : ''}} {{ ($section->value == '') ? "required" : ''}} value="{{$section->value}}">
-                @else($section->type == 'text')
-                <input type="text" name="{{$section->slug}}" value="{{$section->value}}" class="form-control">
-                @endif
+                        @endpush
+                    @elseif($section->type == 'video')
+                        <img alt="" class="img-responsive" id="banner1" src="{{ asset($section->value) }}"
+                            style=" width: 30%; ">
+                        <input type="file" name="{{$section->slug}}" class="dropify" {{ ($section->value != '') ? "data-default-file = /$section->value" : ''}} {{ ($section->value == '') ? "required" : ''}}
+                            value="{{$section->value}}">
+                    @else($section->type == 'text')
+                        <input type="text" name="{{$section->slug}}" value="{{$section->value}}" class="form-control">
+                    @endif
+                </div>
             </div>
-        </div>
         @endforeach
     </div>
 </div>

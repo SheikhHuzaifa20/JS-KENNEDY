@@ -81,13 +81,15 @@ class BannerController extends Controller
         if (auth()->user()->permissions()->where('name', '=', 'add-' . $model)->first() != null) {
             $this->validate($request, [
                 'title' => 'required',
-                'image' => 'required|mimes:jpeg,jpg,png,gif|required|max:10000'
+                'image' => 'required|mimes:jpeg,jpg,png,gif|required|max:10000',
+                'link' => 'nullable|url',
             ]);
             // $requestData = $request->all();
             $banner = new banner;
 
             $banner->title = $request->input('title');
             $banner->description = $request->input('description');
+            $banner->link = $request->input('link');
             $file = $request->file('image');
             $destination_path = 'uploads/banner/';
             $profileImage = date("Ymd") . "." . $file->getClientOriginalExtension();
@@ -95,6 +97,7 @@ class BannerController extends Controller
             // Image::make($file)->save(public_path($destination_path) . DIRECTORY_SEPARATOR. $profileImage);
             $banner->image = $destination_path . $profileImage;
             $banner->save();
+            // dd($banner);
             return redirect('admin/banner')->with('message', 'Banner added!');
         }
         return response(view('403'), 403);
@@ -154,7 +157,7 @@ class BannerController extends Controller
             $this->validate($request, [
                 'title' => 'required|string|max:255',
                 'description' => 'required|string',
-                'link' => 'nullable|url', // optional but must be valid URL if provided
+                'link' => 'nullable|url',
                 'image' => 'nullable|mimes:jpeg,jpg,png,gif|max:10000',
             ]);
 
@@ -162,7 +165,7 @@ class BannerController extends Controller
             $requestData = [
                 'title' => $request->input('title'),
                 'description' => $request->input('description'),
-                'link' => $request->input('link'), // can be null
+                'link' => $request->input('link'),
             ];
 
             // ✅ Handle image upload if provided

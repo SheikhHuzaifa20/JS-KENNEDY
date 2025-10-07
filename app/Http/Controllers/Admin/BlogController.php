@@ -27,17 +27,17 @@ class BlogController extends Controller
 
     public function index(Request $request)
     {
-        $model = str_slug('blog','-');
-        if(auth()->user()->permissions()->where('name','=','view-'.$model)->first()!= null) {
+        $model = str_slug('blog', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'view-' . $model)->first() != null) {
             $keyword = $request->get('search');
             $perPage = 25;
 
             if (!empty($keyword)) {
                 $blog = Blog::where('name', 'LIKE', "%$keyword%")
-                ->orWhere('short_detail', 'LIKE', "%$keyword%")
-                ->orWhere('detail', 'LIKE', "%$keyword%")
-                ->orWhere('image', 'LIKE', "%$keyword%")
-                ->paginate($perPage);
+                    ->orWhere('short_detail', 'LIKE', "%$keyword%")
+                    ->orWhere('detail', 'LIKE', "%$keyword%")
+                    ->orWhere('image', 'LIKE', "%$keyword%")
+                    ->paginate($perPage);
             } else {
                 $blog = Blog::paginate($perPage);
             }
@@ -55,8 +55,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $model = str_slug('blog','-');
-        if(auth()->user()->permissions()->where('name','=','add-'.$model)->first()!= null) {
+        $model = str_slug('blog', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'add-' . $model)->first() != null) {
             return view('admin.blog.create');
         }
         return response(view('403'), 403);
@@ -72,34 +72,35 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        $model = str_slug('blog','-');
-        if(auth()->user()->permissions()->where('name','=','add-'.$model)->first()!= null) {
+        $model = str_slug('blog', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'add-' . $model)->first() != null) {
             $this->validate($request, [
-			'name' => 'required',
-			'short_detail' => 'required',
-			'detail' => 'required',
-			'inner_detail' => 'required',
-			'image' => 'required'
-		]);
+                'name' => 'required',
+                'short_detail' => 'required',
+                'detail' => 'required',
+                'inner_detail' => 'required',
+                'image' => 'required'
+            ]);
 
             if ($request->hasFile('image')) {
                 $blog = new blog;
 
-           
-                $blog->name = $request->input('name');   
-                $blog->short_detail = $request->input('short_detail');     
+
+                $blog->name = $request->input('name');
+                $blog->short_detail = $request->input('short_detail');
                 $blog->detail = $request->input('detail');
                 $blog->inner_detail = $request->input('inner_detail');
                 $file = $request->file('image');
-                
+
                 //make sure yo have image folder inside your public
                 $destination_path = 'uploads/blogs/';
                 $fileName = $file->getClientOriginalName();
-                $profileImage = date("Ymd").$fileName.".".$file->getClientOriginalExtension();
+                $profileImage = date("Ymd") . $fileName . "." . $file->getClientOriginalExtension();
 
-                Image::make($file)->save(public_path($destination_path) . DIRECTORY_SEPARATOR. $profileImage);
 
-                $blog->image = $destination_path.$profileImage;
+                $file->move(public_path('uploads/blogs/'), $profileImage);
+
+                $blog->image = $destination_path . $profileImage;
                 $blog->save();
             }
 
@@ -117,8 +118,8 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        $model = str_slug('blog','-');
-        if(auth()->user()->permissions()->where('name','=','view-'.$model)->first()!= null) {
+        $model = str_slug('blog', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'view-' . $model)->first() != null) {
             $blog = Blog::findOrFail($id);
             return view('admin.blog.show', compact('blog'));
         }
@@ -134,8 +135,8 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        $model = str_slug('blog','-');
-        if(auth()->user()->permissions()->where('name','=','edit-'.$model)->first()!= null) {
+        $model = str_slug('blog', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'edit-' . $model)->first() != null) {
             $blog = Blog::findOrFail($id);
             return view('admin.blog.edit', compact('blog'));
         }
@@ -152,37 +153,37 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $model = str_slug('blog','-');
-        if(auth()->user()->permissions()->where('name','=','edit-'.$model)->first()!= null) {
+        $model = str_slug('blog', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'edit-' . $model)->first() != null) {
             $this->validate($request, [
-			'name' => 'required',
-			'short_detail' => 'required',
-			'detail' => 'required',
-			'inner_detail' => 'required',
-		]);
+                'name' => 'required',
+                'short_detail' => 'required',
+                'detail' => 'required',
+                'inner_detail' => 'required',
+            ]);
             $requestData = $request->all();
-            
 
-        if ($request->hasFile('image')) {
-            
-            $blog = blog::where('id', $id)->first();
-            $image_path = public_path($blog->image); 
-            
-            if(File::exists($image_path)) {
-                File::delete($image_path);
+
+            if ($request->hasFile('image')) {
+
+                $blog = blog::where('id', $id)->first();
+                $image_path = public_path($blog->image);
+
+                if (File::exists($image_path)) {
+                    File::delete($image_path);
+                }
+
+                $file = $request->file('image');
+                $fileNameExt = $request->file('image')->getClientOriginalName();
+                $fileNameForm = str_replace(' ', '_', $fileNameExt);
+                $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
+                $fileExt = $request->file('image')->getClientOriginalExtension();
+                $fileNameToStore = $fileName . '_' . time() . '.' . $fileExt;
+                $pathToStore = public_path('uploads/blogs/');
+                $file->move($pathToStore, $fileNameToStore);
+
+                $requestData['image'] = 'uploads/blogs/' . $fileNameToStore;
             }
-
-            $file = $request->file('image');
-            $fileNameExt = $request->file('image')->getClientOriginalName();
-            $fileNameForm = str_replace(' ', '_', $fileNameExt);
-            $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
-            $fileExt = $request->file('image')->getClientOriginalExtension();
-            $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
-            $pathToStore = public_path('uploads/blogs/');
-            Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
-
-             $requestData['image'] = 'uploads/blogs/'.$fileNameToStore;               
-        }
 
 
             $blog = Blog::findOrFail($id);
@@ -203,8 +204,8 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        $model = str_slug('blog','-');
-        if(auth()->user()->permissions()->where('name','=','delete-'.$model)->first()!= null) {
+        $model = str_slug('blog', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'delete-' . $model)->first() != null) {
             Blog::destroy($id);
 
             return redirect('admin/blog')->with('flash_message', 'Blog deleted!');
