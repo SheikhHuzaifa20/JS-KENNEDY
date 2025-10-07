@@ -103,7 +103,6 @@ class ProductController extends Controller
             $this->validate($request, [
                 'product_title' => 'required',
                 'description' => 'required',
-                'banner_content' => 'required',
                 'price' => 'required',
                 'image' => 'required',
             ]);
@@ -115,7 +114,6 @@ class ProductController extends Controller
             $product->product_title = $request->input('product_title');
             $product->price = $request->input('price');
             $product->description = $request->input('description');
-            $product->banner_content = $request->input('banner_content');
             $product->category = $request->input('category');
             // $product->subcategory = $request->input('subcategory');
             // $product->colors = $request->input('colors');
@@ -242,7 +240,6 @@ class ProductController extends Controller
             $this->validate($request, [
                 'product_title' => 'required',
                 'description'   => 'required',
-                'banner_content'   => 'required',
                 'price'         => 'required',
                 'link'         => 'required',
             ]);
@@ -253,7 +250,6 @@ class ProductController extends Controller
             $product->price         = $request->input('price');
             $product->link         = $request->input('link');
             $product->description   = $request->input('description');
-            $product->banner_content   = $request->input('banner_content');
             $product->category      = $request->input('category');
 
             // === update main image ===

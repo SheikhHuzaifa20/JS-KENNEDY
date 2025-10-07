@@ -69,18 +69,6 @@
         </div>
         <div class="col-md-12">
             <div class="form-group">
-                {!! Form::label('banner_content', 'Banner Content') !!}
-                {!! Form::textarea(
-                    'banner_content',
-                    null,
-                    'required' == 'required'
-                        ? ['class' => 'form-control', 'id' => 'summary-ckeditor2', 'required' => 'required']
-                        : ['class' => 'form-control'],
-                ) !!}
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="form-group">
                 {!! Form::label('description', 'Book Description') !!}
                 {!! Form::textarea(
                     'description',

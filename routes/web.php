@@ -207,29 +207,14 @@ Route::post('update/uploadPicture', 'LoggedInController@uploadPicture')->name('u
 //===================== Front Routes =====================//
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/military-federal', 'HomeController@military')->name('military');
-Route::get('/professional-responders', 'HomeController@professional')->name('professional');
-Route::get('/contractor_compliance', 'HomeController@contractor')->name('contractor');
-Route::get('/we_are_content', 'HomeController@we_are_content')->name('we_are_content');
-
-Route::get('/contact-us', 'HomeController@contact')->name('contact');
-Route::get('/about', 'HomeController@about')->name('about');
-Route::get('/staff', 'HomeController@staff')->name('staff');
-Route::get('/accreditations', 'HomeController@accreditations')->name('accreditations');
-Route::get('/terms-of-service', 'HomeController@terms')->name('terms');
-Route::get('/courses', 'HomeController@courses')->name('courses');
-Route::get('/course-detail/{id}', 'HomeController@course_detail')->name('course_detail');
-Route::post('/mark-content-viewed', 'HomeController@markViewed')->name('content.markViewed');
-Route::get('/upcoming-training', 'HomeController@upcoming')->name('upcoming');
-Route::get('/get-upcoming-training', 'HomeController@upcoming_ajax')->name('upcoming_ajax');
-Route::get('/upcoming-details/{id}', 'HomeController@upcoming_detail')->name('upcoming-details');
-Route::get('/grant-opportunities', 'HomeController@grant_opportunities')->name('grant_opportunities');
-Route::get('/grant-registration', 'HomeController@grant_registration')->name('grant_registration');
-Route::get('/vendors', 'HomeController@vendors')->name('vendors');
-Route::get('/stickers', 'HomeController@stickers')->name('stickers');
-Route::get('/t-shirts', 'HomeController@t_shirts')->name('t_shirts');
-Route::get('/hats', 'HomeController@hats')->name('hats');
-Route::get('/faq', 'HomeController@faq')->name('faq');
+Route::get('/release-schedule', 'HomeController@release_schedule')->name('release_schedule');
+Route::get('/contact', 'HomeController@contact')->name('contact');
+Route::get('/books', 'HomeController@books')->name('books');
+Route::get('/bonus-scenes', 'HomeController@bonus_scenes')->name('bonus_scenes');
+Route::get('/blog', 'HomeController@blog')->name('blog');
+Route::get('/blog-detail/{id}', 'HomeController@blogdetail')->name('blogdetail');
+Route::post('/inquiry', 'HomeController@inquiry')->name('inquiry.store');
+Route::post('newsletter-submit', 'HomeController@newsletterSubmit')->name('newsletterSubmit');
 
 
 Route::get('/set_sub_category', 'Admin\ProductController@set_sub_category')->name('set_sub_category');
@@ -263,7 +248,7 @@ route::get('status/cancelled/{id}', 'admin\\productcontroller@updatestatuscancel
 Route::resource('admin/blog', 'Admin\\BlogController');
 Route::resource('admin/category', 'Admin\\CategoryController');
 
-// Route::resource('admin/banner', 'Admin\\BannerController', ['names' => 'admin.banner']);
+Route::resource('admin/banner', 'Admin\\BannerController', ['names' => 'admin.banner']);
 Route::get('admin/banner/{id}/delete', ['as' => 'banner.delete', 'uses' => 'Admin\\BannerController@destroy']);
 Route::resource('admin/category', 'Admin\\CategoryController');
 // Route::resource('admin/attributes', 'Admin\\AttributesController');
@@ -274,11 +259,4 @@ Route::post('admin/delete-product-variant', 'Admin\\AttributesValueController@de
 Route::resource('admin/testimonial', 'Admin\\TestimonialController');
 Route::resource('admin/page', 'Admin\\PageController');
 
-Route::get('/release-schedule', 'HomeController@release_schedule')->name('release_schedule');
-Route::get('/contact', 'HomeController@contact')->name('contact');
-Route::get('/books', 'HomeController@books')->name('books');
-Route::get('/bonus-scenes', 'HomeController@bonus_scenes')->name('bonus_scenes');
-Route::get('/blog', 'HomeController@blog')->name('blog');
-Route::get('/blog-detail/{id}', 'HomeController@blogdetail')->name('blogdetail');
-Route::post('/inquiry', 'HomeController@inquiry')->name('inquiry.store');
-Route::post('newsletter-submit', 'HomeController@newsletterSubmit')->name('newsletterSubmit');
+

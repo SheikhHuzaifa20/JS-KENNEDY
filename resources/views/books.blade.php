@@ -29,152 +29,204 @@
 
 
 
-    <section class="about-author books-pg-inner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="client-img-banner">
-                        <img src="{{ asset($book1->images) }}" class="img-fluid" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="author-about">
-                        <h2>{{$book1->product_title}}</h2>
-                        {!! $book1->description !!}
-                        <div class="book-links-snata">
-                            <a href="{{$book1->link}}" class="btn snata-btn"> Buy From Amazon
-                                <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt=""></a>
+    <!-- <section class="about-author books-pg-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="client-img-banner">
+                                <img src="{{ asset($book1->images) }}" class="img-fluid" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="author-about">
+                                <h2>{{$book1->product_title}}</h2>
+                                {!! $book1->description !!}
+                                <div class="book-links-snata">
+                                    <a href="{{$book1->link}}" class="btn snata-btn"> Buy From Amazon
+                                        <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt=""></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section> -->
 
 
-    <section class="about-author books-pg-inner books-back-dark">
-        <div class="container">
-            <div class="row">
+    <!-- <section class="about-author books-pg-inner books-back-dark">
+                <div class="container">
+                    <div class="row">
 
-                <div class="col-lg-6">
-                    <div class="author-about">
-                        <h2>{{$book2->product_title}}</h2>
-                        {!! $book2->description !!}
-                        <div class="book-links-snata">
-                            <a href="{{$book2->link}}" class="btn snata-btn"> Buy From Amazon
-                                <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt=""></a>
-                            <a href="#" class="btn snata-btn">Audiobook</a>
+                        <div class="col-lg-6">
+                            <div class="author-about">
+                                <h2>{{$book2->product_title}}</h2>
+                                {!! $book2->description !!}
+                                <div class="book-links-snata">
+                                    <a href="{{$book2->link}}" class="btn snata-btn"> Buy From Amazon
+                                        <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt=""></a>
+                                    <a href="#" class="btn snata-btn">Audiobook</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="client-img-banner">
+                                <img src="{{ asset($book2->images) }}" class="img-fluid" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="client-img-banner">
-                        <img src="{{ asset($book2->images) }}" class="img-fluid" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section> -->
 
 
 
-    <section class="about-author books-pg-inner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="client-img-banner">
-                        <img src="{{ asset($book3->images) }}" class="img-fluid" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="author-about">
-                        <h2>{{$book3->product_title}}</h2>
-                        {!! $book3->description !!}
-                        <div class="book-links-snata">
-                            <a href="{{$book3->link}}" class="btn snata-btn"> Buy From Amazon
-                                <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt=""></a>
-                            <a href="#" class="btn snata-btn">Audiobook</a>
+    <!-- <section class="about-author books-pg-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="client-img-banner">
+                                <img src="{{ asset($book3->images) }}" class="img-fluid" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="author-about">
+                                <h2>{{$book3->product_title}}</h2>
+                                {!! $book3->description !!}
+                                <div class="book-links-snata">
+                                    <a href="{{$book3->link}}" class="btn snata-btn"> Buy From Amazon
+                                        <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt=""></a>
+                                    <a href="#" class="btn snata-btn">Audiobook</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section> -->
 
 
-    <section class="about-author books-pg-inner books-back-dark">
-        <div class="container">
-            <div class="row">
+    <!-- <section class="about-author books-pg-inner books-back-dark">
+                <div class="container">
+                    <div class="row">
 
-                <div class="col-lg-6">
-                    <div class="author-about">
-                        <h2>{{$book4->product_title}}</h2>
-                        {!! $book4->description !!}
-                        <div class="book-links-snata">
-                            <a href="{{$book4->link}}" class="btn snata-btn"> Buy From Amazon
-                                <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt=""></a>
-                            <a href="#" class="btn snata-btn">Audiobook</a>
+                        <div class="col-lg-6">
+                            <div class="author-about">
+                                <h2>{{$book4->product_title}}</h2>
+                                {!! $book4->description !!}
+                                <div class="book-links-snata">
+                                    <a href="{{$book4->link}}" class="btn snata-btn"> Buy From Amazon
+                                        <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt=""></a>
+                                    <a href="#" class="btn snata-btn">Audiobook</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="client-img-banner">
+                                <img src="{{ asset($book4->images) }}" class="img-fluid" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="client-img-banner">
-                        <img src="{{ asset($book4->images) }}" class="img-fluid" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section> -->
 
 
-    <section class="about-author books-pg-inner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="client-img-banner">
-                        <img src="{{ asset($book5->images) }}" class="img-fluid" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="author-about">
-                        <h2>{{$book5->product_title}}</h2>
-                        {!! $book5->description !!}
-                        <div class="book-links-snata">
-                            <a href="{{$book5->link}}" class="btn snata-btn"> Buy From Amazon
-                                <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt=""></a>
-                            <a href="#" class="btn snata-btn">Audiobook</a>
+    <!-- <section class="about-author books-pg-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="client-img-banner">
+                                <img src="{{ asset($book5->images) }}" class="img-fluid" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="author-about">
+                                <h2>{{$book5->product_title}}</h2>
+                                {!! $book5->description !!}
+                                <div class="book-links-snata">
+                                    <a href="{{$book5->link}}" class="btn snata-btn"> Buy From Amazon
+                                        <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt=""></a>
+                                    <a href="#" class="btn snata-btn">Audiobook</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section> -->
 
 
 
-    <section class="about-author books-pg-inner books-back-dark">
-        <div class="container">
-            <div class="row">
+    <!-- <section class="about-author books-pg-inner books-back-dark">
+                <div class="container">
+                    <div class="row">
 
-                <div class="col-lg-6">
-                    <div class="author-about">
-                        <h2>{{$book6->product_title}}</h2>
-                        {!! $book6->description !!}
-                        <div class="book-links-snata">
-                            <a href="{{$book6->link}}" class="btn snata-btn"> Buy From Amazon
-                                <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt=""></a>
-                            <a href="#" class="btn snata-btn">Audiobook</a>
+                        <div class="col-lg-6">
+                            <div class="author-about">
+                                <h2>{{$book6->product_title}}</h2>
+                                {!! $book6->description !!}
+                                <div class="book-links-snata">
+                                    <a href="{{$book6->link}}" class="btn snata-btn"> Buy From Amazon
+                                        <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt=""></a>
+                                    <a href="#" class="btn snata-btn">Audiobook</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="client-img-banner">
+                                <img src="{{ asset($book6->images) }}" class="img-fluid" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="client-img-banner">
-                        <img src="{{ asset($book6->images) }}" class="img-fluid" alt="">
-                    </div>
+            </section> -->
+
+
+    @foreach ($books as $index => $book)
+        @php $isGreen = $index % 2 !== 0; @endphp
+
+        <section class="about-author books-pg-inner {{ $isGreen ? 'books-back-dark' : '' }}">
+            <div class="container">
+                <div class="row align-items-center">
+                    @if(!$isGreen)
+                        {{-- White section --}}
+                        <div class="col-lg-6">
+                            <div class="client-img-banner">
+                                <img src="{{ asset($book->image) }}" class="img-fluid" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="author-about">
+                                <h2>{{ $book->product_title }}</h2>
+                                {!! $book->description !!}
+                                <div class="book-links-snata">
+                                    <a href="{{ $book->link }}" class="btn snata-btn">
+                                        Buy From Amazon
+                                        <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @else
+                        {{-- Green section --}}
+                        <div class="col-lg-6">
+                            <div class="author-about text-white">
+                                <h2>{{ $book->product_title }}</h2>
+                                {!! $book->description !!}
+                                <div class="book-links-snata">
+                                    <a href="{{ $book->link }}" class="btn snata-btn">
+                                        Buy From Amazon
+                                        <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
+                                    </a>
+                                    <a href="#" class="btn snata-btn">Audiobook</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="client-img-banner">
+                                <img src="{{ asset($book->image) }}" class="img-fluid" alt="">
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endforeach
 
     <section class="redemption-freedom">
         <div class="container-fluid">
@@ -184,8 +236,7 @@
                         {!! $page->content !!}
                     </div>
                     <div class="book-footer-banner">
-                        <img src="{{$page->image}}" class="img-fluid"
-                            alt="">
+                        <img src="{{$page->image}}" class="img-fluid" alt="">
                     </div>
                 </div>
             </div>

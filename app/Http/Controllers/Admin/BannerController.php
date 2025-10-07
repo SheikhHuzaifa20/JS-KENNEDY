@@ -16,18 +16,16 @@ class BannerController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $logo = imagetable::
-                     select('img_path')
-                     ->where('table_name','=','logo')
-                     ->first();
-             
-        $favicon = imagetable::
-                     select('img_path')
-                     ->where('table_name','=','favicon')
-                     ->first();  
+        $logo = imagetable::select('img_path')
+            ->where('table_name', '=', 'logo')
+            ->first();
 
-        View()->share('logo',$logo);
-        View()->share('favicon',$favicon);
+        $favicon = imagetable::select('img_path')
+            ->where('table_name', '=', 'favicon')
+            ->first();
+
+        View()->share('logo', $logo);
+        View()->share('favicon', $favicon);
     }
 
 
@@ -39,14 +37,14 @@ class BannerController extends Controller
 
     public function index(Request $request)
     {
-        $model = str_slug('banner','-');
-        if(auth()->user()->permissions()->where('name','=','view-'.$model)->first()!= null) {
+        $model = str_slug('banner', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'view-' . $model)->first() != null) {
             $keyword = $request->get('search');
             $perPage = 25;
 
             if (!empty($keyword)) {
                 $banner = Banner::where('title', 'LIKE', "%$keyword%")
-                ->paginate($perPage);
+                    ->paginate($perPage);
             } else {
                 $banner = Banner::paginate($perPage);
             }
@@ -54,7 +52,6 @@ class BannerController extends Controller
             return view('admin.banner.index', compact('banner'));
         }
         return response(view('403'), 403);
-
     }
 
     /**
@@ -64,12 +61,11 @@ class BannerController extends Controller
      */
     public function create()
     {
-        $model = str_slug('banner','-');
-        if(auth()->user()->permissions()->where('name','=','add-'.$model)->first()!= null) {
+        $model = str_slug('banner', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'add-' . $model)->first() != null) {
             return view('admin.banner.create');
         }
         return response(view('403'), 403);
-
     }
 
     /**
@@ -81,23 +77,27 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        $model = str_slug('banner','-');
-        if(auth()->user()->permissions()->where('name','=','add-'.$model)->first()!= null) {
+        $model = str_slug('banner', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'add-' . $model)->first() != null) {
             $this->validate($request, [
-			'title' => 'required',
-            'image' => 'required|mimes:jpeg,jpg,png,gif|required|max:10000'
-		]);
+                'title' => 'required',
+                'image' => 'required|mimes:jpeg,jpg,png,gif|required|max:10000',
+                'link' => 'nullable|url',
+            ]);
             // $requestData = $request->all();
             $banner = new banner;
-            
-            $banner->title = $request->input('title');   
-            $banner->description = $request->input('description');               
+
+            $banner->title = $request->input('title');
+            $banner->description = $request->input('description');
+            $banner->link = $request->input('link');
             $file = $request->file('image');
             $destination_path = 'uploads/banner/';
-            $profileImage = date("Ymd").".".$file->getClientOriginalExtension();
-            Image::make($file)->save(public_path($destination_path) . DIRECTORY_SEPARATOR. $profileImage);
-            $banner->image = $destination_path.$profileImage;
+            $profileImage = date("Ymd") . "." . $file->getClientOriginalExtension();
+            $file->move(public_path('uploads/banner/'), $profileImage);
+            // Image::make($file)->save(public_path($destination_path) . DIRECTORY_SEPARATOR. $profileImage);
+            $banner->image = $destination_path . $profileImage;
             $banner->save();
+            // dd($banner);
             return redirect('admin/banner')->with('message', 'Banner added!');
         }
         return response(view('403'), 403);
@@ -112,8 +112,8 @@ class BannerController extends Controller
      */
     public function show($id)
     {
-        $model = str_slug('banner','-');
-        if(auth()->user()->permissions()->where('name','=','view-'.$model)->first()!= null) {
+        $model = str_slug('banner', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'view-' . $model)->first() != null) {
             $banner = Banner::findOrFail($id);
             return view('admin.banner.show', compact('banner'));
         }
@@ -129,8 +129,8 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-        $model = str_slug('banner','-');
-        if(auth()->user()->permissions()->where('name','=','edit-'.$model)->first()!= null) {
+        $model = str_slug('banner', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'edit-' . $model)->first() != null) {
             $banner = Banner::findOrFail($id);
 
 
@@ -149,51 +149,58 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $model = str_slug('banner','-');
-        if(auth()->user()->permissions()->where('name','=','edit-'.$model)->first()!= null) {
+        $model = str_slug('banner', '-');
+
+        if (auth()->user()->permissions()->where('name', '=', 'edit-' . $model)->first() != null) {
+
+            // ✅ Validation
             $this->validate($request, [
-            'title' => 'required',
-            
-        ]);
+                'title' => 'required|string|max:255',
+                'description' => 'required|string',
+                'link' => 'nullable|url',
+                'image' => 'nullable|mimes:jpeg,jpg,png,gif|max:10000',
+            ]);
 
+            // ✅ Collect form data
+            $requestData = [
+                'title' => $request->input('title'),
+                'description' => $request->input('description'),
+                'link' => $request->input('link'),
+            ];
 
-        $requestData['title'] = $request->input('title');
-        $requestData['description'] = $request->input('description');
-       
-        if ($request->hasFile('image')) {
-			
-				
-			$banner = banner::where('id', $id)->first();
-			$image_path = public_path($banner->image);	
-			
-			if(File::exists($image_path)) {
-				
-				File::delete($image_path);
-			} 
+            // ✅ Handle image upload if provided
+            if ($request->hasFile('image')) {
+                $banner = Banner::findOrFail($id);
 
-            $file = $request->file('image');
-            $fileNameExt = $request->file('image')->getClientOriginalName();
-            $fileNameForm = str_replace(' ', '_', $fileNameExt);
-            $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
-            $fileExt = $request->file('image')->getClientOriginalExtension();
-            $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
-            $pathToStore = public_path('uploads/banner/');
-            Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
-			$requestData['image'] = 'uploads/banner/'.$fileNameToStore;        
-			
+                // Delete old image if it exists
+                $oldImagePath = public_path($banner->image);
+                if (File::exists($oldImagePath)) {
+                    File::delete($oldImagePath);
+                }
+
+                // Handle new image upload
+                $file = $request->file('image');
+                $destinationPath = 'uploads/banner/';
+                $fileNameToStore = date("YmdHis") . '.' . $file->getClientOriginalExtension();
+
+                // Move uploaded image (no Intervention Image)
+                $file->move(public_path($destinationPath), $fileNameToStore);
+
+                // Store new image path in DB
+                $requestData['image'] = $destinationPath . $fileNameToStore;
+            }
+
+            // ✅ Update banner record
+            Banner::where('id', $id)->update($requestData);
+
+            session()->flash('message', 'Successfully updated the Banner');
+            return redirect('admin/banner');
         }
 
-        banner::where('id', $id)
-                  ->update($requestData);
-
-       
-        session()->flash('message', 'Successfully updated the Banner');
-        return redirect('admin/banner');
-            }
-            return response(view('403'), 403);
-
-
+        return response(view('403'), 403);
     }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -204,13 +211,13 @@ class BannerController extends Controller
      */
     public function destroy($id)
     {
-       // $model = str_slug('banner','-');
-       // if(auth()->user()->permissions()->where('name','=','delete-'.$model)->first()!= null) {
-            Banner::destroy($id);
+        // $model = str_slug('banner','-');
+        // if(auth()->user()->permissions()->where('name','=','delete-'.$model)->first()!= null) {
+        Banner::destroy($id);
 
-            return redirect('admin/banner')->with('flash_message', 'Banner deleted!');
-       // }
-       // return response(view('403'), 403);
+        return redirect('admin/banner')->with('flash_message', 'Banner deleted!');
+        // }
+        // return response(view('403'), 403);
 
     }
 }
