@@ -59,9 +59,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = DB::table('section')->where('page_id', 33)->get();
-        // dd($products);
-
         $product2 = DB::table('products')->get();
         $blogs = DB::table('blogs')->get();
         $testimonials = DB::table('testimonials')->get();
@@ -69,7 +66,7 @@ class HomeController extends Controller
         $instagram = DB::table('m_flag')->where('id', 3)->first();
         // dd($testimonials);
 
-        return view('welcome', compact('products', 'product2', 'blogs', 'testimonials', 'facebook', 'instagram'));
+        return view('welcome', compact('product2', 'blogs', 'testimonials', 'facebook', 'instagram'));
     }
 
     public function release_schedule()

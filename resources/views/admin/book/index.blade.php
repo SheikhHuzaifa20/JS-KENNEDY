@@ -50,7 +50,7 @@
                                             <th>#</th>
                                             <th>Book Title</th>
                                             <th>Book Price</th>
-                                            <th>Book Category</th>
+                                            <!-- <th>Book Category</th> -->
                                             <th>Book Image</th>
                                             <th>Actions</th>
                                         </tr>
@@ -63,7 +63,7 @@
                                                     {{ \Illuminate\Support\Str::limit($item->product_title, 50, $end = '...') }}
                                                 </td>
                                                 <td>{{ $item->price }}</td>
-                                                <td>{{ $item->categorys->name }}</td>
+                                                <!-- <td>{{ $item->categorys->name }}</td> -->
                                                 <td><img src="{{asset($item->image)}}" alt="" title="" width="150"></td>
                                                 <td>
                                                     <a href="{{ url('/admin/book/' . $item->id . '/edit') }}">
@@ -86,7 +86,7 @@
                                             <th>#</th>
                                             <th>Books Title</th>
                                             <th>Books Price</th>
-                                            <th>Books Category</th>
+                                            <!-- <th>Books Category</th> -->
                                             <th>Books Image</th>
                                             <th>Actions</th>
                                         </tr>

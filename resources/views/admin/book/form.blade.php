@@ -1,18 +1,20 @@
 <div class="form-body">
     <div class="row">
         <div class="col-md-12">
-            <div class="form-group">
+            <!-- <div class="form-group">
                 {!! Form::Label('category', 'Select Category:') !!}
                 <select name="category" class="form-control" id="category">
                     <option value="" disabled> Select Category </option>
                     @foreach ($items as $key => $val_items)
-                        <option value="{{ $key }}" {{ $key == $product->category ? 'selected' : '' }}>
+<option value="{{ $key }}" {{ $key == $product->category ? 'selected' : '' }}>
                             {{ $val_items }}
                         </option>
-                    @endforeach
+@endforeach
 
                 </select>
-            </div>
+            </div> -->
+            <input type="hidden" name="category" value="book">
+
         </div>
 
         {{-- <div class="col-md-12" id="subcategory_sec">
@@ -79,6 +81,18 @@
         </div>
         <div class="col-md-12">
             <div class="form-group">
+                {!! Form::label('description', 'Book Description') !!}
+                {!! Form::textarea(
+                    'description',
+                    null,
+                    'required' == 'required'
+                        ? ['class' => 'form-control', 'id' => 'summary-ckeditor', 'required' => 'required']
+                        : ['class' => 'form-control'],
+                ) !!}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
                 {!! Form::label('description', 'Description') !!}
                 {!! Form::textarea(
                     'description',
@@ -99,7 +113,7 @@
         </div>
         {{-- <div class="col-md-12">
             <div class="form-group">
-                {!! Form::label('additional_image', 'Gallary Image') !!}
+                {!! Form::label('additional_image', 'Series Images') !!}
                 <div class="gallery Images">
                     @foreach ($product_images as $product_image)
                         <div class="image-single">
@@ -289,7 +303,7 @@
                         const options = response.getsub_category;
                         if (options.length > 0) {
                             $('#subcategory_sec')
-                        .show(); // Show subcategory section if options exist
+                                .show(); // Show subcategory section if options exist
                             $('#subcategory').empty();
                             const selectElement = $('#subcategory');
                             const optionElement1 = $('<option></option>').attr('value', 0).text(
@@ -313,7 +327,7 @@
                             }
                         } else {
                             $('#subcategory_sec')
-                        .hide(); // Hide subcategory section if no subcategories are returned
+                                .hide(); // Hide subcategory section if no subcategories are returned
                         }
                     }
                 }
@@ -343,7 +357,7 @@
                         const options = response.getsub_category;
                         if (options.length > 0) {
                             $('#subcategory_sec').show(
-                            500); // Show subcategory section if options exist
+                                500); // Show subcategory section if options exist
                             $('#subcategory').empty();
                             const selectElement = $('#subcategory');
                             const optionElement1 = $('<option></option>').attr('value', 0)
@@ -362,7 +376,7 @@
                             });
                         } else {
                             $('#subcategory_sec').hide(
-                            500); // Hide subcategory section if no options exist
+                                500); // Hide subcategory section if no options exist
                         }
                     } else {
                         toastr.success(response.error);
