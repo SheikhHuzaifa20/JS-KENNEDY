@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\inquiry;
+use App\Inquiry;
 use App\schedule;
 use App\newsletter;
 use App\post;
