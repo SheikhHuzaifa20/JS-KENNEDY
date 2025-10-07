@@ -59,10 +59,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = DB::table('product_imagess')
-            ->where('id', '!=', 16)   // id 12 ko exclude kar diya
-            ->limit(5)                // sirf 5 products laiye
-            ->get();
+        $products = DB::table('section')->where('page_id', 33)->get();
         // dd($products);
 
         $product2 = DB::table('products')->get();

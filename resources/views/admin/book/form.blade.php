@@ -67,18 +67,6 @@
         </div>
         <div class="col-md-12">
             <div class="form-group">
-                {!! Form::label('description', 'Description') !!}
-                {!! Form::textarea(
-                    'description',
-                    null,
-                    'required' == 'required'
-                        ? ['class' => 'form-control', 'id' => 'summary-ckeditor', 'required' => 'required']
-                        : ['class' => 'form-control'],
-                ) !!}
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="form-group">
                 {!! Form::label('banner_content', 'Banner Content') !!}
                 {!! Form::textarea(
                     'banner_content',
@@ -91,13 +79,25 @@
         </div>
         <div class="col-md-12">
             <div class="form-group">
+                {!! Form::label('description', 'Description') !!}
+                {!! Form::textarea(
+                    'description',
+                    null,
+                    'required' == 'required'
+                        ? ['class' => 'form-control', 'id' => 'summary-ckeditor', 'required' => 'required']
+                        : ['class' => 'form-control'],
+                ) !!}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
                 {!! Form::label('image', 'Image') !!}
                 <input class="form-control dropify" name="image" type="file" id="image"
                     {{ $product->image != '' ? "data-default-file = /$product->image" : '' }}
                     {{ $product->image == '' ? 'required' : '' }} value="{{ $product->image }}">
             </div>
         </div>
-        <div class="col-md-12">
+        {{-- <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('additional_image', 'Gallary Image') !!}
                 <div class="gallery Images">
@@ -114,7 +114,7 @@
                     {{ $product->additional_image != '' ? "data-default-file = /$product->additional_image" : '' }}
                     value="{{ $product->additional_image }}" multiple>
             </div>
-        </div>
+        </div> --}}
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('link', 'Link') !!}

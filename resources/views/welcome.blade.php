@@ -77,13 +77,36 @@
                 <div class="col-lg-12">
                     <div class="books-sliders-info">
                         <div class="book-slides owl-carousel owl-theme">
-                            @foreach ($products as $product)
                                 <div class="item">
                                     <div class="book-listing">
-                                        <img src="{{ asset($product->image) }}" alt="{{ $product->product_title }}">
+                                        <img src="{{ $sections[2]->value }}" alt="">
                                     </div>
                                 </div>
-                            @endforeach
+                                <div class="item">
+                                    <div class="book-listing">
+                                        <img src="{{ $sections[3]->value }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="book-listing">
+                                        <img src="{{ $sections[4]->value }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="book-listing">
+                                        <img src="{{ $sections[5]->value }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="book-listing">
+                                        <img src="{{ $sections[6]->value }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="book-listing">
+                                        <img src="{{ $sections[7]->value }}" alt="">
+                                    </div>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -96,13 +119,13 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="client-img-banner">
-                        <img src="{{ $sections[4]->value }}" class="img-fluid" alt="">
+                        <img src="{{ $sections[10]->value }}" class="img-fluid" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="author-about">
-                        <h2>{{ $sections[2]->value }}</h2>
-                        {!! $sections[3]->value !!}
+                        <h2>{{ $sections[8]->value }}</h2>
+                        {!! $sections[9]->value !!}
                     </div>
                 </div>
             </div>
@@ -113,8 +136,8 @@
             <div class="row">
                 <div class="col-lg-12 p-0">
                     <div class="mybooks">
-                        <h2>{{ $sections[5]->value }}</h2>
-                        {!! $sections[6]->value !!}
+                        <h2>{{ $sections[11]->value }}</h2>
+                        {!! $sections[12]->value !!}
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -149,7 +172,7 @@
                 <div class="col-lg-12">
                     <div class="client-banner">
                         <h2>
-                            {{ $sections[7]->value }}
+                            {{ $sections[13]->value }}
                         </h2>
                     </div>
                 </div>
@@ -193,7 +216,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="blog-article">
-                        <h2>{{ $sections[8]->value }}</h2>
+                        <h2>{{ $sections[14]->value }}</h2>
                     </div>
                 </div>
 
