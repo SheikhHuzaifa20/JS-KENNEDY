@@ -19,6 +19,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
         "mailerlite/mailerlite-api-v2-php-sdk": "^0.3.2",
+        "mailerlite/mailerlite-php": "^1.0",
         "spatie/laravel-newsletter": "^4.8",
         "stripe/stripe-php": "^7.94"
     },

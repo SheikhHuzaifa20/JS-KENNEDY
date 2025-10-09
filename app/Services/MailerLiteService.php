@@ -6,19 +6,20 @@ use MailerLite\MailerLite;
 
 class MailerLiteService
 {
-    protected $subscribersApi;
-    protected $groupId;
+    protected $client;
 
     public function __construct()
     {
-        $mailerlite = new MailerLite(['api_key' => config('services.mailerlite.key')]);
-        $this->subscribersApi = $mailerlite->subscribers();
-        $this->groupId = config('services.mailerlite.group_id');
+        $this->client = new MailerLite([
+            'api_key' => env('MAILERLITE_API_KEY'),
+        ]);
     }
 
     public function subscribe($email, $name = null)
     {
         try {
+            $subscribersApi = $this->client->subscribers;
+
             $subscriberData = [
                 'email' => $email,
                 'fields' => [
@@ -26,11 +27,8 @@ class MailerLiteService
                 ],
             ];
 
-            if ($this->groupId) {
-                return $this->subscribersApi->createOrUpdate($subscriberData, $this->groupId);
-            }
-
-            return $this->subscribersApi->createOrUpdate($subscriberData);
+            // Create or update subscriber
+            return $subscribersApi->createOrUpdate($subscriberData);
         } catch (\Exception $e) {
             return ['error' => $e->getMessage()];
         }
