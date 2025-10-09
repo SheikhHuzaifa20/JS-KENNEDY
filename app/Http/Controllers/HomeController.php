@@ -66,7 +66,7 @@ class HomeController extends Controller
         $testimonials = DB::table('testimonials')->get();
         $facebook = DB::table('m_flag')->where('id', 2)->first();
         $instagram = DB::table('m_flag')->where('id', 3)->first();
-        // dd($testimonials);
+        // dd($product2);
 
         return view('welcome', compact('banners', 'product2', 'blogs', 'testimonials', 'facebook', 'instagram'));
     }
