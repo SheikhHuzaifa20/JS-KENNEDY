@@ -116,10 +116,10 @@ class HomeController extends Controller
         $reviews = DB::table('blog_reviews')->where('blog_id', $id)->latest()->get();
         $blog = blog::findOrFail($id);
 
-        return view('blog_detail', compact('blog' , 'reviews'));
+        return view('blog_detail', compact('blog', 'reviews'));
     }
 
-    public function inquiry(Request $request , MailerLiteService $mailerLite)
+    public function inquiry(Request $request, MailerLiteService $mailerLite)
     {
         $request->validate([
             'fname' => 'required|string',
@@ -136,7 +136,7 @@ class HomeController extends Controller
             sleep(3);
             Mail::to($inquiry->email)->send(new ThankYouMail($inquiry));
 
-            $response = $mailerLite->subscribe($request->email, $request->name);
+            $response = $mailerLite->subscribe($request->email, $request->fname . ' ' . $request->lname);
 
             return response()->json([
                 'status' => 'success',
@@ -182,26 +182,28 @@ class HomeController extends Controller
     // }
 
 
-    public function newsletterSubmit(Request $request , MailerLiteService $mailerLite)
+    public function newsletterSubmit(Request $request, MailerLiteService $mailerLite)
     {
         $request->validate([
             'newsletter_email' => 'required|email'
         ]);
 
+        // Check if email already exists
         $is_email = newsletter::where('newsletter_email', $request->newsletter_email)->count();
 
         if ($is_email == 0) {
-            $inquiry = new newsletter;
-            $inquiry->newsletter_email = $request->newsletter_email;
-            $inquiry->save();
+            // Save to local database
+            $newsletter = new newsletter;
+            $newsletter->newsletter_email = $request->newsletter_email;
+            $newsletter->save();
 
-
+            // Send emails
             Mail::to('mikehuckabee42@gmail.com')->send(new NewsletterSubscribedAdmin($request->newsletter_email));
             sleep(10);
             Mail::to($request->newsletter_email)->send(new NewsletterConfirmation($request->newsletter_email));
 
-
-        $response = $mailerLite->subscribe($request->email, $request->name);
+            // Send subscriber to MailerLite (email only)
+            $response = $mailerLite->subscribe($request->newsletter_email);
 
             return response()->json([
                 'message' => 'Thank you for subscribing. A confirmation email has been sent!',

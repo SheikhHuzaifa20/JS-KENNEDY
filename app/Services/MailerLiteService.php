@@ -15,7 +15,7 @@ class MailerLiteService
         ]);
     }
 
-    public function subscribe($email, $name = null)
+    public function subscribe($email, $name = null, $phone = null, $notes = null)
     {
         try {
             $subscribersApi = $this->client->subscribers;
@@ -23,12 +23,15 @@ class MailerLiteService
             $subscriberData = [
                 'email' => $email,
                 'fields' => [
-                    'name' => $name,
+                    'name'  => $name,
+                    'phone' => $phone,
+                    'notes' => $notes,
                 ],
             ];
 
-            // Create or update subscriber
-            return $subscribersApi->createOrUpdate($subscriberData);
+            // Send subscriber data to MailerLite
+            return $subscribersApi->create($subscriberData);
+
         } catch (\Exception $e) {
             return ['error' => $e->getMessage()];
         }
