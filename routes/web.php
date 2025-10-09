@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\BlogReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -260,3 +261,4 @@ Route::resource('admin/testimonial', 'Admin\\TestimonialController');
 Route::resource('admin/page', 'Admin\\PageController');
 
 
+Route::post('/blog-review/{id}', [BlogReviewController::class, 'store'])->name('blog.review.store');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\MailerLiteService;
 use Illuminate\Http\Request;
 use App\Inquiry;
 use App\schedule;
@@ -112,12 +113,13 @@ class HomeController extends Controller
 
     public function blogdetail($id)
     {
+        $reviews = DB::table('blog_reviews')->where('blog_id', $id)->latest()->get();
         $blog = blog::findOrFail($id);
 
-        return view('blog_detail', compact('blog'));
+        return view('blog_detail', compact('blog' , 'reviews'));
     }
 
-    public function inquiry(Request $request)
+    public function inquiry(Request $request , MailerLiteService $mailerLite)
     {
         $request->validate([
             'fname' => 'required|string',
@@ -133,6 +135,8 @@ class HomeController extends Controller
             Mail::to('mikehuckabee42@gmail.com')->send(new InquiryReceived($inquiry));
             sleep(3);
             Mail::to($inquiry->email)->send(new ThankYouMail($inquiry));
+
+            $response = $mailerLite->subscribe($request->email, $request->name);
 
             return response()->json([
                 'status' => 'success',
@@ -178,7 +182,7 @@ class HomeController extends Controller
     // }
 
 
-    public function newsletterSubmit(Request $request)
+    public function newsletterSubmit(Request $request , MailerLiteService $mailerLite)
     {
         $request->validate([
             'newsletter_email' => 'required|email'
@@ -197,6 +201,7 @@ class HomeController extends Controller
             Mail::to($request->newsletter_email)->send(new NewsletterConfirmation($request->newsletter_email));
 
 
+        $response = $mailerLite->subscribe($request->email, $request->name);
 
             return response()->json([
                 'message' => 'Thank you for subscribing. A confirmation email has been sent!',
