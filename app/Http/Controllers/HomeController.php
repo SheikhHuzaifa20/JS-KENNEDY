@@ -113,7 +113,7 @@ class HomeController extends Controller
 
     public function blogdetail($id)
     {
-        $reviews = DB::table('blog_reviews')->where('blog_id', $id)->latest()->get();
+        $reviews = DB::table('blog_reviews')->where('blog_id', $id)->latest()->limit(4)->get();
         $blog = blog::findOrFail($id);
 
         return view('blog_detail', compact('blog', 'reviews'));
