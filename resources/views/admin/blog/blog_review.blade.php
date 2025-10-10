@@ -62,7 +62,7 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Name</th>
-                                            <th>Email</th>\
+                                            <th>Email</th>
                                             <th>Message</th>
                                             <th>Rating</th>
                                             <th>Created at</th>
@@ -70,7 +70,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($blog as $item)
+                                        @foreach ($inquiry as $item)
                                             <tr>
                                                 <td>{{ $item->id }}</td>
                                                 <td>{{ $item->name }}</td>
@@ -91,14 +91,14 @@
                                                 <td>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</td>
                                                 <td>
 
-                                                    <a href="{{ url('/admin/blog-review/inquiries/'.$item->id) }}"
+                                                    <a href="{{ url('blog-review/view/'.$item->id) }}"
                                                         title="View Language">
                                                     <button class="btn btn-info btn-sm">
                                                     <i class="fa fa-eye" aria-hidden="true"></i> View
                                                     </button>
                                                     </a>
 
-                                                    <a href="{{ url('/admin/blog-review/delete', $item->id) }}"
+                                                    <a href="{{ url('blog-review/delete', $item->id) }}"
                                                         title="View Language">
                                                         <button class="btn btn-danger btn-sm">
                                                             <i class="fa fa-trash-o"></i> Delete

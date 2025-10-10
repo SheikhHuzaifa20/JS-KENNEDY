@@ -213,48 +213,6 @@ class AdminController extends Controller
 		return view('admin.inquires.contact_inquiries', compact('contact_inquiries'));
 	}
 
-	public function blog_review()
-	{
-		$blog = DB::table('blog_reviews')->orderBy('created_at', 'DESC')->get();
-
-		return view('admin.inquires.blog_review', compact('blog'));
-	}
-	public function blog_reviewDelete($id)
-	{
-
-		$del = DB::table('blog_reviews')->where('id', $id)->delete();
-
-		if ($del) {
-			return redirect('admin/blog-review/inquiries')->with('flash_message', 'Blog Review deleted!');
-		}
-	}
-
-	public function blogshow($id)
-	{
-		$inquiry = DB::table('blog_reviews')->where('id', $id)->first();
-
-		return view('admin.inquires.review_edit', compact('inquiry'));
-	}
-
-	public function update(Request $request, $id)
-	{
-		$request->validate([
-			'name' => 'required|string|max:255',
-			'email' => 'required|email',
-			'message' => 'required|string',
-			'rating' => 'required|integer|min:1|max:5',
-		]);
-
-		DB::table('blog_reviews')->where('id', $id)->update([
-			'name' => $request->name,
-			'email' => $request->email,
-			'message' => $request->message,
-			'rating' => $request->rating,
-			'updated_at' => now(),
-		]);
-
-		return redirect()->back()->with('success', 'Review updated successfully!');
-	}
 
 	public function contactSubmissionsDelete($id)
 	{

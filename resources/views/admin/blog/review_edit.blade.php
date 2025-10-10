@@ -42,7 +42,7 @@
         </div>
         <div class="content-header-right col-md-6 col-12">
             <div class="btn-group float-md-right">
-                <a class="btn btn-info mb-1" href="{{ url('/admin/blog-review/inquiries') }}">Back</a>
+                {{-- <a class="btn btn-info mb-1" href="{{ url('blog-review/show/'.$item->id) }}">Back</a> --}}
             </div>
         </div>
     </div>
@@ -53,7 +53,8 @@
                 <div class="col-md-7">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title" id="basic-layout-form">Edit Blog Review #{{ $inquiry->id }}</h4>
+                            {{-- @dd($inquiry) --}}
+                            <h4 class="card-title" id="basic-layout-form">Edit Blog Review #{{ $blog->id }}</h4>
                             <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                             <div class="heading-elements">
                                 <ul class="list-inline mb-0">
@@ -68,8 +69,8 @@
                             <div class="card-body">
 
                                 {!! Form::open([
-                                    'route' => ['blog.review.update', $inquiry->id],
-                                    'method' => 'any',
+                                    'url' => ['blog-review/update', $inquiry->id],
+                                    'method' => 'PUT',
                                     'files' => true,
                                     'class' => 'form form-horizontal',
                                 ]) !!}
@@ -83,7 +84,6 @@
                                                 {!! Form::text('name', $inquiry->name, [
                                                     'class' => 'form-control',
                                                     'required',
-                                                    'placeholder' => '',
                                                 ]) !!}
                                             </div>
                                         </div>
