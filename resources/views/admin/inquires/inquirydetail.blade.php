@@ -46,57 +46,23 @@
                                             <td>{{ $inquiry->id }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Form Name</th>
-                                            <td>{{ $inquiry->form_name }}</td>
+                                            <th>Name</th>
+                                            <td>{{ $inquiry->name }}</td>
                                         </tr>
-                                        <tr>
-                                            <th>First Name </th>
-                                            <td> {{ $inquiry->fname }} </td>
-                                        </tr>
-                                        @if($inquiry->lname != null)
-                                            <tr>
-                                                <th> Last Name </th>
-                                                <td> {{ $inquiry->lname }} </td>
-                                            </tr>
-                                        @endif
                                         <tr>
                                             <th> Email </th>
                                             <td> {{ $inquiry->email }} </td>
                                         </tr>
-                                        @if($inquiry->position != null)
-                                            <tr>
-                                                <th> Position you are applying for </th>
-                                                <td> {{ $inquiry->position }} </td>
-                                            </tr>
-                                        @endif
-                                        @if($inquiry->phone != null)
-                                            <tr>
-                                                <th> Phone </th>
-                                                <td> {{ $inquiry->phone }} </td>
-                                            </tr>
-                                        @endif
-                                        @if($inquiry->date != null)
-                                            <tr>
-                                                <th> Date </th>
-                                                <td> {{ $inquiry->date }} </td>
-                                            </tr>
-                                        @endif
-                                        @if($inquiry->time != null)
-                                            <tr>
-                                                <th> Time </th>
-                                                <td> {{ $inquiry->time }} </td>
-                                            </tr>
-                                        @endif
-                                        @if($inquiry->classes != null)
-                                            <tr>
-                                                <th> Class </th>
-                                                <td> {{ $inquiry->classes }} </td>
-                                            </tr>
-                                        @endif
-                                        @if($inquiry->notes != null)
+                                        @if($inquiry->message != null)
                                             <tr>
                                                 <th> Notes </th>
-                                                <td> {{ $inquiry->notes }} </td>
+                                                <td> {{ $inquiry->message }} </td>
+                                            </tr>
+                                        @endif
+                                        @if($inquiry->rating != null)
+                                            <tr>
+                                                <th> Notes </th>
+                                                <td> {{ $inquiry->message }} </td>
                                             </tr>
                                         @endif
                                 </table>

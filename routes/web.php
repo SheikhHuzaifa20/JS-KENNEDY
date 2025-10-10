@@ -52,9 +52,14 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('contact/inquiries', 'Admin\AdminController@contactSubmissions');
     Route::get('contact/inquiries/{id}', 'Admin\AdminController@inquiryshow');
     Route::get('newsletter/inquiries', 'Admin\AdminController@newsletterInquiries');
-
+    
     Route::any('contact/submissions/delete/{id}', 'Admin\AdminController@contactSubmissionsDelete');
     Route::any('newsletter/inquiries/delete/{id}', 'Admin\AdminController@newsletterInquiriesDelete');
+
+    Route::any('blog-review/delete/{id}', 'Admin\AdminController@blog_reviewDelete');
+    Route::get('blog-review/inquiries', 'Admin\AdminController@blog_review');
+    Route::get('blog-review/inquiries/{id}', 'Admin\AdminController@blogshow');
+    Route::post('blog-review/update/{id}', 'Admin\AdminController@update')->name('blog.review.update');
 
     // #SubcriptionPlan management
     // Route::get('subscription','Admin\SubscriptionPlanController@index')->name('admin.subscription.index');
