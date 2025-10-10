@@ -1,7 +1,7 @@
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-3 col-12">
                 <div class="footer-logo">
                     <img src="{{ asset('asset/images/footer-logo.png') }}" class="img-fluid" alt="">
                     <ul>
@@ -18,7 +18,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-3 col-12">
                 <div class="quick-link">
                     <h5>Quick Links</h5>
                     <ul>
@@ -43,7 +43,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-md-4 col-12">
                 <div class="quick-link">
                     <h5>Newsletter</h5>
                     <div class="row">
@@ -63,7 +63,7 @@
 
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 col-md-2 col-12">
                 <div class="quick-link">
                     <div class="dmca-footer">
                         <img src="{{ asset('asset/images/dmca.webp') }}" class="img-fluid" alt="">

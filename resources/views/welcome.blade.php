@@ -14,18 +14,17 @@
     <section class="hm-banner" id="banner">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="main-book-sldier">
                         <div class="banner-sliders owl-carousel owl-theme">
                             @foreach ($banners as $banners)
                                 <div class="item">
                                     <div class="row align-items-center">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-6 col-md-6 col-12">
                                             <div class="banner-content">
                                                 {!! $banners->description !!}
                                                 <div class="banner-btn">
-                                                    <a href="{{$banners->link}}"
-                                                        class="btn btn-black">
+                                                    <a href="{{$banners->link}}" class="btn btn-black">
                                                         Buy From Amazon
                                                         <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid"
                                                             alt="">
@@ -33,7 +32,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-6 col-md-6 col-12">
                                             <div class="banner-books">
                                                 <div class="books-wanhu">
                                                     <div class="atropos my-atropos">
@@ -41,8 +40,8 @@
                                                             <div class="atropos-rotate">
                                                                 <div class="atropos-inner">
                                                                     <a href="JavaScript:;" id="show" class="main-text-1">
-                                                                        <img src="{{ $banners->image }}"
-                                                                            class="img-fluid" alt="" data-atropos-offset="2">
+                                                                        <img src="{{ $banners->image }}" class="img-fluid"
+                                                                            alt="" data-atropos-offset="2">
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -67,46 +66,46 @@
     <section class="serires-info">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="book-series">
                         {{-- @dd($sections) --}}
                         <h2>{{ $sections[0]->value }}</h2>
                         <p>{{ $sections[1]->value }}</p>
                     </div>
                 </div>
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="books-sliders-info">
                         <div class="book-slides owl-carousel owl-theme">
-                                <div class="item">
-                                    <div class="book-listing">
-                                        <img src="{{ $sections[2]->value }}" alt="">
-                                    </div>
+                            <div class="item">
+                                <div class="book-listing">
+                                    <img src="{{ $sections[2]->value }}" alt="">
                                 </div>
-                                <div class="item">
-                                    <div class="book-listing">
-                                        <img src="{{ $sections[3]->value }}" alt="">
-                                    </div>
+                            </div>
+                            <div class="item">
+                                <div class="book-listing">
+                                    <img src="{{ $sections[3]->value }}" alt="">
                                 </div>
-                                <div class="item">
-                                    <div class="book-listing">
-                                        <img src="{{ $sections[4]->value }}" alt="">
-                                    </div>
+                            </div>
+                            <div class="item">
+                                <div class="book-listing">
+                                    <img src="{{ $sections[4]->value }}" alt="">
                                 </div>
-                                <div class="item">
-                                    <div class="book-listing">
-                                        <img src="{{ $sections[5]->value }}" alt="">
-                                    </div>
+                            </div>
+                            <div class="item">
+                                <div class="book-listing">
+                                    <img src="{{ $sections[5]->value }}" alt="">
                                 </div>
-                                <div class="item">
-                                    <div class="book-listing">
-                                        <img src="{{ $sections[6]->value }}" alt="">
-                                    </div>
+                            </div>
+                            <div class="item">
+                                <div class="book-listing">
+                                    <img src="{{ $sections[6]->value }}" alt="">
                                 </div>
-                                <div class="item">
-                                    <div class="book-listing">
-                                        <img src="{{ $sections[7]->value }}" alt="">
-                                    </div>
+                            </div>
+                            <div class="item">
+                                <div class="book-listing">
+                                    <img src="{{ $sections[7]->value }}" alt="">
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -117,12 +116,12 @@
     <section class="about-author">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-md-6 col-12">
                     <div class="client-img-banner">
                         <img src="{{ $sections[10]->value }}" class="img-fluid" alt="">
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-md-6 col-12">
                     <div class="author-about">
                         <h2>{{ $sections[8]->value }}</h2>
                         {!! $sections[9]->value !!}
@@ -134,13 +133,13 @@
     <section class="my-books">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12 p-0">
+                <div class="col-lg-12 col-md-12 col-12 p-0">
                     <div class="mybooks">
                         <h2>{{ $sections[11]->value }}</h2>
                         {!! $sections[12]->value !!}
                     </div>
                 </div>
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="mybookslider">
                         <div class="mybooks-carousel owl-carousel owl-theme">
                             @foreach ($product2 as $product)
@@ -169,14 +168,14 @@
     <section class="client-review">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="client-banner">
                         <h2>
                             {{ $sections[13]->value }}
                         </h2>
                     </div>
                 </div>
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="reviews-show">
                         <div class="reviews-carousel owl-carousel owl-theme">
                             @foreach ($testimonials as $testimonial)
@@ -214,14 +213,14 @@
     <section class="blogs">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="blog-article">
                         <h2>{{ $sections[14]->value }}</h2>
                     </div>
                 </div>
 
                 @foreach ($blogs as $blog)
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 col-md-4 col-12">
                         <div class="blog-article-build">
                             <a href="#">
                                 <div class="blog-img">
@@ -250,7 +249,7 @@
                         </div>
                     </div>
                 @endforeach
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="text-center">
                         <a href="{{ route('blog') }}" class="btn green-btn">
                             View More

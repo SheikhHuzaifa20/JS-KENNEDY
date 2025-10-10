@@ -75,3 +75,236 @@
         font-size: 20px;
     }
 }
+
+@media(max-width:1199px) {
+    header nav.navbar {
+        padding-left: 35px;
+        padding-right: 15px;
+    }
+
+    .btn-black {
+        padding: 15px 20px;
+    }
+
+
+    ul.navbar-nav li a {
+        font-size: 14px;
+    }
+
+    .side-top a {
+        font-size: 14px;
+    }
+
+    .back-circle {
+        right: -250px;
+    }
+
+    .back-circle img {
+        width: 70%;
+    }
+
+    .banner-content h2 {
+        font-size: 14px;
+    }
+
+    .banner-content h1 {
+        font-size: 45px;
+    }
+
+    .back-cricle a.btn.btn-black {
+        width: 80% !important;
+    }
+
+    .client-testimonial {
+        width: 100%;
+    }
+
+    .client-banner h2 {
+        font-size: 55px;
+    }
+
+    .client-para p {
+        font-size: 16px;
+    }
+
+    .client-profile-img {
+        bottom: 40px;
+    }
+
+    .blog-article h2 {
+        font-size: 35px;
+        margin-bottom: 20px;
+    }
+
+    .blog-content h4 {
+        font-size: 17px;
+    }
+
+    .blog-content p {
+        font-size: 13px;
+    }
+}
+
+@media(max-width:991px) {
+
+
+    .email-btn {
+        margin-left: 0px;
+    }
+
+    .banner-content h1 span {
+        display: unset !important;
+    }
+
+    .banner-content h1 {
+        font-size: 30px;
+    }
+
+    .banner-content p {
+        width: 100%;
+    }
+
+    .banner-content h2 span {
+        display: unset !important;
+    }
+
+    .hm-banner {
+        height: 700px;
+    }
+
+    .back-circle img {
+        width: 50%;
+    }
+
+    .back-circle {
+        right: 0;
+        text-align: end;
+    }
+
+    .book-series h2 {
+        font-size: 45px;
+    }
+
+    .book-series p {
+        font-size: 15px;
+    }
+
+    .author-about h2 {
+        font-size: 1.5rem;
+    }
+
+    .author-about p {
+        font-size: 13px;
+    }
+
+    .mybooks h2 {
+        font-size: 50px;
+    }
+
+    .mybooks p {
+        width: 85%;
+        font-size: 15px;
+    }
+
+    .mybooks {
+        height: 300px;
+    }
+
+    .back-cricle a.btn.btn-black {
+        width: 85% !important;
+        font-size: 14px;
+    }
+
+    .client-banner h2 {
+        font-size: 40px;
+    }
+
+    section.client-review {
+        height: 750px;
+    }
+
+    .client-para {
+        height: 450px;
+    }
+
+    .client-para p {
+        font-size: 14px;
+        line-height: unset;
+    }
+
+    .review-star {
+        margin-top: 20px;
+    }
+
+    .review-star i {
+        font-size: 12px;
+    }
+
+    .client-testimonial {
+        padding-bottom: 100px;
+    }
+
+    .client-profile-img h5 {
+        font-size: 20px;
+    }
+
+    .client-profile-img h5 span {
+        font-size: 15px;
+    }
+
+    .blog-article h2 {
+        font-size: 30px;
+    }
+
+    .blog-article-build {
+        padding: 10px;
+    }
+
+    .blog-review h6 {
+        font-size: 16px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .blog-review h6 span {
+        font-size: 15px;
+    }
+
+    .blog-content h4 {
+        font-size: 14px;
+    }
+
+    .blog-content p {
+        margin-bottom: 25px !important;
+    }
+
+    .blog-content {
+        padding-bottom: 15px;
+    }
+
+    .blog-content .btn-black {
+        padding: 10px 18px;
+        font-size: 12px;
+    }
+
+    .footer-logo ul li {
+        height: 40px;
+        width: 40px;
+    }
+
+    .footer-logo ul li a i {
+        font-size: 22px;
+    }
+
+    .quick-link h5 {
+        font-size: 17px;
+    }
+
+    .quick-link input {
+        height: 45px;
+    }
+
+    .quick-link button {
+        padding: 10px 10px;
+    }
+}

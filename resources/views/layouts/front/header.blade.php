@@ -2,7 +2,7 @@
     <div class="top-header">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="top-email">
                         <div class="row">
                             <div class="col-12">
@@ -31,7 +31,7 @@
     <header>
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <nav class="navbar navbar-expand-lg">
                         <a class="navbar-brand" href="#">
                             <img src="{{ asset('asset/images/logo.png') }}" class="img-fluid" alt="">
