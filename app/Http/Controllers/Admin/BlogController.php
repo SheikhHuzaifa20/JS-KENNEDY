@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\DB;
 use App\Blog;
 use Illuminate\Http\Request;
 use Image;
@@ -45,7 +45,6 @@ class BlogController extends Controller
             return view('admin.blog.index', compact('blog'));
         }
         return response(view('403'), 403);
-
     }
 
     /**
@@ -60,7 +59,6 @@ class BlogController extends Controller
             return view('admin.blog.create');
         }
         return response(view('403'), 403);
-
     }
 
     /**
@@ -124,6 +122,54 @@ class BlogController extends Controller
             return view('admin.blog.show', compact('blog'));
         }
         return response(view('403'), 403);
+    }
+
+    public function blog_reviewDelete($id)
+    {
+
+        $del = DB::table('blog_reviews')->where('id', $id)->delete();
+
+        if ($del) {
+            return redirect()->back()->with('flash_message', 'Blog Review deleted!');
+        }
+    }
+
+    public function blogshow($id)
+    {
+        $inquiry = DB::table('blog_reviews')
+            ->where('blog_id', $id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+        // dd($inquiry);
+
+        return view('admin.blog.blog_review', compact('inquiry'));
+    }
+    public function blog_review($id)
+    {
+        $inquiry = DB::table('blog_reviews')->where('id', $id)->first();
+
+        return view('admin.blog.review_edit', compact('inquiry'));
+    }
+
+
+    public function blogupdate(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'message' => 'required|string',
+            'rating' => 'required|integer|min:1|max:5',
+        ]);
+
+        DB::table('blog_reviews')->where('id', $id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'message' => $request->message,
+            'rating' => $request->rating,
+            'updated_at' => now(),
+        ]);
+
+        return redirect()->back()->with('success', 'Review updated successfully!');
     }
 
     /**
@@ -192,7 +238,6 @@ class BlogController extends Controller
             return redirect('admin/blog')->with('message', 'Blog updated!');
         }
         return response(view('403'), 403);
-
     }
 
     /**
@@ -211,6 +256,5 @@ class BlogController extends Controller
             return redirect('admin/blog')->with('flash_message', 'Blog deleted!');
         }
         return response(view('403'), 403);
-
     }
 }

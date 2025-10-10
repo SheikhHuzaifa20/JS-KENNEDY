@@ -52,14 +52,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('contact/inquiries', 'Admin\AdminController@contactSubmissions');
     Route::get('contact/inquiries/{id}', 'Admin\AdminController@inquiryshow');
     Route::get('newsletter/inquiries', 'Admin\AdminController@newsletterInquiries');
-    
+
     Route::any('contact/submissions/delete/{id}', 'Admin\AdminController@contactSubmissionsDelete');
     Route::any('newsletter/inquiries/delete/{id}', 'Admin\AdminController@newsletterInquiriesDelete');
 
-    Route::any('blog-review/delete/{id}', 'Admin\AdminController@blog_reviewDelete');
-    Route::get('blog-review/inquiries', 'Admin\AdminController@blog_review');
-    Route::get('blog-review/inquiries/{id}', 'Admin\AdminController@blogshow');
-    Route::post('blog-review/update/{id}', 'Admin\AdminController@update')->name('blog.review.update');
 
     // #SubcriptionPlan management
     // Route::get('subscription','Admin\SubscriptionPlanController@index')->name('admin.subscription.index');
@@ -153,7 +149,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('admin/order/delete/{id}', 'Admin\\ProductController@deleteOrder')
         ->name('order.delete');
     Route::post('course/move', 'Admin\\CourseController@move')->name('course.move');
-
 });
 
 //==============================================================//
@@ -252,6 +247,12 @@ route::get('status/delivered/{id}', 'admin\\productcontroller@updatestatusdelive
 route::get('status/cancelled/{id}', 'admin\\productcontroller@updatestatuscancelled')->name('status.cancelled');
 
 Route::resource('admin/blog', 'Admin\\BlogController');
+
+Route::any('blog-review/delete/{id}', 'Admin\BlogController@blog_reviewDelete');
+Route::get('blog-review/show/{id}', 'Admin\BlogController@blogshow');
+Route::any('blog-review/view/{id}', 'Admin\BlogController@blog_review')->name('blog.review.view');
+Route::put('blog-review/update/{id}', 'Admin\BlogController@blogupdate')->name('blog.review.update');
+
 Route::resource('admin/category', 'Admin\\CategoryController');
 
 Route::resource('admin/banner', 'Admin\\BannerController', ['names' => 'admin.banner']);
