@@ -755,7 +755,6 @@
         width: 90%;
     }
 
-    .relence-schedule-list .bonus-scene-version {}
 
     .relence-schedule-list .bonus-scene-version .santa-version {
         width: 100%;
@@ -961,6 +960,10 @@
 
     .bonus-scene-version {
         display: unset;
+    }
+
+    .relence-schedule-list .bonus-scene-version {
+        display: flex;
     }
 
     .snata-btn {
