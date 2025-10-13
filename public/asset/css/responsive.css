@@ -1,4 +1,4 @@
-@media (max-width:1440px) {
+@media (max-width: 1440px) {
     .banner-content h2 {
         font-size: 18px;
     }
@@ -85,7 +85,7 @@
     }
 }
 
-@media(max-width: 1199px) {
+@media (max-width: 1199px) {
     header nav.navbar {
         padding-left: 35px;
         padding-right: 15px;
@@ -94,7 +94,6 @@
     .btn-black {
         padding: 15px 20px;
     }
-
 
     ul.navbar-nav li a {
         font-size: 14px;
@@ -166,7 +165,7 @@
     }
 
     .release-shedule-banner .back-circle {
-        right: 0;
+        right: 0px;
     }
 
     .release-shedule-banner .banner-content p {
@@ -228,20 +227,18 @@
     }
 
     .blog-detail .card {
-        padding: 15px 15px !important;
+        padding: 15px !important;
     }
 
     .inner-banner-heading h4 {
         font-size: 48px;
     }
-
 }
 
-@media(max-width:991px) {
-
+@media (max-width: 991px) {
     .side-top {
         justify-content: center;
-        margin: 20px 0;
+        margin: 20px 0px;
     }
 
     a.navbar-brand img {
@@ -277,7 +274,7 @@
     }
 
     .back-circle {
-        right: 0;
+        right: 0px;
         text-align: end;
     }
 
@@ -405,7 +402,7 @@
     }
 
     .quick-link button {
-        padding: 10px 10px;
+        padding: 10px;
     }
 
     a.navbar-brand img {
@@ -419,7 +416,7 @@
         background: var(--black-color);
         border-radius: 10px;
         padding: 10px;
-        right: 0;
+        right: 0px;
     }
 
     ul.navbar-nav li a {
@@ -463,7 +460,7 @@
     }
 
     .release-shedule-banner {
-        padding: 40px 0 !important;
+        padding: 40px 0px !important;
         height: unset !important;
     }
 
@@ -483,7 +480,7 @@
         margin-top: 50px;
     }
 
-    .relence-schedule-list .bonus-scene-version:before {
+    .relence-schedule-list .bonus-scene-version::before {
         top: 15px;
     }
 
@@ -493,7 +490,7 @@
 
     .relence-schedule-list .bonus-scene-version .santa-version .snata-btn img {
         width: 8%;
-        margin-left: 0;
+        margin-left: 0px;
     }
 
     .books-pg-inner .client-img-banner {
@@ -533,7 +530,7 @@
     }
 
     .inner-blog-article h2 {
-        margin: 0;
+        margin: 0px;
     }
 
     .contact-form {
@@ -545,7 +542,7 @@
     }
 
     .blog-detail {
-        padding: 50px 0;
+        padding: 50px 0px;
     }
 
     .blog-detail .card img {
@@ -584,11 +581,9 @@
     .comment-form textarea {
         margin-bottom: 10px;
     }
-
-
 }
 
-@media(max-width:767px) {
+@media (max-width: 767px) {
     .top-email .form-group {
         width: 100%;
     }
@@ -604,13 +599,13 @@
     }
 
     .banner-books img {
-        width: 70% !important;
         margin: auto;
+        width: 70% !important;
     }
 
     .banner-content h2 {
         font-size: 20px;
-        margin: 10px 0;
+        margin: 10px 0px;
     }
 
     .banner-btn {
@@ -618,7 +613,7 @@
     }
 
     .back-circle {
-        right: 0;
+        right: 0px;
         width: 100%;
         bottom: 50px;
     }
@@ -684,9 +679,8 @@
     }
 
     .blog-article-build {
-        margin: auto;
+        margin: auto auto 25px;
         width: 85%;
-        margin-bottom: 25px;
     }
 
     .blog-content h4 {
@@ -715,7 +709,7 @@
     }
 
     footer {
-        padding: 35px 0;
+        padding: 35px 0px;
     }
 
     .client-review {
@@ -724,7 +718,7 @@
 
     .inner-banners {
         height: 350px;
-        background-position: top;
+        background-position: center top;
     }
 
     .inner-banner-heading h1 {
@@ -736,14 +730,16 @@
     }
 
     .release-shedule-banner .back-circle {
-        left: 0;
+        left: 0px;
         text-align: center;
         top: 50px;
     }
 
     .release-shedule-banner .banner-content {
-        margin-top: 90px;
+        margin: auto;
+        margin-top: 100px;
         margin-bottom: 160px;
+        width: 65%;
     }
 
     .release-shedule-banner .banner-content h5 {
@@ -756,16 +752,13 @@
 
     .release-shedule-banner .banner-content p {
         margin: auto;
-        width: 60%;
+        width: 90%;
     }
 
-    .relence-schedule-list .bonus-scene-version {
-        /* display: block; */
-    }
+    .relence-schedule-list .bonus-scene-version {}
 
     .relence-schedule-list .bonus-scene-version .santa-version {
         width: 100%;
-        /* margin-top: 10px; */
     }
 
     .relence-schedule-list .bonus-scene-version .santa-version .snata-btn img {
@@ -835,8 +828,7 @@
     }
 }
 
-@media (max-width:575px) {
-
+@media (max-width: 575px) {
     .top-email .form-group {
         width: 70%;
     }
@@ -909,7 +901,7 @@
         margin-left: 15px;
     }
 
-    .relence-schedule-list .bonus-scene-version:before {
+    .relence-schedule-list .bonus-scene-version::before {
         top: 25px;
     }
 
@@ -936,8 +928,7 @@
     }
 
     .book-links-snata a {
-        margin: auto;
-        margin-bottom: 20px;
+        margin: auto auto 20px;
     }
 
     .redemption-quest h2 span {
@@ -980,7 +971,7 @@
         width: 65%;
     }
 
-    .bonus-scene-version:before {
+    .bonus-scene-version::before {
         width: 10%;
         top: 45%;
         left: 42%;
@@ -992,7 +983,7 @@
     }
 
     button.btn.btn-form-btn {
-        padding: 10px 0;
+        padding: 10px 0px;
         border-radius: 20px;
     }
 
@@ -1016,5 +1007,12 @@
     .comment-form-card,
     .reviews-card {
         padding: 15px !important;
+    }
+
+    .release-shedule-banner .banner-content {
+        margin: auto;
+        margin-top: 110px;
+        margin-bottom: 160px;
+        width: 85%;
     }
 }
