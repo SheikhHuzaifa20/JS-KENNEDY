@@ -15,7 +15,7 @@
     <section class="hm-banner inner-banners" id="banner">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="main-book-sldier">
                         <div class="inner-banner-heading">
                             <h1>{{$page->name}}</h1>
@@ -29,7 +29,7 @@
     <section class="bonus-scenes">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="beta-version">
                         <h2>{!! $sections[0]->value !!}</h2>
                         {!! $page->content !!}

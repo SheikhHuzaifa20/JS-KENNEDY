@@ -10,7 +10,7 @@
     <section class="hm-banner inner-banners" id="banner">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="main-book-sldier">
                         <div class="inner-banner-heading">
                             <h1>Contact</h1>
@@ -25,7 +25,7 @@
     <section class="contact-form-banner">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="contact-form">
                         {!! $page->content !!}
                         <form id="inquiryForm" action="{{ route('inquiry.store') }}" method="POST">

@@ -16,7 +16,7 @@
     <section class="hm-banner inner-banners" id="banner">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="main-book-sldier">
                         <div class="inner-banner-heading">
                             <h1>{{ $page->name }}</h1>
@@ -31,12 +31,12 @@
     <section class="hm-banner release-shedule-banner">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="main-book-sldier">
                         <div class="banner-sliders owl-carousel owl-theme">
                                 <div class="item">
                                     <div class="row align-items-center">
-                                        <div class="col-lg-7">
+                                        <div class="col-lg-7 col-md-7 col-12">
                                             <div class="banner-content">
                                                 <h2>
                                                     {{ $page->name }}
@@ -44,7 +44,7 @@
                                                 {!! $page->content !!}
                                             </div>
                                         </div>
-                                        <div class="col-lg-5">
+                                        <div class="col-lg-5 col-md-5 col-12">
                                             <div class="banner-books">
                                                 <div class="books-wanhu">
                                                     <div class="atropos my-atropos">
@@ -78,7 +78,7 @@
     <section class="bonus-scenes relence-schedule-list">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="beta-version">
                         <h2>{{ $sections[1]->value }}</h2>
                         <p>This series is from Mackenzie’s point of view unless otherwise states.</p>

@@ -74,9 +74,18 @@
     .blog-detail .card h3 {
         font-size: 20px;
     }
+
+    .redemption-quest h2 {
+        font-size: 30px;
+    }
+
+    .redemption-quest h4 {
+        font-size: 25px;
+        line-height: 40px;
+    }
 }
 
-@media(max-width:1199px) {
+@media(max-width: 1199px) {
     header nav.navbar {
         padding-left: 35px;
         padding-right: 15px;
@@ -143,10 +152,101 @@
     .blog-content p {
         font-size: 13px;
     }
+
+    .inner-banners {
+        height: 500px;
+    }
+
+    .inner-banner-heading h1 {
+        font-size: 50px;
+    }
+
+    .release-shedule-banner .banner-content h2 {
+        font-size: 30px;
+    }
+
+    .release-shedule-banner .back-circle {
+        right: 0;
+    }
+
+    .release-shedule-banner .banner-content p {
+        width: 80%;
+    }
+
+    .release-shedule-banner .banner-content h5 {
+        font-size: 18px;
+    }
+
+    .relence-schedule-list .bonus-scene-version {
+        gap: 10px;
+    }
+
+    .relence-schedule-list .bonus-scene-version .santa-version {
+        width: 35%;
+    }
+
+    .relence-schedule-list .bonus-scene-version .santa-version .snata-btn {
+        padding: 10px 5px;
+    }
+
+    .books-pg-inner .author-about h2 {
+        font-size: 1.5rem;
+    }
+
+    .books-pg-inner .author-about p {
+        margin-top: 10px;
+    }
+
+    .book-links-snata a {
+        width: 60%;
+        padding: 12px 15px;
+    }
+
+    .redemption-quest h2 {
+        font-size: 25px;
+    }
+
+    .redemption-quest h4 {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .beta-version h2 {
+        font-size: 30px;
+    }
+
+    .santa-version {
+        margin-top: 50px;
+    }
+
+    .snata-btn {
+        width: 100%;
+    }
+
+    .santa-version p {
+        width: 80%;
+    }
+
+    .blog-detail .card {
+        padding: 15px 15px !important;
+    }
+
+    .inner-banner-heading h4 {
+        font-size: 48px;
+    }
+
 }
 
 @media(max-width:991px) {
 
+    .side-top {
+        justify-content: center;
+        margin: 20px 0;
+    }
+
+    a.navbar-brand img {
+        width: 100%;
+    }
 
     .email-btn {
         margin-left: 0px;
@@ -306,5 +406,615 @@
 
     .quick-link button {
         padding: 10px 10px;
+    }
+
+    a.navbar-brand img {
+        width: 55%;
+    }
+
+    nav.navbar.navbar-expand-lg.navbar-light .navbar-collapse {
+        position: absolute;
+        z-index: 0;
+        top: 70px;
+        background: var(--black-color);
+        border-radius: 10px;
+        padding: 10px;
+        right: 0;
+    }
+
+    ul.navbar-nav li a {
+        color: var(--white-color) !important;
+    }
+
+    .btn-black img {
+        width: 20% !important;
+    }
+
+    .top-email .form-group {
+        width: 75%;
+    }
+
+    .email-btn {
+        width: 40%;
+    }
+
+    .top-email .form-group input {
+        height: 50px;
+    }
+
+    .side-top a img {
+        width: 12% !important;
+    }
+
+    .banner-btn a img {
+        width: 10% !important;
+    }
+
+    .relence-schedule-list .bonus-scene-version {
+        width: 100%;
+    }
+
+    .inner-banners {
+        height: 400px;
+    }
+
+    .inner-banner-heading h1 {
+        font-size: 40px;
+    }
+
+    .release-shedule-banner {
+        padding: 40px 0 !important;
+        height: unset !important;
+    }
+
+    .release-shedule-banner .back-circle img {
+        width: 42%;
+    }
+
+    .release-shedule-banner .banner-content h2 {
+        font-size: 25px;
+    }
+
+    .release-shedule-banner .banner-content h5 {
+        font-size: 15px;
+    }
+
+    .relence-schedule-list .bonus-scene-version .santa-version {
+        margin-top: 50px;
+    }
+
+    .relence-schedule-list .bonus-scene-version:before {
+        top: 15px;
+    }
+
+    .relence-schedule-list {
+        padding-bottom: 50px;
+    }
+
+    .relence-schedule-list .bonus-scene-version .santa-version .snata-btn img {
+        width: 8%;
+        margin-left: 0;
+    }
+
+    .books-pg-inner .client-img-banner {
+        text-align: center;
+    }
+
+    .books-pg-inner .client-img-banner img {
+        width: 75%;
+    }
+
+    .books-back-dark .row {
+        flex-direction: column-reverse;
+    }
+
+    .redemption-quest h2 {
+        font-size: 22px;
+    }
+
+    .redemption-quest h4 {
+        font-size: 18px;
+    }
+
+    .beta-version h2 {
+        font-size: 25px;
+    }
+
+    .beta-version p {
+        font-size: 14px;
+    }
+
+    .bonus-scene-version {
+        width: 90%;
+    }
+
+    .inner-blog-article {
+        width: 80%;
+    }
+
+    .inner-blog-article h2 {
+        margin: 0;
+    }
+
+    .contact-form {
+        width: 100%;
+    }
+
+    .contact-form .form-control {
+        padding: 10px 15px;
+    }
+
+    .blog-detail {
+        padding: 50px 0;
+    }
+
+    .blog-detail .card img {
+        width: 100% !important;
+    }
+
+    .blog-detail .card h3 {
+        font-size: 14px !important;
+    }
+
+    .blog-detail .card p {
+        max-width: 100% !important;
+        font-size: 13px !important;
+    }
+
+    .comment-form-card h3,
+    .reviews-card h3 {
+        font-size: 14px !important;
+    }
+
+    .inner-banner-heading h4 {
+        font-size: 40px;
+    }
+
+    .comment-form-card,
+    .reviews-card {
+        padding: 20px !important;
+    }
+
+    .comment-form-card h3,
+    .reviews-card h3 {
+        margin-bottom: 10px !important;
+    }
+
+    .comment-form input,
+    .comment-form textarea {
+        margin-bottom: 10px;
+    }
+
+
+}
+
+@media(max-width:767px) {
+    .top-email .form-group {
+        width: 100%;
+    }
+
+    .hm-banner {
+        height: 1100px;
+        padding-top: 40px;
+    }
+
+    .banner-content {
+        padding-bottom: 20px;
+        text-align: center;
+    }
+
+    .banner-books img {
+        width: 70% !important;
+        margin: auto;
+    }
+
+    .banner-content h2 {
+        font-size: 20px;
+        margin: 10px 0;
+    }
+
+    .banner-btn {
+        justify-content: center;
+    }
+
+    .back-circle {
+        right: 0;
+        width: 100%;
+        bottom: 50px;
+    }
+
+    .back-circle img {
+        width: 100%;
+    }
+
+    .book-series h2 {
+        font-size: 30px;
+    }
+
+    .book-series p {
+        font-size: 12px;
+    }
+
+    .book-listing img {
+        margin: auto;
+    }
+
+    .mybooks p {
+        width: 95%;
+    }
+
+    .mybooks h2 {
+        font-size: 40px;
+    }
+
+    .back-cricle a.btn.btn-black {
+        width: 50% !important;
+        justify-content: space-between;
+    }
+
+    .client-banner h2 {
+        font-size: 30px;
+    }
+
+    .client-para {
+        margin: auto;
+        width: 80%;
+        height: 480px;
+    }
+
+    .client-profile-img img {
+        width: 20% !important;
+    }
+
+    .client-para p {
+        font-size: 16px;
+        line-height: 35px;
+    }
+
+    .review-star i {
+        font-size: 20px;
+    }
+
+    .client-profile-img h5 {
+        font-size: 30px;
+    }
+
+    .client-profile-img h5 span {
+        font-size: 20px;
+    }
+
+    .blog-article-build {
+        margin: auto;
+        width: 85%;
+        margin-bottom: 25px;
+    }
+
+    .blog-content h4 {
+        font-size: 20px;
+    }
+
+    .blog-content p {
+        font-size: 18px;
+    }
+
+    .blog-content .btn-black {
+        font-size: 18px;
+    }
+
+    .footer-logo {
+        text-align: center;
+    }
+
+    .footer-logo ul {
+        justify-content: center;
+    }
+
+    .quick-link {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    footer {
+        padding: 35px 0;
+    }
+
+    .client-review {
+        border-radius: 50px;
+    }
+
+    .inner-banners {
+        height: 350px;
+        background-position: top;
+    }
+
+    .inner-banner-heading h1 {
+        font-size: 25px;
+    }
+
+    .release-shedule-banner .back-circle img {
+        width: 70%;
+    }
+
+    .release-shedule-banner .back-circle {
+        left: 0;
+        text-align: center;
+        top: 50px;
+    }
+
+    .release-shedule-banner .banner-content {
+        margin-top: 90px;
+        margin-bottom: 160px;
+    }
+
+    .release-shedule-banner .banner-content h5 {
+        font-size: 15px;
+    }
+
+    .release-shedule-banner .banner-content h2 {
+        font-size: 20px;
+    }
+
+    .release-shedule-banner .banner-content p {
+        margin: auto;
+        width: 60%;
+    }
+
+    .relence-schedule-list .bonus-scene-version {
+        /* display: block; */
+    }
+
+    .relence-schedule-list .bonus-scene-version .santa-version {
+        width: 100%;
+        /* margin-top: 10px; */
+    }
+
+    .relence-schedule-list .bonus-scene-version .santa-version .snata-btn img {
+        width: 12%;
+    }
+
+    .relence-schedule-list .bonus-scene-version .santa-version .snata-btn {
+        font-size: 11px;
+    }
+
+    .books-pg-inner .author-about h2 {
+        font-size: 1.2rem;
+        line-height: 30px;
+    }
+
+    .redemption-quest h2 {
+        font-size: 16px;
+        line-height: 25px;
+    }
+
+    .redemption-quest h4 {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .beta-version h2 {
+        font-size: 20px;
+    }
+
+    .beta-version p {
+        width: 100%;
+    }
+
+    .bonus-scene-version {
+        width: 100%;
+    }
+
+    .santa-version p {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    .snata-btn {
+        padding: 10px 15px;
+    }
+
+    .bonus-scenes {
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        padding-bottom: 50px;
+    }
+
+    .contact-form {
+        padding: 50px 20px;
+    }
+
+    .contact-form .form-control {
+        border-radius: 15px;
+    }
+
+    .inner-banner-heading h4 {
+        font-size: 30px;
+    }
+
+    .blog-detail .card img {
+        height: 250px !important;
+    }
+}
+
+@media (max-width:575px) {
+
+    .top-email .form-group {
+        width: 70%;
+    }
+
+    .top-email .form-group input {
+        font-size: 12px;
+        height: 35px;
+    }
+
+    .email-btn {
+        padding: 5px 20px;
+        font-size: 12px;
+    }
+
+    .hm-banner {
+        padding-top: 70px;
+    }
+
+    .mybooks p {
+        font-size: 14px;
+    }
+
+    .back-cricle a.btn.btn-black {
+        width: 65% !important;
+    }
+
+    .blog-article h2 {
+        font-size: 22px;
+    }
+
+    .client-para {
+        width: 100%;
+    }
+
+    section.client-review {
+        border-radius: 20px;
+    }
+
+    .client-para p {
+        line-height: 30px;
+    }
+
+    .release-shedule-banner .back-circle img {
+        width: 100%;
+    }
+
+    .relence-schedule-list .bonus-scene-version {
+        flex-wrap: wrap;
+    }
+
+    .relence-schedule-list .bonus-scene-version .santa-version {
+        display: flex;
+        align-items: center;
+    }
+
+    .relence-schedule-list .bonus-scene-version .santa-version:first-child {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .relence-schedule-list .bonus-scene-version .santa-version {
+        width: 48%;
+    }
+
+    .relence-schedule-list .bonus-scene-version .santa-version .snata-btn {
+        font-size: 13px;
+    }
+
+    .relence-schedule-list .bonus-scene-version .santa-version p {
+        margin-left: 15px;
+    }
+
+    .relence-schedule-list .bonus-scene-version:before {
+        top: 25px;
+    }
+
+    .books-pg-inner .author-about h2 {
+        font-size: 1rem;
+        line-height: unset;
+    }
+
+    .books-pg-inner .author-about {
+        text-align: center;
+    }
+
+    .books-pg-inner .author-about h5 {
+        font-size: 17px;
+    }
+
+    .books-pg-inner .author-about p {
+        text-align: center;
+    }
+
+    .book-links-snata {
+        text-align: center;
+        display: block;
+    }
+
+    .book-links-snata a {
+        margin: auto;
+        margin-bottom: 20px;
+    }
+
+    .redemption-quest h2 span {
+        display: unset !important;
+    }
+
+    .redemption-quest h4 span {
+        display: unset !important;
+    }
+
+    .redemption-quest h2 {
+        font-size: 13px;
+    }
+
+    .redemption-quest h4 {
+        font-size: 11px;
+    }
+
+    .books-back-dark {
+        border-radius: 20px;
+    }
+
+    .beta-version h2 br {
+        display: none;
+    }
+
+    .beta-version h2 {
+        font-size: 20px;
+    }
+
+    .bonus-scene-version {
+        display: unset;
+    }
+
+    .snata-btn {
+        width: 75%;
+    }
+
+    .santa-version p {
+        width: 65%;
+    }
+
+    .bonus-scene-version:before {
+        width: 10%;
+        top: 45%;
+        left: 42%;
+    }
+
+    .inner-blog-article {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+
+    button.btn.btn-form-btn {
+        padding: 10px 0;
+        border-radius: 20px;
+    }
+
+    .contact-form textarea#textarea {
+        height: 100px;
+    }
+
+    .contact-form .form-control {
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .contact-form {
+        padding: 25px 20px;
+    }
+
+    .inner-banner-heading h4 {
+        font-size: 20px;
+    }
+
+    .comment-form-card,
+    .reviews-card {
+        padding: 15px !important;
     }
 }

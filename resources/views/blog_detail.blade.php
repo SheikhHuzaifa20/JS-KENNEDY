@@ -151,7 +151,7 @@
     <section class="hm-banner inner-banners" id="blogdetail">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="main-book-sldier">
                         <div class="inner-banner-heading">
                             {!! $blog->short_detail !!}
@@ -165,13 +165,13 @@
     <section class="blog-detail">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-8 col-md-8 col-12">
                     <div class="card">
                         <img src="{{ asset($blog->image) }}" alt="Fantasy">
                         {!! $blog->inner_detail !!}
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-4 col-12">
                     <div class="card text-center p-4">
                         <img src="{{ asset($sections[10]->value) }}" alt="Author"
                             style="width:150px; height:150px; border-radius:12px; object-fit:cover; margin:0 auto;">
@@ -193,7 +193,7 @@
         <div class="container">
             <div class="row">
                 <!-- Comment Form -->
-                <div class="col-lg-8">
+                <div class="col-lg-8 col-md-8 col-12">
                     <div class="comment-form-card shadow">
                         <h3>Leave a Comment</h3>
                         @if (session('success'))
@@ -224,16 +224,11 @@
                             <textarea name="message" placeholder="Your Comment" rows="5" required></textarea>
 
                             <div class="star-rating">
-                                <input type="radio" id="star5" name="rating" value="5"><label
-                                    for="star5">&#9733;</label>
-                                <input type="radio" id="star4" name="rating" value="4"><label
-                                    for="star4">&#9733;</label>
-                                <input type="radio" id="star3" name="rating" value="3"><label
-                                    for="star3">&#9733;</label>
-                                <input type="radio" id="star2" name="rating" value="2"><label
-                                    for="star2">&#9733;</label>
-                                <input type="radio" id="star1" name="rating" value="1"><label
-                                    for="star1">&#9733;</label>
+                                <input type="radio" id="star5" name="rating" value="5"><label for="star5">&#9733;</label>
+                                <input type="radio" id="star4" name="rating" value="4"><label for="star4">&#9733;</label>
+                                <input type="radio" id="star3" name="rating" value="3"><label for="star3">&#9733;</label>
+                                <input type="radio" id="star2" name="rating" value="2"><label for="star2">&#9733;</label>
+                                <input type="radio" id="star1" name="rating" value="1"><label for="star1">&#9733;</label>
                             </div>
 
                             <button type="submit" class="btn-submit">Post Comment</button>
@@ -243,7 +238,7 @@
                 </div>
 
                 <!-- Recent Reviews -->
-                <div class="col-lg-4 mt-4 mt-lg-0">
+                <div class="col-lg-4 col-md-4 col-12 mt-4 mt-lg-0">
                     <div class="reviews-card shadow">
                         <h3>Recent Reviews</h3>
                         {{-- @dd($reviews) --}}

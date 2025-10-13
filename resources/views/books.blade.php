@@ -16,7 +16,7 @@
     <section class="hm-banner inner-banners" id="banner">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="main-book-sldier">
                         <div class="inner-banner-heading">
                             <h1>{{ $page->name }}</h1>
@@ -185,12 +185,12 @@
                 <div class="row align-items-center">
                     @if(!$isGreen)
                         {{-- White section --}}
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 col-,d-6 col-12">
                             <div class="client-img-banner">
                                 <img src="{{ asset($book->image) }}" class="img-fluid" alt="">
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 col-,d-6 col-12">
                             <div class="author-about">
                                 <h2>{{ $book->product_title }}</h2>
                                 {!! $book->description !!}
@@ -204,7 +204,7 @@
                         </div>
                     @else
                         {{-- Green section --}}
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 col-,d-6 col-12">
                             <div class="author-about text-white">
                                 <h2>{{ $book->product_title }}</h2>
                                 {!! $book->description !!}
@@ -217,7 +217,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 col-,d-6 col-12">
                             <div class="client-img-banner">
                                 <img src="{{ asset($book->image) }}" class="img-fluid" alt="">
                             </div>
@@ -231,7 +231,7 @@
     <section class="redemption-freedom">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12 p-0">
+                <div class="col-lg-12 col-md-12 col-12 p-0">
                     <div class="redemption-quest">
                         {!! $page->content !!}
                     </div>

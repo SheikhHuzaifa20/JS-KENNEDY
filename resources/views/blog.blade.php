@@ -16,7 +16,7 @@
     <section class="hm-banner inner-banners" id="banner">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="main-book-sldier">
                         <div class="inner-banner-heading">
                             <h1>{{ $page->name }}</h1>
@@ -30,13 +30,13 @@
     <section class="blogs">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="blog-article inner-blog-article">
                         {!! $page->content !!}
                     </div>
                 </div>
                 @foreach ($blogs as $blog)
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 col-md-4 col-12">
                         <div class="blog-article-build">
                             <a href="#">
                                 <div class="blog-img">
