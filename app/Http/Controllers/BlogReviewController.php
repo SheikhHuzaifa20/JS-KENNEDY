@@ -14,7 +14,6 @@ class BlogReviewController extends Controller
             'name' => 'required|string',
             'email' => 'required|email',
             'message' => 'required|string',
-            'rating' => 'required|integer|min:1|max:5',
         ]);
 
         DB::table('blog_reviews')->insert([
@@ -22,7 +21,6 @@ class BlogReviewController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'message' => $request->message,
-            'rating' => $request->rating,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

@@ -102,7 +102,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12">
+                                        {{-- <div class="col-md-12">
                                             <div class="form-group">
                                                 {!! Form::label('rating', 'Rating (Stars)') !!}
                                                 {!! Form::select(
@@ -118,7 +118,7 @@
                                                     ['class' => 'form-control', 'required'],
                                                 ) !!}
                                             </div>
-                                        </div>
+                                        </div> --}}
 
 
 

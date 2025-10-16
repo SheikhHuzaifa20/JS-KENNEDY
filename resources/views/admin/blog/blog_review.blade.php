@@ -64,7 +64,7 @@
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Message</th>
-                                            <th>Rating</th>
+                                            {{-- <th>Rating</th> --}}
                                             <th>Created at</th>
                                             <th>Action</th>
                                         </tr>
@@ -76,14 +76,14 @@
                                                 <td>{{ $item->name }}</td>
                                                 <td>{{ $item->email }}</td>
                                                 <td>{{ $item->message }}</td>
-                                                <td>
+                                                {{-- <td>
                                                     <div class="star-rating">
                                                         @for ($i = 1; $i <= 5; $i++)
                                                             <span
                                                                 class="star {{ $i <= $item->rating ? 'filled' : '' }}">&#9733;</span>
                                                         @endfor
                                                     </div>
-                                                </td>
+                                                </td> --}}
 
 
                                                 {{-- <td>{{ $item->address }}</td>

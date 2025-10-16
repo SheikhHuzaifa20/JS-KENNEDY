@@ -199,6 +199,7 @@
                                         Buy From Amazon
                                         <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
                                     </a>
+                                    <a href="#" class="btn snata-btn">Audiobook</a>
                                 </div>
                             </div>
                         </div>

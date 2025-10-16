@@ -53,11 +53,6 @@
                             <span data-i18n="Crypto">Newsletter Inquiries</span>
                         </a>
                     </li>
-                    <li class="{{ request()->is('admin/blog-review/inquiries') ? 'active' : '' }}">
-                        <a class="menu-item" href="{{ url('admin/blog-review/inquiries') }}"><i></i>
-                            <span data-i18n="Crypto">Blog Review</span>
-                        </a>
-                    </li>
                 </ul>
             </li>
             <li class="nav-item">

@@ -222,15 +222,6 @@
                                 <input type="email" name="email" placeholder="Your Email" required>
                             </div>
                             <textarea name="message" placeholder="Your Comment" rows="5" required></textarea>
-
-                            <div class="star-rating">
-                                <input type="radio" id="star5" name="rating" value="5"><label for="star5">&#9733;</label>
-                                <input type="radio" id="star4" name="rating" value="4"><label for="star4">&#9733;</label>
-                                <input type="radio" id="star3" name="rating" value="3"><label for="star3">&#9733;</label>
-                                <input type="radio" id="star2" name="rating" value="2"><label for="star2">&#9733;</label>
-                                <input type="radio" id="star1" name="rating" value="1"><label for="star1">&#9733;</label>
-                            </div>
-
                             <button type="submit" class="btn-submit">Post Comment</button>
                         </form>
 
@@ -247,11 +238,6 @@
                                 <div class="review-content">
                                     <div class="review-header">
                                         <strong>{{ $review->name }}</strong>
-                                        <div class="review-stars">
-                                            @for ($i = 1; $i <= 5; $i++)
-                                                <span>{!! $i <= $review->rating ? '&#9733;' : '&#9734;' !!}</span>
-                                            @endfor
-                                        </div>
                                     </div>
                                     <p>"{{ $review->message }}"</p>
                                 </div>

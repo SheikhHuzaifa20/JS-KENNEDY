@@ -158,14 +158,12 @@ class BlogController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email',
             'message' => 'required|string',
-            'rating' => 'required|integer|min:1|max:5',
         ]);
 
         DB::table('blog_reviews')->where('id', $id)->update([
             'name' => $request->name,
             'email' => $request->email,
             'message' => $request->message,
-            'rating' => $request->rating,
             'updated_at' => now(),
         ]);
 
