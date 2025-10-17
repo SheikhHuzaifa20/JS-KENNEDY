@@ -107,9 +107,19 @@
         </div> --}}
         <div class="col-md-12">
             <div class="form-group">
-                {!! Form::label('link', 'Link') !!}
+                {!! Form::label('link', 'Amazon Link') !!}
                 {!! Form::text(
                     'link',
+                    null,
+                    'required' == 'required' ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control'],
+                ) !!}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                {!! Form::label('audiolink', 'Audiobook Link') !!}
+                {!! Form::text(
+                    'audiolink',
                     null,
                     'required' == 'required' ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control'],
                 ) !!}

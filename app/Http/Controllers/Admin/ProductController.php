@@ -105,6 +105,8 @@ class ProductController extends Controller
                 'description' => 'required',
                 'price' => 'required',
                 'image' => 'required',
+                'link' => 'required',
+                'audiolink' => 'required',
             ]);
 
             //echo implode(",",$_POST['language']);
@@ -115,6 +117,8 @@ class ProductController extends Controller
             $product->price = $request->input('price');
             $product->description = $request->input('description');
             $product->category = $request->input('category');
+            $product->link = $request->input('link');
+            $product->audiolink = $request->input('audiolink');
             // $product->subcategory = $request->input('subcategory');
             // $product->colors = $request->input('colors');
             // $product->type = 'product';
@@ -242,6 +246,7 @@ class ProductController extends Controller
                 'description'   => 'required',
                 'price'         => 'required',
                 'link'         => 'required',
+                'audiolink'         => 'required',
             ]);
 
             $product = Product::findOrFail($id);
@@ -249,6 +254,7 @@ class ProductController extends Controller
             $product->product_title = $request->input('product_title');
             $product->price         = $request->input('price');
             $product->link         = $request->input('link');
+            $product->audiolink         = $request->input('audiolink');
             $product->description   = $request->input('description');
             $product->category      = $request->input('category');
 
