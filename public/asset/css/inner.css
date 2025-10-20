@@ -276,9 +276,20 @@ button.btn.btn-form-btn:hover {
 
 .relence-schedule-list .bonus-scene-version:before {
     transform: rotate(0deg);
-    top: 22%;
+    top: 10%;
     width: 100%;
     left: 0;
+}
+.relence-schedule-list .bonus-scene-version:after {
+    position: absolute;
+    z-index: 0;
+    content: "";
+    left: 0%;
+    right: 0;
+    top: 60%;
+    border-top: 10px dotted var(--grey-color);
+    height: 10%;
+    width: 100%;
 }
 
 .relence-schedule-list .bonus-scene-version .santa-version {
@@ -294,6 +305,7 @@ button.btn.btn-form-btn:hover {
 
 .relence-schedule-list .bonus-scene-version {
     gap: 45px;
+    flex-wrap: wrap;
 }
 
 .relence-schedule-list .bonus-scene-version .santa-version .snata-btn img {

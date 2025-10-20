@@ -34,28 +34,27 @@
                 <div class="col-lg-12 col-md-12 col-12">
                     <div class="main-book-sldier">
                         <div class="banner-sliders owl-carousel owl-theme">
-                                <div class="item">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-7 col-md-7 col-12">
-                                            <div class="banner-content">
-                                                <h2>
-                                                    {{ $page->name }}
-                                                </h2>
-                                                {!! $page->content !!}
-                                            </div>
+                            <div class="item">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-7 col-md-7 col-12">
+                                        <div class="banner-content">
+                                            <h2>
+                                                {{ $page->name }}
+                                            </h2>
+                                            {!! $page->content !!}
                                         </div>
-                                        <div class="col-lg-5 col-md-5 col-12">
-                                            <div class="banner-books">
-                                                <div class="books-wanhu">
-                                                    <div class="atropos my-atropos">
-                                                        <div class="atropos-scale">
-                                                            <div class="atropos-rotate">
-                                                                <div class="atropos-inner">
-                                                                    <a href="JavaScript:;" id="show" class="main-text-1">
-                                                                        <img src="{{ $page->image }}"
-                                                                            class="img-fluid" alt="" data-atropos-offset="2">
-                                                                    </a>
-                                                                </div>
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-12">
+                                        <div class="banner-books">
+                                            <div class="books-wanhu">
+                                                <div class="atropos my-atropos">
+                                                    <div class="atropos-scale">
+                                                        <div class="atropos-rotate">
+                                                            <div class="atropos-inner">
+                                                                <a href="JavaScript:;" id="show" class="main-text-1">
+                                                                    <img src="{{ $page->image }}" class="img-fluid" alt=""
+                                                                        data-atropos-offset="2">
+                                                                </a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -64,6 +63,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,8 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-12">
                     <div class="beta-version">
-                        <h2>{{ $sections[1]->value }}</h2>
+
+                        <h2>{{ $sections[0]->value }}</h2>
                         <p>This series is from Mackenzie’s point of view unless otherwise states.</p>
                     </div>
                     <div class="bonus-scene-version">
@@ -97,8 +98,6 @@
                             <a href="{{ route('books') }}" class="btn snata-btn">Green Mage <img
                                     src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid" alt=""></a>
                         </div>
-                    </div>
-                    <div class="bonus-scene-version">
                         <div class="santa-version">
                             <a href="{{ route('books') }}" class="btn snata-btn">Green Shadow <img
                                     src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid" alt=""></a>

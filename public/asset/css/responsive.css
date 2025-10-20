@@ -83,6 +83,14 @@
         font-size: 25px;
         line-height: 40px;
     }
+
+    .banner-sliders .owl-nav .owl-prev {
+        left: -80px;
+    }
+
+    .banner-sliders .owl-nav .owl-next {
+        right: -80px;
+    }
 }
 
 @media (max-width: 1199px) {
@@ -181,7 +189,8 @@
     }
 
     .relence-schedule-list .bonus-scene-version .santa-version {
-        width: 35%;
+        width: 32%;
+        margin-top: 70px;
     }
 
     .relence-schedule-list .bonus-scene-version .santa-version .snata-btn {
@@ -232,6 +241,28 @@
 
     .inner-banner-heading h4 {
         font-size: 48px;
+    }
+
+    .banner-sliders .owl-nav .owl-prev {
+        left: 30%;
+        height: 40px;
+        width: 40px;
+        top: 100%;
+    }
+
+    .banner-sliders .owl-nav .owl-prev img {
+        width: 60%;
+    }
+
+    .banner-sliders .owl-nav .owl-next {
+        right: 30%;
+        height: 40px;
+        width: 40px;
+        top: 100%;
+    }
+
+    .banner-sliders .owl-nav .owl-next img {
+        width: 60%;
     }
 }
 
@@ -449,6 +480,7 @@
 
     .relence-schedule-list .bonus-scene-version {
         width: 100%;
+        padding: 45px 0;
     }
 
     .inner-banners {
@@ -477,7 +509,12 @@
     }
 
     .relence-schedule-list .bonus-scene-version .santa-version {
-        margin-top: 50px;
+        margin-top: 15px;
+        width: 48%;
+    }
+
+    .relence-schedule-list .bonus-scene-version:after {
+        top: 95%;
     }
 
     .relence-schedule-list .bonus-scene-version::before {
@@ -757,7 +794,11 @@
 
 
     .relence-schedule-list .bonus-scene-version .santa-version {
-        width: 100%;
+        width: 46%;
+    }
+
+    .relence-schedule-list .bonus-scene-version {
+        justify-content: space-around;
     }
 
     .relence-schedule-list .bonus-scene-version .santa-version .snata-btn img {
@@ -825,6 +866,16 @@
     .blog-detail .card img {
         height: 250px !important;
     }
+
+    .banner-sliders .owl-nav .owl-prev {
+        top: 90%;
+        left: 0%;
+    }
+
+    .banner-sliders .owl-nav .owl-next {
+        top: 90%;
+        right: 0%;
+    }
 }
 
 @media (max-width: 575px) {
@@ -879,17 +930,17 @@
     }
 
     .relence-schedule-list .bonus-scene-version .santa-version {
-        display: flex;
+        /* display: flex; */
         align-items: center;
     }
 
     .relence-schedule-list .bonus-scene-version .santa-version:first-child {
-        width: 100%;
+        /* width: 100%; */
         justify-content: space-between;
     }
 
     .relence-schedule-list .bonus-scene-version .santa-version {
-        width: 48%;
+        width: 75%;
     }
 
     .relence-schedule-list .bonus-scene-version .santa-version .snata-btn {
@@ -902,6 +953,8 @@
 
     .relence-schedule-list .bonus-scene-version::before {
         top: 25px;
+        width: 90%;
+        margin: auto;
     }
 
     .books-pg-inner .author-about h2 {
@@ -1017,5 +1070,36 @@
         margin-top: 110px;
         margin-bottom: 160px;
         width: 85%;
+    }
+
+    .banner-sliders .owl-nav .owl-prev {
+        top: 70%;
+        left: 0%;
+    }
+
+    .banner-sliders .owl-nav .owl-next {
+        top: 70%;
+        right: 0%;
+    }
+
+    .relence-schedule-list .bonus-scene-version:after {
+        margin: auto;
+        width: 90%;
+        top: 97%;
+    }
+}
+
+@media (max-width:400px) {
+
+    .release-shedule-banner .banner-content {
+        margin-top: 80px;
+    }
+
+    .release-shedule-banner .banner-content h2 {
+        font-size: 15px;
+    }
+
+    .release-shedule-banner .banner-content h5 {
+        font-size: 12px;
     }
 }
