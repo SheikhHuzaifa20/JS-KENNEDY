@@ -3,10 +3,11 @@
 
 <head>
     <?php
-$favicon = DB::table('imagetable')->where('table_name', 'favicon')->first();
+    $favicon = DB::table('imagetable')->where('table_name', 'favicon')->first();
     ?>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
