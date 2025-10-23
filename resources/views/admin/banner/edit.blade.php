@@ -42,19 +42,21 @@
                                     action="{{ route('admin.banner.update', $banner->id) }}">
                                     @csrf
                                     @method('PATCH')
+                                    <input type="text" name="active" value="active" hidden>
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="title">Title</label>
-                                                    <input class="form-control" required="required" name="title"
-                                                        type="text" id="title" value="{{ $banner->title }}">
+                                                    <input class="form-control" required="required" name="title" type="text"
+                                                        id="title" value="{{ $banner->title }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="summary-ckeditor">Description</label>
-                                                    <textarea name="description" id="summary-ckeditor" cols="30" rows="10" class="form-control" required>{{ $banner->description }}</textarea>
+                                                    <textarea name="description" id="summary-ckeditor" cols="30" rows="10"
+                                                        class="form-control" required>{{ $banner->description }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -72,8 +74,8 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="title">Link</label>
-                                                    <input class="form-control" required="required" name="link"
-                                                        type="text" id="title" value="{{ $banner->link }}">
+                                                    <input class="form-control" required="required" name="link" type="text"
+                                                        id="title" value="{{ $banner->link }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -132,7 +134,7 @@
     @push('js')
         <script src="{{ asset('plugins/vendors/dropify/dist/js/dropify.min.js') }}"></script>
         <script>
-            $(function() {
+            $(function () {
                 $('.dropify').dropify();
             });
         </script>

@@ -41,6 +41,7 @@
                                 <form class="form" enctype="multipart/form-data" method="post"
                                     action="{{route('admin.banner.store')}}">
                                     @csrf
+                                    <input type="text" name="status" value="active" hidden>
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-12">

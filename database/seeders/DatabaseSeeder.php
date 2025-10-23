@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Database\Seeders\BannerSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        $this->call(BannerSeeder::class);
         // $this->call(SectionSeeder::class);
     }
 }

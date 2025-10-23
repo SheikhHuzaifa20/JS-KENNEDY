@@ -83,6 +83,7 @@ class BannerController extends Controller
                 'title' => 'required',
                 'image' => 'required|mimes:jpeg,jpg,png,gif|required|max:10000',
                 'link' => 'nullable|url',
+                'status' => 'active',
             ]);
             // $requestData = $request->all();
             $banner = new banner;
@@ -158,6 +159,7 @@ class BannerController extends Controller
                 'title' => 'required|string|max:255',
                 'description' => 'required|string',
                 'link' => 'nullable|url',
+                'status' => 'active',
                 'image' => 'nullable|mimes:jpeg,jpg,png,gif|max:10000',
             ]);
 
@@ -219,5 +221,14 @@ class BannerController extends Controller
         // }
         // return response(view('403'), 403);
 
+    }
+
+    public function active($id)
+    {
+        $banner = Banner::findOrFail($id);
+        $banner->status = $banner->status === 'active' ? 'deactive' : 'active';
+        $banner->save();
+
+        return redirect()->back()->with('flash_message', 'Banner Updated succesfully!');
     }
 }

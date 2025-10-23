@@ -257,6 +257,7 @@ Route::resource('admin/category', 'Admin\\CategoryController');
 
 Route::resource('admin/banner', 'Admin\\BannerController', ['names' => 'admin.banner']);
 Route::get('admin/banner/{id}/delete', ['as' => 'banner.delete', 'uses' => 'Admin\\BannerController@destroy']);
+Route::get('admin/banner/{id}/active', ['as' => 'banner.active', 'uses' => 'Admin\\BannerController@active']);
 Route::resource('admin/category', 'Admin\\CategoryController');
 // Route::resource('admin/attributes', 'Admin\\AttributesController');
 // Route::resource('admin/attributes-value', 'Admin\\AttributesValueController');
