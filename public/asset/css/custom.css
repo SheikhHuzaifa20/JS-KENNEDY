@@ -193,7 +193,7 @@ ul.navbar-nav li a {
 .banner-content p {
     color: var(--white1-color);
     font-weight: 600;
-    font-size: 15px;
+    font-size: 18px;
     width: 80%;
     margin-top: 11px;
 }
@@ -662,4 +662,8 @@ footer {
 
 .banner-sliders .owl-nav .owl-prev {
     left: -200px;
+}
+
+.ear-bud-amazon {
+    width: 15% !important;
 }

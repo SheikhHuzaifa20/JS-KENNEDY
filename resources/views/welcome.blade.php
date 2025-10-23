@@ -23,13 +23,26 @@
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <div class="banner-content">
                                                 {!! $banners->description !!}
-                                                <div class="banner-btn">
-                                                    <a href="{{$banners->link}}" class="btn btn-black">
-                                                        Buy From Amazon
-                                                        <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid"
-                                                            alt="">
-                                                    </a>
-                                                </div>
+                                                @if($banners->id == '2')
+                                                    <div class="banner-btn">
+                                                        <a href="{{$banners->link}}" class="btn btn-black">
+                                                            Buy From Amazon
+                                                            <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid"
+                                                                alt="">
+                                                        </a>
+                                                    </div>
+                                                    <div class="banner-btn mt-2">
+                                                        <img src="{{ asset('asset/images/ear-bud.png') }}" class="img-fluid ear-bud-amazon" alt="">
+                                                    </div>
+                                                @else
+                                                    <div class="banner-btn">
+                                                        <a href="{{$banners->link}}" class="btn btn-black">
+                                                            Buy From Amazon
+                                                            <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid"
+                                                                alt="">
+                                                        </a>
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12">
