@@ -24,9 +24,9 @@
                                             <div class="banner-content">
                                                 {!! $banners->description !!}
                                                 <div class="banner-btn">
-                                                    <a href="{{$banners->link}}" class="btn btn-black">
+                                                    <a href="{{$banners->link}}" target="_blank" class="btn btn-black">
                                                         Buy From Amazon
-                                                        <img src="{{ asset('asset/images/amazon.png') }}" target="_blank"
+                                                        <img src="{{ asset('asset/images/amazon.png') }}" 
                                                             class="img-fluid" alt="">
                                                     </a>
                                                 </div>
