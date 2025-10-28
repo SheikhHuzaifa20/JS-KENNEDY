@@ -125,14 +125,14 @@ class HomeController extends Controller
             'fname' => 'required|string',
             'lname' => 'required|string',
             'email' => 'required|email',
-            'phone' => 'required|string',
+            'phone' => 'string|nullable',
             'notes' => 'required|string',
         ]);
 
         $inquiry = Inquiry::create($request->all());
 
         try {
-            Mail::to('mikehuckabee42@gmail.com')->send(new InquiryReceived($inquiry));
+            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new InquiryReceived($inquiry));
             sleep(3);
             Mail::to($inquiry->email)->send(new ThankYouMail($inquiry));
 
@@ -198,7 +198,7 @@ class HomeController extends Controller
             $newsletter->save();
 
             // Send emails
-            Mail::to('mikehuckabee42@gmail.com')->send(new NewsletterSubscribedAdmin($request->newsletter_email));
+            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new NewsletterSubscribedAdmin($request->newsletter_email));
             sleep(10);
             Mail::to($request->newsletter_email)->send(new NewsletterConfirmation($request->newsletter_email));
 

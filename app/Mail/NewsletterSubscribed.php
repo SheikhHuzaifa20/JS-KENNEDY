@@ -22,9 +22,9 @@ class NewsletterSubscribed extends Mailable
 
     public function build()
     {
-        return $this->from('info@jskennedy.com', 'Website Newsletter')
-                    ->subject('New Newsletter Subscription')
-                    ->view('emails.newsletter')
-                    ->with(['email' => $this->email]);
+        return $this->from(env('MAIL_FROM_ADDRESS'), 'Website Newsletter')
+            ->subject('New Newsletter Subscription')
+            ->view('emails.newsletter')
+            ->with(['email' => $this->email]);
     }
 }

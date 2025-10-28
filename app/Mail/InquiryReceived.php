@@ -23,9 +23,9 @@ class InquiryReceived extends Mailable
 
     public function build()
     {
-        return $this->from('info@jskennedy.com', 'Website Contact Form')
-                    ->subject('New Inquiry Received')
-                    ->view('emails.inquiry')
-                    ->with(['inquiry' => $this->inquiry]);
+        return $this->from(env('MAIL_FROM_ADDRESS'), 'Website Contact Form')
+            ->subject('New Inquiry Received')
+            ->view('emails.inquiry')
+            ->with(['inquiry' => $this->inquiry]);
     }
 }

@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <input type="text" name="phone" placeholder="Phone" class="form-control" required>
+                                        <input type="text" name="phone" placeholder="Phone (Optional*)" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12">

@@ -23,9 +23,9 @@ class ThankYouMail extends Mailable
 
     public function build()
     {
-        return $this->from('info@jskennedy.com', 'Website Team')
-                    ->subject('Thank You for Your Inquiry')
-                    ->view('emails.thankyou')
-                    ->with(['inquiry' => $this->inquiry]);
+        return $this->from(env('MAIL_FROM_ADDRESS'), 'Website Team')
+            ->subject('Thank You for Your Inquiry')
+            ->view('emails.thankyou')
+            ->with(['inquiry' => $this->inquiry]);
     }
 }
