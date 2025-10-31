@@ -37,14 +37,11 @@
                 </div>
                 @foreach ($blogs as $blog)
                     @php
-                        $date = null;
-
-                        if (!empty($blog->updated_at) && $blog->updated_at != $blog->created_at) {
-                            $date = \Carbon\Carbon::parse($blog->updated_at);
-                        } else {
-                            $date = \Carbon\Carbon::parse($blog->created_at);
-                        }
+                        $date = !empty($blog->event_datetime)
+                            ? \Carbon\Carbon::parse($blog->event_datetime)
+                            : \Carbon\Carbon::parse($blog->created_at);
                     @endphp
+
                     <div class="col-lg-4 col-md-4 col-12">
                         <div class="blog-article-build">
                             <a href="#">
@@ -67,13 +64,14 @@
                                 </div>
                                 <h4>{!! $blog->short_detail !!}</h4>
                                 <p>{!! $blog->detail !!}</p>
-                                <a href="{{ route('blogdetail', $blog->id) }}" target="_blank" class="btn btn-black">
+                                <a href="{{ route('blogdetail', $blog->id) }}" class="btn btn-black">
                                     Read More
                                 </a>
                             </div>
                         </div>
                     </div>
                 @endforeach
+
 
             </div>
         </div>

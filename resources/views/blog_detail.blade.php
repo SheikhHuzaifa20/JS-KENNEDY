@@ -168,6 +168,17 @@
                 <div class="col-lg-8 col-md-8 col-12">
                     <div class="card">
                         <img src="{{ asset($blog->image) }}" alt="Fantasy">
+                        @if (!empty($blog->event_datetime))
+                            @php
+                                $releaseDate = \Carbon\Carbon::parse($blog->event_datetime);
+                            @endphp
+                            <p class="mt-2 text-muted">
+                                🗓️ This blog was released on
+                                <strong>{{ $releaseDate->format('F d, Y') }}</strong>
+                                at
+                                <strong>{{ $releaseDate->format('h:i A') }}</strong>.
+                            </p>
+                        @endif
                         {!! $blog->inner_detail !!}
                     </div>
                 </div>

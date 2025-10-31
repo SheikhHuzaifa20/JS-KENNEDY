@@ -30,6 +30,17 @@
                 <input class="form-control dropify" name="image" type="file" id="image" {{ ($blog->image != '') ? "data-default-file = /$blog->image" : ''}} {{ ($blog->image == '') ? "required" : ''}} value="{{$blog->image}}">
             </div>
         </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                {!! Form::label('event_datetime', 'Select Date & Time') !!}
+                <input type="datetime-local"
+                       name="event_datetime"
+                       class="form-control"
+                       min="{{ now()->format('Y-m-d\TH:i') }}"
+                       value="{{ old('event_datetime', isset($blog->event_datetime) ? \Carbon\Carbon::parse($blog->event_datetime)->format('Y-m-d\TH:i') : '') }}"
+                       required>
+            </div>
+        </div>
     </div>
 </div>
 

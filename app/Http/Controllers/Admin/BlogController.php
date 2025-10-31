@@ -70,41 +70,39 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        $model = str_slug('blog', '-');
-        if (auth()->user()->permissions()->where('name', '=', 'add-' . $model)->first() != null) {
-            $this->validate($request, [
-                'name' => 'required',
-                'short_detail' => 'required',
-                'detail' => 'required',
-                'inner_detail' => 'required',
-                'image' => 'required'
-            ]);
+        $this->validate($request, [
+            'name' => 'required',
+            'short_detail' => 'required',
+            'detail' => 'required',
+            'inner_detail' => 'required',
+            'event_datetime' => 'required|date|after_or_equal:now',
+            'image' => 'required'
+        ]);
 
-            if ($request->hasFile('image')) {
-                $blog = new blog;
-
-
-                $blog->name = $request->input('name');
-                $blog->short_detail = $request->input('short_detail');
-                $blog->detail = $request->input('detail');
-                $blog->inner_detail = $request->input('inner_detail');
-                $file = $request->file('image');
-
-                //make sure yo have image folder inside your public
-                $destination_path = 'uploads/blogs/';
-                $fileName = $file->getClientOriginalName();
-                $profileImage = date("Ymd") . $fileName . "." . $file->getClientOriginalExtension();
+        if ($request->hasFile('image')) {
+            $blog = new blog;
 
 
-                $file->move(public_path('uploads/blogs/'), $profileImage);
+            $blog->name = $request->input('name');
+            $blog->short_detail = $request->input('short_detail');
+            $blog->detail = $request->input('detail');
+            $blog->inner_detail = $request->input('inner_detail');
+            $blog->event_datetime = $request->event_datetime;
+            $file = $request->file('image');
 
-                $blog->image = $destination_path . $profileImage;
-                $blog->save();
-            }
+            //make sure yo have image folder inside your public
+            $destination_path = 'uploads/blogs/';
+            $fileName = $file->getClientOriginalName();
+            $profileImage = date("Ymd") . $fileName . "." . $file->getClientOriginalExtension();
 
-            return redirect('admin/blog')->with('message', 'Blog added!');
+
+            $file->move(public_path('uploads/blogs/'), $profileImage);
+
+            $blog->image = $destination_path . $profileImage;
+            $blog->save();
         }
-        return response(view('403'), 403);
+
+        return redirect('admin/blog')->with('message', 'Blog added!');
     }
 
     /**
@@ -198,45 +196,64 @@ class BlogController extends Controller
     public function update(Request $request, $id)
     {
         $model = str_slug('blog', '-');
+
         if (auth()->user()->permissions()->where('name', '=', 'edit-' . $model)->first() != null) {
+
+            // ✅ Validation (no past date allowed)
             $this->validate($request, [
                 'name' => 'required',
                 'short_detail' => 'required',
                 'detail' => 'required',
                 'inner_detail' => 'required',
+                'event_datetime' => 'required|date|after_or_equal:now',
             ]);
+
             $requestData = $request->all();
 
-
+            // ✅ Image upload check
             if ($request->hasFile('image')) {
+                $blog = Blog::where('id', $id)->first();
 
-                $blog = blog::where('id', $id)->first();
+                // delete old image if exists
                 $image_path = public_path($blog->image);
-
                 if (File::exists($image_path)) {
                     File::delete($image_path);
                 }
 
+                // upload new image
                 $file = $request->file('image');
-                $fileNameExt = $request->file('image')->getClientOriginalName();
+                $fileNameExt = $file->getClientOriginalName();
                 $fileNameForm = str_replace(' ', '_', $fileNameExt);
                 $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
-                $fileExt = $request->file('image')->getClientOriginalExtension();
+                $fileExt = $file->getClientOriginalExtension();
                 $fileNameToStore = $fileName . '_' . time() . '.' . $fileExt;
+
                 $pathToStore = public_path('uploads/blogs/');
                 $file->move($pathToStore, $fileNameToStore);
 
                 $requestData['image'] = 'uploads/blogs/' . $fileNameToStore;
             }
 
-
+            // ✅ Update blog with new data
             $blog = Blog::findOrFail($id);
-            $blog->update($requestData);
+            $blog->name = $requestData['name'];
+            $blog->short_detail = $requestData['short_detail'];
+            $blog->detail = $requestData['detail'];
+            $blog->inner_detail = $requestData['inner_detail'];
+            $blog->event_datetime = $requestData['event_datetime'];
 
-            return redirect('admin/blog')->with('message', 'Blog updated!');
+            if (isset($requestData['image'])) {
+                $blog->image = $requestData['image'];
+            }
+
+            $blog->save();
+
+            return redirect('admin/blog')->with('message', 'Blog updated successfully!');
         }
+
         return response(view('403'), 403);
     }
+
 
     /**
      * Remove the specified resource from storage.
