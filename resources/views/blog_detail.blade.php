@@ -173,7 +173,7 @@
                                 $releaseDate = \Carbon\Carbon::parse($blog->event_datetime);
                             @endphp
                             <p class="mt-2 text-muted">
-                                🗓️ This blog was released on
+                                🗓️ 
                                 <strong>{{ $releaseDate->format('F d, Y') }}</strong>
                                 at
                                 <strong>{{ $releaseDate->format('h:i A') }}</strong>.
