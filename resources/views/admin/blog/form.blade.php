@@ -3,44 +3,74 @@
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('name', 'Name') !!}
-                {!! Form::text('name', null, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+                {!! Form::text(
+                    'name',
+                    null,
+                    'required' == 'required' ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control'],
+                ) !!}
             </div>
         </div>
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('short_detail', 'Short Detail') !!}
-                {!! Form::textarea('short_detail', null, ('required' == 'required') ? ['class' => 'form-control', 'id' => 'summary-ckeditor', 'required' => 'required'] : ['class' => 'form-control']) !!}
+                {!! Form::textarea(
+                    'short_detail',
+                    null,
+                    'required' == 'required'
+                        ? ['class' => 'form-control', 'id' => 'summary-ckeditor', 'required' => 'required']
+                        : ['class' => 'form-control'],
+                ) !!}
             </div>
         </div>
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('detail', 'Detail') !!}
-                {!! Form::textarea('detail', null, ('required' == 'required') ? ['class' => 'form-control', 'id' => 'summary-ckeditor1', 'required' => 'required'] : ['class' => 'form-control']) !!}
+                {!! Form::textarea(
+                    'detail',
+                    null,
+                    'required' == 'required'
+                        ? ['class' => 'form-control', 'id' => 'summary-ckeditor1', 'required' => 'required']
+                        : ['class' => 'form-control'],
+                ) !!}
             </div>
         </div>
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('inner_detail', 'Inner Detail') !!}
-                {!! Form::textarea('inner_detail', null, ('required' == 'required') ? ['class' => 'form-control', 'id' => 'summary-ckeditor2', 'required' => 'required'] : ['class' => 'form-control']) !!}
+                {!! Form::textarea(
+                    'inner_detail',
+                    null,
+                    'required' == 'required'
+                        ? ['class' => 'form-control', 'id' => 'summary-ckeditor2', 'required' => 'required']
+                        : ['class' => 'form-control'],
+                ) !!}
             </div>
         </div>
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('image', 'Image') !!}
-                <input class="form-control dropify" name="image" type="file" id="image" {{ ($blog->image != '') ? "data-default-file = /$blog->image" : ''}} {{ ($blog->image == '') ? "required" : ''}} value="{{$blog->image}}">
+                <input class="form-control dropify" name="image" type="file" id="image"
+                    {{ $blog->image != '' ? "data-default-file = /$blog->image" : '' }}
+                    {{ $blog->image == '' ? 'required' : '' }} value="{{ $blog->image }}">
             </div>
         </div>
         <div class="col-md-12">
             <div class="form-group">
-                {!! Form::label('event_datetime', 'Select Date & Time') !!}
-                <input type="datetime-local"
-                       name="event_datetime"
-                       class="form-control"
-                       min="{{ now()->format('Y-m-d\TH:i') }}"
-                       value="{{ old('event_datetime', isset($blog->event_datetime) ? \Carbon\Carbon::parse($blog->event_datetime)->format('Y-m-d\TH:i') : '') }}"
-                       required>
+                {!! Form::label('event_datetime', 'Select Date & Time (Canada Time)') !!}
+                @php
+                    $canadianTime = isset($blog->event_datetime)
+                        ? \Carbon\Carbon::parse($blog->event_datetime)
+                            ->timezone('America/Toronto')
+                            ->format('Y-m-d\TH:i')
+                        : now()->timezone('America/Toronto')->format('Y-m-d\TH:i');
+                @endphp
+
+                <input type="datetime-local" name="event_datetime" class="form-control"
+                    min="{{ now()->timezone('America/Toronto')->format('Y-m-d\TH:i') }}"
+                    value="{{ old('event_datetime', $canadianTime) }}" required>
             </div>
         </div>
+
     </div>
 </div>
 
