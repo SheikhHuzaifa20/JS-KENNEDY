@@ -35,6 +35,11 @@
                         {!! $page->content !!}
                     </div>
                 </div>
+                @php
+                    use Carbon\Carbon;
+                    $date = $blog->updated_at ?? $blog->created_at;
+                    $date = Carbon::parse($date);
+                @endphp
                 @foreach ($blogs as $blog)
                     <div class="col-lg-4 col-md-4 col-12">
                         <div class="blog-article-build">
@@ -50,9 +55,9 @@
                                         {{ $blog->name }}
                                     </span>
                                     <h6>
-                                        15
+                                        {{ $date->format('d') }}
                                         <span class="d-block">
-                                            Aug
+                                            {{ $date->format('M') }}
                                         </span>
                                     </h6>
                                 </div>
