@@ -35,12 +35,16 @@
                         {!! $page->content !!}
                     </div>
                 </div>
-                @php
-                    use Carbon\Carbon;
-                    $date = $blog->updated_at ?? $blog->created_at;
-                    $date = Carbon::parse($date);
-                @endphp
                 @foreach ($blogs as $blog)
+                    @php
+                        $date = null;
+
+                        if (!empty($blog->updated_at) && $blog->updated_at != $blog->created_at) {
+                            $date = \Carbon\Carbon::parse($blog->updated_at);
+                        } else {
+                            $date = \Carbon\Carbon::parse($blog->created_at);
+                        }
+                    @endphp
                     <div class="col-lg-4 col-md-4 col-12">
                         <div class="blog-article-build">
                             <a href="#">
@@ -70,6 +74,7 @@
                         </div>
                     </div>
                 @endforeach
+
             </div>
         </div>
     </section>

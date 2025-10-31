@@ -24,10 +24,10 @@
                                             <div class="banner-content">
                                                 {!! $banners->description !!}
                                                 <div class="banner-btn">
-                                                    <a href="{{$banners->link}}" target="_blank" class="btn btn-black">
+                                                    <a href="{{ $banners->link }}" target="_blank" class="btn btn-black">
                                                         Buy From Amazon
-                                                        <img src="{{ asset('asset/images/amazon.png') }}" 
-                                                            class="img-fluid" alt="">
+                                                        <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid"
+                                                            alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -39,7 +39,8 @@
                                                         <div class="atropos-scale">
                                                             <div class="atropos-rotate">
                                                                 <div class="atropos-inner">
-                                                                    <a href="JavaScript:;" id="show" class="main-text-1">
+                                                                    <a href="JavaScript:;" id="show"
+                                                                        class="main-text-1">
                                                                         <img src="{{ $banners->image }}" class="img-fluid"
                                                                             alt="" data-atropos-offset="2">
                                                                     </a>
@@ -150,10 +151,12 @@
                                                 alt="{{ $product->product_title }}">
                                         </div>
                                         <div class="back-cricle">
-                                            <img src="{{ asset('asset/images/book1.png') }}" class="img-fluid" alt="">
-                                            <a href="{{$product->link}}" class="btn btn-black">
+                                            <img src="{{ asset('asset/images/book1.png') }}" class="img-fluid"
+                                                alt="">
+                                            <a href="{{ $product->link }}" class="btn btn-black">
                                                 Buy From Amazon
-                                                <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
+                                                <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid"
+                                                    alt="">
                                             </a>
                                         </div>
                                     </div>
@@ -182,7 +185,8 @@
                                 <div class="item">
                                     <div class="client-testimonial">
                                         <div class="client-para">
-                                            <img src="{{ asset('asset/images/qoute.png') }}" class="img-fluid" alt="">
+                                            <img src="{{ asset('asset/images/qoute.png') }}" class="img-fluid"
+                                                alt="">
                                             <p>{!! $testimonial->comments !!}</p>
                                             <div class="review-star">
                                                 @for ($i = 1; $i <= 5; $i++)
@@ -220,6 +224,15 @@
                 </div>
 
                 @foreach ($blogs as $blog)
+                    @php
+                        $date = null;
+
+                        if (!empty($blog->updated_at) && $blog->updated_at != $blog->created_at) {
+                            $date = \Carbon\Carbon::parse($blog->updated_at);
+                        } else {
+                            $date = \Carbon\Carbon::parse($blog->created_at);
+                        }
+                    @endphp
                     <div class="col-lg-4 col-md-4 col-12">
                         <div class="blog-article-build">
                             <a href="#">
@@ -234,9 +247,9 @@
                                         {{ $blog->name }}
                                     </span>
                                     <h6>
-                                        15
+                                        {{ $date->format('d') }}
                                         <span class="d-block">
-                                            Aug
+                                            {{ $date->format('M') }}
                                         </span>
                                     </h6>
                                 </div>
