@@ -75,7 +75,7 @@ class BlogController extends Controller
             'short_detail' => 'required',
             'detail' => 'required',
             'inner_detail' => 'required',
-            'event_datetime' => 'required|date|after_or_equal:now',
+            'event_datetime' => 'required',
             'image' => 'required'
         ]);
 
