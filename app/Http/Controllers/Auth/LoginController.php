@@ -65,7 +65,7 @@ class LoginController extends Controller
 
                 Session::flash('message', 'You have logged In  Successfully');
                 Session::flash('alert-class', 'alert-success');
-               return redirect('account');
+               return redirect('/');
           }
 
 

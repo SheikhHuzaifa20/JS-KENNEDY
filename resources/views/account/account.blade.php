@@ -1,8 +1,7 @@
-@extends('layouts.main')
+@extends('layouts.app')
 @section('title', 'Account Details')
 @section('content')
 
-<?php $segment = Request::segments(); ?>
 
 
 <section class="banner">

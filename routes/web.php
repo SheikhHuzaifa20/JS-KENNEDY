@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\BlogReviewController;
+use App\Http\Controllers\PollController;
 
 /*
 |--------------------------------------------------------------------------
@@ -269,3 +270,10 @@ Route::resource('admin/page', 'Admin\\PageController');
 
 
 Route::post('/blog-review/{id}', [BlogReviewController::class, 'store'])->name('blog.review.store');
+Route::get('admin/poll', [PollController::class, 'index'])->name('poll');
+Route::get('admin/poll/create', [PollController::class, 'create'])->name('poll.create');
+Route::get('admin/poll/{id}/edit', [PollController::class, 'edit'])->name('poll.edit');
+Route::put('admin/poll/update/{id}', [PollController::class, 'update'])->name('poll.update');
+Route::any('admin/poll/delete/{id}', [PollController::class, 'destroy'])->name('poll.delete');
+Route::post('admin/poll/store', [PollController::class, 'store'])->name('admin.polls.store');
+Route::post('/poll/vote', [PollController::class, 'vote'])->name('poll.vote');

@@ -9,6 +9,7 @@ use App\schedule;
 use App\newsletter;
 use App\post;
 use App\banner;
+use App\Models\Poll;
 use App\imagetable;
 use DB;
 use View;
@@ -114,9 +115,63 @@ class HomeController extends Controller
     public function blogdetail($id)
     {
         $reviews = DB::table('blog_reviews')->where('blog_id', $id)->latest()->limit(4)->get();
-        $blog = blog::findOrFail($id);
+        $blog = Blog::findOrFail($id);
+        $polls = Poll::where('blog_id', $blog->id)->get();
 
-        return view('blog_detail', compact('blog', 'reviews'));
+        $allVotes = json_decode($blog->user_votes, true) ?? [];
+        $pollResults = [];
+
+        foreach ($polls as $poll) {
+            // JSON options ko safely decode karein
+            $options = [];
+
+            if (is_string($poll->options)) {
+                $decoded = json_decode($poll->options, true);
+                if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+                    $options = $decoded;
+                } else {
+                    $options = explode(',', $poll->options);
+                }
+            } elseif (is_array($poll->options)) {
+                $options = $poll->options;
+            } else {
+                $options = ['Option 1', 'Option 2'];
+            }
+
+            $options = array_map('trim', $options);
+            $options = array_filter($options);
+
+            $voteCount = array_fill(0, count($options), 0);
+            $totalVotes = 0;
+
+            // Loop over each user's votes
+            foreach ($allVotes as $userId => $userPolls) {
+                // Check if user voted for this poll
+                if (isset($userPolls[$poll->id])) {
+                    $selectedOptionText = $userPolls[$poll->id];
+                    $optionIndex = array_search(trim($selectedOptionText), $options);
+
+                    if ($optionIndex !== false) {
+                        $voteCount[$optionIndex]++;
+                        $totalVotes++;
+                    }
+                }
+            }
+
+            // Calculate percentages
+            $percentages = [];
+            foreach ($voteCount as $index => $count) {
+                $percent = $totalVotes > 0 ? round(($count / $totalVotes) * 100, 1) : 0;
+                $percentages[$index] = $percent;
+            }
+
+            $pollResults[$poll->id] = [
+                'total' => $totalVotes,
+                'percentages' => $percentages
+            ];
+        }
+
+        return view('blog_detail', compact('blog', 'reviews', 'polls', 'pollResults', 'allVotes'));
     }
 
     public function inquiry(Request $request, MailerLiteService $mailerLite)

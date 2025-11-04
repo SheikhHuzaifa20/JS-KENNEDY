@@ -173,7 +173,7 @@
                                 $releaseDate = \Carbon\Carbon::parse($blog->event_datetime);
                             @endphp
                             <p class="mt-2 text-muted">
-                                🗓️ 
+                                🗓️
                                 <strong>{{ $releaseDate->format('F d, Y') }}</strong>
                                 at
                                 <strong>{{ $releaseDate->format('h:i A') }}</strong>.
@@ -181,6 +181,66 @@
                         @endif
                         {!! $blog->inner_detail !!}
                     </div>
+                    @foreach ($polls as $poll)
+                        <div class="single-poll mb-4 p-4 rounded shadow"
+                            style="background:white; border:1px solid #dcdcdc;">
+                            <h6 class="fw-bold mb-3" style="color:#222;">{{ $poll->question }}</h6>
+
+                            @php
+                                // JSON data ko safely decode karein
+                                $options = [];
+
+                                if (is_string($poll->options)) {
+                                    // Pehle JSON decode try karein
+                                    $decoded = json_decode($poll->options, true);
+                                    if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+                                        $options = $decoded;
+                                    } else {
+                                        // Agar JSON decode na ho to comma separated assume karein
+                                        $options = explode(',', $poll->options);
+                                    }
+                                } elseif (is_array($poll->options)) {
+                                    // Already array hai
+                                    $options = $poll->options;
+                                } else {
+                                    // Fallback
+                                    $options = ['Option 1', 'Option 2'];
+                                }
+
+                                // Ensure options array clean ho
+                                $options = array_map('trim', $options);
+                                $options = array_filter($options); // Empty values remove karein
+
+                                $results = $pollResults[$poll->id] ?? ['total' => 0, 'percentages' => []];
+                            @endphp
+
+                            <ul class="list-unstyled mt-2">
+                                @foreach ($options as $index => $option)
+                                    @php
+                                        $percent = $results['percentages'][$index] ?? 0;
+                                        // Ensure percent valid ho
+                                        $percent = is_numeric($percent) ? $percent : 0;
+                                    @endphp
+                                    <li class="mb-3">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span>{{ $option }}</span>
+                                            <span class="fw-bold">{{ $percent }}%</span>
+                                        </div>
+                                        <div class="progress" style="height: 8px; background:#eee;">
+                                            <div class="progress-bar" role="progressbar"
+                                                style="width: {{ $percent }}%; background:#1a1a1a;"></div>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+
+                            <p class="text-muted mt-2" style="font-size:13px;">
+                                Total Votes: <strong>{{ $results['total'] ?? 0 }}</strong>
+                            </p>
+                        </div>
+                    @endforeach
+
+
                 </div>
                 <div class="col-lg-4 col-md-4 col-12">
                     <div class="card text-center p-4">
@@ -194,6 +254,126 @@
                         </p>
                         <div style="width:60px; height:3px; background:black; margin:15px auto 0 auto;"></div>
                     </div>
+
+                    @if ($polls->count() > 0)
+                        <div class="poll-section mt-5 p-4 rounded shadow-sm"
+                            style="background:#f9f9f9; border:1px solid #e5e5e5;">
+                            <h4 class="text-center mb-4 fw-bold" style="color:#1a1a1a;">
+                                🗳️ Participate in Polls
+                            </h4>
+
+                            @foreach ($polls as $poll)
+                                @php
+                                    // Check if current user already voted in this poll
+                                    $userVote = null;
+                                    $userId = auth()->id();
+
+                                    if ($userId && isset($allVotes[$userId][$poll->id])) {
+                                        $userVote = $allVotes[$userId][$poll->id];
+                                    }
+
+                                    // JSON data ko safely decode karein
+                                    $options = [];
+
+                                    if (is_string($poll->options)) {
+                                        $decoded = json_decode($poll->options, true);
+                                        if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+                                            $options = $decoded;
+                                        } else {
+                                            $options = explode(',', $poll->options);
+                                        }
+                                    } elseif (is_array($poll->options)) {
+                                        $options = $poll->options;
+                                    } else {
+                                        $options = ['Option 1', 'Option 2'];
+                                    }
+
+                                    $options = array_map('trim', $options);
+                                    $options = array_filter($options);
+                                @endphp
+
+                                <div class="single-poll mb-4 p-4 rounded shadow"
+                                    style="background:white; border:1px solid #dcdcdc; transition:all 0.3s ease;">
+                                    <h6 class="fw-bold mb-3" style="color:#222;">{{ $poll->question }}</h6>
+
+                                    @if ($userVote)
+                                        {{-- User already voted - Show results with their selection --}}
+                                        <div class="alert alert-info mb-3"
+                                            style="background:#e7f3ff; border-color:#b3d9ff;">
+                                            <strong>✓ You already voted in this poll!</strong>
+                                        </div>
+
+                                        @php
+                                            $results = $pollResults[$poll->id] ?? ['total' => 0, 'percentages' => []];
+                                        @endphp
+
+                                        <ul class="list-unstyled mt-2">
+                                            @foreach ($options as $index => $option)
+                                                @php
+                                                    $percent = $results['percentages'][$index] ?? 0;
+                                                    $percent = is_numeric($percent) ? $percent : 0;
+                                                    $isUserVote = trim($userVote) === trim($option);
+                                                @endphp
+                                                <li class="mb-3">
+                                                    <div class="d-flex justify-content-between mb-1">
+                                                        <span>
+                                                            {{ $option }}
+                                                            @if ($isUserVote)
+                                                                <span class="badge bg-success ms-2">Your Vote</span>
+                                                            @endif
+                                                        </span>
+                                                        <span class="fw-bold">{{ $percent }}%</span>
+                                                    </div>
+                                                    <div class="progress" style="height: 8px; background:#eee;">
+                                                        <div class="progress-bar" role="progressbar"
+                                                            style="width: {{ $percent }}%; background:#1a1a1a;"></div>
+                                                    </div>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+
+                                        <p class="text-muted mt-2" style="font-size:13px;">
+                                            Total Votes: <strong>{{ $results['total'] ?? 0 }}</strong>
+                                        </p>
+                                    @else
+                                        {{-- User hasn't voted yet - Show voting form --}}
+                                        <form method="POST" action="{{ route('poll.vote') }}" class="poll-form">
+                                            @csrf
+
+                                            <ul class="list-unstyled mt-2">
+                                                @foreach ($options as $index => $option)
+                                                    <li class="mb-2">
+                                                        <label class="option-label d-flex align-items-center"
+                                                            style="gap:8px; cursor:pointer; color:#333;">
+                                                            <input type="radio" name="vote"
+                                                                value="{{ $option }}" class="form-check-input me-2"
+                                                                style="accent-color:#1a1a1a;" required>
+                                                            {{ $option }}
+                                                        </label>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+
+                                            <input type="hidden" name="poll_id" value="{{ $poll->id }}">
+                                            <input type="hidden" name="blog_id" value="{{ $blog->id }}">
+
+                                            @guest
+                                                <a href="{{ route('register') }}" class="btn w-100 mt-3"
+                                                    style="background:#1a1a1a; color:white; border:none; border-radius:8px; padding:8px 0; font-weight:600;">
+                                                    Login to Vote
+                                                </a>
+                                            @else
+                                                <button type="submit" class="btn w-100 mt-3"
+                                                    style="background:#1a1a1a; color:white; border:none; border-radius:8px; padding:8px 0; font-weight:600;">
+                                                    Vote
+                                                </button>
+                                            @endguest
+                                        </form>
+                                    @endif
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

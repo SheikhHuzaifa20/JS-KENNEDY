@@ -80,10 +80,10 @@
                                     <div class="clearfix"></div>
                                     <hr>
                                     <div class="clearfix"></div>
-                                    <!--<div class="pl-3 pt-1 pb-3 pl-3"> Need an account? <a href="{{url('register')}}">Sign-->
-                                    <!--        up</a>-->
-                                    <!--    <div class="clearfix"></div>-->
-                                    <!--</div>-->
+                                    <div class="pl-3 pt-1 pb-3 pl-3"> Need an account? <a href="{{url('register')}}">Sign
+                                            up</a>
+                                        <div class="clearfix"></div>
+                                    </div>
                                 </form>
                             </div>
                         </div>

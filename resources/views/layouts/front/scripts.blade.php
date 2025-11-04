@@ -98,7 +98,7 @@ $('#newForm').on('submit', function(e) {
 </script>
 
 
-<script type="text/javascript">
+{{-- <script type="text/javascript">
 $('#contactform').on('submit', function(e) {
     //alert('hogaya');
     $('#contactformsresult').html('');
@@ -121,7 +121,7 @@ $('#contactform').on('submit', function(e) {
         },
     });
 });
-</script>
+</script> --}}
 
 @if (!Auth::guest())
 @if(Auth::user()->isAdmin())

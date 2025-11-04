@@ -108,8 +108,6 @@ class RegisterController extends Controller
         }
         activity($user->name)
             ->performedOn($user)
-            ->causedBy($user)
-            ->log('Registered');
-        $user->assignRole('user');
+            ->causedBy($user);
     }
 }
