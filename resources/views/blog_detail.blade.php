@@ -429,7 +429,7 @@
                 <!-- Recent Reviews -->
                 <div class="col-lg-4 col-md-4 col-12 mt-4 mt-lg-0">
                     <div class="reviews-card shadow">
-                        <h3>Recent Reviews</h3>
+                        <h3>Comment</h3>
                         {{-- @dd($reviews) --}}
                         @forelse($reviews as $review)
                             <div class="single-review">
@@ -441,7 +441,7 @@
                                 </div>
                             </div>
                         @empty
-                            <p>No reviews yet. Be the first to comment!</p>
+                            <p>No Comment yet. Be the first to comment!</p>
                         @endforelse
 
                     </div>
