@@ -142,6 +142,13 @@
             color: #555;
             margin: 0;
         }
+       #blogdetail.inner-banner-heading h1,h2,h3,h4,h5,h6,p,span {
+                text-align: center;
+                text-transform: uppercase;
+                color: var(--white-color);
+                font-size: 60px;
+                font-family: "Libre Baskerville", serif;
+        }
     </style>
 @endsection
 
