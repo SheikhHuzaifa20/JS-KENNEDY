@@ -108,7 +108,8 @@
                 </a>
             </li>
             <li class="nav-item {{ request()->is('admin/poll') || request()->is('admin/poll/*') ? 'active' : '' }}">
-                <a href="{{ url('admin/poll') }}"><i class="la la-tags"></i>
+                <a href="{{ url('admin/poll') }}"><i class="la la-check-square"></i>
+
                     <span class="menu-title" data-i18n="eCommerce">Poll</span>
                 </a>
             </li>

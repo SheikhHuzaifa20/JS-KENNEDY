@@ -56,18 +56,21 @@
         </div>
         <div class="col-md-12">
             <div class="form-group">
-                {!! Form::label('event_datetime', 'Select Date & Time (Canada Time)') !!}
+                {!! Form::label('event_datetime', 'Select Date & Time') !!}
+
                 @php
-                    $canadianTime = isset($blog->event_datetime)
-                        ? \Carbon\Carbon::parse($blog->event_datetime)
-                            ->timezone('America/Toronto')
-                            ->format('Y-m-d\TH:i')
-                        : now()->timezone('America/Toronto')->format('Y-m-d\TH:i');
+                    $currentCanadianTime = now()->timezone('America/Toronto');
+                    $formattedCanadianTime = $currentCanadianTime->format('Y-m-d\TH:i');
+                    $displayTime = $currentCanadianTime->format('Y-m-d H:i');
                 @endphp
 
-                <input type="datetime-local" name="event_datetime" class="form-control"
-                    min="{{ now()->timezone('America/Toronto')->format('Y-m-d\TH:i') }}"
-                    value="{{ old('event_datetime', $canadianTime) }}" required>
+                <input type="datetime-local" id="event_datetime" name="event_datetime" class="form-control"
+                    placeholder="Current Time: {{ $displayTime }}" min="{{ $formattedCanadianTime }}"
+                    value="{{ old('event_datetime', $formattedCanadianTime) }}" required>
+
+                <small id="time_note" class="text-muted">
+                    Current Time: {{ $displayTime }}
+                </small>
             </div>
         </div>
 
@@ -77,3 +80,34 @@
 <div class="form-actions text-right pb-0">
     {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Create', ['class' => 'btn btn-primary']) !!}
 </div>
+
+
+<script>
+    function updateCanadianTime() {
+        fetch("https://worldtimeapi.org/api/timezone/America/Toronto")
+            .then(response => response.json())
+            .then(data => {
+                const date = new Date(data.datetime);
+                const formatted = date.toISOString().slice(0, 16);
+                const readable = formatted.replace("T", " ");
+
+                const input = document.getElementById('event_datetime');
+                const note = document.getElementById('time_note');
+
+                // Update placeholder and min time
+                input.placeholder = "Current Time: " + readable;
+                input.min = formatted;
+                note.textContent = "Current Time: " + readable;
+
+                // If user’s current input < live time, auto-correct it
+                if (!input.value || input.value < formatted) {
+                    input.value = formatted;
+                }
+            })
+            .catch(err => console.error("Time fetch error:", err));
+    }
+
+    // Initial run and update every 1 minute
+    updateCanadianTime();
+    setInterval(updateCanadianTime, 60000);
+</script>

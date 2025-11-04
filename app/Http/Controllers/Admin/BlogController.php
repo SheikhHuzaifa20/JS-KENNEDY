@@ -9,6 +9,7 @@ use App\Blog;
 use Illuminate\Http\Request;
 use Image;
 use File;
+use Carbon\Carbon;
 
 class BlogController extends Controller
 {
@@ -82,6 +83,8 @@ class BlogController extends Controller
         if ($request->hasFile('image')) {
             $blog = new blog;
 
+            $blog->event_datetime = Carbon::parse($request->event_datetime, 'America/Toronto')
+                ->setTimezone('America/Toronto');
 
             $blog->name = $request->input('name');
             $blog->short_detail = $request->input('short_detail');

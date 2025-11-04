@@ -5,12 +5,16 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
         section#basic-form-layouts li span {
-    padding-left: 10px;
-}
+            padding-left: 10px;
+        }
 
-section#basic-form-layouts li button {
-    left: -13px;
-}
+        section#basic-form-layouts li button {
+            left: -13px;
+        }
+
+        .heightcard {
+            height: unset !important;
+        }
     </style>
 @endpush
 
@@ -34,7 +38,7 @@ section#basic-form-layouts li button {
         <section id="basic-form-layouts">
             <div class="row match-height">
                 <div class="col-md-7">
-                    <div class="card">
+                    <div class="card heightcard">
                         <div class="card-header">
                             <h4 class="card-title">Create New Poll</h4>
                         </div>

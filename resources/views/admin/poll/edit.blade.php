@@ -17,6 +17,9 @@
         section#basic-form-layouts li button {
             left: -13px;
         }
+        .heightcard {
+            height: unset !important;
+        }
     </style>
 
     <div class="content-header row">
@@ -38,7 +41,7 @@
         <section id="basic-form-layouts">
             <div class="row match-height">
                 <div class="col-md-7">
-                    <div class="card">
+                    <div class="card heightcard">
                         <div class="card-header">
                             <h4 class="card-title" id="basic-layout-form">Edit Poll</h4>
                         </div>
