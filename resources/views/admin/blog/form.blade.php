@@ -12,7 +12,7 @@
         </div>
         <div class="col-md-12">
             <div class="form-group">
-                {!! Form::label('short_detail', 'Detail') !!}
+                {!! Form::label('short_detail', 'Blog Heading') !!}
                 {!! Form::text(
                     'short_detail',
                     null,
