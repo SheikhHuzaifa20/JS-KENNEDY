@@ -75,7 +75,7 @@ class BlogController extends Controller
             'name' => 'required',
             'short_detail' => 'required',
             'detail' => 'required',
-            'inner_detail' => 'required',
+            'inner_detail' => 'nullable',
             'event_datetime' => 'required',
             'image' => 'required'
         ]);
@@ -207,7 +207,7 @@ class BlogController extends Controller
                 'name' => 'required',
                 'short_detail' => 'required',
                 'detail' => 'required',
-                'inner_detail' => 'required',
+                'inner_detail' => 'nullable',
                 'event_datetime' => 'required',
             ]);
 

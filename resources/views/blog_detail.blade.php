@@ -142,7 +142,7 @@
             color: #555;
             margin: 0;
         }
-       #blogdetail.inner-banner-heading h1,h2,h3,h4,h5,h6,p,span {
+       #blogdetail.inner-banner-heading h1 {
                 text-align: center;
                 text-transform: uppercase;
                 color: var(--white-color);
@@ -161,7 +161,9 @@
                 <div class="col-lg-12 col-md-12 col-12">
                     <div class="main-book-sldier">
                         <div class="inner-banner-heading">
-                            {!! $blog->short_detail !!}
+                            <h1>
+                            {{ $blog->short_detail }}
+                            </h1>
                         </div>
                     </div>
                 </div>
@@ -186,7 +188,7 @@
                                 <strong>{{ $releaseDate->format('h:i A') }}</strong>.
                             </p>
                         @endif
-                        {!! $blog->inner_detail !!}
+                        {!! $blog->detail !!}
                     </div>
                     @foreach ($polls as $poll)
                         <div class="single-poll mb-4 p-4 rounded shadow"

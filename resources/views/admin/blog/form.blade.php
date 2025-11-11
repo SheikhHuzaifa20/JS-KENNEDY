@@ -12,13 +12,11 @@
         </div>
         <div class="col-md-12">
             <div class="form-group">
-                {!! Form::label('short_detail', 'Short Detail') !!}
-                {!! Form::textarea(
+                {!! Form::label('short_detail', 'Detail') !!}
+                {!! Form::text(
                     'short_detail',
                     null,
-                    'required' == 'required'
-                        ? ['class' => 'form-control', 'id' => 'summary-ckeditor', 'required' => 'required']
-                        : ['class' => 'form-control'],
+                    'required' == 'required' ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control'],
                 ) !!}
             </div>
         </div>
@@ -34,7 +32,7 @@
                 ) !!}
             </div>
         </div>
-        <div class="col-md-12">
+        {{-- <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('inner_detail', 'Inner Detail') !!}
                 {!! Form::textarea(
@@ -45,7 +43,7 @@
                         : ['class' => 'form-control'],
                 ) !!}
             </div>
-        </div>
+        </div> --}}
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('image', 'Image') !!}

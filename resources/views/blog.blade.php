@@ -62,8 +62,9 @@
                                         </span>
                                     </h6>
                                 </div>
-                                <h4>{!! $blog->short_detail !!}</h4>
-                                <p>{!! $blog->detail !!}</p>
+                                <h4>{{ $blog->short_detail }}</h4>
+                                <p>{!! \Illuminate\Support\Str::limit(strip_tags($blog->detail), 100, '...') !!}</p>
+
                                 <a href="{{ route('blogdetail', $blog->id) }}" class="btn btn-black">
                                     Read More
                                 </a>
