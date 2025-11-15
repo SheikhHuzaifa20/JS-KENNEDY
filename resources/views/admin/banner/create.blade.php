@@ -70,7 +70,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="title">Link</label>
-                                                    <input class="form-control" required="required" name="link" type="text"
+                                                    <input class="form-control" name="link" type="text"
                                                         id="title">
                                                 </div>
                                             </div>

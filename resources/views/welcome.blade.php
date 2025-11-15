@@ -24,11 +24,14 @@
                                             <div class="banner-content">
                                                 {!! $banners->description !!}
                                                 <div class="banner-btn">
+                                                    @if($banners->id == 5)
+                                                    @endif
                                                     <a href="{{ $banners->link }}" target="_blank" class="btn btn-black">
                                                         Buy From Amazon
                                                         <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid"
-                                                            alt="">
+                                                        alt="">
                                                     </a>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

@@ -115,16 +115,18 @@
                 ) !!}
             </div>
         </div>
-        <div class="col-md-12">
-            <div class="form-group">
-                {!! Form::label('audiolink', 'Audiobook Link') !!}
-                {!! Form::text(
-                    'audiolink',
-                    null,
-                    'required' == 'required' ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control'],
-                ) !!}
+        @if ($product->id == 10)
+        @else
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="form-group">
+                        {!! Form::label('audiolink', 'Audiobook Link') !!}
+                        {!! Form::text('audiolink', null, ['class' => 'form-control']) !!}
+                    </div>
+
+                </div>
             </div>
-        </div>
+        @endif
         {{-- <div class="col-md-12">
             <div class="form-group">
                 <div class="row">

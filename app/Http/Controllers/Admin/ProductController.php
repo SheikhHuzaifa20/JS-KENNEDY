@@ -106,7 +106,7 @@ class ProductController extends Controller
                 'price' => 'required',
                 'image' => 'required',
                 'link' => 'required',
-                'audiolink' => 'required',
+                'audiolink' => 'nullable',
             ]);
 
             //echo implode(",",$_POST['language']);
@@ -246,7 +246,7 @@ class ProductController extends Controller
                 'description'   => 'required',
                 'price'         => 'required',
                 'link'         => 'required',
-                'audiolink'         => 'required',
+                'audiolink'         => 'nullable',
             ]);
 
             $product = Product::findOrFail($id);

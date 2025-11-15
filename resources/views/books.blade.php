@@ -51,7 +51,10 @@
                                         Buy From Amazon
                                         <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
                                     </a>
+                                    @if($book->id == 10)
+                                    @else
                                     <a href="{{ $book->audiolink }}" target="_blank" class="btn snata-btn">Audiobook</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
