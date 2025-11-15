@@ -25,7 +25,7 @@
                                                 {!! $banners->description !!}
                                                 <div class="banner-btn">
                                                     @if($banners->id == 5)
-                                                    @endif
+                                                    @else
                                                     <a href="{{ $banners->link }}" target="_blank" class="btn btn-black">
                                                         Buy From Amazon
                                                         <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid"
