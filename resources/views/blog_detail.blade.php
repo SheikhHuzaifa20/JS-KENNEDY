@@ -25,6 +25,7 @@
             padding: 30px;
             margin-bottom: 30px;
             transition: all 0.3s ease;
+            box-shadow: 0 0 15px 1px rgb(0 0 0 / 66%) !important;
         }
 
         .comment-form-card:hover,
