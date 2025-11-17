@@ -13,7 +13,8 @@
                                             class="form-control" required>
                                         <button type="submit" class="btn btn-black email-btn">
                                             Subscribe
-                                            <img src="{{ asset('asset/images/send.png') }}" class="img-fluid" alt="">
+                                            <img src="{{ asset('asset/images/send.png') }}" class="img-fluid"
+                                                alt="">
                                         </button>
                                     </div>
                                 </form>
@@ -63,10 +64,12 @@
                                 </li>
                             </ul>
                             @php
-                                $product = \App\Product::latest()->first();
+                                $sections = \Illuminate\Support\Facades\DB::table('section')
+                                    ->where('page_id', 33)
+                                    ->get();
                             @endphp
                             <form class="d-flex side-top">
-                                <a href="{{$product->link}}" class="btn btn-black" href="#">
+                                <a href="{{ $sections[15]->value }}" class="btn btn-black" href="#">
                                     Buy From Amazon
                                     <img src="{{ asset('asset/images/amazon.png') }}" class="img-fluid" alt="">
                                 </a>
