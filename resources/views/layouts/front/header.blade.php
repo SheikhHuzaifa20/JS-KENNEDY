@@ -62,6 +62,9 @@
                                     <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                                 </li>
                             </ul>
+                            @php
+                                $product = \App\Product::latest()->first();
+                            @endphp
                             <form class="d-flex side-top">
                                 <a href="{{$product->link}}" class="btn btn-black" href="#">
                                     Buy From Amazon

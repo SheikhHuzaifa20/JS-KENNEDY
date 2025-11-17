@@ -9,6 +9,14 @@
 
 @section('css')
     <style>
+        .card.bg-black {
+            background-color: black !important;
+        }
+
+        .card.bg-black p {
+            color: white !important;
+        }
+
         /* Card styles */
         .comment-form-card,
         .reviews-card {
@@ -142,12 +150,13 @@
             color: #555;
             margin: 0;
         }
-       #blogdetail.inner-banner-heading h1 {
-                text-align: center;
-                text-transform: uppercase;
-                color: var(--white-color);
-                font-size: 60px;
-                font-family: "Libre Baskerville", serif;
+
+        #blogdetail.inner-banner-heading h1 {
+            text-align: center;
+            text-transform: uppercase;
+            color: var(--white-color);
+            font-size: 60px;
+            font-family: "Libre Baskerville", serif;
         }
     </style>
 @endsection
@@ -162,7 +171,7 @@
                     <div class="main-book-sldier">
                         <div class="inner-banner-heading">
                             <h1>
-                            {{ $blog->short_detail }}
+                                {{ $blog->short_detail }}
                             </h1>
                         </div>
                     </div>
@@ -175,7 +184,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-12">
-                    <div class="card">
+                    <div class="card bg-black">
                         <img src="{{ asset($blog->image) }}" alt="Fantasy">
                         @if (!empty($blog->event_datetime))
                             @php
