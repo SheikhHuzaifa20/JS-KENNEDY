@@ -36,17 +36,17 @@
                     </div>
 
                     @php
-                        $link = \Illuminate\Support\Facades\DB::table('products')->where('id', 13)->get();
+                        $link = \Illuminate\Support\Facades\DB::table('products')->where('id', 33)->get();
                     @endphp
                     <div class="bonus-scene-version">
                         <div class="santa-version">
-                            <a href="{{ $link->link }}" class="btn snata-btn">Secret Santa <img
+                            <a href="#" class="btn snata-btn">Secret Santa <img
                                     src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid" alt=""></a>
                             <p>Book 3 – Curious as to who got whom in the
                                 Green family Secret Santa. Click to find out!</p>
                         </div>
                         <div class="santa-version">
-                            <a href="{{ $link->link }}" class="btn snata-btn">New Arrivals <img
+                            <a href="#" class="btn snata-btn">New Arrivals <img
                                     src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid" alt=""></a>
                             <p>Book 3 – Interested in the first meeting of
                                 Quinn, Alec, and the kids. Well, here it is.</p>
