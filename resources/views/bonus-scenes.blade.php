@@ -40,7 +40,7 @@
                     @endphp
                     <div class="bonus-scene-version">
                         <div class="santa-version">
-                            <a href="{{ $link[15]->value }}" class="btn snata-btn">Secret Santa <img
+                            <a href="{{ $link->link }}" class="btn snata-btn">Secret Santa <img
                                     src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid" alt=""></a>
                             <p>Book 3 – Curious as to who got whom in the
                                 Green family Secret Santa. Click to find out!</p>
