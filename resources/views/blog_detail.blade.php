@@ -184,7 +184,7 @@
     <section class="blog-detail">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-md-8 col-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="card bg-black">
                         <img src="{{ asset($blog->image) }}" alt="Fantasy">
                         @if (!empty($blog->event_datetime))
@@ -200,6 +200,10 @@
                         @endif
                         {!! $blog->detail !!}
                     </div>
+
+
+                </div>
+                <div class="col-lg-8 col-md-8 col-12">
                     @foreach ($polls as $poll)
                         <div class="single-poll mb-4 p-4 rounded shadow"
                             style="background:white; border:1px solid #dcdcdc;">
@@ -258,11 +262,9 @@
                             </p>
                         </div>
                     @endforeach
-
-
                 </div>
                 <div class="col-lg-4 col-md-4 col-12">
-                    <div class="card text-center p-4">
+                    {{-- <div class="card text-center p-4">
                         <img src="{{ asset($sections[10]->value) }}" alt="Author"
                             style="width:150px; height:150px; border-radius:12px; object-fit:cover; margin:0 auto;">
                         <h3 class="mt-3" style="font-weight:bold; text-transform:uppercase;">About the Author</h3>
@@ -272,10 +274,10 @@
                             the kinds of characters she always wanted to read.
                         </p>
                         <div style="width:60px; height:3px; background:black; margin:15px auto 0 auto;"></div>
-                    </div>
+                    </div> --}}
 
                     @if ($polls->count() > 0)
-                        <div class="poll-section mt-5 p-4 rounded shadow-sm"
+                        <div class="poll-section p-4 rounded shadow-sm"
                             style="background:#f9f9f9; border:1px solid #e5e5e5;">
                             <h4 class="text-center mb-4 fw-bold" style="color:#1a1a1a;">
                                 🗳️ Participate in Polls
