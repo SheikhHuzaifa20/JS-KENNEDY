@@ -51,7 +51,7 @@
                 </div>
             </div>
         </div>
-    </section>Book 3 
+    </section>
 
 
 
