@@ -213,6 +213,9 @@ Route::get('/release-schedule', 'HomeController@release_schedule')->name('releas
 Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::get('/books', 'HomeController@books')->name('books');
 Route::get('/bonus-scenes', 'HomeController@bonus_scenes')->name('bonus_scenes');
+Route::get('/secret_santa', 'HomeController@secret_santa')->name('secret_santa');
+Route::get('/new_arrivals', 'HomeController@new_arrivals')->name('new_arrivals');
+Route::get('/arrival', 'HomeController@arrival')->name('arrival');
 Route::get('/blog', 'HomeController@blog')->name('blog');
 Route::get('/blog-detail/{id}', 'HomeController@blogdetail')->name('blogdetail');
 Route::post('/inquiry', 'HomeController@inquiry')->name('inquiry.store');

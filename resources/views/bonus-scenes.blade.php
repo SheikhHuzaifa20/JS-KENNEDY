@@ -2,7 +2,6 @@
     $page = \Illuminate\Support\Facades\DB::table('pages')->where('id', 35)->first();
     $sections = \Illuminate\Support\Facades\DB::table('section')->where('page_id', 35)->get();
     $banners = \Illuminate\Support\Facades\DB::table('banners')->get();
-    $links = \Illuminate\Support\Facades\DB::table('products')->where('id', 13)->first();
 @endphp
 @extends('layouts.app')
 @section('title', 'Home')
@@ -37,13 +36,13 @@
                     </div>
                     <div class="bonus-scene-version">
                         <div class="santa-version">
-                            <a href="{{$links->link}}" class="btn snata-btn">Secret Santa <img
+                            <a href="{{route("secret_santa")}}" class="btn snata-btn">Secret Santa <img
                                     src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid" alt=""></a>
                             <p>Book 3 – Curious as to who got whom in the
                                 Green family Secret Santa. Click to find out!</p>
                         </div>
                         <div class="santa-version">
-                            <a href="{{$links->link}}" class="btn snata-btn">New Arrivals <img
+                            <a href="{{route("new_arrivals")}}" class="btn snata-btn">New Arrivals <img
                                     src="{{ asset('asset/images/btn-arrow.png') }}" class="img-fluid" alt=""></a>
                             <p>Book 3 – Interested in the first meeting of
                                 Quinn, Alec, and the kids. Well, here it is.</p>
@@ -52,7 +51,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>Book 3 
 
 
 

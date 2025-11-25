@@ -106,6 +106,16 @@ class HomeController extends Controller
         return view('bonus-scenes');
     }
 
+    public function secret_santa()
+    {
+        return view('secret_santa');
+    }
+
+    public function new_arrivals()
+    {
+        return view('new_arrivals');
+    }
+
     public function blog()
     {
         $blogs = DB::table('blogs')->get();
