@@ -182,9 +182,20 @@
             color: #333;
         }
 
+        .review-header-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         .comment-date {
             font-size: 11px;
             color: #999;
+        }
+
+        /* when reply button is inside header remove top margin */
+        .review-header-right .reply-btn {
+            margin-top: 0;
         }
 
         .comment-message {
@@ -587,17 +598,22 @@
                                 <div class="single-review">
                                     <div class="review-header">
                                         <strong>{{ $review->name }}</strong>
-                                        <span
-                                            class="comment-date">{{ \Carbon\Carbon::parse($review->created_at)->diffForHumans() }}</span>
+                                        <div class="review-header-right">
+                                            <span class="comment-date">{{ \Carbon\Carbon::parse($review->created_at)->diffForHumans() }}</span>
+                                            @auth
+                                                <button class="reply-btn" onclick="toggleReplyForm({{ $review->id }})">
+                                                    <i class="fas fa-reply"></i> Reply
+                                                </button>
+                                            @else
+                                                <a href="{{ route('login') }}" class="reply-btn" style="text-decoration: none;">
+                                                    <i class="fas fa-reply"></i> Login to Reply
+                                                </a>
+                                            @endauth
+                                        </div>
                                     </div>
                                     <p class="comment-message">"{{ $review->message }}"</p>
 
-                                    <!-- Reply Button -->
                                     @auth
-                                        <button class="reply-btn" onclick="toggleReplyForm({{ $review->id }})">
-                                            <i class="fas fa-reply"></i> Reply
-                                        </button>
-
                                         <!-- Reply Form (Hidden by default) -->
                                         <div class="reply-form-container" id="reply-form-{{ $review->id }}"
                                             style="display: none;" data-blog-id="{{ $blog->id }}">
@@ -616,10 +632,6 @@
                                                 </div>
                                             </form>
                                         </div>
-                                    @else
-                                        <a href="{{ route('login') }}" class="reply-btn" style="text-decoration: none;">
-                                            <i class="fas fa-reply"></i> Login to Reply
-                                        </a>
                                     @endauth
 
                                     <!-- Replies Section -->
@@ -677,26 +689,7 @@
             event.preventDefault();
 
             const form = event.target;
-            
-            // Create FormData from form
             const formData = new FormData(form);
-            
-            // Get values from hidden inputs
-            const parentId = formData.get('parent_id');
-            const currentBlogId = formData.get('blog_id');
-            
-            console.log('=== SUBMIT REPLY DEBUG ===');
-            console.log('Parent ID (comment id):', parentId);
-            console.log('Blog ID from form input:', currentBlogId);
-            console.log('Blog ID from parameter:', blogId);
-            console.log('Form data before sending:', {
-                _token: formData.get('_token') ? 'Present' : 'Missing',
-                parent_id: formData.get('parent_id'),
-                blog_id: formData.get('blog_id'),
-                name: formData.get('name'),
-                email: formData.get('email'),
-                message: formData.get('message')
-            });
 
             // Show loading state
             const submitBtn = form.querySelector('.submit-reply-btn');
@@ -709,7 +702,6 @@
                     body: formData
                 })
                 .then(response => {
-                    console.log('Response Status:', response.status);
                     const contentType = response.headers.get('content-type');
                     if (contentType && contentType.includes('application/json')) {
                         return response.json().then(data => ({
@@ -726,9 +718,7 @@
                     }
                 })
                 .then(result => {
-                    console.log('=== SERVER RESPONSE ===');
-                    console.log('Status:', result.status);
-                    console.log('Data:', result.data);
+                    console.log('Response:', result.status, result.data);
 
                     if (result.ok && result.data && result.data.success) {
                         Swal.fire({
@@ -762,8 +752,7 @@
                     }
                 })
                 .catch(error => {
-                    console.error('=== FETCH ERROR ===');
-                    console.error(error);
+                    console.error('Error:', error);
                     Swal.fire({
                         icon: 'error',
                         title: 'Network Error',
