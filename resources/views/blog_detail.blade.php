@@ -38,6 +38,31 @@
             padding-bottom: 10px;
         }
 
+        /* Comments List */
+        .comments-list {
+            overflow-y: auto;
+            max-height: 520px;
+            padding-right: 8px;
+        }
+
+        .comments-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .comments-list::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .comments-list::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+
+        .comments-list::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
         /* Alerts */
         .alert-success {
             background: #d4edda;
@@ -674,6 +699,7 @@
                     <div class="reviews-card shadow">
                         <h3>Comments</h3>
 
+                        <div class="comments-list">
                         @forelse($reviews->where('parent_id', null) as $review)
                             <div class="comment-thread" id="comment-{{ $review->id }}">
                                 <!-- Main Comment -->
@@ -743,6 +769,7 @@
                         @empty
                             <p class="no-comments">No comments yet. Be the first to comment!</p>
                         @endforelse
+                        </div>
                     </div>
                 </div>
 
