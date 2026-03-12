@@ -9,14 +9,6 @@
 
 @section('css')
     <style>
-        .card.bg-black {
-            background-color: black !important;
-        }
-
-        .card.bg-black p {
-            color: white !important;
-        }
-
         /* Card styles */
         .comment-form-card,
         .reviews-card {
@@ -42,11 +34,39 @@
             font-size: 20px;
             margin-bottom: 20px;
             color: #333;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        /* Alerts */
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert-error ul {
+            margin: 0;
+            padding-left: 20px;
         }
 
         /* Form Inputs */
         .comment-form input,
-        .comment-form textarea {
+        .comment-form textarea,
+        .reply-form input,
+        .reply-form textarea {
             width: 100%;
             padding: 14px;
             border: 1px solid #ddd;
@@ -55,21 +75,25 @@
             outline: none;
             transition: border 0.3s;
             margin-bottom: 15px;
+            background: #fff;
         }
 
         .comment-form input:focus,
-        .comment-form textarea:focus {
+        .comment-form textarea:focus,
+        .reply-form input:focus,
+        .reply-form textarea:focus {
             border-color: #000;
         }
 
         /* Form Row */
-        .comment-form .form-row {
+        .comment-form .form-row,
+        .reply-form .form-row {
             display: flex;
             gap: 15px;
             margin-bottom: 15px;
         }
 
-        /* Button */
+        /* Buttons */
         .btn-submit {
             background: #000;
             color: #fff;
@@ -79,43 +103,65 @@
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
+            width: 100%;
         }
 
         .btn-submit:hover {
             background: #333;
         }
 
-        /* Star Rating Form */
-        .star-rating {
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: flex-start;
-            margin-bottom: 15px;
-        }
-
-        .star-rating input {
-            display: none;
-        }
-
-        .star-rating label {
-            font-size: 24px;
-            color: #ddd;
+        .reply-btn {
+            background: none;
+            border: none;
+            color: #000;
+            font-size: 13px;
+            font-weight: 600;
             cursor: pointer;
-            transition: color 0.3s;
+            padding: 5px 0;
+            margin-top: 5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        .star-rating input:checked~label,
-        .star-rating label:hover,
-        .star-rating label:hover~label {
-            color: gold;
+        .reply-btn:hover {
+            color: #333;
         }
 
-        /* Reviews */
+        .submit-reply-btn {
+            background: #000;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .submit-reply-btn:hover {
+            background: #333;
+        }
+
+        .cancel-btn {
+            background: #f0f0f0;
+            color: #666;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .cancel-btn:hover {
+            background: #e0e0e0;
+        }
+
+        /* Comments */
         .single-review {
             border-bottom: 1px solid #eee;
             padding-bottom: 15px;
             margin-bottom: 15px;
-            transition: all 0.3s ease;
         }
 
         .single-review:last-child {
@@ -126,38 +172,127 @@
 
         .review-header {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 5px;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 8px;
         }
 
-        .review-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #eee;
+        .review-header strong {
+            font-size: 15px;
+            color: #333;
         }
 
-        .review-stars span {
-            color: gold;
-            font-size: 14px;
-            margin-right: 2px;
+        .comment-date {
+            font-size: 11px;
+            color: #999;
         }
 
-        .single-review p {
+        .comment-message {
             font-size: 14px;
             color: #555;
-            margin: 0;
+            margin-bottom: 5px;
+            line-height: 1.5;
         }
 
-        #blogdetail.inner-banner-heading h1 {
+        /* Replies Section */
+        .replies-section {
+            margin-left: 20px;
+            margin-top: 10px;
+            padding-left: 15px;
+            border-left: 2px solid #ddd;
+        }
+
+        .single-reply {
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .single-reply:last-child {
+            border-bottom: none;
+        }
+
+        .reply-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+
+        .reply-icon {
+            color: #999;
+            font-size: 10px;
+        }
+
+        .reply-header strong {
+            color: #333;
+        }
+
+        .reply-date {
+            font-size: 10px;
+            color: #999;
+            margin-left: auto;
+        }
+
+        .reply-message {
+            font-size: 13px;
+            color: #666;
+            margin-left: 18px;
+            line-height: 1.4;
+        }
+
+        /* Reply Form */
+        .reply-form-container {
+            margin: 10px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 12px;
+        }
+
+        .reply-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+
+        /* No Comments */
+        .no-comments {
+            text-align: center;
+            color: #999;
+            font-style: italic;
+            padding: 20px;
+        }
+
+        /* Blog Content */
+        .blog-content {
+            padding: 20px;
+            background: #fff;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px 1px rgb(0 0 0 / 66%);
+        }
+
+        .inner-banner-heading h1 {
             text-align: center;
             text-transform: uppercase;
-            color: var(--white-color);
+            color: #333;
             font-size: 60px;
             font-family: "Libre Baskerville", serif;
+            margin: 30px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            .comment-form .form-row,
+            .reply-form .form-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .inner-banner-heading h1 {
+                font-size: 40px;
+            }
         }
     </style>
 @endsection
@@ -441,23 +576,79 @@
                 </div>
 
                 <!-- Recent Reviews -->
+                <!-- Recent Reviews -->
                 <div class="col-lg-4 col-md-4 col-12 mt-4 mt-lg-0">
                     <div class="reviews-card shadow">
-                        <h3>Comment</h3>
-                        {{-- @dd($reviews) --}}
-                        @forelse($reviews as $review)
-                            <div class="single-review">
-                                <div class="review-content">
+                        <h3>Comments</h3>
+
+                        @forelse($reviews->where('parent_id', null) as $review)
+                            <div class="comment-thread" id="comment-{{ $review->id }}">
+                                <!-- Main Comment -->
+                                <div class="single-review">
                                     <div class="review-header">
                                         <strong>{{ $review->name }}</strong>
+                                        <span
+                                            class="comment-date">{{ \Carbon\Carbon::parse($review->created_at)->diffForHumans() }}</span>
                                     </div>
-                                    <p>"{{ $review->message }}"</p>
+                                    <p class="comment-message">"{{ $review->message }}"</p>
+
+                                    <!-- Reply Button -->
+                                    @auth
+                                        <button class="reply-btn" onclick="toggleReplyForm({{ $review->id }})">
+                                            <i class="fas fa-reply"></i> Reply
+                                        </button>
+
+                                        <!-- Reply Form (Hidden by default) -->
+                                        <div class="reply-form-container" id="reply-form-{{ $review->id }}"
+                                            style="display: none;" data-blog-id="{{ $blog->id }}">
+                                            <form onsubmit="submitReply(event, {{ $review->id }}, {{ $blog->id }})" class="reply-form" data-blog-id="{{ $blog->id }}" data-comment-id="{{ $review->id }}">
+                                                @csrf
+                                                <input type="hidden" name="parent_id" value="{{ $review->id }}">
+                                                <input type="hidden" name="blog_id" value="{{ $blog->id }}">
+                                                <input type="hidden" name="name" value="{{ auth()->user()->name }}">
+                                                <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+
+                                                <textarea name="message" placeholder="Write your reply..." rows="3" required></textarea>
+                                                <div class="reply-actions">
+                                                    <button type="button" class="cancel-btn"
+                                                        onclick="toggleReplyForm({{ $review->id }})">Cancel</button>
+                                                    <button type="submit" class="submit-reply-btn">Post Reply</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    @else
+                                        <a href="{{ route('login') }}" class="reply-btn" style="text-decoration: none;">
+                                            <i class="fas fa-reply"></i> Login to Reply
+                                        </a>
+                                    @endauth
+
+                                    <!-- Replies Section -->
+                                    @php
+                                        $replies = $reviews->where('parent_id', $review->id);
+                                    @endphp
+
+                                    @if ($replies->count() > 0)
+                                        <div class="replies-section">
+                                            @foreach ($replies as $reply)
+                                                <div class="single-reply">
+                                                    <div class="reply-header">
+                                                        <i class="fas fa-reply reply-icon"></i>
+                                                        <strong>{{ $reply->name }}</strong>
+                                                        <span
+                                                            class="reply-date">{{ \Carbon\Carbon::parse($reply->created_at)->diffForHumans() }}</span>
+                                                    </div>
+                                                    <p class="reply-message">{{ $reply->message }}</p>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @else
+                                        <!-- No replies for this comment yet -->
+                                    @endif
                                 </div>
                             </div>
                         @empty
-                            <p>No Comment yet. Be the first to comment!</p>
+                            <p class="no-comments">No comments yet. Be the first to comment!</p>
                         @endforelse
-
                     </div>
                 </div>
 
@@ -470,6 +661,120 @@
 @endsection
 
 @section('js')
+    <script>
+        function toggleReplyForm(commentId) {
+            const form = document.getElementById(`reply-form-${commentId}`);
+            if (form.style.display === 'none' || form.style.display === '') {
+                // Hide all other forms first
+                document.querySelectorAll('.reply-form-container').forEach(f => f.style.display = 'none');
+                form.style.display = 'block';
+            } else {
+                form.style.display = 'none';
+            }
+        }
+
+        function submitReply(event, commentId, blogId) {
+            event.preventDefault();
+
+            const form = event.target;
+            
+            // Create FormData from form
+            const formData = new FormData(form);
+            
+            // Get values from hidden inputs
+            const parentId = formData.get('parent_id');
+            const currentBlogId = formData.get('blog_id');
+            
+            console.log('=== SUBMIT REPLY DEBUG ===');
+            console.log('Parent ID (comment id):', parentId);
+            console.log('Blog ID from form input:', currentBlogId);
+            console.log('Blog ID from parameter:', blogId);
+            console.log('Form data before sending:', {
+                _token: formData.get('_token') ? 'Present' : 'Missing',
+                parent_id: formData.get('parent_id'),
+                blog_id: formData.get('blog_id'),
+                name: formData.get('name'),
+                email: formData.get('email'),
+                message: formData.get('message')
+            });
+
+            // Show loading state
+            const submitBtn = form.querySelector('.submit-reply-btn');
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = 'Posting...';
+            submitBtn.disabled = true;
+
+            fetch("{{ route('blog.review.reply') }}", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => {
+                    console.log('Response Status:', response.status);
+                    const contentType = response.headers.get('content-type');
+                    if (contentType && contentType.includes('application/json')) {
+                        return response.json().then(data => ({
+                            ok: response.ok,
+                            data: data,
+                            status: response.status
+                        }));
+                    } else {
+                        return response.text().then(text => ({
+                            ok: response.ok,
+                            data: { success: response.ok, message: text },
+                            status: response.status
+                        }));
+                    }
+                })
+                .then(result => {
+                    console.log('=== SERVER RESPONSE ===');
+                    console.log('Status:', result.status);
+                    console.log('Data:', result.data);
+
+                    if (result.ok && result.data && result.data.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success!',
+                            text: 'Your reply has been posted successfully!',
+                            timer: 1500,
+                            showConfirmButton: false
+                        }).then(() => {
+                            location.reload();
+                        });
+                    } else if (result.data && result.data.message) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error!',
+                            text: result.data.message,
+                            showConfirmButton: true
+                        });
+                        submitBtn.innerText = originalText;
+                        submitBtn.disabled = false;
+                    } else {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success!',
+                            text: 'Reply posted successfully!',
+                            timer: 1500,
+                            showConfirmButton: false
+                        }).then(() => {
+                            location.reload();
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('=== FETCH ERROR ===');
+                    console.error(error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Network Error',
+                        text: 'Please try again.',
+                        showConfirmButton: true
+                    });
+                    submitBtn.innerText = originalText;
+                    submitBtn.disabled = false;
+                });
+        }
+    </script>
     <script>
         const images = [
             "../asset/images/banner-back-1.png",

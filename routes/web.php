@@ -273,6 +273,7 @@ Route::resource('admin/page', 'Admin\\PageController');
 
 
 Route::post('/blog-review/{id}', [BlogReviewController::class, 'store'])->name('blog.review.store');
+Route::post('/blog-review/reply', [BlogReviewController::class, 'reply'])->name('blog.review.reply');
 Route::get('admin/poll', [PollController::class, 'index'])->name('poll');
 Route::get('admin/poll/create', [PollController::class, 'create'])->name('poll.create');
 Route::get('admin/poll/{id}/edit', [PollController::class, 'edit'])->name('poll.edit');

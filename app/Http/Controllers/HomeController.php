@@ -124,7 +124,7 @@ class HomeController extends Controller
 
     public function blogdetail($id)
     {
-        $reviews = DB::table('blog_reviews')->where('blog_id', $id)->latest()->limit(4)->get();
+        $reviews = DB::table('blog_reviews')->where('blog_id', $id)->latest()->get();
         $blog = Blog::findOrFail($id);
         $polls = Poll::where('blog_id', $blog->id)->get();
 

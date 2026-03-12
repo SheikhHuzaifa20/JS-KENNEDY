@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\imagetable;
 use Auth;
 use App\inquiry;
+use App\User;
 use DB;
 use Image;
 use File;
@@ -41,7 +42,15 @@ class AdminController extends Controller
 
 	public function dashboard()
 	{
-		return view('admin.dashboard.index');
+		$users = User::selectRaw("COUNT(*) as count, DATE_FORMAT(created_at, '%Y-%m') as month")
+			->groupBy('month')
+			->orderBy('month', 'ASC')
+			->get();
+
+		$months = $users->pluck('month');
+		$counts = $users->pluck('count');
+
+		return view('admin.dashboard.index' , compact('months', 'counts'));
 	}
 
 
