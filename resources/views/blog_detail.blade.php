@@ -76,6 +76,7 @@
             transition: border 0.3s;
             margin-bottom: 15px;
             background: #fff;
+            box-sizing: border-box;
         }
 
         .comment-form input:focus,
@@ -122,6 +123,7 @@
             display: inline-flex;
             align-items: center;
             gap: 5px;
+            white-space: nowrap;
         }
 
         .reply-btn:hover {
@@ -203,6 +205,8 @@
             color: #555;
             margin-bottom: 5px;
             line-height: 1.5;
+            word-break: break-word;
+            overflow-wrap: break-word;
         }
 
         /* Replies Section */
@@ -303,6 +307,64 @@
 
             .inner-banner-heading h1 {
                 font-size: 40px;
+            }
+
+            /* Mobile comment/reply adjustments */
+            .review-header {
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+
+            .review-header strong {
+                flex: 1 1 100%;
+                margin-bottom: 5px;
+            }
+
+            .review-header-right {
+                flex: 1 1 100%;
+                gap: 5px;
+            }
+
+            .comment-message {
+                word-break: break-word;
+                overflow-wrap: break-word;
+                white-space: normal;
+            }
+
+            .reply-message {
+                word-break: break-word;
+                overflow-wrap: break-word;
+                white-space: normal;
+            }
+
+            /* Reduce indentation on mobile */
+            .replies-section {
+                margin-left: 10px;
+                padding-left: 10px;
+            }
+
+            .reply-message {
+                margin-left: 10px;
+            }
+
+            .reviews-card {
+                padding: 15px;
+            }
+
+            .reply-form-container {
+                padding: 10px;
+                margin: 5px 0;
+            }
+
+            .reply-actions {
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+
+            .cancel-btn,
+            .submit-reply-btn {
+                flex: 1;
+                min-width: 80px;
             }
         }
     </style>
