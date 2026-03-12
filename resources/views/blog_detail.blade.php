@@ -694,7 +694,6 @@
                 </div>
 
                 <!-- Recent Reviews -->
-                <!-- Recent Reviews -->
                 <div class="col-lg-4 col-md-4 col-12 mt-4 mt-lg-0">
                     <div class="reviews-card shadow">
                         <h3>Comments</h3>
@@ -708,7 +707,7 @@
                                         <strong>{{ $review->name }}</strong>
                                         <div class="review-header-right">
                                             <span class="comment-date">{{ \Carbon\Carbon::parse($review->created_at)->diffForHumans() }}</span>
-                                            @auth
+                                            {{-- @auth
                                                 <button class="reply-btn" onclick="toggleReplyForm({{ $review->id }})">
                                                     <i class="fas fa-reply"></i> Reply
                                                 </button>
@@ -716,7 +715,7 @@
                                                 <a href="{{ route('login') }}" class="reply-btn" style="text-decoration: none;">
                                                     <i class="fas fa-reply"></i> Login to Reply
                                                 </a>
-                                            @endauth
+                                            @endauth --}}
                                         </div>
                                     </div>
                                     <p class="comment-message">"{{ $review->message }}"</p>
