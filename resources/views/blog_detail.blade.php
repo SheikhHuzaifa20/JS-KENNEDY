@@ -160,10 +160,18 @@
         }
 
         /* Comments */
-        .single-review {
-            border-bottom: 1px solid #eee;
-            padding-bottom: 15px;
+        .comment-thread {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 12px;
             margin-bottom: 15px;
+            background: #fafafa;
+        }
+
+        .single-review {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
         }
 
         .single-review:last-child {
@@ -175,10 +183,9 @@
         .review-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             margin-bottom: 8px;
             gap: 10px;
-            flex-wrap: wrap;
         }
 
         .review-header strong {
@@ -186,17 +193,16 @@
             color: #333;
             word-break: break-word;
             overflow-wrap: break-word;
-            max-width: 70%;
+            flex-shrink: 1;
+            min-width: 0;
         }
 
         .review-header-right {
             display: flex;
             align-items: center;
             gap: 10px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            margin-left: auto;
-            min-width: fit-content;
+            flex-wrap: nowrap;
+            flex-shrink: 0;
         }
 
         .comment-date {
@@ -220,10 +226,12 @@
 
         /* Replies Section */
         .replies-section {
-            margin-left: 20px;
-            margin-top: 10px;
-            padding-left: 15px;
-            border-left: 2px solid #ddd;
+            margin-left: 0;
+            margin-top: 12px;
+            padding-left: 0;
+            padding-top: 12px;
+            border-left: none;
+            border-top: 1px solid #ddd;
         }
 
         .single-reply {
@@ -350,12 +358,13 @@
 
             /* Reduce indentation on mobile */
             .replies-section {
-                margin-left: 10px;
-                padding-left: 10px;
+                margin-left: 0;
+                padding-left: 0;
+                border-left: none;
             }
 
             .reply-message {
-                margin-left: 10px;
+                margin-left: 18px;
             }
 
             .reviews-card {
