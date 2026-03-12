@@ -424,7 +424,7 @@
                 <div class="col-lg-12 col-md-12 col-12">
                     <div class="main-book-sldier">
                         <div class="inner-banner-heading">
-                            <h1>
+                            <h1 style="color: white !important">
                                 {{ $blog->short_detail }}
                             </h1>
                         </div>
