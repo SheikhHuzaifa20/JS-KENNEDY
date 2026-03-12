@@ -175,8 +175,9 @@
         .review-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 8px;
+            gap: 10px;
         }
 
         .review-header strong {
@@ -188,6 +189,8 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
         .comment-date {
@@ -254,6 +257,8 @@
             color: #666;
             margin-left: 18px;
             line-height: 1.4;
+            word-break: break-word;
+            overflow-wrap: break-word;
         }
 
         /* Reply Form */
