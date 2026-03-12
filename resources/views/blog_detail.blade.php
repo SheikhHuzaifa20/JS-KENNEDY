@@ -178,11 +178,15 @@
             align-items: flex-start;
             margin-bottom: 8px;
             gap: 10px;
+            flex-wrap: wrap;
         }
 
         .review-header strong {
             font-size: 15px;
             color: #333;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            max-width: 70%;
         }
 
         .review-header-right {
@@ -191,6 +195,8 @@
             gap: 10px;
             flex-wrap: wrap;
             justify-content: flex-end;
+            margin-left: auto;
+            min-width: fit-content;
         }
 
         .comment-date {
