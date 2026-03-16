@@ -38,19 +38,17 @@ class BlogReviewController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => implode('; ', $validator->errors()->all())
-            ], 422);
+            return redirect()->back()
+                ->with('error', implode('; ', $validator->errors()->all()))
+                ->withInput();
         }
 
         // Get user data from authenticated user
         $user = auth()->user();
         if (!$user) {
-            return response()->json([
-                'success' => false,
-                'message' => 'You must be logged in to reply.'
-            ], 401);
+            return redirect()->back()
+                ->with('error', 'You must be logged in to reply.')
+                ->withInput();
         }
 
         DB::table('blog_reviews')->insert([
@@ -63,10 +61,7 @@ class BlogReviewController extends Controller
             'updated_at' => now(),
         ]);
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Reply posted successfully!'
-        ]);
+        return redirect()->back()->with('success', 'Reply posted successfully!');
     }
 
     public function show($id)

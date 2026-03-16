@@ -205,7 +205,7 @@ class BlogController extends Controller
             ]);
 
             // Redirect back with success message
-            return redirect()->route('blog.review.show');
+            return redirect()->route('blog.review.show', $request->blog_id)->with('success', 'Reply posted successfully!');
         } catch (\Exception $e) {
             // If there's an error, redirect back with error message
             return redirect()->back()
