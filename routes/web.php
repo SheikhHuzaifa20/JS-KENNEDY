@@ -257,6 +257,8 @@ Route::any('blog-review/delete/{id}', 'Admin\BlogController@blog_reviewDelete');
 Route::get('blog-review/show/{id}', 'Admin\BlogController@blogshow')->name('blog.review.show');
 Route::any('blog-review/view/{id}', 'Admin\BlogController@blog_review')->name('blog.review.view');
 Route::put('blog-review/update/{id}', 'Admin\BlogController@blogupdate')->name('blog.review.update');
+Route::post('blog-review/reply-store', 'Admin\BlogController@storeReply')->name('admin.blog-review.reply-store');
+Route::put('blog-review/update-reply/{id}', 'Admin\BlogController@updateReply')->name('admin.blog-review.update-reply');
 
 Route::resource('admin/category', 'Admin\\CategoryController');
 
@@ -272,7 +274,7 @@ Route::post('admin/delete-product-variant', 'Admin\\AttributesValueController@de
 Route::resource('admin/testimonial', 'Admin\\TestimonialController');
 Route::resource('admin/page', 'Admin\\PageController');
 
-Route::get('blog-review/reply/{id}', 'Admin\BlogController@replyForm')->name('admin.blog-review.reply-form');
+// Route::get('blog-review/reply/{id}', 'Admin\BlogController@replyForm')->name('admin.blog-review.reply-form');
 Route::get('blog-review/reply', 'Admin\BlogController@storeReply')->name('admin.blog-review.reply-store');
 Route::post('/blog-review/reply', [BlogReviewController::class, 'reply'])->name('blog.review.reply');
 Route::post('/blog-review/{id}', [BlogReviewController::class, 'store'])->name('blog.review.store');

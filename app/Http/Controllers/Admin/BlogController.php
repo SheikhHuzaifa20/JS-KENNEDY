@@ -149,32 +149,36 @@ class BlogController extends Controller
     {
         $blog = Blog::findOrFail($id);
 
-        // Get all comments with their replies
+        // Get all main comments
         $inquiry = DB::table('blog_reviews')
             ->where('blog_id', $id)
+            ->whereNull('parent_id')
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->get()
+            ->map(function ($comment) {
+                $comment->has_admin_reply = DB::table('blog_reviews')
+                    ->where('parent_id', $comment->id)
+                    ->where('name', 'Admin')
+                    ->exists();
+                return $comment;
+            });
 
-        // Get parent comments for reply form (only main comments)
+        // Get parent comments for reply form (only main comments without admin replies)
         $parentComments = DB::table('blog_reviews')
             ->where('blog_id', $id)
             ->whereNull('parent_id')
+            ->whereNotExists(function ($query) {
+                $query->select(DB::raw(1))
+                      ->from('blog_reviews as r2')
+                      ->whereRaw('r2.parent_id = blog_reviews.id')
+                      ->where('r2.name', 'Admin');
+            })
             ->orderBy('created_at', 'desc')
             ->get();
 
         return view('admin.blog.blog_review', compact('inquiry', 'blog', 'parentComments'));
     }
 
-    public function replyForm($id)
-    {
-        $comment = DB::table('blog_reviews')->where('id', $id)->first();
-
-        if (!$comment) {
-            return redirect()->back()->with('error', 'Comment not found!');
-        }
-
-        return view('admin.blog.reply_form', compact('comment'));
-    }
 
     public function storeReply(Request $request)
     {
@@ -201,8 +205,7 @@ class BlogController extends Controller
             ]);
 
             // Redirect back with success message
-            return redirect()->route('blog.review.show', $request->blog_id)
-                ->with('success', 'Reply posted successfully!');
+            return redirect()->route('blog.review.show');
         } catch (\Exception $e) {
             // If there's an error, redirect back with error message
             return redirect()->back()
@@ -217,9 +220,49 @@ class BlogController extends Controller
     {
         $inquiry = DB::table('blog_reviews')->where('id', $id)->first();
 
-        return view('admin.blog.review_edit', compact('inquiry'));
+        // Get all replies for this comment (admin responses)
+        $replies = DB::table('blog_reviews')
+            ->where('parent_id', $id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('admin.blog.review_edit', compact('inquiry', 'replies'));
     }
 
+
+    public function updateReply(Request $request, $id)
+    {
+        // Validate the request
+        $request->validate([
+            'message' => 'required|string|max:1000',
+        ]);
+
+        try {
+            // Get the reply
+            $reply = DB::table('blog_reviews')->where('id', $id)->first();
+
+            if (!$reply) {
+                return redirect()->back()->with('error', 'Reply not found!');
+            }
+
+            // Update the reply
+            DB::table('blog_reviews')->where('id', $id)->update([
+                'message' => $request->message,
+                'updated_at' => now(),
+            ]);
+
+            // Get the parent comment's blog_id to redirect back
+            $parent = DB::table('blog_reviews')->where('id', $reply->parent_id)->first();
+
+            // Redirect back to the parent comment view
+            return redirect()->route('blog.review.view', $reply->parent_id)
+                ->with('success', 'Reply updated successfully!');
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->with('error', 'Failed to update reply. Please try again.')
+                ->withInput();
+        }
+    }
 
     public function blogupdate(Request $request, $id)
     {

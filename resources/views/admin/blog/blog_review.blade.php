@@ -95,8 +95,8 @@
                                                         <i class="fa fa-eye" aria-hidden="true"></i>View
                                                     </a>
 
-                                                    @if (!$item->parent_id)
-                                                        <!-- Reply button only for main comments -->
+                                                    @if (!$item->parent_id && !$item->has_admin_reply)
+                                                        <!-- Reply button only for main comments without admin replies -->
                                                         <button type="button" class="btn btn-success btn-sm"
                                                             data-toggle="modal" data-target="#replyModal{{ $item->id }}"
                                                             title="Reply">
@@ -114,7 +114,7 @@
                                             </tr>
 
                                             <!-- Reply Modal for each comment -->
-                                            @if (!$item->parent_id)
+                                            @if (!$item->parent_id && !$item->has_admin_reply)
                                                 <div class="modal fade" id="replyModal{{ $item->id }}" tabindex="-1"
                                                     role="dialog" aria-labelledby="replyModalLabel{{ $item->id }}"
                                                     aria-hidden="true">
@@ -198,6 +198,18 @@
     <!-- end - This is for export functionality only -->
     <script>
         $(document).ready(function() {
+
+            @if (\Session::has('success'))
+                $.toast({
+                    heading: 'Success!',
+                    position: 'top-center',
+                    text: '{{ session()->get('success') }}',
+                    loaderBg: '#28a745',
+                    icon: 'success',
+                    hideAfter: 3000,
+                    stack: 6
+                });
+            @endif
 
             @if (\Session::has('message'))
                 $.toast({

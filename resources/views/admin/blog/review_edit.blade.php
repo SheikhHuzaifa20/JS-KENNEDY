@@ -176,6 +176,97 @@
                 </div>
             </div>
         </section>
+
+        <!-- Admin Replies Section -->
+        @if ($replies && $replies->count() > 0)
+            <section id="admin-replies-section" class="mt-5">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Admin Replies</h4>
+                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+                                    @foreach ($replies as $reply)
+                                        <div class="card mb-3 border-left-primary" style="border-left: 5px solid #3498db;">
+                                            <div class="card-body">
+                                                <div class="row mb-2">
+                                                    <div class="col-md-8">
+                                                        <strong>Replied by:</strong> {{ $reply->name }} | 
+                                                        <strong>Email:</strong> {{ $reply->email }}
+                                                    </div>
+                                                    <div class="col-md-4 text-right">
+                                                        <strong>{{ \Carbon\Carbon::parse($reply->created_at)->format('M d, Y h:i A') }}</strong>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="row mb-3">
+                                                    <div class="col-12">
+                                                        <p class="p-3 bg-light rounded">{{ $reply->message }}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 text-right">
+                                                        <button type="button" class="btn btn-sm btn-primary" 
+                                                            onclick="editReply({{ $reply->id }}, '{{ addslashes($reply->message) }}')">
+                                                            <i class="fa fa-edit"></i> Edit
+                                                        </button>
+                                                        <a href="{{ url('blog-review/delete/' . $reply->id) }}" 
+                                                            class="btn btn-sm btn-danger"
+                                                            onclick="return confirm('Are you sure?')">
+                                                            <i class="fa fa-trash"></i> Delete
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Edit Reply Modal -->
+                                        <div class="modal fade" id="editReplyModal{{ $reply->id }}" tabindex="-1" role="dialog">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Edit Reply</h5>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            <span>&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form action="{{ url('blog-review/update-reply/' . $reply->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <div class="modal-body">
+                                                            <div class="form-group">
+                                                                <label for="edit_message">Reply Message</label>
+                                                                <textarea name="message" id="edit_message_{{ $reply->id }}" rows="4" 
+                                                                    class="form-control" required>{{ $reply->message }}</textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        @endif
     </div>
 @endsection
 @push('js')
@@ -218,6 +309,11 @@
                 },
             });
 
+        }
+
+        function editReply(replyId, message) {
+            document.getElementById('edit_message_' + replyId).value = message;
+            $('#editReplyModal' + replyId).modal('show');
         }
 
         function getval(sel) {
