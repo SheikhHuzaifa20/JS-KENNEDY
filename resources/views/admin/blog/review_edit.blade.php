@@ -173,16 +173,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Admin Replies Section -->
-        @if ($replies && $replies->count() > 0)
-            <section id="admin-replies-section" class="mt-5">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
+                    <!-- Admin Replies Section -->
+                    @if ($replies && $replies->count() > 0)
+                        <div id="admin-replies-section" class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Admin Replies</h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
@@ -202,7 +195,7 @@
                                             <div class="card-body">
                                                 <div class="row mb-2">
                                                     <div class="col-md-8">
-                                                        <strong>Replied by:</strong> {{ $reply->name }} | 
+                                                        <strong>Replied by:</strong> {{ $reply->name }} |
                                                         <strong>Email:</strong> {{ $reply->email }}
                                                     </div>
                                                     <div class="col-md-4 text-right">
@@ -217,11 +210,11 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-12 text-right">
-                                                        <button type="button" class="btn btn-sm btn-primary" 
+                                                        <button type="button" class="btn btn-sm btn-primary"
                                                             onclick="editReply({{ $reply->id }}, '{{ addslashes($reply->message) }}')">
                                                             <i class="fa fa-edit"></i> Edit
                                                         </button>
-                                                        <a href="{{ url('blog-review/delete/' . $reply->id) }}" 
+                                                        <a href="{{ url('blog-review/delete/' . $reply->id) }}"
                                                             class="btn btn-sm btn-danger"
                                                             onclick="return confirm('Are you sure?')">
                                                             <i class="fa fa-trash"></i> Delete
@@ -232,7 +225,8 @@
                                         </div>
 
                                         <!-- Edit Reply Modal -->
-                                        <div class="modal fade" id="editReplyModal{{ $reply->id }}" tabindex="-1" role="dialog">
+                                        <div class="modal fade" id="editReplyModal{{ $reply->id }}" tabindex="-1"
+                                            role="dialog">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -241,19 +235,21 @@
                                                             <span>&times;</span>
                                                         </button>
                                                     </div>
-                                                    <form action="{{ url('blog-review/update-reply/' . $reply->id) }}" method="POST">
+                                                    <form action="{{ url('blog-review/update-reply/' . $reply->id) }}"
+                                                        method="POST">
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="modal-body">
                                                             <div class="form-group">
                                                                 <label for="edit_message">Reply Message</label>
-                                                                <textarea name="message" id="edit_message_{{ $reply->id }}" rows="4" 
-                                                                    class="form-control" required>{{ $reply->message }}</textarea>
+                                                                <textarea name="message" id="edit_message_{{ $reply->id }}" rows="4" class="form-control" required>{{ $reply->message }}</textarea>
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Save
+                                                                Changes</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -263,10 +259,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
-            </section>
-        @endif
+            </div>
+        </section>
+
     </div>
 @endsection
 @push('js')
