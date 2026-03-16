@@ -32,8 +32,6 @@ class BlogReviewController extends Controller
     public function reply(Request $request)
     {
         $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
             'message' => 'required|string',
             'parent_id' => 'required|integer|exists:blog_reviews,id',
             'blog_id' => 'required|integer|exists:blogs,id'
@@ -46,11 +44,20 @@ class BlogReviewController extends Controller
             ], 422);
         }
 
+        // Get user data from authenticated user
+        $user = auth()->user();
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'You must be logged in to reply.'
+            ], 401);
+        }
+
         DB::table('blog_reviews')->insert([
             'blog_id' => (int)$request->blog_id,
             'parent_id' => (int)$request->parent_id,
-            'name' => $request->name,
-            'email' => $request->email,
+            'name' => $user->name ?? 'Anonymous',
+            'email' => $user->email ?? 'anonymous@example.com',
             'message' => $request->message,
             'created_at' => now(),
             'updated_at' => now(),
@@ -75,6 +82,6 @@ class BlogReviewController extends Controller
                 return $review;
             });
 
-        return view('blog.detail', compact('blog', 'reviews'));
+        return view('blog_detail', compact('blog', 'reviews'));
     }
 }

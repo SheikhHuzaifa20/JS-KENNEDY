@@ -64,7 +64,7 @@
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Message</th>
-                                            {{-- <th>Rating</th> --}}
+                                            <th>Type</th>
                                             <th>Created at</th>
                                             <th>Action</th>
                                         </tr>
@@ -75,37 +75,109 @@
                                                 <td>{{ $item->id }}</td>
                                                 <td>{{ $item->name }}</td>
                                                 <td>{{ $item->email }}</td>
-                                                <td>{{ $item->message }}</td>
-                                                {{-- <td>
-                                                    <div class="star-rating">
-                                                        @for ($i = 1; $i <= 5; $i++)
-                                                            <span
-                                                                class="star {{ $i <= $item->rating ? 'filled' : '' }}">&#9733;</span>
-                                                        @endfor
-                                                    </div>
-                                                </td> --}}
-
-
-                                                {{-- <td>{{ $item->address }}</td>
-                                                <td>{{ $item->city }}</td> --}}
+                                                <td>
+                                                    {{ Str::limit($item->message, 50) }}
+                                                    @if ($item->parent_id)
+                                                        <span class="badge badge-info ml-2">Reply</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($item->parent_id)
+                                                        <span class="badge badge-success">Reply</span>
+                                                    @else
+                                                        <span class="badge badge-primary">Main Comment</span>
+                                                    @endif
+                                                </td>
                                                 <td>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</td>
                                                 <td>
-
-                                                    <a href="{{ url('blog-review/view/'.$item->id) }}"
-                                                        title="View Language">
-                                                    <button class="btn btn-info btn-sm">
-                                                    <i class="fa fa-eye" aria-hidden="true"></i> View
-                                                    </button>
+                                                    <a href="{{ url('blog-review/view/' . $item->id) }}"
+                                                        class="btn btn-info btn-sm" title="View">
+                                                        <i class="fa fa-eye" aria-hidden="true"></i>View
                                                     </a>
 
-                                                    <a href="{{ url('blog-review/delete', $item->id) }}"
-                                                        title="View Language">
-                                                        <button class="btn btn-danger btn-sm">
-                                                            <i class="fa fa-trash-o"></i> Delete
+                                                    @if (!$item->parent_id)
+                                                        <!-- Reply button only for main comments -->
+                                                        <button type="button" class="btn btn-success btn-sm"
+                                                            data-toggle="modal" data-target="#replyModal{{ $item->id }}"
+                                                            title="Reply">
+                                                            <i class="fa fa-reply"></i>Reply
                                                         </button>
+                                                    @endif
+
+                                                    <a href="{{ url('blog-review/delete', $item->id) }}"
+                                                        class="btn btn-danger btn-sm"
+                                                        onclick="return confirm('Are you sure you want to delete this item?')"
+                                                        title="Delete">
+                                                        <i class="fa fa-trash-o"></i>Delete
                                                     </a>
                                                 </td>
                                             </tr>
+
+                                            <!-- Reply Modal for each comment -->
+                                            @if (!$item->parent_id)
+                                                <div class="modal fade" id="replyModal{{ $item->id }}" tabindex="-1"
+                                                    role="dialog" aria-labelledby="replyModalLabel{{ $item->id }}"
+                                                    aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title"
+                                                                    id="replyModalLabel{{ $item->id }}">Reply to
+                                                                    {{ $item->name }}</h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <form action="{{ route('admin.blog-review.reply-store') }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                <div class="modal-body">
+                                                                    @if ($errors->any())
+                                                                        <div class="alert alert-danger">
+                                                                            <ul class="mb-0">
+                                                                                @foreach ($errors->all() as $error)
+                                                                                    <li>{{ $error }}</li>
+                                                                                @endforeach
+                                                                            </ul>
+                                                                        </div>
+                                                                    @endif
+
+                                                                    <div class="form-group">
+                                                                        <label>Original Comment:</label>
+                                                                        <div class="p-3 bg-light rounded">
+                                                                            <strong>{{ $item->name }}:</strong>
+                                                                            <p class="mb-0">{{ $item->message }}</p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <label for="message">Your Reply <span
+                                                                                class="text-danger">*</span>:</label>
+                                                                        <textarea name="message" id="message" rows="4" class="form-control @error('message') is-invalid @enderror"
+                                                                            required placeholder="Write your reply here...">{{ old('message') }}</textarea>
+                                                                        @error('message')
+                                                                            <span
+                                                                                class="invalid-feedback">{{ $message }}</span>
+                                                                        @enderror
+                                                                    </div>
+
+                                                                    <input type="hidden" name="parent_id"
+                                                                        value="{{ $item->id }}">
+                                                                    <input type="hidden" name="blog_id"
+                                                                        value="{{ $blog->id }}">
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary">Post
+                                                                        Reply</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
                                         @endforeach
                                     </tbody>
                                 </table>

@@ -707,7 +707,7 @@
                                         <strong>{{ $review->name }}</strong>
                                         <div class="review-header-right">
                                             <span class="comment-date">{{ \Carbon\Carbon::parse($review->created_at)->diffForHumans() }}</span>
-                                            @auth
+                                            {{-- @auth
                                                 <button class="reply-btn" onclick="toggleReplyForm({{ $review->id }})">
                                                     <i class="fas fa-reply"></i> Reply
                                                 </button>
@@ -715,7 +715,7 @@
                                                 <a href="{{ route('login') }}" class="reply-btn" style="text-decoration: none;">
                                                     <i class="fas fa-reply"></i> Login to Reply
                                                 </a>
-                                            @endauth
+                                            @endauth --}}
                                         </div>
                                     </div>
                                     <p class="comment-message">"{{ $review->message }}"</p>
@@ -728,8 +728,6 @@
                                                 @csrf
                                                 <input type="hidden" name="parent_id" value="{{ $review->id }}">
                                                 <input type="hidden" name="blog_id" value="{{ $blog->id }}">
-                                                <input type="hidden" name="name" value="{{ auth()->user()->name }}">
-                                                <input type="hidden" name="email" value="{{ auth()->user()->email }}">
 
                                                 <textarea name="message" placeholder="Write your reply..." rows="3" required></textarea>
                                                 <div class="reply-actions">

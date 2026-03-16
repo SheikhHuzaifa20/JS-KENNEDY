@@ -147,14 +147,72 @@ class BlogController extends Controller
 
     public function blogshow($id)
     {
+        $blog = Blog::findOrFail($id);
+
+        // Get all comments with their replies
         $inquiry = DB::table('blog_reviews')
             ->where('blog_id', $id)
             ->orderBy('created_at', 'desc')
             ->get();
-        // dd($inquiry);
 
-        return view('admin.blog.blog_review', compact('inquiry'));
+        // Get parent comments for reply form (only main comments)
+        $parentComments = DB::table('blog_reviews')
+            ->where('blog_id', $id)
+            ->whereNull('parent_id')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('admin.blog.blog_review', compact('inquiry', 'blog', 'parentComments'));
     }
+
+    public function replyForm($id)
+    {
+        $comment = DB::table('blog_reviews')->where('id', $id)->first();
+
+        if (!$comment) {
+            return redirect()->back()->with('error', 'Comment not found!');
+        }
+
+        return view('admin.blog.reply_form', compact('comment'));
+    }
+
+    public function storeReply(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'parent_id' => 'required|integer|exists:blog_reviews,id',
+            'blog_id' => 'required|integer|exists:blogs,id',
+            'message' => 'required|string|max:1000',
+        ]);
+
+        try {
+            // Get parent comment to get name and email (optional)
+            $parentComment = DB::table('blog_reviews')->where('id', $request->parent_id)->first();
+
+            // Insert the reply
+            DB::table('blog_reviews')->insert([
+                'blog_id' => $request->blog_id,
+                'parent_id' => $request->parent_id,
+                'name' => auth()->user()->name ?? 'Admin', // Get from logged in user
+                'email' => auth()->user()->email ?? 'admin@example.com', // Get from logged in user
+                'message' => $request->message,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            // Redirect back with success message
+            return redirect()->route('blog.review.show', $request->blog_id)
+                ->with('success', 'Reply posted successfully!');
+        } catch (\Exception $e) {
+            // If there's an error, redirect back with error message
+            return redirect()->back()
+                ->with('error', 'Failed to post reply. Please try again.')
+                ->withInput();
+        }
+    }
+
+
+
     public function blog_review($id)
     {
         $inquiry = DB::table('blog_reviews')->where('id', $id)->first();
