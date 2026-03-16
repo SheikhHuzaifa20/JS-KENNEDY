@@ -64,7 +64,7 @@
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Message</th>
-                                            <th>Type</th>
+                                            {{-- <th>Type</th> --}}
                                             <th>Created at</th>
                                             <th>Action</th>
                                         </tr>
@@ -81,13 +81,13 @@
                                                         <span class="badge badge-info ml-2">Reply</span>
                                                     @endif
                                                 </td>
-                                                <td>
+                                                {{-- <td>
                                                     @if ($item->parent_id)
                                                         <span class="badge badge-success">Reply</span>
                                                     @else
                                                         <span class="badge badge-primary">Main Comment</span>
                                                     @endif
-                                                </td>
+                                                </td> --}}
                                                 <td>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</td>
                                                 <td>
                                                     <a href="{{ url('blog-review/view/' . $item->id) }}"
