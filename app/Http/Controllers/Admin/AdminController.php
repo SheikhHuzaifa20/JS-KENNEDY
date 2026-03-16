@@ -40,17 +40,97 @@ class AdminController extends Controller
 		return view('auth.login')->with('title', 'Josue Francois');;
 	}
 
-	public function dashboard()
+	public function dashboard(Request $request)
 	{
-		$users = User::selectRaw("COUNT(*) as count, DATE_FORMAT(created_at, '%Y-%m') as month")
-			->groupBy('month')
-			->orderBy('month', 'ASC')
-			->get();
+		$timeframe = $request->get('timeframe', 'monthly'); // Default to monthly
 
-		$months = $users->pluck('month');
-		$counts = $users->pluck('count');
+		if ($timeframe === 'weekly') {
+			// Get weekly data (last 7 days)
+			$users = User::selectRaw("COUNT(*) as count, DATE(created_at) as date")
+				->where('created_at', '>=', now()->subDays(7))
+				->groupBy('date')
+				->orderBy('date', 'ASC')
+				->get();
 
-		return view('admin.dashboard.index' , compact('months', 'counts'));
+			$labels = $users->pluck('date')->map(function ($date) {
+				return date('D, M d', strtotime($date));
+			});
+			$counts = $users->pluck('count');
+			$title = 'Last 7 Days';
+		} else {
+			// Get monthly data
+			$users = User::selectRaw("COUNT(*) as count, DATE_FORMAT(created_at, '%Y-%m') as month")
+				->groupBy('month')
+				->orderBy('month', 'ASC')
+				->get();
+
+			$labels = $users->pluck('month')->map(function ($month) {
+				return date('M Y', strtotime($month . '-01'));
+			});
+			$counts = $users->pluck('count');
+			$title = 'Monthly';
+		}
+
+		// Calculate total users
+		$totalUsers = User::count();
+
+		// Get today's signups
+		$todaySignups = User::whereDate('created_at', today())->count();
+
+		// Get this week's signups
+		$weekSignups = User::where('created_at', '>=', now()->startOfWeek())->count();
+
+		// Get this month's signups
+		$monthSignups = User::whereMonth('created_at', now()->month)
+			->whereYear('created_at', now()->year)
+			->count();
+
+		return view('admin.dashboard.index', compact(
+			'labels',
+			'counts',
+			'totalUsers',
+			'todaySignups',
+			'weekSignups',
+			'monthSignups',
+			'timeframe',
+			'title'
+		));
+	}
+
+	public function getDashboardData(Request $request)
+	{
+		$timeframe = $request->get('timeframe', 'monthly');
+
+		if ($timeframe === 'weekly') {
+			// Get weekly data (last 7 days)
+			$users = User::selectRaw("COUNT(*) as count, DATE(created_at) as date")
+				->where('created_at', '>=', now()->subDays(7))
+				->groupBy('date')
+				->orderBy('date', 'ASC')
+				->get();
+
+			$labels = $users->pluck('date')->map(function ($date) {
+				return date('D, M d', strtotime($date));
+			});
+			$counts = $users->pluck('count');
+		} else {
+			// Get monthly data
+			$users = User::selectRaw("COUNT(*) as count, DATE_FORMAT(created_at, '%Y-%m') as month")
+				->groupBy('month')
+				->orderBy('month', 'ASC')
+				->get();
+
+			$labels = $users->pluck('month')->map(function ($month) {
+				return date('M Y', strtotime($month . '-01'));
+			});
+			$counts = $users->pluck('count');
+		}
+
+		return response()->json([
+			'labels' => $labels,
+			'counts' => $counts,
+			'timeframe' => $timeframe
+		]);
 	}
 
 

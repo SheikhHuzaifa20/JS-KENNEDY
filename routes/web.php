@@ -42,6 +42,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
 
     Route::get('logo/edit', 'Admin\AdminController@logoEdit')->name('admin.logo.edit');
+    Route::get('data', 'Admin\AdminController@getDashboardData')->name('admin.dashboard.data');
     Route::post('logo/upload', 'Admin\AdminController@logoUpload')->name('logo_upload');
 
     Route::get('favicon/edit', 'Admin\AdminController@faviconEdit')->name('admin.favicon.edit');

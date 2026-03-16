@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 use Image;
 use File;
 use Carbon\Carbon;
+use App\newsletter;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewBlogNotification;
+use App\Services\MailerLiteService;
 
 class BlogController extends Controller
 {
@@ -69,7 +73,7 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(Request $request, MailerLiteService $mailerLite)
     {
         $this->validate($request, [
             'name' => 'required',
@@ -91,21 +95,27 @@ class BlogController extends Controller
             $blog->detail = $request->input('detail');
             $blog->inner_detail = $request->input('inner_detail');
             $blog->event_datetime = $request->event_datetime;
-            $file = $request->file('image');
 
-            //make sure yo have image folder inside your public
+            $file = $request->file('image');
             $destination_path = 'uploads/blogs/';
             $fileName = $file->getClientOriginalName();
             $profileImage = date("Ymd") . $fileName . "." . $file->getClientOriginalExtension();
-
-
-            $file->move(public_path('uploads/blogs/'), $profileImage);
+            $file->move(public_path($destination_path), $profileImage);
 
             $blog->image = $destination_path . $profileImage;
             $blog->save();
+
+            // -------------------------------
+            // SEND EMAIL TO ALL NEWSLETTER SUBSCRIBERS
+            // -------------------------------
+            $subscribers = newsletter::pluck('newsletter_email');
+            foreach ($subscribers as $email) {
+                Mail::to($email)->send(new NewBlogNotification($blog));
+                $mailerLite->subscribe($email);
+            }
         }
 
-        return redirect('admin/blog')->with('message', 'Blog added!');
+        return redirect('admin/blog')->with('message', 'Blog added and newsletter sent!');
     }
 
     /**

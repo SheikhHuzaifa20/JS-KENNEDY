@@ -30,8 +30,6 @@
             padding: 15px;
             background: #f8f9fc;
             min-height: 100vh;
-            overflow: hidden;
-            /* Prevent scrolling */
         }
 
         /* Header Section */
@@ -163,7 +161,7 @@
             background: white;
             border-radius: 20px;
             padding: 25px;
-            margin-bottom: 0;
+            margin-bottom: 25px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
         }
 
@@ -199,6 +197,17 @@
             font-size: 0.9rem;
             background: #f8f9fc;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chart-controls select:hover {
+            border-color: #4e73df;
+        }
+
+        .chart-controls select:focus {
+            outline: none;
+            border-color: #4e73df;
+            box-shadow: 0 0 0 3px rgba(78, 115, 223, 0.1);
         }
 
         /* Graph Container */
@@ -293,12 +302,6 @@
                 height: 350px;
             }
         }
-
-        /* Custom Scrollbar (if needed, but we're preventing scroll) */
-        ::-webkit-scrollbar {
-            width: 0;
-            background: transparent;
-        }
     </style>
 @endpush
 
@@ -312,206 +315,122 @@
             </div>
         </div>
 
-        <div class="row mt-2">
-            <div class="col-lg-12">
-                <h3 class="text-center mb-3">Monthly User</h3>
-                <div id="user-signup-chart"></div>
+        <!-- Stats Cards -->
+        <div class="stats-row mt-2">
+            <div class="stat-card">
+                <div class="stat-info">
+                    <h3>Total Users</h3>
+                    <div class="stat-number">{{ $totalUsers }}</div>
+                    <div class="stat-label">All time</div>
+                </div>
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
             </div>
+
+            <div class="stat-card">
+                <div class="stat-info">
+                    <h3>Today's Signups</h3>
+                    <div class="stat-number">{{ $todaySignups }}</div>
+                    <div class="stat-label">{{ now()->format('M d, Y') }}</div>
+                </div>
+                <div class="stat-icon">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-info">
+                    <h3>This Week</h3>
+                    <div class="stat-number">{{ $weekSignups }}</div>
+                    <div class="stat-label">{{ now()->startOfWeek()->format('M d') }} -
+                        {{ now()->endOfWeek()->format('M d') }}</div>
+                </div>
+                <div class="stat-icon">
+                    <i class="fas fa-calendar-week"></i>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-info">
+                    <h3>This Month</h3>
+                    <div class="stat-number">{{ $monthSignups }}</div>
+                    <div class="stat-label">{{ now()->format('F Y') }}</div>
+                </div>
+                <div class="stat-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="chart-section">
+            <div class="chart-header">
+                <h3>
+                    <i class="fas fa-chart-line"></i>
+                    User Signups - <span id="timeframe-title">{{ $title }}</span>
+                </h3>
+                <div class="chart-controls">
+                    <select id="chart-timeframe" onchange="changeTimeframe(this.value)">
+                        <option value="monthly" {{ $timeframe == 'monthly' ? 'selected' : '' }}>Monthly View</option>
+                        <option value="weekly" {{ $timeframe == 'weekly' ? 'selected' : '' }}>Weekly View (Last 7 Days)
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="user-signup-chart"></div>
+
+            <!-- Summary Cards -->
+            <!-- Summary Cards -->
+            {{-- <div class="summary-row">
+                <div class="summary-card">
+                    <i class="fas fa-chart-bar"></i>
+                    <h4>Total in Period</h4>
+                    <div class="summary-value" id="total-in-period">{{ $counts->sum() }}</div>
+                </div>
+                <div class="summary-card">
+                    <i class="fas fa-arrow-up"></i>
+                    <h4>Average per Day/Week</h4>
+                    <div class="summary-value" id="average-value">
+                        {{ $counts->isNotEmpty() ? round($counts->sum() / $counts->count(), 1) : 0 }}
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <i class="fas fa-calendar-day"></i>
+                    <h4>Peak Day</h4>
+                    <div class="summary-value" id="peak-value">
+                        {{ $counts->isNotEmpty() ? $counts->max() : 0 }}
+                    </div>
+                </div>
+            </div> --}}
         </div>
     </div>
 @endsection
 
 @push('js')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('plugins/vendors/d3/d3.min.js') }}"></script>
+    <script src="{{ asset('plugins/vendors/c3-master/c3.min.js') }}"></script>
+    <script src="{{ asset('plugins/vendors/knob/jquery.knob.js') }}"></script>
+    <script src="{{ asset('plugins/vendors/sparkline/jquery.sparkline.min.js') }}"></script>
+    <script src="{{ asset('plugins/vendors/raphael/raphael-min.js') }}"></script>
+    <script src="{{ asset('plugins/vendors/morrisjs/morris.js') }}"></script>
+    <script src="{{ asset('plugins/vendors/toast-master/js/jquery.toast.js') }}"></script>
+    <script src="{{ asset('plugins/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('plugins/vendors/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
+    <script src="{{ asset('plugins/vendors/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+
     <script>
+        let currentChart = null;
+
         document.addEventListener('DOMContentLoaded', function() {
-            // Get data from PHP
-            var months = @json($months ?? []);
+            // Get initial data
+            var labels = @json($labels ?? []);
             var counts = @json($counts ?? []);
 
-            // Calculate cumulative total
-            var cumulative = [];
-            var sum = 0;
-            counts.forEach(function(count) {
-                sum += count;
-                cumulative.push(sum);
-            });
-
-            // Calculate max value for better y-axis scaling
-            var maxCount = Math.max(...counts);
-            var maxCumulative = Math.max(...cumulative);
-
-            // Check if data exists
-            if (months.length && counts.length) {
-                // Create beautiful graph
-                var chart = c3.generate({
-                    bindto: '#user-signup-chart',
-                    data: {
-                        columns: [
-                            ['Monthly Signups', ...counts],
-                            ['Cumulative Users', ...cumulative]
-                        ],
-                        types: {
-                            'Monthly Signups': 'bar',
-                            'Cumulative Users': 'line'
-                        },
-                        axes: {
-                            'Cumulative Users': 'y2'
-                        },
-                        names: {
-                            'Monthly Signups': 'Monthly Signups',
-                            'Cumulative Users': 'Total Users'
-                        },
-                        colors: {
-                            'Monthly Signups': '#4e73df',
-                            'Cumulative Users': '#1cc88a'
-                        }
-                    },
-                    axis: {
-                        x: {
-                            type: 'category',
-                            categories: months,
-                            tick: {
-                                rotate: 0,
-                                multiline: false,
-                                culling: {
-                                    max: 8
-                                }
-                            },
-                            label: {
-                                text: 'Months',
-                                position: 'outer-center'
-                            },
-                            height: 50
-                        },
-                        y: {
-                            label: {
-                                text: 'Monthly Signups',
-                                position: 'outer-middle'
-                            },
-                            min: 0,
-                            max: maxCount + Math.ceil(maxCount * 0.1),
-                            padding: {
-                                top: 10,
-                                bottom: 0
-                            }
-                        },
-                        y2: {
-                            show: true,
-                            label: {
-                                text: 'Cumulative Users',
-                                position: 'outer-middle'
-                            },
-                            min: 0,
-                            max: maxCumulative + Math.ceil(maxCumulative * 0.1)
-                        }
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.6
-                        },
-                        space: 0.2
-                    },
-                    line: {
-                        connectNull: true
-                    },
-                    point: {
-                        show: true,
-                        r: 4,
-                        focus: {
-                            expand: {
-                                r: 6
-                            }
-                        }
-                    },
-                    grid: {
-                        y: {
-                            show: true,
-                            lines: [{
-                                value: 0
-                            }]
-                        }
-                    },
-                    legend: {
-                        position: 'bottom',
-                        item: {
-                            onclick: function(id) {
-                                return false;
-                            }
-                        }
-                    },
-                    tooltip: {
-                        grouped: true,
-                        format: {
-                            title: function(d) {
-                                return months[d];
-                            },
-                            value: function(value, ratio, id) {
-                                return value + ' users';
-                            }
-                        }
-                    },
-                    size: {
-                        height: 400
-                    },
-                    padding: {
-                        right: 30,
-                        left: 30,
-                        bottom: 20,
-                        top: 20
-                    }
-                });
-
-                // Timeframe change handler
-                document.getElementById('chart-timeframe').addEventListener('change', function(e) {
-                    var monthsCount = parseInt(e.target.value);
-                    var totalMonths = months.length;
-
-                    if (totalMonths > monthsCount) {
-                        var startIdx = totalMonths - monthsCount;
-                        var filteredMonths = months.slice(startIdx);
-                        var filteredCounts = counts.slice(startIdx);
-                        var filteredCumulative = cumulative.slice(startIdx);
-
-                        // Recalculate cumulative for filtered data
-                        var newCumulative = [];
-                        var newSum = 0;
-                        filteredCounts.forEach(function(count) {
-                            newSum += count;
-                            newCumulative.push(newSum);
-                        });
-
-                        chart.load({
-                            columns: [
-                                ['Monthly Signups', ...filteredCounts],
-                                ['Cumulative Users', ...newCumulative]
-                            ],
-                            categories: filteredMonths
-                        });
-
-                        // Update axes
-                        chart.axis.max({
-                            y: Math.max(...filteredCounts) + Math.ceil(Math.max(...filteredCounts) *
-                                0.1),
-                            y2: Math.max(...newCumulative) + Math.ceil(Math.max(...newCumulative) *
-                                0.1)
-                        });
-                    }
-                });
-
-            } else {
-                // Show no data message
-                document.getElementById('user-signup-chart').innerHTML =
-                    '<div class="no-data-message">' +
-                    '<i class="fas fa-chart-pie"></i>' +
-                    '<h4>No Data Available</h4>' +
-                    '<p>There are no user signups to display at this time.</p>' +
-                    '</div>';
-            }
-
-            // Initialize datepicker
-            jQuery('#datepicker-inline').datepicker({
-                todayHighlight: true
-            });
+            // Create the chart
+            createChart(labels, counts);
 
             // Show welcome toast
             $.toast({
@@ -523,44 +442,198 @@
                 hideAfter: 3000,
                 stack: 6
             });
-
         });
+
+        function createChart(labels, counts) {
+            if (!labels.length || !counts.length) {
+                document.getElementById('user-signup-chart').innerHTML =
+                    '<div class="no-data-message">' +
+                    '<i class="fas fa-chart-pie"></i>' +
+                    '<h4>No Data Available</h4>' +
+                    '<p>There are no user signups to display for this period.</p>' +
+                    '</div>';
+                return;
+            }
+
+            // Calculate cumulative total
+            var cumulative = [];
+            var sum = 0;
+            counts.forEach(function(count) {
+                sum += count;
+                cumulative.push(sum);
+            });
+
+            // Calculate max values
+            var maxCount = Math.max(...counts);
+            var maxCumulative = Math.max(...cumulative);
+
+            // Destroy existing chart if it exists
+            if (currentChart) {
+                currentChart = currentChart.destroy();
+            }
+
+            // Create new chart
+            currentChart = c3.generate({
+                bindto: '#user-signup-chart',
+                data: {
+                    columns: [
+                        ['Signups', ...counts],
+                        ['Cumulative Users', ...cumulative]
+                    ],
+                    types: {
+                        'Signups': 'bar',
+                        'Cumulative Users': 'line'
+                    },
+                    axes: {
+                        'Cumulative Users': 'y2'
+                    },
+                    names: {
+                        'Signups': 'User Signups',
+                        'Cumulative Users': 'Total Users'
+                    },
+                    colors: {
+                        'Signups': '#4e73df',
+                        'Cumulative Users': '#1cc88a'
+                    }
+                },
+                axis: {
+                    x: {
+                        type: 'category',
+                        categories: labels,
+                        tick: {
+                            rotate: 0,
+                            multiline: false,
+                            culling: {
+                                max: 8
+                            }
+                        },
+                        label: {
+                            text: document.getElementById('chart-timeframe').value === 'weekly' ? 'Days' : 'Months',
+                            position: 'outer-center'
+                        },
+                        height: 50
+                    },
+                    y: {
+                        label: {
+                            text: 'User Signups',
+                            position: 'outer-middle'
+                        },
+                        min: 0,
+                        max: maxCount + Math.ceil(maxCount * 0.1),
+                        padding: {
+                            top: 10,
+                            bottom: 0
+                        }
+                    },
+                    y2: {
+                        show: true,
+                        label: {
+                            text: 'Cumulative Users',
+                            position: 'outer-middle'
+                        },
+                        min: 0,
+                        max: maxCumulative + Math.ceil(maxCumulative * 0.1)
+                    }
+                },
+                bar: {
+                    width: {
+                        ratio: 0.6
+                    },
+                    space: 0.2
+                },
+                line: {
+                    connectNull: true
+                },
+                point: {
+                    show: true,
+                    r: 4,
+                    focus: {
+                        expand: {
+                            r: 6
+                        }
+                    }
+                },
+                grid: {
+                    y: {
+                        show: true
+                    }
+                },
+                legend: {
+                    position: 'bottom'
+                },
+                tooltip: {
+                    format: {
+                        title: function(d) {
+                            return labels[d];
+                        },
+                        value: function(value, ratio, id) {
+                            return value + ' user' + (value !== 1 ? 's' : '');
+                        }
+                    }
+                },
+                size: {
+                    height: 400
+                },
+                padding: {
+                    right: 30,
+                    left: 30,
+                    bottom: 20,
+                    top: 20
+                }
+            });
+
+            // Update summary cards
+            updateSummaryCards(counts);
+        }
+
+        function updateSummaryCards(counts) {
+            if (counts.length > 0) {
+                var total = counts.reduce((a, b) => a + b, 0);
+                var average = (total / counts.length).toFixed(1);
+                var peak = Math.max(...counts);
+
+                document.getElementById('total-in-period').textContent = total;
+                document.getElementById('average-value').textContent = average;
+                document.getElementById('peak-value').textContent = peak;
+            }
+        }
+
+        function changeTimeframe(timeframe) {
+            // Show loading state
+            document.getElementById('user-signup-chart').innerHTML =
+                '<div class="chart-loading">' +
+                '<i class="fas fa-spinner fa-spin"></i>' +
+                '<p>Loading data...</p>' +
+                '</div>';
+
+            // Make AJAX request
+            $.ajax({
+                url: '{{ route('admin.dashboard.data') }}',
+                type: 'GET',
+                data: {
+                    timeframe: timeframe
+                },
+                success: function(response) {
+                    // Update title
+                    document.getElementById('timeframe-title').textContent =
+                        timeframe === 'weekly' ? 'Last 7 Days' : 'Monthly';
+
+                    // Create new chart with the response data
+                    createChart(response.labels, response.counts);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error loading data:', error);
+                    $.toast({
+                        heading: 'Error',
+                        text: 'Failed to load data. Please try again.',
+                        position: 'top-right',
+                        loaderBg: '#e74a3b',
+                        icon: 'error',
+                        hideAfter: 3000,
+                        stack: 6
+                    });
+                }
+            });
+        }
     </script>
-    <!-- ============================================================== -->
-    <!-- This page plugins -->
-    <!-- ============================================================== -->
-    <!--c3 JavaScript -->
-    <script src="{{ asset('plugins/vendors/d3/d3.min.js') }}"></script>
-    <script src="{{ asset('plugins/vendors/c3-master/c3.min.js') }}"></script>
-    <!--jquery knob -->
-    <script src="{{ asset('plugins/vendors/knob/jquery.knob.js') }}"></script>
-    <!--Sparkline JavaScript -->
-    <script src="{{ asset('plugins/vendors/sparkline/jquery.sparkline.min.js') }}"></script>
-    <!--Morris JavaScript -->
-    <script src="{{ asset('plugins/vendors/raphael/raphael-min.js') }}"></script>
-    <script src="{{ asset('plugins/vendors/morrisjs/morris.js') }}"></script>
-    <!-- Popup message jquery -->
-    <script src="{{ asset('plugins/vendors/toast-master/js/jquery.toast.js') }}"></script>
-    <!-- Date Picker Plugin JavaScript -->
-    <script src="{{ asset('plugins/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
-
-
-    <script>
-        // MAterial Date picker    
-
-        jQuery('#datepicker-inline').datepicker({
-            todayHighlight: true
-        });
-    </script>
-
-    <!-- Vector map JavaScript -->
-    <script src="{{ asset('plugins/vendors/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
-    <script src="{{ asset('plugins/vendors/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-    <!-- Dashboard JS -->
-    <script src="{{ asset('assets/js/dashboard-shop-2.js') }}"></script>
-
-    <!-- ============================================================== -->
-    <!-- Style switcher -->
-    <!-- ============================================================== -->
-    <script src="{{ asset('plugins/vendors/styleswitcher/jQuery.style.switcher.js') }}"></script>
 @endpush
