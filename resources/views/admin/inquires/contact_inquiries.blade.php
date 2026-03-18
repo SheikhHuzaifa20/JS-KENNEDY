@@ -5,6 +5,13 @@
 @endpush
 
 @section('content')
+<style>
+    div.dataTables_wrapper {
+    width: 100%;
+    overflow: scroll;
+    margin: 0 auto;
+}
+</style>
     <div class="content-header row">
         <div class="content-header-left col-md-12 col-12 mb-2 breadcrumb-new">
             <h3 class="content-header-title mb-0 d-inline-block">Contact Inquiries</h3>
