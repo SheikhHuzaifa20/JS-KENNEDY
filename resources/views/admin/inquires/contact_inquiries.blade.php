@@ -1,17 +1,17 @@
 @extends('layouts.admin.app')
 
 @push('before-css')
-    <link href="{{asset('plugins/components/datatables/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('plugins/components/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
 @endpush
 
 @section('content')
-<style>
-    div.dataTables_wrapper {
-    width: 100%;
-    overflow: scroll;
-    margin: 0 auto;
-}
-</style>
+    <style>
+        div.dataTables_wrapper {
+            width: 100%;
+            overflow: scroll;
+            margin: 0 auto;
+        }
+    </style>
     <div class="content-header row">
         <div class="content-header-left col-md-12 col-12 mb-2 breadcrumb-new">
             <h3 class="content-header-title mb-0 d-inline-block">Contact Inquiries</h3>
@@ -61,7 +61,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($contact_inquiries as $item)
+                                        @foreach ($contact_inquiries as $item)
                                             <tr>
                                                 <td>{{ $item->id }}</td>
                                                 <td>{{ $item->fname }}</td>
@@ -75,11 +75,11 @@
                                                 <td>
 
                                                     {{-- <a href="{{ url('/admin/contact/inquiries/'.$item->id) }}" --}} {{--
-                                                        title="View Language">--}}
-                                                        {{-- <button class="btn btn-info btn-sm">--}}
-                                                            {{-- <i class="fa fa-eye" aria-hidden="true"></i> View--}}
-                                                            {{-- </button>--}}
-                                                        {{-- </a>--}}
+                                                        title="View Language"> --}}
+                                                    {{-- <button class="btn btn-info btn-sm"> --}}
+                                                    {{-- <i class="fa fa-eye" aria-hidden="true"></i> View --}}
+                                                    {{-- </button> --}}
+                                                    {{-- </a> --}}
 
                                                     <a href="{{ url('/admin/contact/submissions/delete', $item->id) }}"
                                                         title="View Language">
@@ -101,19 +101,20 @@
     </section>
 @endsection
 
-@push('js')<!-- ============================================================== -->
-    <script src="{{asset('plugins/components/toast-master/js/jquery.toast.js')}}"></script>
-    <script src="{{asset('plugins/components/datatables/jquery.dataTables.min.js')}}"></script>
+@push('js')
+    <!-- ============================================================== -->
+    <script src="{{ asset('plugins/components/toast-master/js/jquery.toast.js') }}"></script>
+    <script src="{{ asset('plugins/components/datatables/jquery.dataTables.min.js') }}"></script>
     <!-- start - This is for export functionality only -->
     <!-- end - This is for export functionality only -->
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
 
-            @if(\Session::has('message'))
+            @if (\Session::has('message'))
                 $.toast({
                     heading: 'Success!',
                     position: 'top-center',
-                    text: '{{session()->get('message')}}',
+                    text: '{{ session()->get('message') }}',
                     loaderBg: '#ff6849',
                     icon: 'success',
                     hideAfter: 3000,
@@ -122,7 +123,7 @@
             @endif
         })
 
-        $(function () {
+        $(function() {
             $('.zero-configuration').DataTable({
                 'aoColumnDefs': [{
                     'bSortable': false,

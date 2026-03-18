@@ -21,6 +21,12 @@
         color: #f7d106;
         /* Filled star color (gold) */
     }
+
+    div.dataTables_wrapper {
+        width: 100%;
+        overflow: scroll;
+        margin: 0 auto;
+    }
 </style>
 
 @section('content')
