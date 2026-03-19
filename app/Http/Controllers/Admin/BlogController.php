@@ -14,6 +14,8 @@ use App\newsletter;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NewBlogNotification;
 use App\Services\MailerLiteService;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 class BlogController extends Controller
 {
@@ -109,9 +111,19 @@ class BlogController extends Controller
             // SEND EMAIL TO ALL NEWSLETTER SUBSCRIBERS
             // -------------------------------
             $subscribers = newsletter::pluck('newsletter_email');
+
             foreach ($subscribers as $email) {
-                Mail::to($email)->send(new NewBlogNotification($blog));
-                $mailerLite->subscribe($email);
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    Log::warning("Invalid email skipped: " . $email);
+                    continue;
+                }
+                try {
+                    Mail::to($email)->send(new NewBlogNotification($blog));
+                    $mailerLite->subscribe($email);
+                } catch (\Exception $e) {
+                    Log::error("Mail failed for: " . $email . " | Error: " . $e->getMessage());
+                    continue;
+                }
             }
         }
 
@@ -169,9 +181,9 @@ class BlogController extends Controller
             ->whereNull('parent_id')
             ->whereNotExists(function ($query) {
                 $query->select(DB::raw(1))
-                      ->from('blog_reviews as r2')
-                      ->whereRaw('r2.parent_id = blog_reviews.id')
-                      ->where('r2.name', 'Admin');
+                    ->from('blog_reviews as r2')
+                    ->whereRaw('r2.parent_id = blog_reviews.id')
+                    ->where('r2.name', 'Admin');
             })
             ->orderBy('created_at', 'desc')
             ->get();
