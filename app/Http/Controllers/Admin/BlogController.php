@@ -113,16 +113,26 @@ class BlogController extends Controller
             $subscribers = newsletter::pluck('newsletter_email');
 
             foreach ($subscribers as $email) {
+
+                // ✅ Email format check
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     Log::warning("Invalid email skipped: " . $email);
                     continue;
                 }
+
                 try {
+                    // ✅ DEBUG (check loop chal raha hai ya nahi)
+                    Log::info("Trying to send mail to: " . $email);
+
                     Mail::to($email)->send(new NewBlogNotification($blog));
+
+                    // ✅ DEBUG (mail send ho gayi)
+                    Log::info("Mail sent successfully to: " . $email);
+
                     $mailerLite->subscribe($email);
                 } catch (\Exception $e) {
+                    // ❌ ERROR LOG
                     Log::error("Mail failed for: " . $email . " | Error: " . $e->getMessage());
-                    continue;
                 }
             }
         }
