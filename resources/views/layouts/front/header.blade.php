@@ -81,3 +81,13 @@
         </div>
     </header>
 </div>
+<script>
+    document.getElementById('newsletterFormHeader').addEventListener('submit', function(e) {
+        var email = document.getElementById('newemail').value;
+        var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!regex.test(email)) {
+            e.preventDefault(); // form submit nahi hoga
+            alert('Please enter a valid email!');
+        }
+    });
+</script>

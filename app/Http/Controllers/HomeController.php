@@ -27,6 +27,7 @@ use App\Mail\InquiryReceived;
 use App\Mail\ThankYouMail;
 use App\Mail\NewsletterSubscribed;
 use App\Mail\NewsletterSubscribedAdmin;
+use Axlon\MailCheck\MailCheck;
 
 class HomeController extends Controller
 {
@@ -253,32 +254,48 @@ class HomeController extends Controller
             'newsletter_email' => 'required|email'
         ]);
 
-        // Check if email already exists
-        $is_email = newsletter::where('newsletter_email', $request->newsletter_email)->count();
+        $email = $request->newsletter_email;
 
-        if ($is_email == 0) {
-            // Save to local database
-            $newsletter = new newsletter;
-            $newsletter->newsletter_email = $request->newsletter_email;
-            $newsletter->save();
-
-            // Send emails
-            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new NewsletterSubscribedAdmin($request->newsletter_email));
-            sleep(10);
-            Mail::to($request->newsletter_email)->send(new NewsletterConfirmation($request->newsletter_email));
-
-            // Send subscriber to MailerLite (email only)
-            $response = $mailerLite->subscribe($request->newsletter_email);
-
+        // ✅ Real mailbox check
+        if (!MailCheck::check($email)->isValid()) {
             return response()->json([
-                'message' => 'Thank you for subscribing. A confirmation email has been sent!',
-                'status' => true
-            ]);
-        } else {
-            return response()->json([
-                'message' => 'Email already exists',
+                'message' => 'Please enter a valid and existing email address.',
                 'status' => false
             ]);
         }
+
+        // Duplicate check
+        if (newsletter::where('newsletter_email', $email)->exists()) {
+            return response()->json([
+                'message' => 'Email already subscribed.',
+                'status' => false
+            ]);
+        }
+
+        // Save and send mails
+        $newsletter = newsletter::create(['newsletter_email' => $email]);
+
+        try {
+            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new NewsletterSubscribedAdmin($email));
+            sleep(5);
+            Mail::to($email)->send(new NewsletterConfirmation($email));
+        } catch (\Exception $e) {
+            \Log::error("Mail failed for {$email}: " . $e->getMessage());
+            return response()->json([
+                'message' => 'Subscription saved but confirmation email could not be sent.',
+                'status' => true
+            ]);
+        }
+
+        try {
+            $mailerLite->subscribe($email);
+        } catch (\Exception $e) {
+            \Log::error("MailerLite subscribe failed for {$email}: " . $e->getMessage());
+        }
+
+        return response()->json([
+            'message' => 'Thank you for subscribing! Confirmation email sent.',
+            'status' => true
+        ]);
     }
 }
