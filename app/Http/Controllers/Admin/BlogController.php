@@ -113,22 +113,14 @@ class BlogController extends Controller
             $subscribers = newsletter::pluck('newsletter_email');
 
             foreach ($subscribers as $email) {
-
-                // ✅ Step 1: Email format check
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    // Invalid email → skip
                     Log::warning("Invalid email skipped: " . $email);
                     continue;
                 }
-
                 try {
-                    // ✅ Step 2: Send mail safely
                     Mail::to($email)->send(new NewBlogNotification($blog));
-
-                    // ✅ Step 3: MailerLite subscribe
                     $mailerLite->subscribe($email);
                 } catch (\Exception $e) {
-                    // ❌ Agar mail fail ho (like 550 error)
                     Log::error("Mail failed for: " . $email . " | Error: " . $e->getMessage());
                     continue;
                 }
